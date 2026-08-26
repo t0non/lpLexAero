@@ -1627,8 +1627,8 @@ b {
 
   .footer__grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-12);
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
     padding-bottom: var(--space-12);
     border-bottom: 1px solid var(--lex-border-dark);
   }
@@ -3041,4 +3041,344 @@ b {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   margin-bottom: 2px;
+}
+
+/* ────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS — iPhone XR & smaller (max-width: 430px)
+   Corrigindo todos os problemas de layout no celular
+   ──────────────────────────────────────────────────────────── */
+
+/* ── 768px — Tablet/Mobile geral ─── */
+@media (max-width: 768px) {
+
+  /* Container */
+  .container {
+    padding: 0 var(--space-5);
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 0;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .hero__headline {
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: 1.08;
+  }
+
+  .hero__sub {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .hero__photo-wrap {
+    order: -1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__photo {
+    max-height: 320px;
+    width: 100%;
+    object-fit: contain;
+    transform: none;
+  }
+
+  .hero__founder-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: var(--space-4);
+  }
+
+  /* Trust Strip */
+  .trust-strip__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  /* Numbers */
+  .numbers-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  /* Kareline Section */
+  .kareline-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .kareline__photo-editorial {
+    max-height: 350px;
+    aspect-ratio: auto;
+  }
+
+  /* Metodologia / Lead Form */
+  .metodologia-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Lead Form Row */
+  .lead-capture-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Benefits Card */
+  .benefits-card {
+    grid-template-columns: 1fr;
+    padding: var(--space-6) var(--space-5);
+    gap: var(--space-6);
+    margin: var(--space-6) 0;
+  }
+
+  .benefits-card__image {
+    min-height: 250px;
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Central de Direitos */
+  .central-direitos-section-premium {
+    padding: 3rem 0 4rem;
+  }
+
+  .central-direitos-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .central-direitos-image-col {
+    display: none; /* esconde a foto no mobile pra não quebrar o layout */
+  }
+
+  .central-direitos-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .central-direitos-desc {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .content-card-premium {
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .content-card-premium__icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 0;
+    flex-shrink: 0;
+  }
+
+  .content-card-premium__cta {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* FAQ */
+  .faq-question {
+    font-size: 14px;
+    padding: var(--space-4) var(--space-4);
+  }
+
+  /* Steps */
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Section padding */
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* ── 480px — iPhone XR e similares ─── */
+@media (max-width: 480px) {
+
+  /* Tipografia geral */
+  h1 {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  /* Container */
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Hero */
+  .hero__headline {
+    font-size: clamp(28px, 8.5vw, 38px);
+  }
+
+  .hero__photo {
+    max-height: 260px;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero__ctas .btn {
+    justify-content: center;
+  }
+
+  .hero__trust {
+    gap: var(--space-3);
+  }
+
+  .hero__trust-item {
+    font-size: 11px;
+  }
+
+  /* Problems Grid */
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Numbers */
+  .numbers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Trust Strip */
+  .trust-strip__inner {
+    gap: var(--space-3);
+  }
+
+  .trust-strip__item {
+    font-size: 12px;
+  }
+
+  /* Kareline */
+  .kareline__photo-editorial {
+    max-height: 280px;
+  }
+
+  /* Lead Form */
+  .lead-capture-form {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  /* Botão do form centralizado */
+  .lead-capture-form button[type="submit"] {
+    align-self: stretch !important;
+    justify-content: center;
+    padding: 14px 24px !important;
+    width: 100% !important;
+  }
+
+  /* Metodologia section foto */
+  .metodologia__photo-wrap {
+    display: none;
+  }
+
+  /* Central de Direitos */
+  .central-direitos-section-premium {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .central-direitos-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+
+  .content-card-premium {
+    min-height: 56px;
+    padding: 12px 14px;
+  }
+
+  .content-card-premium__title {
+    font-size: 0.95rem;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .site-footer {
+    padding: var(--space-10) 0 var(--space-6);
+  }
+
+  /* Benefits card */
+  .benefits-card {
+    margin: var(--space-4) 0;
+  }
+
+  /* btn--lg em telas pequenas */
+  .btn--lg {
+    font-size: 14px;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  }
+
+  .btn--lg .btn__icon-circle {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Pricing donut */
+  .donut-chart {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Checklist */
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  /* Smart CTA */
+  .smart-cta--expanded {
+    padding: 0.85rem 1rem;
+    width: 95%;
+  }
+
+  .smart-cta__title {
+    font-size: 14px;
+  }
+
+  .smart-cta__trust {
+    display: none;
+  }
+
+  /* Inline overrides para o footer novo */
+  .site-footer [style*="grid-template-columns: 2fr"] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }

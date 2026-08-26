@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer className="site-footer" style={{ borderTop: "1px solid var(--lex-border-dark)" }}>
       <div className="container">
-        <div className="footer__grid" style={{ paddingBottom: "3rem", display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.5fr", gap: "3rem" }}>
+        <div className="footer__grid">
           
           {/* Col 1: Brand & Desc */}
           <div className="footer__brand" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
