@@ -5,45 +5,18 @@ import { useRouter } from "next/navigation";
 const TOTAL_STEPS = 7;
 
 const STEP3_MAP = {
-  "Voo atrasado": {
-    question: "Quanto tempo aproximadamente seu voo atrasou?",
+  "Voo Atrasado ou Cancelado": {
+    question: "Quanto tempo aproximadamente seu voo atrasou ou quando soube do cancelamento?",
     options: [
-      "Menos de 1 hora",
-      "Entre 1 e 2 horas",
+      "Menos de 2 horas",
       "Entre 2 e 4 horas",
       "Mais de 4 horas",
+      "Cancelado no aeroporto",
+      "Cancelado com antecedência",
       "Não sei informar",
     ],
   },
-  "Voo cancelado": {
-    question: "Quando você soube do cancelamento?",
-    options: [
-      "No aeroporto",
-      "No mesmo dia da viagem",
-      "Alguns dias antes",
-      "Com bastante antecedência",
-      "Não sei",
-    ],
-  },
-  "Perdi minha conexão": {
-    question: "Por que você perdeu a conexão?",
-    options: [
-      "Atraso no voo anterior",
-      "Cancelamento no voo anterior",
-      "Demora na alfândega ou migração",
-      "Outra razão",
-    ],
-  },
-  "Overbooking / impedimento de embarque": {
-    question: "O que a companhia ofereceu no momento?",
-    options: [
-      "Ofereceu reacomodação imediata",
-      "Pagou compensação financeira",
-      "Não ofereceu nada",
-      "Ainda estou tentando resolver",
-    ],
-  },
-  "Problema com bagagem": {
+  "Bagagem Extraviada": {
     question: "Qual foi o problema com sua bagagem?",
     options: [
       "Bagagem extraviada (não chegou)",
@@ -52,22 +25,22 @@ const STEP3_MAP = {
       "Atraso na entrega",
     ],
   },
-  "Alteração de voo": {
-    question: "Como foi a alteração?",
+  "Overbooking": {
+    question: "O que a companhia ofereceu no momento?",
     options: [
-      "Mudaram o horário sem avisar",
-      "Mudaram a rota completamente",
-      "Mudaram a companhia operadora",
-      "Outro",
+      "Ofereceu reacomodação imediata",
+      "Pagou compensação financeira",
+      "Não ofereceu nada",
+      "Ainda estou tentando resolver",
     ],
   },
-  "Outro": {
-    question: "Pode nos descrever rapidamente o problema?",
+  "Conexão Perdida": {
+    question: "Por que você perdeu a conexão?",
     options: [
-      "Problema com reembolso",
-      "Problema com assento ou classe",
-      "Problema com acompanhante",
-      "Outro",
+      "Atraso no voo anterior",
+      "Cancelamento no voo anterior",
+      "Demora na alfândega ou migração",
+      "Outra razão",
     ],
   },
 };
@@ -160,15 +133,28 @@ export default function DiagnosticForm({ initialProblem = null }) {
 
       {/* Step 1 – Problema */}
       {step === 1 && (
-        <div>
-          <h2 className="diag-question">O que aconteceu com seu voo?</h2>
-          <div className="diag-options">
-            {["Voo atrasado","Voo cancelado","Perdi minha conexão","Overbooking / impedimento de embarque","Problema com bagagem","Alteração de voo","Outro"].map((opt) => (
-              <button key={opt} className="diag-option" onClick={() => advance("problem", opt)}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                {opt}
+        <div style={{ paddingBottom: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+            {[
+              { label: "Voo Atrasado ou Cancelado", color: "#3b82f6", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13" /><path d="M22 2 15 22 11 13 2 9 22 2z" /></svg> },
+              { label: "Bagagem Extraviada", color: "#f59e0b", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="8" width="18" height="14" rx="2" ry="2" /><path d="M16 8V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3" /></svg> },
+              { label: "Overbooking", color: "#ef4444", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="18" y1="8" x2="23" y2="13" /><line x1="23" y1="8" x2="18" y2="13" /></svg> },
+              { label: "Conexão Perdida", color: "#8b5cf6", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg> }
+            ].map((opt) => (
+              <button key={opt.label} onClick={() => advance("problem", opt.label)} style={{
+                display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.25rem 1rem', background: '#fff', border: '1px solid var(--lex-border-light)', borderRadius: '12px', borderLeft: `4px solid ${opt.color}`, cursor: 'pointer', textAlign: 'left', fontWeight: 500, fontSize: '0.95rem', color: 'var(--lex-text)', transition: 'all 0.2s ease', boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseOut={(e) => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                <div style={{ color: opt.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{opt.icon}</div>
+                {opt.label}
               </button>
             ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <p style={{ color: '#8b5cf6', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.25rem' }}>Indenizações de até R$ 10.000</p>
+            <p style={{ color: 'var(--text-sub)', fontSize: '0.85rem' }}>Você só paga se ganhar. Sem risco.</p>
           </div>
         </div>
       )}
