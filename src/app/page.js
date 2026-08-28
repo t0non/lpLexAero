@@ -271,7 +271,7 @@ export default function Home() {
               <div key={s.n} className="step" style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{ marginBottom: "var(--space-5)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40px" }}>
                   {s.icon ? (
-                    <img src={s.icon} alt="" style={{ height: "72px", width: "auto", objectFit: "contain", display: "block" }} />
+                    <img src={s.icon} alt="" style={{ height: "100px", width: "auto", objectFit: "contain", display: "block" }} />
                   ) : (
                     <div className="step__number" style={{ marginBottom: 0 }}>{s.n}</div>
                   )}
