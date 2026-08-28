@@ -321,43 +321,12 @@ export default function Home() {
             
             <div className="pricing__visual">
               <div className="pricing__chart-wrapper">
-                <svg viewBox="0 0 42 42" className="pricing-donut">
-                  <defs>
-                    <filter id="dropshadow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="0" dy="1" stdDeviation="1.5" floodOpacity="0.1" />
-                    </filter>
-                  </defs>
-                  
-                  {/* Gold (65%) */}
-                  <circle 
-                    className="donut-segment donut-gold" 
-                    cx="21" cy="21" r="15.91549431" 
-                    fill="transparent" stroke="var(--lex-gold)" strokeWidth="10" 
-                    strokeDasharray="60 40" strokeDashoffset="25" strokeLinecap="round"
-                    filter="url(#dropshadow)"
-                  ></circle>
-                  
-                  {/* Graphite (35%) */}
-                  <circle 
-                    className="donut-segment donut-graphite" 
-                    cx="21" cy="21" r="15.91549431" 
-                    fill="transparent" stroke="var(--lex-graphite)" strokeWidth="14" 
-                    strokeDasharray="30 70" strokeDashoffset="-40" strokeLinecap="round"
-                    filter="url(#dropshadow)"
-                  ></circle>
-                  
-                  {/* Label 65 */}
-                  <g className="chart-label label-gold">
-                    <rect x="3" y="14" width="8" height="6" rx="1.5" fill="#a47721" />
-                    <text x="7" y="18.2" fill="#fff" fontSize="3" fontWeight="bold" textAnchor="middle">65</text>
-                  </g>
-
-                  {/* Label 35 */}
-                  <g className="chart-label label-graphite">
-                    <rect x="29" y="24" width="8" height="6" rx="1.5" fill="#1C1F26" />
-                    <text x="33" y="28.2" fill="#fff" fontSize="3" fontWeight="bold" textAnchor="middle">35</text>
-                  </g>
-                </svg>
+                <img 
+                  src="/grafico.png" 
+                  alt="Gráfico de honorários: 65% para você, 35% para a LexAero" 
+                  className="pricing-donut-img" 
+                  style={{ width: "100%", maxWidth: "400px", height: "auto", display: "block", margin: "0 auto" }} 
+                />
               </div>
               
               <div className="pricing__legend">
