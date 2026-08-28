@@ -3542,3 +3542,35 @@ b {
     border: 1px solid rgba(0,0,0,0.03);
   }
 }
+
+/* ── STRICT RESPONSIVE RESET ── */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden; /* Prevent AnimatedPlane from leaking */
+  width: 100%;
+  max-width: 100vw;
+}
+
+.section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Ensure no element can exceed 100vw */
+img, svg, video, canvas, iframe, div, p, h1, h2, h3, h4, h5, h6, a, span, button {
+  max-width: 100%;
+}
+
+.btn {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}

@@ -63,7 +63,7 @@ export default function AnimatedPlane() {
   const startX = isMobile ? 5 : 15; // vw (slightly indented from the left)
   const startY = isMobile ? 30 : 30; // vh (off-screen below the hero boundary)
 
-  const targetX = isMobile ? 80 : 70; // vw
+  const targetX = isMobile ? 65 : 70; // vw
   const targetY = isMobile ? -60 : -80; // vh
 
   const xMove = startX + (easeProgress * (targetX - startX));
