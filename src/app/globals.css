@@ -3582,3 +3582,11 @@ img, svg, video, canvas, iframe, div, p, h1, h2, h3, h4, h5, h6, a, span, button
   .kareline__mobile-header { display: block; margin-bottom: 2rem; }
   .kareline__desktop-header { display: none; }
 }
+
+/* ── HIDE GOOGLE TRANSLATE WIDGET BAR ── */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+body {
+    top: 0px !important;
+}

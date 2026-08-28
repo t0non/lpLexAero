@@ -74,6 +74,19 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+
+        <div id="google_translate_element" style={{ display: "none" }}></div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'pt,en'}, 'google_translate_element');
+              }
+            `,
+          }}
+        />
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
+
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

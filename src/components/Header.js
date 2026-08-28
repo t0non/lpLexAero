@@ -15,6 +15,15 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const changeLanguage = (langCode) => {
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+      select.value = langCode;
+      select.dispatchEvent(new Event('change'));
+    }
+  };
+
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 400); // Mostra a barra após 400px
@@ -57,6 +66,16 @@ export default function Header() {
                 </svg>
               </span>
             </Link>
+          {/* Language Switcher */}
+          <div className="header__lang-switcher" style={{ display: "flex", gap: "8px", marginLeft: "16px", alignItems: "center" }}>
+            <button onClick={() => changeLanguage('pt')} aria-label="Português" style={{ cursor: 'pointer', fontSize: '1.2rem', padding: '4px', background: 'transparent', border: 'none', transition: 'transform 0.2s' }} onMouseOver={(e)=>e.currentTarget.style.transform='scale(1.1)'} onMouseOut={(e)=>e.currentTarget.style.transform='scale(1)'}>
+              🇧🇷
+            </button>
+            <button onClick={() => changeLanguage('en')} aria-label="English" style={{ cursor: 'pointer', fontSize: '1.2rem', padding: '4px', background: 'transparent', border: 'none', transition: 'transform 0.2s' }} onMouseOver={(e)=>e.currentTarget.style.transform='scale(1.1)'} onMouseOut={(e)=>e.currentTarget.style.transform='scale(1)'}>
+              🇺🇸
+            </button>
+          </div>
+
           </nav>
 
           {/* Mobile Toggle */}
@@ -90,6 +109,15 @@ export default function Header() {
             </span>
           </Link>
         </div>
+        <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center", gap: "1rem" }}>
+            <button onClick={() => changeLanguage('pt')} aria-label="Português" style={{ cursor: 'pointer', fontSize: '2rem', background: 'transparent', border: 'none' }}>
+              🇧🇷
+            </button>
+            <button onClick={() => changeLanguage('en')} aria-label="English" style={{ cursor: 'pointer', fontSize: '2rem', background: 'transparent', border: 'none' }}>
+              🇺🇸
+            </button>
+        </div>
+
       </nav>
 
       <SmartFloatingCTA />
