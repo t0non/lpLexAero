@@ -470,14 +470,6 @@ export default function Home() {
 
             {/* Conteúdo */}
             <div className="kareline__content" style={{ position: "relative" }}>
-              {/* Avião de fundo (marca d'água) */}
-              <div className="kareline__bg-plane" aria-hidden="true">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 0, opacity: 0.8, pointerEvents: 'none' }}>
-                  <path d="M -20 80 Q 50 10 120 20" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-                  <path d="M 85 17 L 90 20 L 83 23 Z" fill="rgba(255,255,255,0.04)" transform="rotate(10 85 20)" />
-                </svg>
-              </div>
-
               <div className="kareline__desktop-header" style={{ position: "relative", zIndex: 2 }}>
                 <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À FRENTE DA LEXAERO</span>
                 <h2 id="kareline-heading" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
