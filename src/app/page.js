@@ -91,7 +91,7 @@ export default function Home() {
               <span className="hero__eyebrow">PROBLEMA COM VOO?</span>
               <h1 className="hero__headline">
                 Você pode ter direito a<br />
-                <span style={{ color: 'var(--lex-gold)' }}>até R$ 10 mil</span> em indenização.
+                <span className="hero-mobile-nowrap"><span style={{ color: 'var(--lex-gold)' }}>até R$ 10 mil</span> em indenização.</span>
               </h1>
               <p className="hero__sub">
                 Atraso, cancelamento, conexão perdida, overbooking ou problema com bagagem? Verifique sua situação em poucos minutos.
@@ -208,6 +208,10 @@ export default function Home() {
       <section className="section bg-dark" aria-labelledby="diag-heading" style={{ overflow: "hidden" }}>
         <div className="container">
           <div className="diag-cta-section">
+            <div className="diag-cta__mobile-header">
+              <span className="eyebrow">Ferramenta de Análise</span>
+              <h2 id="diag-heading-mobile" style={{ marginTop: "0.5rem", fontWeight: 200 }}>Entenda melhor sua situação</h2>
+            </div>
             <div className="diag-cta__photo-wrap">
               <img
                 src="/kareline-diagnostico-apresentacao.png"
@@ -217,8 +221,10 @@ export default function Home() {
               />
             </div>
             <div className="diag-cta__content">
-              <span className="eyebrow">Ferramenta de Análise</span>
-              <h2 id="diag-heading" style={{ marginTop: "0.5rem", fontWeight: 200 }}>Entenda melhor sua situação</h2>
+              <div className="diag-cta__desktop-header">
+                <span className="eyebrow">Ferramenta de Análise</span>
+                <h2 id="diag-heading-desktop" style={{ marginTop: "0.5rem", fontWeight: 200 }}>Entenda melhor sua situação</h2>
+              </div>
               <p style={{ marginTop: "0.75rem", marginBottom: "2.5rem" }}>
                 Responda algumas perguntas sobre o que aconteceu durante sua viagem. As informações ajudam a compreender melhor o ocorrido antes de uma análise jurídica individualizada.
               </p>

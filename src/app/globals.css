@@ -3499,3 +3499,46 @@ b {
   max-width: 600px;
   margin: 0 auto 3rem auto;
 }
+
+
+/* ── NO RISK SECTION (CARD STYLE) OVERRIDES ── */
+.no-risk-card {
+  padding: 2.5rem 1.5rem; /* Less padding on mobile */
+}
+
+/* ── MOBILE LAYOUT FIXES (Aug 28) ── */
+.hero-mobile-nowrap {
+  white-space: normal;
+}
+
+.diag-cta__mobile-header { display: none; }
+.diag-cta__desktop-header { display: block; }
+
+@media (max-width: 1024px) {
+  /* Hero Wrap */
+  .hero-mobile-nowrap {
+    white-space: nowrap;
+  }
+  .hero__headline {
+    font-size: clamp(24px, 7vw, 38px) !important;
+  }
+
+  /* Entenda melhor sua situação - Reorder */
+  .diag-cta__mobile-header { 
+    display: block; 
+    margin-bottom: 2rem; 
+    text-align: center;
+  }
+  .diag-cta__desktop-header { display: none; }
+
+  /* Processo Simplificado - Clean Cards */
+  .steps-line-bg, .steps-line-fill { display: none !important; }
+  .steps-grid { gap: 1rem !important; }
+  .step { 
+    background: #ffffff; 
+    padding: 1.5rem; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+}

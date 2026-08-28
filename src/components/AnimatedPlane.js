@@ -96,7 +96,7 @@ export default function AnimatedPlane() {
         transform: `translate(${xMove}vw, ${yMove}vh) scale(${scale}) rotate(${rotate}deg)`,
         opacity: opacity,
         willChange: 'transform, opacity',
-        transition: 'transform 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.5s linear', // Lazy tracking para scroll rápido
+        transition: isMobile ? 'none' : 'transform 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.5s linear', // Lazy tracking para scroll rápido
       }}
       aria-hidden="true"
     >
