@@ -10,6 +10,13 @@ export const servicesData = {
       headline: "Seu voo atrasou? Você pode ter direito a até R$ 10 mil em indenização.",
       subheadline: "Atrasos longos ou que geram perda de conexões e compromissos importantes são passíveis de indenização. Verifique sua situação em poucos minutos."
     },
+    conversion: {
+      methodologyTitle: "Como ser indenizado pelo seu voo atrasado?",
+      leadCaptureTitle: "Não deixe a companhia aérea sair impune pelo seu atraso.",
+      leadCaptureSub: "Eles já tomaram o seu tempo e esgotaram sua paciência. Agora é hora de buscar a sua compensação justa.",
+      finalCtaTitle: "Quer buscar seus direitos pelo atraso sem sair de casa? É só verificar grátis!",
+      finalCtaBtn: "Verificar caso de atraso grátis"
+    },
     rights: {
       title: "Você pode ter direito quando:",
       items: [
@@ -53,6 +60,13 @@ export const servicesData = {
       headline: "Voo cancelado sem aviso? Você pode ter direito a até R$ 10 mil em indenização.",
       subheadline: "Cancelamentos sem assistência adequada ou que alteram completamente seus planos podem ensejar medidas legais."
     },
+    conversion: {
+      methodologyTitle: "Como ser indenizado pelo cancelamento do voo?",
+      leadCaptureTitle: "Voos cancelados destroem planos. Exija seus direitos.",
+      leadCaptureSub: "A frustração de ter a viagem interrompida de surpresa deve ser reparada. Não aceite prejuízos em silêncio.",
+      finalCtaTitle: "Teve a viagem arruinada pelo cancelamento? Verifique grátis se tem direito a compensação.",
+      finalCtaBtn: "Verificar caso de cancelamento grátis"
+    },
     rights: {
       title: "Você pode ter direito quando:",
       items: [
@@ -93,8 +107,15 @@ export const servicesData = {
       description: "Foi impedido de embarcar por falta de assentos? O overbooking é uma prática abusiva e gera direito a compensação imediata e indenização."
     },
     hero: {
-      headline: "Foi impedido de embarcar? O overbooking gera direito a indenização.",
+      headline: "Foi impedido de embarcar?<br/>Receba até R$ 10 mil de indenização.",
       subheadline: "Se você possuía reserva confirmada mas não pôde voar por falta de assentos, a lei obriga a companhia a compensá-lo."
+    },
+    conversion: {
+      methodologyTitle: "Como ser indenizado por ter sido deixado para trás?",
+      leadCaptureTitle: "Venderam o seu assento para outra pessoa? Não aceite.",
+      leadCaptureSub: "O overbooking é uma das práticas mais abusivas da aviação. A companhia lucrou em dobro e deixou você no chão. Reivindique o que é seu.",
+      finalCtaTitle: "Foi impedido de embarcar injustamente? Verifique sua indenização agora mesmo.",
+      finalCtaBtn: "Verificar caso de overbooking"
     },
     rights: {
       title: "Você pode ter direito quando:",
@@ -130,8 +151,15 @@ export const servicesData = {
       description: "Sua mala foi perdida, danificada ou violada? Saiba quais são os prazos, procedimentos (RIB) e o valor de indenização aplicável."
     },
     hero: {
-      headline: "Sua bagagem sumiu ou foi danificada? Exija seus direitos.",
+      headline: "Problemas com sua bagagem? Você tem direito a até R$ 10 mil.",
       subheadline: "O extravio, violação ou dano de malas gera transtornos severos. Orientamos você sobre protocolos, prazos e medidas legais."
+    },
+    conversion: {
+      methodologyTitle: "Como ser indenizado pelos problemas com sua mala?",
+      leadCaptureTitle: "Sua mala sumiu ou quebrou? A responsabilidade é toda deles.",
+      leadCaptureSub: "O desespero de ficar sem seus pertences no meio de uma viagem não tem preço, mas tem indenização. Não assuma esse prejuízo sozinho.",
+      finalCtaTitle: "Ficou na mão por culpa da companhia aérea? Busque seus direitos sem sair de casa.",
+      finalCtaBtn: "Verificar caso de bagagem grátis"
     },
     rights: {
       title: "Você pode ter direito quando:",
@@ -171,8 +199,15 @@ export const servicesData = {
       description: "Perdeu seu voo de conexão devido a um atraso anterior? Saiba como exigir assistência material e verificar possibilidade de indenização."
     },
     hero: {
-      headline: "Perdeu sua conexão por culpa da companhia? Descubra seus direitos.",
+      headline: "Perdeu sua conexão? Você pode ter direito a até R$ 10 mil.",
       subheadline: "Atrasos que causam a perda do voo seguinte são responsabilidade da companhia aérea, que deve providenciar reacomodação imediata."
+    },
+    conversion: {
+      methodologyTitle: "Como ser indenizado pela conexão perdida?",
+      leadCaptureTitle: "O voo deles atrasou e você perdeu a conexão? Não pague a conta.",
+      leadCaptureSub: "Eles são responsáveis por garantir que você chegue ao destino. A dor de cabeça de remarcar e perder diárias de hotel precisa ser cobrada.",
+      finalCtaTitle: "Perdeu dias da sua viagem pela conexão perdida? Verifique sua indenização agora.",
+      finalCtaBtn: "Verificar caso de conexão"
     },
     rights: {
       title: "Você pode ter direito quando:",
@@ -208,8 +243,15 @@ export const servicesData = {
       description: "Atrasos e cancelamentos exigem assistência material da companhia aérea. Saiba quando você tem direito a alimentação, comunicação e hotel."
     },
     hero: {
-      headline: "A companhia te deixou esperando sem amparo? Isso é ilegal.",
+      headline: "Te deixaram sem hotel ou comida? Receba até R$ 10 mil de indenização.",
       subheadline: "O não fornecimento de alimentação, hospedagem e comunicação durante atrasos prolongados gera o dever de indenizar."
+    },
+    conversion: {
+      methodologyTitle: "Como ser indenizado por falta de assistência?",
+      leadCaptureTitle: "Deixaram você dormindo no chão do aeroporto?",
+      leadCaptureSub: "O descaso e a humilhação de ser tratado com indiferença não podem passar em branco. O descumprimento da assistência material é gravíssimo.",
+      finalCtaTitle: "Você foi desrespeitado durante a espera? Exija compensação agora mesmo.",
+      finalCtaBtn: "Verificar caso de assistência grátis"
     },
     rights: {
       title: "Você pode ter direito quando:",
@@ -245,8 +287,15 @@ export const servicesData = {
       description: "Problemas com o reembolso da sua passagem aérea? Entenda os prazos legais e veja o que fazer caso a companhia se recuse a devolver o valor."
     },
     hero: {
-      headline: "Dificuldade para receber seu reembolso? Nós podemos orientar.",
+      headline: "Estão enrolando seu reembolso? Você pode ter direito a até R$ 10 mil.",
       subheadline: "A devolução de valores, pagamento de taxas indevidas e estornos possuem prazos estipulados pela ANAC."
+    },
+    conversion: {
+      methodologyTitle: "Como exigir seu dinheiro de volta corretamente?",
+      leadCaptureTitle: "Estão segurando o seu dinheiro indevidamente?",
+      leadCaptureSub: "A companhia é rápida para cobrar, mas coloca mil obstáculos na hora de reembolsar. Recupere o que é seu por direito sem burocracia.",
+      finalCtaTitle: "Cansado de brigar pelo seu reembolso? Nós avaliamos a viabilidade para você.",
+      finalCtaBtn: "Verificar direito ao reembolso"
     },
     rights: {
       title: "Você pode ter direito quando:",
@@ -282,8 +331,15 @@ export const servicesData = {
       description: "Existem diversas falhas na prestação de serviços aéreos que geram direitos. Conheça outras situações comuns e solicite uma análise."
     },
     hero: {
-      headline: "Enfrentou outro tipo de problema com a companhia aérea?",
+      headline: "Problema com o voo? Você pode ter direito a até R$ 10 mil em indenização.",
       subheadline: "Desde falhas sistêmicas a problemas de acessibilidade, o consumidor é protegido pelo CDC e convenções internacionais."
+    },
+    conversion: {
+      methodologyTitle: "Como ser indenizado por outros transtornos?",
+      leadCaptureTitle: "Sofreu com outro descaso da companhia aérea?",
+      leadCaptureSub: "Independente de qual foi a falha, se causou dor de cabeça, você não precisa deixar barato. Nossa equipe especializada avaliará seu caso.",
+      finalCtaTitle: "Acha que tem direito a indenização pelo que passou? Verifique grátis agora.",
+      finalCtaBtn: "Verificar o meu problema grátis"
     },
     rights: {
       title: "Você pode ter direito quando:",
