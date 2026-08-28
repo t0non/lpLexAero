@@ -3754,3 +3754,91 @@ body {
     margin-top: 1rem !important;
   }
 }
+
+/* ── PRICING SECTION (DONUT CHART) ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.pricing__content p {
+  margin-bottom: var(--space-4);
+  font-size: 1.125rem;
+  color: var(--lex-text-muted);
+}
+
+.pricing__content h2 {
+  margin-bottom: var(--space-6);
+}
+
+.pricing__chart-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.pricing-donut {
+  width: 100%;
+  height: auto;
+  transform: rotate(-90deg);
+}
+
+.chart-label {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.label-gold {
+  transform: rotate(90deg) translate(-13px, -20px);
+}
+
+.label-graphite {
+  transform: rotate(90deg) translate(-27px, -30px);
+}
+
+.pricing__legend {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.dot-gold {
+  background-color: var(--lex-gold);
+}
+
+.dot-graphite {
+  background-color: var(--lex-graphite);
+}
+
+.legend-item p {
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+  color: var(--lex-text);
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
