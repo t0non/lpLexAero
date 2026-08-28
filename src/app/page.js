@@ -366,6 +366,12 @@ export default function Home() {
           <div className="kareline-section">
 
             {/* Foto editorial integrada ao fundo escuro */}
+            <div className="kareline__mobile-header">
+              <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À frente da LexAero</span>
+              <h2 id="kareline-heading-mobile" style={{ marginTop: "0.5rem" }}>
+                Direito aéreo tratado com profundidade.
+              </h2>
+            </div>
             <div className="kareline__photo-editorial" style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%)",
               maskImage: "linear-gradient(to right, transparent 0%, black 15%)"
@@ -384,10 +390,12 @@ export default function Home() {
 
             {/* Conteúdo — sobre fundo escuro */}
             <div className="kareline__content">
-              <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À frente da LexAero</span>
-              <h2 id="kareline-heading" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
-                Direito aéreo tratado com profundidade.
-              </h2>
+              <div className="kareline__desktop-header">
+                <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À frente da LexAero</span>
+                <h2 id="kareline-heading" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
+                  Direito aéreo tratado com profundidade.
+                </h2>
+              </div>
               <p style={{ fontSize: "0.82rem", fontWeight: 500, color: "var(--lex-gold-dark)", marginBottom: "1.5rem", letterSpacing: "0.04em" }}>
                 Mestra em Direito • Advogada • Direito do Consumidor e Passageiro Aéreo
               </p>
