@@ -1000,7 +1000,7 @@ b {
   padding: 2.5rem 1.5rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--lex-border-light);
+  border: none;
   height: 100%;
 }
 
@@ -1864,7 +1864,7 @@ b {
     padding: var(--space-4);
     background: var(--lex-ivory);
     border-radius: var(--radius-md);
-    border: 1px solid var(--lex-border-light);
+    border: none;
   }
 
   .diag-lgpd {
@@ -2377,7 +2377,7 @@ b {
   /* -- Testimonials ------------------------------------- */
   .testimonial-card {
     background: var(--lex-white);
-    border: 1px solid var(--lex-border-light);
+    border: none;
     border-radius: var(--radius-lg);
     padding: var(--space-6);
     display: flex;
@@ -2553,7 +2553,7 @@ b {
     padding: 6px;
     border-radius: 999px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--lex-border-light);
+    border: none;
     cursor: pointer;
     transition: transform 0.2s ease;
   }
@@ -3546,7 +3546,7 @@ b {
     padding: 1.5rem; 
     border-radius: 12px; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
-    border: 1px solid rgba(0,0,0,0.03);
+    border: none;
   }
 }
 
