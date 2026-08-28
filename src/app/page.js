@@ -270,7 +270,7 @@ export default function Home() {
                   { n: "03", icon: "/burocracia3.png", title: "Nós assumimos a burocracia", desc: "Você recebe todas as orientações para exigir a compensação que merece, sem ter que lidar com o estresse das aéreas." },
             ].map((s) => (
               <div key={s.n} className="step" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ marginBottom: "var(--space-5)", display: "flex", alignItems: "center", minHeight: "40px" }}>
+                <div style={{ marginBottom: "var(--space-5)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40px" }}>
                   {s.icon ? (
                     <img src={s.icon} alt="" style={{ height: "72px", width: "auto", objectFit: "contain", display: "block" }} />
                   ) : (

@@ -995,6 +995,7 @@ b {
 .step {
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .step__number {
