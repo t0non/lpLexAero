@@ -262,19 +262,7 @@ export default function Home() {
           <StepsWrapper>
             <div className="steps-container">
               <div className="steps-line-bg" />
-              <div className="steps-line-fill" />
-              <div className="steps-grid">
-                {[
-                  { n: "01", icon: "/analise2.png", title: "Analise seu caso em 2 minutos", desc: "Use nosso diagnóstico online para nos contar o problema do seu voo. É rápido, intuitivo e 100% gratuito." },
-                  { n: "02", icon: "/avaliação2.png", title: "Nossa equipe avalia a situação", desc: "Especialistas analisam os detalhes do seu caso e as infrações da companhia aérea para traçar a melhor estratégia jurídica." },
-                  { n: "03", icon: "/burocracia3.png", title: "Nós assumimos a burocracia", desc: "Você recebe todas as orientações para exigir a compensação que merece, sem ter que lidar com o estresse das aéreas." },
-            ].map((s) => (
-              <div key={s.n} className="step" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ marginBottom: "var(--space-5)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40px" }}>
-                  {s.icon ? (
-                    <img src={s.icon} alt="" style={{ height: "72px", width: "auto", objectFit: "contain", display: "block" }} />
-                  ) : (
-                    <div className="step__number" style={{ marginBottom: 0 }}>{s.n}</div>
+              
                   )}
                 </div>
                 <h3 className="step__title">{s.title}</h3>
