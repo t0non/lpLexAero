@@ -372,19 +372,13 @@ export default function Home() {
                 Direito aéreo tratado com profundidade.
               </h2>
             </div>
-            <div className="kareline__photo-editorial" style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 15%)"
-            }}>
+            <div className="kareline__photo-editorial">
               <img
                 src="/kareline-founder-autoridade-vermelho.png"
                 alt="Kareline Staut, advogada especialista em Direito do Passageiro Aéreo e fundadora da LexAero"
                 className="kareline-editorial-img"
                 loading="lazy"
-                style={{
-                  maskImage: "linear-gradient(to bottom, black 75%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 100%)"
-                }}
+
               />
             </div>
 
@@ -466,7 +460,7 @@ export default function Home() {
                 alt="Kareline Staut — Análise técnica e individualizada"
                 className="metodologia__photo"
                 loading="lazy"
-                style={{ width: "100%", maxWidth: "600px", transform: "scale(1.3)", transformOrigin: "bottom center" }}
+                
               />
             </div>
           </div>
@@ -523,6 +517,42 @@ export default function Home() {
         </div>
         </div>
         </div>
+
+          {/* ── 5 MOTIVOS ── */}
+          <div className="benefits-card" style={{ marginTop: "3rem" }}>
+            <div className="benefits-card__content">
+              <h2 style={{ color: "var(--lex-white)", marginBottom: "1.5rem", fontSize: "3rem", fontWeight: 300, lineHeight: 1.1 }}>Nós cuidamos de tudo para você!</h2>
+              <p style={{ color: "var(--lex-text-dark-muted)", marginBottom: "2rem", lineHeight: 1.7, fontSize: "1.05rem" }}>
+                Escolher a LexAero é garantir que seus direitos por problemas com voo sejam respeitados sem estresse e sem burocracia.
+              </p>
+              <h3 style={{ color: "var(--lex-white)", fontSize: "2.2rem", marginBottom: "1.5rem", fontWeight: 400 }}>5 motivos para <br /> escolher a <span style={{ color: "var(--lex-gold)", fontWeight: 600 }}>LexAero</span>:</h3>
+              <ul className="benefits-list">
+                {[
+                  "Avaliação grátis em até 3 minutos;",
+                  "Sem custo inicial e só paga se ganhar;",
+                  "Somos transparentes. Você acompanha tudo em tempo real;",
+                  "Especialistas em cancelamento, atraso, overbooking e bagagem;",
+                  "Confiança comprovada: dezenas de clientes satisfeitos em todo Brasil."
+                ].map((motivo, i) => (
+                  <li key={i} className="benefits-list-item">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lex-gold)" stroke="var(--lex-graphite)" strokeWidth="2" aria-hidden="true" style={{ flexShrink: 0, marginTop: "5px" }}>
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="9 12 11 14 15 10" />
+                    </svg>
+                    {motivo}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="benefits-card__image-wrap">
+              <img src="/img_hero2.png" alt="LexAero" className="benefits-card__image" />
+              <div className="benefits-card__caption">
+                <p>
+                  <strong>Avalie seu caso grátis</strong> agora mesmo e descubra se você tem direito a uma <strong>indenização por problema com voo</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
       </section>
 
 

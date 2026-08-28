@@ -3590,3 +3590,160 @@ img, svg, video, canvas, iframe, div, p, h1, h2, h3, h4, h5, h6, a, span, button
 body {
     top: 0px !important;
 }
+
+
+/* ── KARELINE EDITORIAL MASK FIX ── */
+.kareline__photo-editorial {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%);
+}
+.kareline-editorial-img {
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+@media (max-width: 1024px) {
+  /* On mobile, remove the horizontal mask which cuts her face */
+  .kareline__photo-editorial {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .kareline-editorial-img {
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    object-fit: cover;
+    object-position: top center;
+    max-height: 400px;
+  }
+}
+
+/* ── FALE COM ESPECIALISTA (METODOLOGIA) IMAGE FIX ── */
+.metodologia__photo {
+  width: 100%;
+  max-width: 600px;
+  transform: scale(1.3);
+  transform-origin: bottom center;
+}
+@media (max-width: 1024px) {
+  .metodologia__photo-wrap {
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  .metodologia__photo {
+    transform: scale(1.1); /* Reduce scaling on mobile so it doesn't look squeezed/AI generated */
+    object-fit: contain;
+    object-position: bottom center;
+  }
+}
+
+/* ── BENEFITS CARD (5 MOTIVOS) STYLING ── */
+.benefits-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: var(--lex-graphite);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.benefits-card__content {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.benefits-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: var(--lex-white);
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.benefits-card__image-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2.5rem 2.5rem 0;
+  gap: 1rem;
+}
+.benefits-card__image {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  width: 100%;
+}
+.benefits-card__caption {
+  background: var(--lex-gold);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-radius: var(--radius-lg);
+}
+.benefits-card__caption p {
+  color: var(--lex-black);
+  font-weight: 400;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .benefits-card {
+    grid-template-columns: 1fr;
+  }
+  .benefits-card__content {
+    padding: 2rem;
+  }
+  .benefits-card__content h2 {
+    font-size: 2rem !important;
+  }
+  .benefits-card__content h3 {
+    font-size: 1.6rem !important;
+  }
+  .benefits-list-item {
+    font-size: 1rem;
+  }
+  .benefits-card__image-wrap {
+    padding: 0 1.5rem 2rem 1.5rem;
+  }
+}
+
+
+/* ── ULTIMATE MOBILE IMAGE FIXES (NO AI LOOK) ── */
+@media (max-width: 1024px) {
+  /* Ferramenta de Análise / Diagnóstico */
+  .diag-cta__photo {
+    transform: none !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+    max-height: 380px !important;
+    width: 100% !important;
+  }
+  
+  /* Central de Direitos */
+  .central-direitos-photo-premium {
+    transform: translateX(-50%) scale(0.9) !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    object-fit: contain !important;
+    max-height: 350px !important;
+    bottom: 0px !important;
+  }
+
+  /* Fale com especialista (LeadCaptureForm) */
+  .metodologia__photo {
+    transform: none !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    object-fit: contain !important;
+    max-height: 400px !important;
+    margin-top: 1rem !important;
+  }
+}
