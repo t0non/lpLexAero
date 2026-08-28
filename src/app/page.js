@@ -94,7 +94,7 @@ export default function Home() {
                 <span className="hero-mobile-nowrap"><span style={{ color: 'var(--lex-gold)' }}>até R$ 10 mil</span> em indenização.</span>
               </h1>
               <p className="hero__sub">
-                Atraso, cancelamento, conexão perdida, overbooking ou problema com bagagem? Verifique sua situação em poucos minutos.
+                Atraso, cancelamento, conexão perdida, overbooking ou problema com bagagem?
               </p>
 
               <div className="hero__ctas">
