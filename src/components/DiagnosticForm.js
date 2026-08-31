@@ -121,14 +121,9 @@ export default function DiagnosticForm({ initialProblem = null }) {
   if (submitted) {
     return (
       <div style={{ textAlign: "center", padding: "2rem 0" }}>
-        <div className="diag-result-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-          </svg>
-        </div>
-        <h2 style={{ fontSize: "1.35rem", marginBottom: "0.75rem" }}>Diagnóstico concluído</h2>
+        <h2 style={{ fontSize: "1.35rem", marginBottom: "0.75rem" }}>Diagnóstico enviado</h2>
         <p style={{ color: "var(--text-sub)", marginBottom: "2rem", lineHeight: 1.7 }}>
-          Suas informações foram enviadas. A LexAero entrará em contato em breve para uma análise individualizada da sua situação.
+          Em até 30 minutos entraremos em contato para uma análise individualizada da sua situação.
         </p>
         <a href="/direito-do-passageiro-aereo" className="btn btn--secondary" style={{ fontSize: "0.875rem" }}>
           Ler sobre seus direitos
