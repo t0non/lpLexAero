@@ -629,7 +629,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               <h2 className="ah-question-title" style={{ marginTop: '1.5rem' }}>Analisando seu caso...</h2>
               <p className="ah-question-desc">Nossa IA está cruzando suas respostas com as leis de direito do passageiro (Resolução 400 ANAC e CDC).</p>
               <div className="ah-loading-bar-wrap">
-                <div className="ah-loading-fill" style={{ width: \`\${analysisProgress}%\` }} />
+                <div className="ah-loading-fill" style={{ width: `${analysisProgress}%` }} />
               </div>
             </div>
           )}
