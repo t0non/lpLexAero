@@ -4576,3 +4576,160 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVIDADE DEFINITIVA — ANTI SCROLL HORIZONTAL
+   Corrige overflow em todos os dispositivos (mobile/pc)
+   ═══════════════════════════════════════════════════════ */
+
+/* 1. Box-sizing global — previne que padding quebre larguras */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Reset duro no html/body */
+html {
+  overflow-x: clip;
+  width: 100%;
+}
+body {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 3. Nenhum elemento pode ultrapassar 100% do pai */
+section, main, header, footer, nav, article, aside {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 4. Containers padronizados */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* 5. Correções do CTA section (vídeo diagnóstico) */
+.video-cta-section .diag-cols {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.video-cta-section .diag-col-left {
+  flex: 1 1 280px;
+  min-width: 0;
+  max-width: 550px;
+  width: 100%;
+}
+.video-cta-section .diag-col-right {
+  flex: 1 1 280px;
+  min-width: 0;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 6. DiagnosticForm card — padding reduzido no mobile */
+@media (max-width: 640px) {
+  .diag-form-card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 16px !important;
+  }
+  .diag-opt {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+  /* Grid de 2 colunas vira 1 coluna em telas muito pequenas */
+  .diag-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 7. Hero */
+@media (max-width: 768px) {
+  .hero__inner {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .hero__photo-wrap {
+    display: none !important;
+  }
+  .hero__left {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  .hero__ctas {
+    justify-content: center !important;
+  }
+  .hero__trust {
+    justify-content: center !important;
+  }
+}
+
+/* 8. Grids gerais — nunca menos que 280px por coluna */
+@media (max-width: 640px) {
+  [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+/* 9. Serviços grid cards */
+@media (max-width: 640px) {
+  .services-grid,
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 10. Kareline / ServiceTemplate — coluna vira pilha */
+@media (max-width: 768px) {
+  .kareline__cols,
+  .service-hero__cols {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .kareline__col-text,
+  .service-hero__col-text {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+  .kareline__col-img,
+  .service-hero__col-img {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 11. Tipografia responsiva de fallback */
+@media (max-width: 480px) {
+  h1 { font-size: clamp(1.75rem, 7vw, 2.25rem) !important; }
+  h2 { font-size: clamp(1.4rem, 5.5vw, 1.875rem) !important; }
+  h3 { font-size: clamp(1.1rem, 4.5vw, 1.375rem) !important; }
+}
+
+/* 12. Botões não transbordam */
+.btn {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* 13. Imagens e mídias */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 14. Blog cards mobile */
+@media (max-width: 640px) {
+  .blog-card {
+    max-width: 100% !important;
+  }
+}

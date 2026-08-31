@@ -191,10 +191,10 @@ export default function Home() {
         </video>
         <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(10, 15, 25, 0.45)", zIndex: 1 }}></div>
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem", justifyContent: "space-between" }}>
+          <div className="diag-cols">
             
             {/* Coluna Esquerda: Conteúdo */}
-            <div style={{ flex: "1 1 450px", maxWidth: "550px" }}>
+            <div className="diag-col-left">
               <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
                 FERRAMENTA DE ANÁLISE
               </span>
@@ -204,8 +204,8 @@ export default function Home() {
             </div>
 
             {/* Coluna Direita: Diagnóstico Embutido */}
-            <div style={{ flex: "1 1 380px", maxWidth: "480px", width: "100%", margin: "0 auto" }}>
-              <div style={{ 
+            <div className="diag-col-right">
+              <div className="diag-form-card" style={{ 
                 background: "#ffffff", 
                 borderRadius: "24px", 
                 padding: "2.5rem 2rem", 

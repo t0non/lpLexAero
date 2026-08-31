@@ -360,7 +360,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               Qual problema você enfrentou com o voo?
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
+            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
               {PROBLEM_OPTS.map(o => (
                 <Opt key={o.label} label={o.label} icon={o.icon} sel={formData.problem === o.label} onClick={() => go("problem", o.label)} />
               ))}
@@ -413,7 +413,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Houve impactos ou prejuízos adicionais?</h2>
             <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione todas as opções que se aplicam.</p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
               {["Perdi compromisso importante", "Gastos com Alimentação", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
@@ -427,7 +427,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>você possui documentos do ocorrido?</h2>
             <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
               {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaração de atraso", "Não tenho documentos"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
