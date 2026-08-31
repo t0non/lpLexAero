@@ -1,23 +1,23 @@
+import DiagnosticForm from "@/components/DiagnosticForm";
+
 export const metadata = {
-  title: "Diagnóstico Preliminar do Caso",
-  description:
-    "Responda algumas perguntas sobre o que aconteceu durante sua viagem. As informações ajudam a compreender melhor a situação antes de uma análise jurídica individualizada.",
+  title: "Diagnostico Gratuito | LexAero",
+  description: "Descubra em 2 minutos se voce tem direito a indenizacao por atraso, cancelamento, overbooking ou bagagem.",
 };
 
 export default function DiagnosticoPage() {
   return (
-    <div style={{ width: "100%", minHeight: "100vh", background: "#0a0a0a" }}>
-      <iframe
-        src="/lexaero-calculadora.html"
-        title="Diagnóstico Preliminar de Caso — LexAero"
-        style={{
-          width: "100%",
-          height: "100vh",
-          border: "none",
-          display: "block",
-        }}
-        loading="eager"
-      />
-    </div>
+    <main style={{
+      width: "100%",
+      minHeight: "100vh",
+      background: "#f8f7f4",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "2rem 1rem",
+      boxSizing: "border-box",
+    }}>
+      <DiagnosticForm />
+    </main>
   );
 }
