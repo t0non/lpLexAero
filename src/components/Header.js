@@ -69,14 +69,15 @@ export default function Header() {
           {/* Language Switcher */}
           <div className="header__lang-switcher" style={{ position: "relative", marginLeft: "16px" }} onMouseEnter={(e) => e.currentTarget.lastChild.style.display = 'flex'} onMouseLeave={(e) => e.currentTarget.lastChild.style.display = 'none'}>
             <button style={{ cursor: 'pointer', fontSize: '1.2rem', padding: '4px 8px', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--lex-text)' }}>
-              🇧🇷 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              <img src="/bandeira_brasil.webp" alt="Bandeira do Brasil" style={{ width: '22px', height: '15px', objectFit: 'cover', borderRadius: '3px', display: 'block' }} />
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div style={{ position: "absolute", top: "100%", right: 0, display: "none", flexDirection: "column", background: "var(--lex-white)", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", borderRadius: "8px", overflow: "hidden", zIndex: 10 }}>
+            <div style={{ position: "absolute", top: "100%", right: 0, display: "none", flexDirection: "column", background: "var(--lex-white)", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", borderRadius: "8px", overflow: "hidden", zIndex: 10, minWidth: "80px" }}>
               <button onClick={() => changeLanguage('pt')} style={{ cursor: 'pointer', fontSize: '1rem', padding: '8px 16px', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left', width: '100%' }} onMouseOver={(e)=>e.currentTarget.style.background='#f5f5f5'} onMouseOut={(e)=>e.currentTarget.style.background='transparent'}>
-                🇧🇷 PT
+                <img src="/bandeira_brasil.webp" alt="Bandeira do Brasil" style={{ width: '22px', height: '15px', objectFit: 'cover', borderRadius: '3px' }} /> PT
               </button>
               <button onClick={() => changeLanguage('en')} style={{ cursor: 'pointer', fontSize: '1rem', padding: '8px 16px', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left', width: '100%' }} onMouseOver={(e)=>e.currentTarget.style.background='#f5f5f5'} onMouseOut={(e)=>e.currentTarget.style.background='transparent'}>
-                🇺🇸 EN
+                <img src="/eua.svg" alt="Bandeira dos EUA" style={{ width: '22px', height: '15px', objectFit: 'cover', borderRadius: '3px' }} /> EN
               </button>
             </div>
           </div>

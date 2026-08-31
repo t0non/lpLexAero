@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -76,7 +77,9 @@ export default function RootLayout({ children }) {
       <body>
 
         <div id="google_translate_element" style={{ display: "none" }}></div>
-        <script
+        <Script
+          id="google-translate-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               function googleTranslateElementInit() {
@@ -85,7 +88,7 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
+        <Script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" strategy="afterInteractive" />
 
         <Header />
         <main id="main-content">{children}</main>
