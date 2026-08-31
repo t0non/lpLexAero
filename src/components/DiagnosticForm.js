@@ -179,45 +179,80 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   /* ── RESULT ── */
   if (showResult) {
     return (
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <div style={{ ...cardStyle, textAlign: "center" }}>
-          <div style={{ display: "inline-flex", background: C.greenBg, padding: "1rem", borderRadius: "50%", marginBottom: "1.25rem" }}>
-            <svg width={36} height={36} viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
+      <div style={{ width: "100%", display: "flex", justifyContent: "center", animation: "fade-in 0.5s ease-out" }}>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+          }
+          @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+          .voucher {
+            background: linear-gradient(135deg, #fffbee 0%, #fff 100%);
+            border: 2px dashed #e0a820;
+            position: relative;
+          }
+          .voucher::before, .voucher::after {
+            content: ''; position: absolute; top: 50%; width: 20px; height: 20px; background: #fff; border-radius: 50%; transform: translateY(-50%); border: 1px solid #e5e7eb;
+          }
+          .voucher::before { left: -11px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
+          .voucher::after { right: -11px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        `}} />
+        <div style={{ ...cardStyle, textAlign: "center", padding: "3rem 2.5rem", position: "relative", overflow: "hidden" }}>
+          
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.25rem" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 64, height: 64, background: C.greenBg, borderRadius: "50%", boxShadow: "0 0 0 8px rgba(22, 163, 74, 0.1)" }}>
+              <svg width={32} height={32} viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
           </div>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0 0 0.5rem", color: C.text }}>
-            Seu caso tem potencial!
+          
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 800, margin: "0 0 0.5rem", color: C.text, letterSpacing: "-0.02em" }}>
+            Seu caso tem <span style={{ color: C.green }}>alto potencial!</span>
           </h2>
-          <p style={{ color: C.textMuted, marginBottom: "2rem", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Identificamos fortes indícios de elegibilidade. Um especialista pode confirmar o valor exato.
+          <p style={{ color: C.textMuted, marginBottom: "2rem", lineHeight: 1.6, fontSize: "1rem" }}>
+            Cruzamos suas respostas com a <strong>Resolução 400 da ANAC</strong> e identificamos fortes indícios de elegibilidade.
           </p>
-          <div style={{ background: C.goldBg, border: "1.5px solid " + C.goldBorder, borderRadius: 14, padding: "1.5rem", marginBottom: "2rem" }}>
-            <div style={{ fontSize: "0.75rem", color: C.gold, textTransform: "uppercase", letterSpacing: "1.5px", fontWeight: 700, marginBottom: "0.5rem" }}>
-              Estimativa de indenização
+          
+          <div className="voucher" style={{ borderRadius: 16, padding: "1.75rem", marginBottom: "2.5rem", boxShadow: "0 10px 25px rgba(252,189,38,0.15)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+              <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div style={{ fontSize: "0.8rem", color: "#8a6800", textTransform: "uppercase", letterSpacing: "1.5px", fontWeight: 800 }}>
+                Estimativa de Indenização
+              </div>
             </div>
-            <div style={{ fontSize: "2.5rem", fontWeight: 800, color: "#b8860b", lineHeight: 1.1 }}>
-              R$ 3.000
+            
+            <div style={{ fontSize: "3.2rem", fontWeight: 900, color: "#b8860b", lineHeight: 1, textShadow: "0 2px 10px rgba(184, 134, 11, 0.2)" }}>
+              <span style={{ fontSize: "1.5rem", verticalAlign: "middle", marginRight: "0.2rem" }}>R$</span>3.000
             </div>
-            <div style={{ fontSize: "0.95rem", color: C.textMuted, marginTop: "0.2rem" }}>
-              a ate <strong style={{ color: C.text }}>R$ 15.000</strong>
+            <div style={{ fontSize: "1rem", color: "#8a6800", marginTop: "0.5rem", fontWeight: 600 }}>
+              podendo chegar a <strong style={{ color: C.text, fontSize: "1.1rem" }}>R$ 15.000</strong>
             </div>
           </div>
+          
+          <p style={{ fontSize: "0.9rem", color: C.text, fontWeight: 600, marginBottom: "1rem" }}>
+            🟢 Especialista disponível agora para confirmar seu valor:
+          </p>
+          
           <button onClick={sendWA} style={{
             display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem",
-            width: "100%", padding: "1.15rem",
-            background: "#25D366", color: "#fff", border: "none", borderRadius: 12,
-            fontSize: "1.05rem", fontWeight: 700, cursor: "pointer",
-            boxShadow: "0 6px 24px rgba(37,211,102,0.3)",
-          }}>
-            <svg width={22} height={22} viewBox="0 0 24 24" fill="currentColor">
+            width: "100%", padding: "1.25rem",
+            background: "#25D366", color: "#fff", border: "none", borderRadius: 14,
+            fontSize: "1.1rem", fontWeight: 800, cursor: "pointer",
+            boxShadow: "0 6px 20px rgba(37,211,102,0.3)", transition: "transform 0.2s",
+            animation: "pulse-wa 2s infinite"
+          }} onMouseOver={e => e.currentTarget.style.transform = "scale(1.03)"} onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}>
+            <svg width={26} height={26} viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
             </svg>
             Falar com a Dra. Kareline no WhatsApp
           </button>
-          <p style={{ fontSize: "0.78rem", color: C.textMuted, marginTop: "1rem" }}>
-            Sem custo inicial. Avaliação 100% gratuita.
-          </p>
+          
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginTop: "1.25rem", color: C.textMuted, fontSize: "0.8rem" }}>
+            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Sem custo inicial. Seus dados estão seguros.
+          </div>
         </div>
       </div>
     );
