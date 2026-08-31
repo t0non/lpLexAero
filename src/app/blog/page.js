@@ -31,7 +31,15 @@ export default function BlogPage() {
           <div className="blog-grid">
             {blogPosts.map((post) => (
               <article key={post.slug} className="blog-card">
-                <div className="blog-card__image-wrap blog-card__image-wrap--placeholder">
+                <div className="blog-card__image-wrap" style={{ position: "relative", overflow: "hidden", borderRadius: "12px 12px 0 0", aspectRatio: "16/9", background: "#111" }}>
+                  {post.coverImage && (
+                    <img
+                      src={post.coverImage}
+                      alt={post.title}
+                      loading="lazy"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                  )}
                   <span className="blog-card__category">{post.category}</span>
                   <div className="blog-card__image-overlay" />
                 </div>
