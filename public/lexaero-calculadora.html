@@ -567,6 +567,8 @@ const state = {
   answers: {},
   score: 0,
   factors: [],
+  leadCaptured: false,
+  lead: null,
 };
 
 const TOTAL_STEPS = 6;
@@ -743,7 +745,7 @@ function updateProgress() {
 }
 
 function updateResult() {
-  if (state.step < 3) return;
+  if (!state.leadCaptured) return;
   const { score, factors } = calcScore();
   state.score = score;
   state.factors = factors;
@@ -768,8 +770,9 @@ function updateResult() {
 
   // WA link
   const a = state.answers;
+  const lead = state.lead;
   const range = getRange(score, a);
-  const msg = encodeURIComponent(`Olá! Fiz o Diagnóstico Preliminar da LexAero e gostaria de falar com um especialista.\n\n*Resumo do meu caso:*\n- Problema: ${a.problem || '-'}\n- Assistência: ${a.assistance || '-'}\n- Faixa estimada: ${range}\n- Score: ${score}/100`);
+  const msg = encodeURIComponent(`Olá! Realizei o Diagnóstico Preliminar da LexAero e vi minha estimativa.\n\n*Dados do Cliente:*\n- Nome: ${lead.name}\n- WhatsApp: ${lead.phone}${lead.email ? '\n- E-mail: '+lead.email : ''}\n\n*Resumo do caso:*\n- Problema: ${a.problem||'-'}\n- Assistência da cia.: ${a.assistance||'-'}\n- Impactos: ${(a.impact||[]).join(', ')||'nenhum'}\n\n*Resultado orientativo:*\n- Faixa estimada: ${range}\n- Score: ${score}/100`);
   document.getElementById('wa-link').href = `https://wa.me/5511999999999?text=${msg}`;
 }
 
@@ -840,8 +843,8 @@ function renderSubmit() {
       <div class="submitted-icon" style="display:inline-flex; width:56px; height:56px; border-radius:50%; background:var(--gold-soft); align-items:center; justify-content:center; color:var(--gold-dark); margin-bottom:1rem;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h2 style="font-size:1.35rem; margin-bottom:0.5rem; color:var(--white);">Tudo pronto para sua análise</h2>
-      <p style="font-size:0.9rem; color:var(--muted); max-width:360px; margin:0 auto; line-height:1.65;">Informe seus dados para nossa equipe entrar em contato com a análise individualizada do seu caso.</p>
+      <h2 style="font-size:1.35rem; margin-bottom:0.5rem; color:var(--white);">Análise quase pronta!</h2>
+      <p style="font-size:0.9rem; color:var(--muted); max-width:360px; margin:0 auto; line-height:1.65;">Para qual contato devemos liberar a sua estimativa de indenização?</p>
     </div>
 
     <form onsubmit="handleSubmit(event)">
@@ -864,7 +867,7 @@ function renderSubmit() {
       </label>
 
       <button type="submit" class="btn-primary" id="submit-btn">
-        Receber análise gratuita agora
+        Ver minha estimativa agora
       </button>
     </form>
 
@@ -903,9 +906,8 @@ function renderDone(name) {
     <div class="submitted-icon">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h2 class="submitted-title">Diagnóstico enviado, ${name}!</h2>
-    <p class="submitted-text" style="margin-bottom:1.5rem;">A LexAero entrará em contato em breve pelo WhatsApp para a análise individualizada do seu caso.</p>
-    <a href="/" class="btn-primary" style="width:auto; padding:0.95rem 2.5rem; display: inline-flex;">← Voltar ao site</a>
+    <h2 class="submitted-title">Análise liberada, ${name}!</h2>
+    <p class="submitted-text" style="margin-bottom:1.5rem;">Confira no painel ao lado a estimativa da sua indenização baseada no nosso banco de dados. <strong>Clique no botão amarelo para enviar seu caso para a equipe LexAero</strong>.</p>
   </div>`;
   document.getElementById('progress-wrap').style.display = 'none';
 }
@@ -945,13 +947,11 @@ function handleSubmit(e) {
   const name = document.getElementById('f-name').value;
   const phone = document.getElementById('f-phone').value;
   const email = document.getElementById('f-email')?.value || '';
-  const { score } = calcScore();
-  const range = getRange(score, state.answers);
-  const a = state.answers;
-
-  const msg = encodeURIComponent(`Olá! Realizei o Diagnóstico Preliminar da LexAero.\n\n*Dados:*\n- Nome: ${name}\n- WhatsApp: ${phone}${email ? '\n- E-mail: '+email : ''}\n\n*Resumo do caso:*\n- Problema: ${a.problem||'-'}\n- Assistência da cia.: ${a.assistance||'-'}\n- Impactos: ${(a.impact||[]).join(', ')||'nenhum'}\n\n*Resultado orientativo:*\n- Faixa estimada: ${range}\n- Score: ${score}/100`);
-  window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
-
+  
+  state.lead = { name, phone, email };
+  state.leadCaptured = true;
+  
+  updateResult();
   renderDone(name.split(' ')[0]);
 }
 
