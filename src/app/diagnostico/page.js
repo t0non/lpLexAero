@@ -9,7 +9,7 @@ export default function DiagnosticoPage() {
   return (
     <main style={{
       width: "100%",
-      minHeight: "100vh",
+      minHeight: "100dvh",
       background: "#f8f7f4",
       display: "flex",
       alignItems: "center",
