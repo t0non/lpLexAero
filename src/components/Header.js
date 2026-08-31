@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import SmartFloatingCTA from "./SmartFloatingCTA";
+
 
 const NAV_LINKS = [
   { label: "Áreas de Atuação", href: "/direito-do-passageiro-aereo" },
@@ -133,8 +133,6 @@ export default function Header() {
         </div>
 
       </nav>
-
-      <SmartFloatingCTA />
     </>
   );
 }
