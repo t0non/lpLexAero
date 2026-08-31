@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const TOTAL_STEPS = 7;
+const TOTAL_STEPS = 6;
 
 const STEP3_MAP = {
   "Voo Atrasado ou Cancelado": {
@@ -45,10 +45,11 @@ const STEP3_MAP = {
   },
 };
 
-export default function DiagnosticForm({ initialProblem = null }) {
+export default function DiagnosticForm({ initialProblem = null, isEmbedded = false }) {
   const router = useRouter();
   const [step, setStep] = useState(initialProblem ? 2 : 1);
-  const [selected, setSelected] = useState([]);
+  const [selectedMulti, setSelectedMulti] = useState([]);
+  
   const [formData, setFormData] = useState({
     problem: initialProblem || "",
     period: "",
@@ -56,349 +57,611 @@ export default function DiagnosticForm({ initialProblem = null }) {
     assistance: "",
     impacts: [],
     documents: [],
-    name: "",
-    phone: "",
-    email: "",
-    lgpd: false,
   });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(119); // 1m 59s
 
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [resultReady, setResultReady] = useState(false);
+  const [analysisProgress, setAnalysisProgress] = useState(0);
+
+  // Trigger analysis sequence when all steps are completed
   useEffect(() => {
-    if (step < TOTAL_STEPS && timeLeft > 0 && !submitted) {
-      const timer = setInterval(() => {
-        setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 1000);
-      return () => clearInterval(timer);
+    if (step > TOTAL_STEPS && !resultReady && !isAnalyzing) {
+      setIsAnalyzing(true);
+      setAnalysisProgress(0);
+      
+      const interval = setInterval(() => {
+        setAnalysisProgress(p => {
+          if (p >= 100) {
+            clearInterval(interval);
+            setIsAnalyzing(false);
+            setResultReady(true);
+            return 100;
+          }
+          return p + 2.5; // reaches 100 in about 4 seconds (100 / 2.5 = 40 * 100ms = 4s)
+        });
+      }, 100);
+
+      return () => clearInterval(interval);
     }
-  }, [step, timeLeft, submitted]);
-
-  const formatTime = (seconds) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
-  };
-
-  const progress = ((step - 1) / TOTAL_STEPS) * 100;
+  }, [step, resultReady, isAnalyzing]);
 
   const advance = (field, value) => {
-    const updated = { ...formData, [field]: value };
-    setFormData(updated);
-    setStep((s) => s + 1);
+    setFormData({ ...formData, [field]: value });
+    setStep(s => s + 1);
   };
 
   const advanceMulti = (field) => {
-    setFormData((prev) => ({ ...prev, [field]: selected }));
-    setSelected([]);
-    setStep((s) => s + 1);
+    setFormData(prev => ({ ...prev, [field]: selectedMulti }));
+    setSelectedMulti([]);
+    setStep(s => s + 1);
   };
 
   const toggleMulti = (val) => {
-    setSelected((prev) =>
-      prev.includes(val) ? prev.filter((v) => v !== val) : [...prev, val]
+    setSelectedMulti(prev =>
+      prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val]
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-
-    const msg = `Olá, realizei o diagnóstico preliminar no site da LexAero e gostaria de orientação.\n\n*Resumo:*\n- Problema: ${formData.problem}\n- Período: ${formData.period}\n- Detalhe: ${formData.detail}\n- Assistência recebida: ${formData.assistance}\n- Impactos: ${(formData.impacts || []).join(", ") || "Nenhum informado"}\n- Documentos: ${(formData.documents || []).join(", ") || "Nenhum informado"}\n\n*Dados de contato:*\n- Nome: ${formData.name}\n- E-mail: ${formData.email || "Não informado"}`;
-
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-      window.open(
-        `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`,
-        "_blank"
-      );
-    }, 600);
+  const handleWhatsAppClick = () => {
+    const msg = `Olá, realizei o diagnóstico no site da LexAero e vi que posso ter direito a indenização.\n\n*Resumo do meu caso:*\n- Problema: ${formData.problem}\n- Ocorrido: ${formData.period}\n- Detalhe: ${formData.detail}\n- Assistência: ${formData.assistance}\n- Impactos: ${(formData.impacts || []).join(", ") || "Nenhum"}\n- Documentos: ${(formData.documents || []).join(", ") || "Nenhum"}\n\nGostaria de falar com um especialista.`;
+    window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  const step3Data = STEP3_MAP[formData.problem] || STEP3_MAP["Outro"];
+  const step3Data = STEP3_MAP[formData.problem] || STEP3_MAP["Voo Atrasado ou Cancelado"];
 
-  if (submitted) {
-    return (
-      <div style={{ textAlign: "center", padding: "2rem 0" }}>
-        <h2 style={{ fontSize: "1.35rem", marginBottom: "0.75rem" }}>Diagnóstico enviado</h2>
-        <p style={{ color: "var(--text-sub)", marginBottom: "2rem", lineHeight: 1.7 }}>
-          Em até 30 minutos entraremos em contato para uma análise individualizada da sua situação.
-        </p>
-        <a href="/calculadora" className="btn btn--primary" style={{ padding: "0.85rem 1.5rem", fontSize: "1rem", borderRadius: "12px", display: "inline-flex", justifyContent: "center", textDecoration: "none" }}>
-          Calcular estimativa de indenização
-        </a>
+  // Sidebar mapping
+  const sidebarSteps = [
+    { num: 1, title: "Ocorrência", activeIf: [1, 2, 3] },
+    { num: 2, title: "Informações Adicionais", activeIf: [4, 5] },
+    { num: 3, title: "Documentos", activeIf: [6] },
+    { num: 4, title: "Análise", activeIf: [7] }, // 7 = analyzing or result
+  ];
+
+  const currentSidebarStepNum = sidebarSteps.find(s => s.activeIf.includes(step > 6 ? 7 : step))?.num || 1;
+
+  // Components for options
+  const RadioOption = ({ label, icon, onClick, active }) => (
+    <div className={`ah-option ${active ? 'ah-option-active' : ''}`} onClick={onClick}>
+      <div className="ah-radio-circle">
+        {active && <div className="ah-radio-dot" />}
       </div>
-    );
-  }
+      {icon && <div className="ah-option-icon">{icon}</div>}
+      <span className="ah-option-label">{label}</span>
+    </div>
+  );
+
+  const CheckboxOption = ({ label, onClick, checked }) => (
+    <div className={`ah-option ${checked ? 'ah-option-active' : ''}`} onClick={onClick}>
+      <div className={`ah-checkbox-box ${checked ? 'checked' : ''}`}>
+        {checked && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>}
+      </div>
+      <span className="ah-option-label">{label}</span>
+    </div>
+  );
 
   return (
-    <div>
-      {/* Progress */}
-      <div className="diag-progress-bar">
-        <div className="diag-progress-fill" style={{ width: `${progress}%` }} />
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-        <p className="diag-step-info" style={{ marginBottom: 0 }}>
-          {step < TOTAL_STEPS ? `Etapa ${step} de ${TOTAL_STEPS - 1}` : "Quase lá"}
-        </p>
-        {step < TOTAL_STEPS && (
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--lex-gold)", fontWeight: 600, fontSize: "0.85rem", background: "rgba(252, 189, 38, 0.1)", padding: "4px 10px", borderRadius: "100px" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            {formatTime(timeLeft)}
-          </div>
-        )}
-      </div>
+    <div className={`ah-container ${isEmbedded ? 'ah-embedded' : ''}`}>
+      <style>{`
+        .ah-container {
+          --ah-primary: #0052cc;
+          --ah-primary-hover: #0043a8;
+          --ah-primary-light: #e6f0ff;
+          --ah-bg: #f4f5f7;
+          --ah-surface: #ffffff;
+          --ah-border: #dfe1e6;
+          --ah-text: #172b4d;
+          --ah-text-muted: #6b778c;
+          --ah-gold: #FCBD26;
+          --ah-gold-hover: #e0a316;
+          --ah-radius: 12px;
+          
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          background: var(--ah-bg);
+          color: var(--ah-text);
+          display: flex;
+          width: 100%;
+          min-height: ${isEmbedded ? 'auto' : '100vh'};
+          border-radius: ${isEmbedded ? '20px' : '0'};
+          overflow: hidden;
+        }
 
-      {/* Step 1 – Problema */}
-      {step === 1 && (
-        <div style={{ paddingBottom: '1rem' }}>
-          <h2 className="diag-question">Qual problema você enfrentou?</h2>
-          <p style={{ fontSize: "0.95rem", color: "#64748b", marginBottom: "1.5rem", fontWeight: 500 }}>
-            <strong style={{ color: "var(--lex-gold)" }}>Análise Gratuita:</strong> Descubra se você tem direito a indenização.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
-            {[
-              { label: "Voo Atrasado ou Cancelado", icon: <img src="/icone-voo-atrasado.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
-              { label: "Bagagem Extraviada", icon: <img src="/icone-bagagem.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
-              { label: "Overbooking", icon: <img src="/icone-overbooking.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
-              { label: "Conexão Perdida", icon: <img src="/icone-perda-conexao.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> }
-            ].map((opt) => (
-              <button key={opt.label} onClick={() => advance("problem", opt.label)} className="diag-option">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '1rem' }}>{opt.icon}</div>
-                <span style={{ flex: 1 }}>{opt.label}</span>
-              </button>
-            ))}
-          </div>
+        .ah-sidebar {
+          width: 280px;
+          background: var(--ah-surface);
+          border-right: 1px solid var(--ah-border);
+          padding: 2.5rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .ah-embedded .ah-sidebar {
+          display: none;
+        }
+
+        .ah-sidebar-title {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--ah-text);
+          margin-bottom: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .ah-step-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          position: relative;
+        }
+        .ah-step-item:not(:last-child)::after {
+          content: '';
+          position: absolute;
+          left: 11px;
+          top: 24px;
+          bottom: -16px;
+          width: 2px;
+          background: var(--ah-border);
+        }
+        .ah-step-item.active:not(:last-child)::after,
+        .ah-step-item.completed:not(:last-child)::after {
+          background: var(--ah-primary);
+        }
+
+        .ah-step-circle {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: var(--ah-surface);
+          border: 2px solid var(--ah-border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--ah-text-muted);
+          z-index: 2;
+        }
+        .ah-step-item.active .ah-step-circle {
+          border-color: var(--ah-primary);
+          color: var(--ah-primary);
+        }
+        .ah-step-item.completed .ah-step-circle {
+          background: var(--ah-primary);
+          border-color: var(--ah-primary);
+          color: white;
+        }
+        .ah-step-label {
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--ah-text-muted);
+          padding-top: 2px;
+        }
+        .ah-step-item.active .ah-step-label {
+          color: var(--ah-text);
+        }
+
+        .ah-main {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: ${isEmbedded ? '2rem' : '4rem 2rem'};
+          align-items: center;
+          background: ${isEmbedded ? 'var(--ah-surface)' : 'var(--ah-bg)'};
+        }
+
+        .ah-content-box {
+          width: 100%;
+          max-width: 600px;
+        }
+
+        .ah-top-progress {
+          display: none;
+          width: 100%;
+          margin-bottom: 2rem;
+        }
+        .ah-embedded .ah-top-progress {
+          display: block;
+        }
+        .ah-progress-track {
+          width: 100%;
+          height: 6px;
+          background: var(--ah-border);
+          border-radius: 3px;
+          overflow: hidden;
+        }
+        .ah-progress-fill {
+          height: 100%;
+          background: var(--ah-primary);
+          transition: width 0.3s ease;
+        }
+
+        .ah-card {
+          background: var(--ah-surface);
+          border: 1px solid var(--ah-border);
+          border-radius: var(--ah-radius);
+          padding: 2rem;
+          box-shadow: 0 4px 12px rgba(9, 30, 66, 0.05);
+          margin-bottom: 1.5rem;
+        }
+
+        .ah-embedded .ah-card {
+          border: none;
+          padding: 0;
+          box-shadow: none;
+        }
+
+        .ah-question-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          color: var(--ah-text);
+        }
+
+        .ah-question-desc {
+          font-size: 0.9rem;
+          color: var(--ah-text-muted);
+          margin-bottom: 1.5rem;
+        }
+
+        .ah-options-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        
+        @media (min-width: 600px) {
+          .ah-options-grid-2 {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        .ah-option {
+          display: flex;
+          align-items: center;
+          padding: 1rem;
+          border: 1px solid var(--ah-border);
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background: var(--ah-surface);
+        }
+        .ah-option:hover {
+          border-color: var(--ah-primary);
+          background: var(--ah-primary-light);
+        }
+        .ah-option-active {
+          border-color: var(--ah-primary);
+          background: var(--ah-primary-light);
+        }
+
+        .ah-radio-circle {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 2px solid var(--ah-border);
+          margin-right: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .ah-option-active .ah-radio-circle {
+          border-color: var(--ah-primary);
+        }
+        .ah-radio-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--ah-primary);
+        }
+
+        .ah-checkbox-box {
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          border: 2px solid var(--ah-border);
+          margin-right: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .ah-checkbox-box.checked {
+          background: var(--ah-primary);
+          border-color: var(--ah-primary);
+        }
+
+        .ah-option-icon {
+          width: 32px;
+          height: 32px;
+          margin-right: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ah-option-label {
+          font-weight: 500;
+          font-size: 0.95rem;
+          line-height: 1.3;
+        }
+
+        .ah-btn-primary {
+          background: var(--ah-primary);
+          color: white;
+          border: none;
+          padding: 1rem 2rem;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.2s;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        }
+        .ah-btn-primary:hover {
+          background: var(--ah-primary-hover);
+        }
+
+        .ah-btn-back {
+          background: transparent;
+          color: var(--ah-text-muted);
+          border: none;
+          padding: 0.5rem 0;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 1rem;
+        }
+        .ah-btn-back:hover {
+          color: var(--ah-text);
+        }
+
+        /* Result View */
+        .ah-result-box {
+          text-align: center;
+          padding: 2rem 0;
+        }
+        .ah-result-amount {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #36B37E;
+          margin: 1rem 0;
+        }
+        .ah-btn-whatsapp {
+          background: #25D366;
+          color: white;
+          border: none;
+          padding: 1.25rem 2rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+          border-radius: 8px;
+          cursor: pointer;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          margin-top: 1.5rem;
+          box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+          transition: transform 0.2s;
+        }
+        .ah-btn-whatsapp:hover {
+          transform: translateY(-2px);
+        }
+
+        /* Loading bar */
+        .ah-loading-container {
+          text-align: center;
+          padding: 3rem 0;
+        }
+        .ah-loading-bar-wrap {
+          width: 100%;
+          height: 8px;
+          background: var(--ah-border);
+          border-radius: 4px;
+          overflow: hidden;
+          margin: 2rem 0 1rem;
+        }
+        .ah-loading-fill {
+          height: 100%;
+          background: var(--ah-primary);
+          transition: width 0.1s linear;
+        }
+
+        @media (max-width: 768px) {
+          .ah-sidebar { display: none; }
+          .ah-main { padding: 1.5rem; background: var(--ah-surface); }
+          .ah-top-progress { display: block; }
+          .ah-card { border: none; padding: 0; box-shadow: none; }
+        }
+      `}</style>
+
+      {/* Sidebar (Desktop Only) */}
+      <div className="ah-sidebar">
+        <div className="ah-sidebar-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ah-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Garantimos seus direitos
         </div>
-      )}
-
-      {/* Step 2 – Período */}
-      {step === 2 && (
-        <div>
-          <h2 className="diag-question">Quando aconteceu?</h2>
-          <p style={{ fontSize: "0.88rem", color: "var(--lex-gold)", marginBottom: "1.25rem", fontWeight: 500 }}>Atenção: O seu direito de reclamar pode expirar.</p>
-          <div className="diag-options">
-            {["Nos últimos 7 dias","Nos últimos 30 dias","Há alguns meses","Há mais tempo","Não sei precisar"].map((opt) => (
-              <button key={opt} className="diag-option" onClick={() => advance("period", opt)}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                {opt}
-              </button>
-            ))}
-          </div>
-          <button className="diag-back" onClick={() => setStep(1)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
-        </div>
-      )}
-
-      {/* Step 3 – Detalhe variável */}
-      {step === 3 && (
-        <div>
-          <h2 className="diag-question">{step3Data.question}</h2>
-          <div className="diag-options">
-            {step3Data.options.map((opt) => (
-              <button key={opt} className="diag-option" onClick={() => advance("detail", opt)}>
-                {opt}
-              </button>
-            ))}
-          </div>
-          <button className="diag-back" onClick={() => setStep(2)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
-        </div>
-      )}
-
-      {/* Step 4 – Assistência */}
-      {step === 4 && (
-        <div>
-          <h2 className="diag-question">A companhia ofereceu alguma alternativa ou assistência?</h2>
-          <div className="diag-options">
-            {["Sim, ofereceu tudo adequadamente","Sim, mas de forma parcial ou insuficiente","Não ofereceu nada","Não sei informar"].map((opt) => (
-              <button key={opt} className="diag-option" onClick={() => advance("assistance", opt)}>
-                {opt}
-              </button>
-            ))}
-          </div>
-          <button className="diag-back" onClick={() => setStep(3)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
-        </div>
-      )}
-
-      {/* Step 5 – Impactos (multi) */}
-      {step === 5 && (
-        <div>
-          <h2 className="diag-question">A situação gerou algum impacto ou prejuízo adicional?</h2>
-          <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginBottom: "1.25rem" }}>Selecione todas as opções que se aplicam.</p>
-          <div className="diag-options">
-            {["Perdi compromisso importante","Tive gasto com alimentação","Tive gasto com hotel","Tive gasto com transporte","Perdi outra conexão","Minha bagagem foi afetada","Outro impacto","Nenhum desses"].map((opt) => (
-              <button
-                key={opt}
-                className={`diag-option diag-option--multi${selected.includes(opt) ? " selected" : ""}`}
-                onClick={() => toggleMulti(opt)}
-              >
-                <span style={{
-                  width: 18, height: 18, border: "1.5px solid", borderColor: selected.includes(opt) ? "var(--accent)" : "var(--border)",
-                  borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0, background: selected.includes(opt) ? "var(--accent)" : "transparent",
-                  transition: "all 0.15s ease", color: "white", fontSize: 11,
-                }}>
-                  {selected.includes(opt) && "✓"}
-                </span>
-                {opt}
-              </button>
-            ))}
-          </div>
-          <button
-            className="btn btn--primary btn--full diag-multi-continue"
-            onClick={() => advanceMulti("impacts")}
-            style={{ padding: "1rem", fontSize: "1rem", justifyContent: "center", borderRadius: "12px" }}
-          >
-            Continuar
-          </button>
-          <button className="diag-back" onClick={() => setStep(4)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
-        </div>
-      )}
-
-      {/* Step 6 – Documentos (multi) */}
-      {step === 6 && (
-        <div>
-          <h2 className="diag-question">Você possui documentos relacionados ao ocorrido?</h2>
-          <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginBottom: "1.25rem" }}>Selecione todos que tiver.</p>
-          <div className="diag-options">
-            {["Cartão de embarque","Comprovante da reserva","E-mails ou mensagens da companhia","Fotografias","Comprovantes de gastos","Protocolos de atendimento","Declaração de atraso ou cancelamento","Ainda não organizei os documentos"].map((opt) => (
-              <button
-                key={opt}
-                className={`diag-option diag-option--multi${selected.includes(opt) ? " selected" : ""}`}
-                onClick={() => toggleMulti(opt)}
-              >
-                <span style={{
-                  width: 18, height: 18, border: "1.5px solid", borderColor: selected.includes(opt) ? "var(--accent)" : "var(--border)",
-                  borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0, background: selected.includes(opt) ? "var(--accent)" : "transparent",
-                  transition: "all 0.15s ease", color: "white", fontSize: 11,
-                }}>
-                  {selected.includes(opt) && "✓"}
-                </span>
-                {opt}
-              </button>
-            ))}
-          </div>
-          <button
-            className="btn btn--primary btn--full diag-multi-continue"
-            onClick={() => advanceMulti("documents")}
-            style={{ padding: "1rem", fontSize: "1rem", justifyContent: "center", borderRadius: "12px" }}
-          >
-            Continuar
-          </button>
-          <button className="diag-back" onClick={() => setStep(5)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
-        </div>
-      )}
-
-      {/* Step 7 – Lead Form */}
-      {step === 7 && (
-        <div>
-          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-            <div className="diag-result-icon" style={{ display: "inline-flex" }}>
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <h2 style={{ fontSize: "1.4rem", marginBottom: "0.5rem", color: "var(--lex-white)" }}>Tudo pronto para a sua análise.</h2>
-            <p style={{ fontSize: "0.95rem", color: "var(--lex-text-dark-muted)", lineHeight: 1.6, maxWidth: "400px", margin: "0 auto" }}>
-              Para descobrirmos o valor exato que você pode receber e os próximos passos, informe onde devemos enviar o resultado da sua avaliação gratuita.
-            </p>
-          </div>
-
-          <form className="lead-form" onSubmit={handleSubmit}>
-            <div className="field" style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="diag-name" style={{ color: 'var(--lex-white)', fontSize: '0.85rem', marginBottom: '0.4rem', display: 'block' }}>Nome completo *</label>
-              <input
-                id="diag-name"
-                type="text"
-                placeholder="Ex: João da Silva"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid var(--lex-border-dark)', borderRadius: '8px', color: 'var(--lex-white)', outline: 'none' }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--lex-gold)'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--lex-border-dark)'}
-              />
-            </div>
-            <div className="field" style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="diag-phone" style={{ color: 'var(--lex-white)', fontSize: '0.85rem', marginBottom: '0.4rem', display: 'block' }}>WhatsApp *</label>
-              <input
-                id="diag-phone"
-                type="tel"
-                placeholder="(11) 99999-9999"
-                required
-                value={formData.phone}
-                onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-                style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid var(--lex-border-dark)', borderRadius: '8px', color: 'var(--lex-white)', outline: 'none' }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--lex-gold)'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--lex-border-dark)'}
-              />
-            </div>
-            <div className="field" style={{ marginBottom: '1.5rem' }}>
-              <label htmlFor="diag-email" style={{ color: 'var(--lex-white)', fontSize: '0.85rem', marginBottom: '0.4rem', display: 'block' }}>E-mail <span style={{ color: "var(--lex-text-dark-muted)", fontWeight: 400 }}>(opcional)</span></label>
-              <input
-                id="diag-email"
-                type="email"
-                placeholder="seu@email.com"
-                value={formData.email}
-                onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                style={{ width: '100%', padding: '0.8rem 1rem', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid var(--lex-border-dark)', borderRadius: '8px', color: 'var(--lex-white)', outline: 'none' }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--lex-gold)'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--lex-border-dark)'}
-              />
-            </div>
-
-            <label className="diag-lgpd">
-              <input
-                type="checkbox"
-                required
-                checked={formData.lgpd}
-                onChange={(e) => setFormData((p) => ({ ...p, lgpd: e.target.checked }))}
-                style={{ marginTop: '2px', accentColor: 'var(--lex-gold)' }}
-              />
-              Concordo que meus dados sejam utilizados exclusivamente para atendimento sigiloso e relacionado a esta solicitação, conforme a LGPD.
-            </label>
-
-            <button type="submit" className="btn btn--primary btn--full btn--lg" disabled={submitting} style={{ boxShadow: '0 8px 24px rgba(179, 139, 54, 0.3)', padding: "1rem", fontSize: "1.1rem", justifyContent: "center", borderRadius: "12px" }}>
-              {submitting ? "Enviando seus dados..." : "Receber Análise Gratuita Agora"}
-            </button>
-            
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem', opacity: 0.8 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--lex-text-dark-muted)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                100% Seguro
+        
+        <div className="ah-steps-list">
+          {sidebarSteps.map((s, i) => {
+            const isActive = currentSidebarStepNum === s.num;
+            const isCompleted = currentSidebarStepNum > s.num;
+            return (
+              <div key={s.num} className={`ah-step-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}>
+                <div className="ah-step-circle">
+                  {isCompleted ? <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg> : s.num}
+                </div>
+                <div className="ah-step-label">{s.title}</div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--lex-text-dark-muted)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Sigilo Absoluto
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="ah-main">
+        <div className="ah-content-box">
+          
+          <div className="ah-top-progress">
+            <div className="ah-progress-track">
+              <div className="ah-progress-fill" style={{ width: `${Math.min(100, (step / TOTAL_STEPS) * 100)}%` }} />
+            </div>
+            <div style={{ fontSize: '0.8rem', color: 'var(--ah-text-muted)', marginTop: '0.5rem', textAlign: 'right' }}>
+              Passo {Math.min(step, TOTAL_STEPS)} de {TOTAL_STEPS}
+            </div>
+          </div>
+
+          {step <= TOTAL_STEPS && (
+            <div className="ah-card">
+              
+              {/* Step 1 */}
+              {step === 1 && (
+                <>
+                  <h2 className="ah-question-title">Qual problema você enfrentou?</h2>
+                  <p className="ah-question-desc">Selecione o principal motivo da sua reclamação.</p>
+                  <div className="ah-options-grid ah-options-grid-2">
+                    {[
+                      { label: "Voo Atrasado ou Cancelado", icon: <img src="/icone-voo-atrasado.png" alt="" style={{width: 32, height: 32}}/> },
+                      { label: "Bagagem Extraviada", icon: <img src="/icone-bagagem.png" alt="" style={{width: 32, height: 32}}/> },
+                      { label: "Overbooking", icon: <img src="/icone-overbooking.png" alt="" style={{width: 32, height: 32}}/> },
+                      { label: "Conexão Perdida", icon: <img src="/icone-perda-conexao.png" alt="" style={{width: 32, height: 32}}/> },
+                    ].map(opt => (
+                      <RadioOption key={opt.label} label={opt.label} icon={opt.icon} active={formData.problem === opt.label} onClick={() => advance('problem', opt.label)} />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Step 2 */}
+              {step === 2 && (
+                <>
+                  <h2 className="ah-question-title">Quando aconteceu?</h2>
+                  <p className="ah-question-desc">Para voos nacionais, você tem até 5 anos para pedir indenização.</p>
+                  <div className="ah-options-grid">
+                    {["Nos últimos 7 dias", "Nos últimos 30 dias", "Há alguns meses", "Há mais tempo", "Não sei precisar"].map(opt => (
+                      <RadioOption key={opt} label={opt} active={formData.period === opt} onClick={() => advance('period', opt)} />
+                    ))}
+                  </div>
+                  <button className="ah-btn-back" onClick={() => setStep(1)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+                </>
+              )}
+
+              {/* Step 3 */}
+              {step === 3 && (
+                <>
+                  <h2 className="ah-question-title">{step3Data.question}</h2>
+                  <p className="ah-question-desc">Detalhes nos ajudam a calcular a chance de sucesso.</p>
+                  <div className="ah-options-grid">
+                    {step3Data.options.map(opt => (
+                      <RadioOption key={opt} label={opt} active={formData.detail === opt} onClick={() => advance('detail', opt)} />
+                    ))}
+                  </div>
+                  <button className="ah-btn-back" onClick={() => setStep(2)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+                </>
+              )}
+
+              {/* Step 4 */}
+              {step === 4 && (
+                <>
+                  <h2 className="ah-question-title">A companhia ofereceu alguma assistência?</h2>
+                  <p className="ah-question-desc">Alimentação, hotel, transporte, remarcação...</p>
+                  <div className="ah-options-grid">
+                    {["Sim, ofereceu tudo adequadamente", "Sim, mas de forma parcial ou insuficiente", "Não ofereceu nada", "Não sei informar"].map(opt => (
+                      <RadioOption key={opt} label={opt} active={formData.assistance === opt} onClick={() => advance('assistance', opt)} />
+                    ))}
+                  </div>
+                  <button className="ah-btn-back" onClick={() => setStep(3)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+                </>
+              )}
+
+              {/* Step 5 */}
+              {step === 5 && (
+                <>
+                  <h2 className="ah-question-title">A situação gerou impacto ou prejuízo adicional?</h2>
+                  <p className="ah-question-desc">Selecione todas as opções que se aplicam.</p>
+                  <div className="ah-options-grid ah-options-grid-2">
+                    {["Perdi compromisso importante", "Gasto com alimentação", "Gasto com hotel", "Gasto com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(opt => (
+                      <CheckboxOption key={opt} label={opt} checked={selectedMulti.includes(opt)} onClick={() => toggleMulti(opt)} />
+                    ))}
+                  </div>
+                  <div style={{ marginTop: '1.5rem' }}>
+                    <button className="ah-btn-primary" onClick={() => advanceMulti('impacts')}>Continuar</button>
+                  </div>
+                  <button className="ah-btn-back" onClick={() => setStep(4)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+                </>
+              )}
+
+              {/* Step 6 */}
+              {step === 6 && (
+                <>
+                  <h2 className="ah-question-title">Você possui documentos do ocorrido?</h2>
+                  <p className="ah-question-desc">E-mails, cartão de embarque, fotos, protocolos. Selecione o que tiver.</p>
+                  <div className="ah-options-grid ah-options-grid-2">
+                    {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos", "Declaração de atraso", "Ainda não organizei"].map(opt => (
+                      <CheckboxOption key={opt} label={opt} checked={selectedMulti.includes(opt)} onClick={() => toggleMulti(opt)} />
+                    ))}
+                  </div>
+                  <div style={{ marginTop: '1.5rem' }}>
+                    <button className="ah-btn-primary" onClick={() => advanceMulti('documents')}>Finalizar Análise</button>
+                  </div>
+                  <button className="ah-btn-back" onClick={() => setStep(5)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Analyzing View */}
+          {isAnalyzing && (
+            <div className="ah-card ah-loading-container">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--ah-primary)" strokeWidth="1.5" className="spin-anim" style={{ animation: 'spin 3s linear infinite' }}>
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" strokeLinejoin="round"/>
+                <style>{`@keyframes spin { 100% { transform: rotate(360deg); } }`}</style>
+              </svg>
+              <h2 className="ah-question-title" style={{ marginTop: '1.5rem' }}>Analisando seu caso...</h2>
+              <p className="ah-question-desc">Nossa IA está cruzando suas respostas com as leis de direito do passageiro (Resolução 400 ANAC e CDC).</p>
+              <div className="ah-loading-bar-wrap">
+                <div className="ah-loading-fill" style={{ width: \`\${analysisProgress}%\` }} />
               </div>
             </div>
+          )}
 
-            <div className="diag-disclaimer">
-              <strong>Especialistas da LexAero.</strong>
-              O diagnóstico é exclusivamente informativo. Cada situação deve ser analisada individualmente por um de nossos especialistas antes de qualquer medida legal.
+          {/* Result View */}
+          {resultReady && (
+            <div className="ah-card ah-result-box">
+              <div style={{ display: 'inline-flex', background: '#e3fceb', color: '#36B37E', padding: '0.75rem', borderRadius: '50%', marginBottom: '1rem' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <h2 className="ah-question-title">Boas notícias!</h2>
+              <p className="ah-question-desc">Seu caso apresenta fortes indícios de elegibilidade para indenização financeira por danos morais e materiais.</p>
+              
+              <div style={{ background: 'var(--ah-bg)', border: '1px solid var(--ah-border)', borderRadius: '8px', padding: '1.5rem', margin: '2rem 0' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--ah-text-muted)', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>Estimativa de Indenização</div>
+                <div className="ah-result-amount">R$ 3.000 a R$ 10.000</div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--ah-text-muted)' }}>*O valor final depende da documentação e decisão judicial.</div>
+              </div>
+
+              <button className="ah-btn-whatsapp" onClick={handleWhatsAppClick}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Falar com a equipe no WhatsApp
+              </button>
+              
+              <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'var(--ah-text-muted)' }}>
+                Ao clicar você será redirecionado para falar diretamente com a Dra. Kareline Staut.
+              </div>
             </div>
-          </form>
+          )}
 
-          <button className="diag-back" onClick={() => setStep(6)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
