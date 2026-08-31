@@ -37,7 +37,7 @@ export default function KarelinePage() {
             {/* Photo */}
             <div style={{ position: "sticky", top: "90px" }}>
               <div style={{ position: "relative", marginBottom: "1.5rem" }}>
-                <img src="/kareline-central-direitos-apontando.png" alt="Kareline Staut" style={{ width: "100%", height: "auto", display: "block" }} />
+                <img src="/kareline-central-direitos-apontando.png" alt="Kareline Staut" style={{ width: "100%", height: "auto", display: "block", transform: "scale(1.35)", transformOrigin: "bottom center" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, var(--lex-black), transparent)", pointerEvents: "none" }}></div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
