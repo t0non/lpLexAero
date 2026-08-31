@@ -3020,8 +3020,9 @@ b {
   font-size: 3rem;
   line-height: 1.1;
   color: var(--lex-white);
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 24px;
+  text-align: left;
 }
 
 .central-direitos-desc {
