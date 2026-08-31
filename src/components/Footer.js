@@ -37,10 +37,10 @@ export default function Footer() {
               Boutique jurídica premium especializada em Direito do Passageiro Aéreo. Liderada pela advogada Kareline Staut, transformamos problemas com voos em direitos garantidos.
             </p>
             <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
-              <a href="#" style={{ color: "var(--lex-gold)", background: "var(--lex-graphite)", padding: "0.5rem", borderRadius: "50%", display: "flex" }} aria-label="Instagram">
+              <a href="https://www.instagram.com/lex_aero/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--lex-gold)", background: "var(--lex-graphite)", padding: "0.5rem", borderRadius: "50%", display: "flex" }} aria-label="Instagram da LexAero">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" style={{ color: "var(--lex-gold)", background: "var(--lex-graphite)", padding: "0.5rem", borderRadius: "50%", display: "flex" }} aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/kareline-staut/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--lex-gold)", background: "var(--lex-graphite)", padding: "0.5rem", borderRadius: "50%", display: "flex" }} aria-label="LinkedIn de Kareline Staut">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
               <a href="#" style={{ color: "var(--lex-gold)", background: "var(--lex-graphite)", padding: "0.5rem", borderRadius: "50%", display: "flex" }} aria-label="WhatsApp">
