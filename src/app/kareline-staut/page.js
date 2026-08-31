@@ -42,7 +42,7 @@ export default function KarelinePage() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 <span className="eyebrow" style={{ color: "var(--lex-gold-dark)" }}>OAB/XX 000.000</span>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full">
+                <a href="https://wa.me/553183259594" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full">
                   Solicitar análise
                 </a>
               </div>

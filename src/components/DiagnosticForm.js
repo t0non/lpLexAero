@@ -120,7 +120,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
       + "Impactos: "    + (formData.impacts.join(", ")   || "Nenhum") + "\n"
       + "Documentos: "  + (formData.documents.join(", ") || "Nenhum") + "\n\n"
       + "Gostaria de falar com um especialista!";
-    window.open("https://wa.me/5511999999999?text=" + encodeURIComponent(txt), "_blank");
+    window.open("https://wa.me/553183259594?text=" + encodeURIComponent(txt), "_blank");
   };
 
   /* ── shared option component ── */

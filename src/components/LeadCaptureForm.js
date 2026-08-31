@@ -74,7 +74,7 @@ export default function LeadCaptureForm() {
     setTimeout(() => {
       setSubmitting(false);
       window.open(
-        `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`,
+        `https://wa.me/553183259594?text=${encodeURIComponent(msg)}`,
         "_blank"
       );
     }, 600);
