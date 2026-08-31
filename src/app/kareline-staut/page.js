@@ -41,9 +41,11 @@ export default function KarelinePage() {
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, var(--lex-black), transparent)", pointerEvents: "none" }}></div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <span className="eyebrow" style={{ color: "var(--lex-gold-dark)" }}>OAB/XX 000.000</span>
-                <a href="https://wa.me/553183259594" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full">
+                <a href="https://wa.me/553183259594" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full" style={{ padding: "1rem 2rem", fontSize: "1.1rem", fontWeight: "bold", borderRadius: "9999px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginTop: "1rem", boxShadow: "0 4px 14px rgba(252,189,38,0.2)" }}>
                   Solicitar análise
+                  <span className="btn__icon-circle" aria-hidden="true" style={{ background: '#ffffff', color: 'var(--lex-gold)', width: "24px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}>
+                    <img src="/aviao.svg" alt="" style={{ width: '1em', height: '1em', objectFit: 'contain' }} />
+                  </span>
                 </a>
               </div>
             </div>
