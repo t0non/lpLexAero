@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const TOTAL_STEPS = 7;
@@ -63,6 +63,22 @@ export default function DiagnosticForm({ initialProblem = null }) {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(119); // 1m 59s
+
+  useEffect(() => {
+    if (step < TOTAL_STEPS && timeLeft > 0 && !submitted) {
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [step, timeLeft, submitted]);
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
 
   const progress = ((step - 1) / TOTAL_STEPS) * 100;
 
@@ -135,8 +151,10 @@ export default function DiagnosticForm({ initialProblem = null }) {
       {step === 1 && (
         <div style={{ paddingBottom: '1rem' }}>
           <h2 className="diag-question">Qual problema você enfrentou?</h2>
-          <p style={{ fontSize: "0.95rem", color: "#64748b", marginBottom: "1.5rem", fontWeight: 500 }}>
-            <strong style={{ color: "var(--lex-gold)" }}>Análise Gratuita:</strong> Descubra em menos de 2 minutos se você tem direito a indenização.
+          <p style={{ fontSize: "0.95rem", color: "#64748b", marginBottom: "1.5rem", fontWeight: 500, display: "flex", alignItems: "center", justifyContent: "center", gap: "6px" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <strong style={{ color: "var(--lex-gold)" }}>{formatTime(timeLeft)}</strong>
+            <span>Descubra se você tem direito a indenização.</span>
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
             {[
