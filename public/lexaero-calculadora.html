@@ -498,7 +498,7 @@ a { color: var(--gold-dark); text-decoration: none; }
       <div class="result-card" id="result-card" style="display:none">
         <div id="result-filled" style="display:none">
           <div class="result-head">
-            <div class="result-label">Viabilidade do caso</div>
+            <div class="result-label">Potencial de indenização</div>
             <div id="result-badge"></div>
           </div>
           <div class="result-range">
@@ -708,9 +708,9 @@ function getRange(score, a) {
 }
 
 function getBadge(score) {
-  if (score >= 60) return { label: 'Alta viabilidade', cls: 'badge-alta' };
-  if (score >= 35) return { label: 'Média viabilidade', cls: 'badge-media' };
-  return { label: 'Baixa viabilidade', cls: 'badge-baixa' };
+  if (score >= 60) return { label: 'Alto potencial', cls: 'badge-alta' };
+  if (score >= 35) return { label: 'Médio potencial', cls: 'badge-media' };
+  return { label: 'Baixo potencial', cls: 'badge-baixa' };
 }
 
 // ── Rendering ──
