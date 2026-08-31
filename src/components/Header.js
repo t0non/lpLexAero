@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { label: "Problemas com Voo", href: "/direito-do-passageiro-aereo" },
   { label: "Central de Direitos", href: "/central-de-direitos" },
   { label: "Kareline Staut", href: "/kareline-staut" },
-  { label: "Sobre", href: "/sobre" },
+  { label: "Blog", href: "/blog" },
+  { label: "Calculadora", href: "/calculadora" },
 ];
 
 export default function Header() {
