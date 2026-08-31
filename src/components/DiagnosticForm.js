@@ -244,10 +244,6 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               </div>
               <div>
                 <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111827" }}>Dra. Kareline Staut</div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.2rem" }}>
-                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
-                  <span style={{ fontSize: "0.72rem", color: "#22c55e", fontWeight: 600 }}>Disponível agora</span>
-                </div>
               </div>
             </div>
 
