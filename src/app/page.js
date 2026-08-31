@@ -101,7 +101,7 @@ export default function Home() {
               <div className="hero__ctas">
                 <Link href="/diagnostico" className="btn btn--primary">
                   Verificar grátis em 2 minutos
-                  <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+                  <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
                 </Link>
               </div>
 
@@ -151,7 +151,7 @@ export default function Home() {
                 <p className="card__desc" style={{ fontSize: '1rem' }}>{p.desc}</p>
                 <span className="btn btn--primary btn--sm" style={{ marginTop: 'auto', alignSelf: 'center', fontSize: '1rem', padding: '0.85rem 1.7rem' }}>
                   Conhecer direitos
-                  <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+                  <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
                 </span>
               </Link>
             ))}
@@ -170,7 +170,7 @@ export default function Home() {
               </p>
               <Link href="/diagnostico" className="btn btn--primary btn--sm" style={{ marginTop: 'auto', alignSelf: 'center', fontSize: '1rem', padding: '0.85rem 1.7rem' }}>
                 Analisar meu caso
-                <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+                <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
               </Link>
             </div>
           </div>
@@ -289,7 +289,7 @@ export default function Home() {
           <div style={{ display: "flex", justifyContent: "center", marginTop: "4rem" }}>
             <Link href="/diagnostico" className="btn btn--primary btn--lg">
               Analisar meu caso grátis
-              <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+              <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
             </Link>
           </div>
 
@@ -307,7 +307,7 @@ export default function Home() {
               <p>Sem pegadinhas! Se a indenização entrar na sua conta, você paga 35% do valor recebido para a LexAero e fica com 65%.</p>
               <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ marginTop: "1rem" }}>
                 Descubra seu direito agora
-                <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+                <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
               </Link>
             </div>
             
@@ -531,7 +531,7 @@ export default function Home() {
               <div style={{ marginTop: "1.5rem" }}>
                 <Link href="/diagnostico" className="btn btn--primary btn--full" style={{ whiteSpace: "nowrap", fontSize: "clamp(0.85rem, 4vw, 1rem)", padding: "0.875rem 1rem" }}>
                   Verificar grátis em 2 minutos
-                  <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" style={{filter:"brightness(0) invert(1)"}}/></span>
+                  <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
                 </Link>
               </div>
             </div>
