@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const TOTAL_STEPS = 6;
+const TOTAL_STEPS = 7;
 
 const STEP3_OPTIONS = {
   "Voo Atrasado ou Cancelado": {
@@ -66,13 +66,15 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
     problem: initialProblem || "",
     period: "", detail: "", assistance: "", impacts: [], documents: [],
   });
+  const [leadData,    setLeadData]    = useState({ nome: "", telefone: "", email: "" });
+  const [leadError,   setLeadError]   = useState("");
 
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [loadPct,     setLoadPct]     = useState(0);
   const [showResult,  setShowResult]  = useState(false);
 
   useEffect(() => {
-    if (step > TOTAL_STEPS && !showResult) {
+    if (step > 7 && !showResult) {
       setIsAnalyzing(true);
       const t = setInterval(() => {
         setLoadPct(p => {
@@ -86,8 +88,22 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   }, [step, showResult]);
 
   const go      = (f, v) => { setFormData(d => ({ ...d, [f]: v })); setStep(s => s + 1); };
-  const goMulti = (f)    => { setFormData(d => ({ ...d, [f]: multi })); setMulti([]); setStep(s => s + 1); };
+  const goMulti = (f)    => { setFormData(d => ({ ...d, [f]: multi })); setMulti([]); setStep(7); };
   const toggle  = (v)    => setMulti(m => m.includes(v) ? m.filter(x => x !== v) : [...m, v]);
+
+  const submitLead = () => {
+    const { nome, telefone, email } = leadData;
+    if (!nome.trim() || !telefone.trim() || !email.trim()) {
+      setLeadError("Por favor, preencha todos os campos para ver seu resultado.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setLeadError("Informe um e-mail válido.");
+      return;
+    }
+    setLeadError("");
+    setStep(8); // triggers analyzing
+  };
 
   const stepPct  = Math.min(100, ((step - 1) / TOTAL_STEPS) * 100);
   const barW     = stepPct + "%";
@@ -97,6 +113,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   const sendWA = () => {
     const txt =
       "Olá! Fiz o diagnóstico no site LexAero.\n\n"
+      + "Nome: "        + leadData.nome       + "\n"
+      + "Telefone: "    + leadData.telefone   + "\n"
+      + "E-mail: "      + leadData.email      + "\n\n"
       + "Problema: "    + formData.problem    + "\n"
       + "Quando: "      + formData.period     + "\n"
       + "Detalhes: "    + formData.detail     + "\n"
@@ -434,6 +453,121 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             </div>
             <GoldBtn onClick={() => goMulti("documents")}>Finalizar Análise</GoldBtn>
             <BackBtn to={5} />
+          </div>
+        )}
+
+        {step === 7 && (
+          <div>
+            <style dangerouslySetInnerHTML={{ __html: `
+              .lead-input {
+                width: 100%;
+                padding: 0.9rem 1.1rem;
+                border: 2px solid #f1f5f9;
+                border-radius: 14px;
+                font-size: 0.95rem;
+                font-family: inherit;
+                color: #1a1a1a;
+                background: #fff;
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+                box-sizing: border-box;
+              }
+              .lead-input:focus {
+                border-color: #FCBD26;
+                box-shadow: 0 0 0 3px rgba(252,189,38,0.12);
+              }
+              .lead-input::placeholder { color: #94a3b8; }
+            `}} />
+
+            {/* Header do passo */}
+            <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+              <div style={{
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                width: 52, height: 52, borderRadius: "50%",
+                background: "linear-gradient(135deg, #fffbee, #fff3c4)",
+                marginBottom: "0.75rem",
+                boxShadow: "0 4px 16px rgba(252,189,38,0.2)"
+              }}>
+                <svg width={26} height={26} viewBox="0 0 24 24" fill="none" stroke="#FCBD26" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#1a1a1a", margin: "0 0 0.35rem", lineHeight: 1.2 }}>
+                Quase lá! Seu resultado está pronto.
+              </h2>
+              <p style={{ fontSize: "0.875rem", color: "#6b7280", margin: 0, lineHeight: 1.5 }}>
+                Informe seus dados para receber a análise <strong style={{ color: "#1a1a1a" }}>gratuita e sem compromisso</strong>.
+              </p>
+            </div>
+
+            {/* Campos */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <div>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, color: "#374151", marginBottom: "0.4rem", letterSpacing: "0.02em" }}>
+                  Nome completo
+                </label>
+                <input
+                  className="lead-input"
+                  type="text"
+                  placeholder="Seu nome"
+                  value={leadData.nome}
+                  onChange={e => setLeadData(d => ({ ...d, nome: e.target.value }))}
+                  autoComplete="name"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, color: "#374151", marginBottom: "0.4rem", letterSpacing: "0.02em" }}>
+                  WhatsApp
+                </label>
+                <input
+                  className="lead-input"
+                  type="tel"
+                  placeholder="(11) 99999-9999"
+                  value={leadData.telefone}
+                  onChange={e => setLeadData(d => ({ ...d, telefone: e.target.value }))}
+                  autoComplete="tel"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, color: "#374151", marginBottom: "0.4rem", letterSpacing: "0.02em" }}>
+                  E-mail
+                </label>
+                <input
+                  className="lead-input"
+                  type="email"
+                  placeholder="seu@email.com"
+                  value={leadData.email}
+                  onChange={e => setLeadData(d => ({ ...d, email: e.target.value }))}
+                  autoComplete="email"
+                />
+              </div>
+            </div>
+
+            {/* Erro de validação */}
+            {leadError && (
+              <p style={{ color: "#dc2626", fontSize: "0.82rem", fontWeight: 600, marginTop: "0.75rem", marginBottom: 0, display: "flex", alignItems: "center", gap: "0.35rem" }}>
+                <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                {leadError}
+              </p>
+            )}
+
+            {/* CTA */}
+            <GoldBtn onClick={submitLead}>
+              Ver meu resultado agora
+              <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "0.4rem" }}>
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </GoldBtn>
+
+            {/* Micro-copy de segurança */}
+            <div style={{ textAlign: "center", marginTop: "0.9rem", fontSize: "0.78rem", color: "#9ca3af", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.35rem" }}>
+              <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Seus dados são 100% seguros e não serão compartilhados.
+            </div>
+
+            <BackBtn to={6} />
           </div>
         )}
 
