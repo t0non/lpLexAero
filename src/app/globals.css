@@ -1322,13 +1322,15 @@ b {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  /* Quebra o container no desktop (agora que está na direita, vai colar na borda da tela) */
-  margin-right: calc(50% - 50vw);
 }
 
 @media (min-width: 1025px) {
   .kareline__photo-editorial {
     order: 2;
+    /* A coluna começa no centro (mais metade do gap). A distância até a borda direita é exatamente 50vw menos metade do gap */
+    width: calc(50vw - (var(--space-16) / 2));
+    max-width: none;
+    justify-self: start;
   }
   .kareline__content {
     order: 1;
