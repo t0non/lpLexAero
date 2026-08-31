@@ -94,9 +94,9 @@ export default function KarelinePage() {
                 <h2 id="publicacoes-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Publicações e artigos</h2>
                 <ul style={{ listStyle: "disc", paddingLeft: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                   {[
-                    { title: "A responsabilidade civil no transporte aéreo: análise atual (2026)", href: "/central-de-direitos" },
-                    { title: "Convenção de Montreal vs. CDC: critérios de aplicação (2026)", href: "/central-de-direitos" },
-                    { title: "Assistência material: obrigação absoluta ou relativa? (2023)", href: "/central-de-direitos" },
+                    { title: "A responsabilidade civil no transporte aéreo: análise atual (2026)", href: "/blog" },
+                    { title: "Convenção de Montreal vs. CDC: critérios de aplicação (2026)", href: "/blog" },
+                    { title: "Assistência material: obrigação absoluta ou relativa? (2023)", href: "/blog" },
                   ].map((pub) => (
                     <li key={pub.title}>
                       <Link href={pub.href} style={{ fontSize: "0.9rem", color: "var(--lex-gold-dark)", textDecoration: "underline" }}>
