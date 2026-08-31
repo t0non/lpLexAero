@@ -532,7 +532,12 @@ b {
   letter-spacing: -0.03em;
   color: var(--lex-black);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
+
+.logo-mobile { display: none; }
+.logo-desktop { display: block; }
 
 .header__logo span {
   color: var(--lex-gold);
@@ -3238,6 +3243,10 @@ b {
     box-shadow: none !important;
   }
 
+  /* Logo Swap no Mobile */
+  .logo-desktop { display: none; }
+  .logo-mobile { display: block; }
+
   .header__logo {
     color: var(--lex-white);
   }
@@ -3253,7 +3262,7 @@ b {
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
     height: 100svh;
-    min-height: 650px;
+    padding-top: 4.5rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
     overflow: hidden;
