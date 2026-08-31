@@ -13,10 +13,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #0F172A;
-  --graphite: #1E293B;
-  --surface: #1E293B;
-  --surface-2: #334155;
+  --black: #050505;
+  --graphite: #121212;
+  --surface: #121212;
+  --surface-2: #1C1C1C;
   --gold: #FCBD26;
   --gold-dark: #C99A1A;
   --gold-soft: rgba(252,189,38,0.15);
@@ -24,7 +24,7 @@
   --white: #F8FAFC;
   --muted: #94A3B8;
   --muted-2: #64748B;
-  --border: #334155;
+  --border: #2A2A2A;
   --green: #3ECA7F;
   --green-soft: rgba(62,202,127,0.15);
   --amber: #FCBD26;
@@ -63,8 +63,9 @@ a { color: var(--gold-dark); text-decoration: none; }
 }
 .split-image {
   flex: 1;
-  background-image: linear-gradient(to right, rgba(15,23,42,0) 50%, rgba(15,23,42,1) 100%), url('/kareline-diagnostico-apresentacao.png');
-  background-size: cover;
+  background-color: var(--black);
+  background-image: linear-gradient(to right, rgba(5,5,5,0) 50%, rgba(5,5,5,1) 100%), url('/kareline-diagnostico-apresentacao.png');
+  background-size: 85%;
   background-position: center bottom;
   background-repeat: no-repeat;
   display: none;
