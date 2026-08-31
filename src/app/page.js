@@ -509,40 +509,39 @@ export default function Home() {
             {/* Conteúdo */}
             <div className="kareline__content" style={{ position: "relative" }}>
               <div className="kareline__desktop-header" style={{ position: "relative", zIndex: 2 }}>
-                <span className="eyebrow-badge" style={{ display: 'inline-flex', alignItems: 'center', padding: '0.35rem 0.85rem', borderRadius: '999px', border: '1px solid rgba(179, 139, 54, 0.3)', background: 'rgba(179, 139, 54, 0.08)', fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lex-gold)' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--lex-gold)', marginRight: '0.4rem', boxShadow: '0 0 8px var(--lex-gold)' }}></span>
-                  À Frente da LexAero
-                </span>
-                <h2 id="kareline-heading" style={{ marginTop: "1rem", marginBottom: "1.25rem", fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À FRENTE DA LEXAERO</span>
+                <h2 id="kareline-heading" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
                   Experiência jurídica aplicada aos direitos do passageiro aéreo.
                 </h2>
               </div>
-              
-              <p style={{ marginBottom: "2.5rem", lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.1rem", position: "relative", zIndex: 2, maxWidth: '90%' }}>
+              <p style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--lex-gold-dark)", marginBottom: "1.5rem", letterSpacing: "0.02em", position: "relative", zIndex: 2 }}>
+                Mestra em Direito • Advogada • Especialista em Direito do Passageiro Aéreo
+              </p>
+              <p style={{ marginBottom: "2.5rem", lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", position: "relative", zIndex: 2 }}>
                 Kareline Staut fundou a LexAero para tornar a defesa dos passageiros mais clara, acessível e estrategicamente conduzida, com análise individual de cada situação.
               </p>
 
-              {/* Cards de Autoridade Minimalistas */}
-              <div className="kareline__authority-cards-clean" style={{ position: "relative", zIndex: 2, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ color: 'var(--lex-gold)', marginTop: '2px' }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg></div>
-                  <div>
-                    <h4 style={{ color: 'var(--lex-white)', fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.2rem' }}>Mestra em Direito</h4>
-                    <p style={{ color: 'var(--lex-text-dark-muted)', fontSize: '0.9rem', margin: 0 }}>Formação jurídica aprofundada</p>
+              {/* Cards de Autoridade */}
+              <div className="kareline__authority-cards" style={{ position: "relative", zIndex: 2 }}>
+                <div className="authority-card">
+                  <div className="ac-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg></div>
+                  <div className="ac-text">
+                    <h4>Mestra em Direito</h4>
+                    <p>Formação jurídica aprofundada</p>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ color: 'var(--lex-gold)', marginTop: '2px' }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></div>
-                  <div>
-                    <h4 style={{ color: 'var(--lex-white)', fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.2rem' }}>Especialista em Direito Aéreo</h4>
-                    <p style={{ color: 'var(--lex-text-dark-muted)', fontSize: '0.9rem', margin: 0 }}>Atuação focada em direitos do passageiro</p>
+                <div className="authority-card">
+                  <div className="ac-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></div>
+                  <div className="ac-text">
+                    <h4>Especialista em Direito Aéreo</h4>
+                    <p>Atuação focada em direitos do passageiro</p>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ color: 'var(--lex-gold)', marginTop: '2px' }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></div>
-                  <div>
-                    <h4 style={{ color: 'var(--lex-white)', fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.2rem' }}>Atendimento individualizado</h4>
-                    <p style={{ color: 'var(--lex-text-dark-muted)', fontSize: '0.9rem', margin: 0 }}>Cada caso é analisado de forma estratégica</p>
+                <div className="authority-card">
+                  <div className="ac-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></div>
+                  <div className="ac-text">
+                    <h4>Atendimento individualizado</h4>
+                    <p>Cada caso é analisado de forma estratégica</p>
                   </div>
                 </div>
               </div>
