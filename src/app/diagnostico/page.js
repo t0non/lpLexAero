@@ -1,8 +1,8 @@
 import DiagnosticForm from "@/components/DiagnosticForm";
 
 export const metadata = {
-  title: "Diagnostico Gratuito | LexAero",
-  description: "Descubra em 2 minutos se voce tem direito a indenizacao por atraso, cancelamento, overbooking ou bagagem.",
+  title: "Calcule Sua Indenização de Voo | Análise Gratuita LexAero",
+  description: "Teve voo cancelado, atrasado ou bagagem extraviada? Descubra em 2 minutos se você tem direito a compensação financeira. Faça sua análise online agora mesmo.",
 };
 
 export default function DiagnosticoPage() {

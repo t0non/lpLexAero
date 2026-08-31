@@ -14,11 +14,11 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL("https://www.lexaero.com.br"),
   title: {
-    default: "LexAero | Direito do Passageiro Aéreo — Kareline Staut",
+    default: "Indenização por Voo Cancelado ou Atrasado | LexAero",
     template: "%s | LexAero",
   },
   description:
-    "Boutique jurídica especializada em Direito do Passageiro Aéreo, liderada pela advogada Kareline Staut. Análise individualizada para casos de voo atrasado, cancelado, overbooking e bagagem.",
+    "Teve problemas com voo ou bagagem? Você pode ter direito a compensação financeira. Resolvemos seu problema de forma 100% online com mais de 90% de sucesso. Avalie seu caso agora!",
   keywords: [
     "direito do passageiro aéreo",
     "voo atrasado",
@@ -30,9 +30,9 @@ export const metadata = {
     "LexAero",
   ],
   openGraph: {
-    title: "LexAero | Direito do Passageiro Aéreo",
+    title: "Indenização por Voo Cancelado ou Atrasado | LexAero",
     description:
-      "Boutique jurídica especializada em Direito do Passageiro Aéreo. Análise individualizada por Kareline Staut.",
+      "Teve problemas com voo ou bagagem? Você pode ter direito a compensação financeira. Resolvemos seu problema com agilidade. Avalie seu caso agora!",
     url: "https://www.lexaero.com.br",
     siteName: "LexAero",
     locale: "pt_BR",
@@ -40,8 +40,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LexAero | Direito do Passageiro Aéreo",
-    description: "Boutique jurídica especializada. Análise individualizada por Kareline Staut.",
+    title: "Indenização por Voo Cancelado ou Atrasado | LexAero",
+    description: "Teve problemas com voo ou bagagem? Você pode ter direito a compensação financeira. Avalie seu caso agora!",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.lexaero.com.br" },
