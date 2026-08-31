@@ -566,7 +566,7 @@ export default function Home() {
             {/* Texto */}
             <div style={{ order: 1, marginBottom: 0, textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
-              <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 400 }}>
+              <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
                 Não deixe seus direitos para depois.
               </h2>
               <p style={{ marginBottom: 0 }}>

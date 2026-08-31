@@ -267,7 +267,7 @@ export default function ServiceTemplate({ serviceData }) {
             {/* Texto — mobile: order 1 */}
             <div className="metodologia__text" style={{ textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
-              <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 400 }}>
+              <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
                 {conversion?.leadCaptureTitle || "Não deixe seus direitos para depois."}
               </h2>
               <p style={{ marginBottom: 0 }}>
