@@ -6,7 +6,7 @@ export const blogPosts = [
     slug: "voo-atrasado-direitos",
     title: "Voo atrasado: saiba exatamente quais são seus direitos e como receber indenização",
     category: "Direitos do Passageiro",
-    date: "20 de Agosto de 2025",
+    date: "20 de Agosto de 2026",
     readTime: "8 min de leitura",
     summary:
       "Guia completo sobre o que a lei garante em casos de atraso de voo no Brasil — da assistência material à indenização por danos morais.",
@@ -73,7 +73,7 @@ export const blogPosts = [
     slug: "voo-cancelado-indenizacao",
     title: "Voo cancelado pela companhia? Você tem direito a mais do que pensa",
     category: "Indenizações",
-    date: "10 de Agosto de 2025",
+    date: "10 de Agosto de 2026",
     readTime: "7 min de leitura",
     summary:
       "Diferença entre remarcação, reembolso e indenização por danos morais. Quando você pode exigir as três coisas ao mesmo tempo.",
@@ -143,7 +143,7 @@ export const blogPosts = [
     slug: "bagagem-extraviada-como-agir",
     title: "Bagagem extraviada ou danificada: o passo a passo para não perder seus direitos",
     category: "Bagagem",
-    date: "1 de Agosto de 2025",
+    date: "1 de Agosto de 2026",
     readTime: "6 min de leitura",
     summary:
       "O que fazer no aeroporto, quais documentos guardar e como calcular o valor da indenização que a companhia deve pagar.",
