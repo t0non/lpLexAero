@@ -203,11 +203,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   const cardStyle = {
     width: "100%", maxWidth: 460,
-    background: "var(--lex-white)",
-    borderRadius: "20px", 
-    padding: "2rem", 
+    background: isEmbedded ? "transparent" : "var(--lex-white)",
+    borderRadius: isEmbedded ? "0" : "20px", 
+    padding: isEmbedded ? "0" : "2rem", 
     boxShadow: isEmbedded ? "none" : "0 20px 40px rgba(0,0,0,0.1)",
-    border: "1px solid var(--lex-border-light)"
+    border: isEmbedded ? "none" : "1px solid var(--lex-border-light)"
   };
 
   /* ── RESULT ── */
