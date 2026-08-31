@@ -6,19 +6,19 @@ const TOTAL_STEPS = 6;
 const STEP3_OPTIONS = {
   "Voo Atrasado ou Cancelado": {
     q: "Quanto tempo seu voo atrasou ou quando soube do cancelamento?",
-    opts: ["Menos de 2 horas", "Entre 2 e 4 horas", "Mais de 4 horas", "Cancelado no aeroporto", "Cancelado com antecedencia", "Nao sei informar"],
+    opts: ["Menos de 2 horas", "Entre 2 e 4 horas", "Mais de 4 horas", "Cancelado no aeroporto", "Cancelado com antecedência", "Não sei informar"],
   },
   "Bagagem Extraviada": {
     q: "Qual foi o problema com sua bagagem?",
-    opts: ["Bagagem extraviada (nao chegou)", "Bagagem danificada", "Bagagem violada", "Atraso na entrega"],
+    opts: ["Bagagem extraviada (Não chegou)", "Bagagem danificada", "Bagagem violada", "Atraso na entrega"],
   },
   "Overbooking": {
     q: "O que a companhia ofereceu no momento?",
-    opts: ["Ofereceu reacomodacao imediata", "Pagou compensacao financeira", "Nao ofereceu nada", "Ainda estou tentando resolver"],
+    opts: ["Ofereceu reacomodação imediata", "Pagou compensação financeira", "Não ofereceu nada", "Ainda estou tentando resolver"],
   },
-  "Conexao Perdida": {
-    q: "Por que voce perdeu a conexao?",
-    opts: ["Atraso no voo anterior", "Cancelamento no voo anterior", "Demora na alfandega", "Outra razao"],
+  "conexão Perdida": {
+    q: "Por que você perdeu a conexão?",
+    opts: ["Atraso no voo anterior", "Cancelamento no voo anterior", "Demora na alfândega", "Outra razão"],
   },
 };
 
@@ -26,7 +26,7 @@ const PROBLEM_OPTS = [
   { label: "Voo Atrasado ou Cancelado", icon: "/icone-voo-atrasado.png" },
   { label: "Bagagem Extraviada",         icon: "/icone-bagagem.png" },
   { label: "Overbooking",                icon: "/icone-overbooking.png" },
-  { label: "Conexao Perdida",            icon: "/icone-perda-conexao.png" },
+  { label: "conexão Perdida",            icon: "/icone-perda-conexão.png" },
 ];
 
 /* ── colour tokens ── */
@@ -89,11 +89,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   const sendWA = () => {
     const txt =
-      "Ola! Fiz o diagnostico no site LexAero.\n\n"
+      "Olá! Fiz o diagnóstico no site LexAero.\n\n"
       + "Problema: "    + formData.problem    + "\n"
       + "Quando: "      + formData.period     + "\n"
       + "Detalhes: "    + formData.detail     + "\n"
-      + "Assistencia: " + formData.assistance + "\n"
+      + "Assistência: " + formData.assistance + "\n"
       + "Impactos: "    + (formData.impacts.join(", ")   || "Nenhum") + "\n"
       + "Documentos: "  + (formData.documents.join(", ") || "Nenhum") + "\n\n"
       + "Gostaria de falar com um especialista!";
@@ -198,11 +198,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             Seu caso tem potencial!
           </h2>
           <p style={{ color: C.textMuted, marginBottom: "2rem", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Identificamos fortes indicios de elegibilidade. Um especialista pode confirmar o valor exato.
+            Identificamos fortes indícios de elegibilidade. Um especialista pode confirmar o valor exato.
           </p>
           <div style={{ background: C.goldBg, border: "1.5px solid " + C.goldBorder, borderRadius: 14, padding: "1.5rem", marginBottom: "2rem" }}>
             <div style={{ fontSize: "0.75rem", color: C.gold, textTransform: "uppercase", letterSpacing: "1.5px", fontWeight: 700, marginBottom: "0.5rem" }}>
-              Estimativa de Indenizacao
+              Estimativa de indenização
             </div>
             <div style={{ fontSize: "2.5rem", fontWeight: 800, color: "#b8860b", lineHeight: 1.1 }}>
               R$ 3.000
@@ -224,7 +224,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             Falar com a Dra. Kareline no WhatsApp
           </button>
           <p style={{ fontSize: "0.78rem", color: C.textMuted, marginTop: "1rem" }}>
-            Sem custo inicial. Avaliacao 100% gratuita.
+            Sem custo inicial. Avaliação 100% gratuita.
           </p>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             Analisando seu caso...
           </h2>
           <p style={{ color: C.textMuted, marginBottom: "2rem", lineHeight: 1.6, fontSize: "0.9rem" }}>
-            Cruzando suas respostas com a Resolucao 400 ANAC e o Codigo de Defesa do Consumidor.
+            Cruzando suas respostas com a Resolução 400 ANAC e o Código de Defesa do Consumidor.
           </p>
           <div style={{ background: C.border, borderRadius: 8, height: 8, overflow: "hidden", marginBottom: "0.75rem" }}>
             <div style={{ height: "100%", background: C.gold, width: loadBarW, transition: "width 0.1s linear", borderRadius: 8 }} />
@@ -270,7 +270,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
 
           <h1 style={{ fontSize: "clamp(1.5rem,4vw,2rem)", fontWeight: 800, color: C.text, margin: "0 0 0.25rem" }}>
-            Descubra quanto voce pode <span style={{ color: C.gold }}>ganhar!</span>
+            Descubra quanto você pode <span style={{ color: C.gold }}>ganhar!</span>
           </h1>
           <p style={{ color: C.textMuted, fontSize: "0.95rem", margin: 0 }}>Leva menos de 2 minutos. Sem cadastro.</p>
         </div>
@@ -299,7 +299,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
         {step === 1 && (
           <div>
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>
-              Qual problema voce enfrentou com o voo?
+              Qual problema você enfrentou com o voo?
             </h2>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
@@ -314,10 +314,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Quando aconteceu o problema?</h2>
             <p style={{ fontSize: "0.85rem", color: "#b8860b", marginBottom: "1.5rem", fontWeight: 500 }}>
-              Atencao: o prazo para reclamar pode estar se esgotando.
+              Atenção: o prazo para reclamar pode estar se esgotando.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
-              {["Nos ultimos 7 dias", "Nos ultimos 30 dias", "Ha alguns meses", "Ha mais tempo", "Nao sei precisar"].map(o => (
+              {["Nos últimos 7 dias", "Nos últimos 30 dias", "Há alguns meses", "Há mais tempo", "Não sei precisar"].map(o => (
                 <Opt key={o} label={o} sel={formData.period === o} onClick={() => go("period", o)} />
               ))}
             </div>
@@ -328,7 +328,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
         {step === 3 && (
           <div>
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>{step3.q}</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Detalhes ajudam a calcular o potencial de indenizacao.</p>
+            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Detalhes ajudam a calcular o potencial de indenização.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
               {step3.opts.map(o => (
                 <Opt key={o} label={o} sel={formData.detail === o} onClick={() => go("detail", o)} />
@@ -340,10 +340,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 4 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>A companhia ofereceu alguma assistencia?</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Alimentacao, hotel, transporte, remarcacao...</p>
+            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>A companhia ofereceu alguma Assistência?</h2>
+            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Alimentação, hotel, transporte, remarcacao...</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
-              {["Sim, ofereceu tudo adequadamente", "Sim, mas de forma parcial ou insuficiente", "Nao ofereceu nada", "Nao sei informar"].map(o => (
+              {["Sim, ofereceu tudo adequadamente", "Sim, mas de forma parcial ou insuficiente", "Não ofereceu nada", "Não sei informar"].map(o => (
                 <Opt key={o} label={o} sel={formData.assistance === o} onClick={() => go("assistance", o)} />
               ))}
             </div>
@@ -353,10 +353,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 5 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Houve impactos ou prejuizos adicionais?</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione todas as opcoes que se aplicam.</p>
+            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Houve impactos ou prejuízos adicionais?</h2>
+            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione todas as opções que se aplicam.</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
-              {["Perdi compromisso importante", "Gastos com alimentacao", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexao", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
+              {["Perdi compromisso importante", "Gastos com Alimentação", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
             </div>
@@ -367,14 +367,14 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 6 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Voce possui documentos do ocorrido?</h2>
+            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>você possui documentos do ocorrido?</h2>
             <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
-              {["Cartao de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaracao de atraso", "Nao tenho documentos"].map(o => (
+              {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaração de atraso", "Não tenho documentos"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
             </div>
-            <GoldBtn onClick={() => goMulti("documents")}>Finalizar Analise</GoldBtn>
+            <GoldBtn onClick={() => goMulti("documents")}>Finalizar Análise</GoldBtn>
             <BackBtn to={5} />
           </div>
         )}
@@ -388,7 +388,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
         <strong style={{ color: "#8a6800" }}>Aviso legal:</strong>{" "}
-        Ferramenta orientativa baseada em jurisprudencia. Analise definitiva feita por especialista.
+        Ferramenta orientativa baseada em jurisprudência. Análise definitiva feita por especialista.
       </div>
     </div>
   );
