@@ -374,26 +374,43 @@ a { color: var(--gold-dark); text-decoration: none; }
 .result-disc { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.72rem; color: var(--muted-2); line-height: 1.5; }
 
 .result-actions { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
-.btn-wa {
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.65rem 0.65rem 0.65rem 1.75rem;
+  background: var(--gold);
+  color: #111;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 100px;
+  border: 1.5px solid var(--gold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s;
+}
+.btn-primary:hover {
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+  transform: translateY(-2px);
+}
+.btn-icon-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.95rem 1.25rem;
-  background: var(--gold);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
-  box-shadow: 0 4px 14px rgba(252,189,38,0.3);
+  background: #fff;
+  color: var(--gold);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  margin-left: 0.85rem;
+  transition: transform 0.18s;
+  flex-shrink: 0;
 }
-.btn-wa:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(252,189,38,0.4); }
+.btn-icon-circle svg { width: 20px; height: 20px; }
+.btn-primary:hover .btn-icon-circle { transform: scale(1.05); }
 .wa-note { font-size: 0.7rem; color: var(--muted-2); text-align: center; }
 
 /* ── Submitted state ── */
@@ -518,9 +535,13 @@ a { color: var(--gold-dark); text-decoration: none; }
             Estimativa baseada em jurisprudência do TJSP e STJ. Não constitui opinião jurídica nem garante resultado.
           </div>
           <div class="result-actions">
-            <a class="btn-wa" id="wa-link" href="#" target="_blank">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              Falar com especialista agora
+            <a class="btn-primary" id="wa-link" href="#" target="_blank">
+              Solicitar análise gratuita
+              <span class="btn-icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1281 1920" preserveAspectRatio="xMidYMid meet">
+                  <path fill="currentColor" d="M 1170.144531 397.558594 C 1129.84375 357.300781 969.78125 435.792969 916.152344 489.46875 L 777.460938 628.160156 L 174.851562 521.820312 C 170.257812 520.992188 165.523438 522.460938 162.214844 525.769531 L 104.957031 583.078125 C 101.691406 586.339844 100.175781 590.980469 100.910156 595.53125 C 101.648438 600.082031 104.496094 603.988281 108.632812 606.054688 L 580.222656 841.847656 L 380.5 1097.40625 L 203.484375 1066.15625 C 198.84375 1065.421875 194.15625 1066.796875 190.847656 1070.109375 L 147.878906 1113.074219 C 144.707031 1116.246094 143.144531 1120.796875 143.789062 1125.253906 C 144.523438 1129.804688 147.1875 1133.710938 151.1875 1135.777344 L 296.957031 1214.269531 L 259.730469 1288.667969 C 256.976562 1294.183594 258.078125 1300.847656 262.445312 1305.167969 C 265.246094 1307.925781 268.878906 1309.304688 272.597656 1309.304688 C 274.757812 1309.304688 276.964844 1308.84375 278.988281 1307.832031 L 353.386719 1270.609375 L 431.878906 1416.378906 C 434.039062 1420.328125 437.945312 1423.085938 442.402344 1423.824219 C 443.09375 1423.914062 443.734375 1423.914062 444.472656 1423.914062 C 448.238281 1423.914062 451.871094 1422.488281 454.628906 1419.777344 L 497.59375 1376.765625 C 500.902344 1373.457031 502.375 1368.769531 501.59375 1364.21875 L 470.34375 1187.109375 L 725.898438 987.386719 L 961.695312 1458.976562 C 963.761719 1463.113281 967.714844 1465.964844 972.21875 1466.699219 C 973 1466.835938 973.734375 1466.882812 974.605469 1466.882812 C 978.375 1466.882812 981.914062 1465.410156 984.671875 1462.699219 L 1042.023438 1405.394531 C 1045.238281 1402.085938 1046.800781 1397.398438 1045.976562 1392.757812 L 939.636719 790.148438 L 1078.328125 651.457031 C 1132.003906 597.828125 1210.449219 437.859375 1170.144531 397.558594 Z" />
+                </svg>
+              </span>
             </a>
             <span class="wa-note">Análise gratuita e sem compromisso</span>
           </div>
