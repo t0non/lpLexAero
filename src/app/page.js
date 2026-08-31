@@ -224,26 +224,7 @@ export default function Home() {
                 Responda algumas perguntas sobre o que aconteceu durante sua viagem. Com base nas informações, fazemos uma análise inicial do seu caso.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "0.95rem", fontWeight: 300 }}>Análise inicial gratuita</span>
-                </div>
-                <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "0.95rem", fontWeight: 300 }}>Processo 100% online</span>
-                </div>
-                <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "0.95rem", fontWeight: 300 }}>Você só paga se ganharmos</span>
-                </div>
-              </div>
+
             </div>
 
             {/* Coluna Direita: Card Interativo */}
