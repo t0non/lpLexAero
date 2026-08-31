@@ -496,7 +496,7 @@ export default function Home() {
                 Experiência jurídica aplicada aos direitos do passageiro aéreo.
               </h2>
             </div>
-            <div className="kareline__photo-editorial" style={{ transform: "scale(0.85)", transformOrigin: "bottom center" }}>
+            <div className="kareline__photo-editorial">
               <img
                 src="/kareline-founder-autoridade-vermelho.png"
                 alt="Kareline Staut, advogada especialista em Direito do Passageiro Aéreo e fundadora da LexAero"
