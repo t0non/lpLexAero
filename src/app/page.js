@@ -567,9 +567,10 @@ export default function Home() {
             <div style={{ order: 1, marginBottom: 0, textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
               <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
-                Não deixe seus direitos para depois.
+                Não deixe seus direitos para depois. <br/>
+                <span style={{ color: "var(--lex-gold)" }}>Resolva em 2 minutos.</span>
               </h2>
-              <p style={{ marginBottom: 0 }}>
+              <p style={{ marginBottom: 0, fontSize: "0.875rem", lineHeight: "1.5" }}>
                 Preencha o formulário abaixo para que nossa equipe avalie as circunstâncias do seu caso e entre em contato rapidamente.
               </p>
             </div>
