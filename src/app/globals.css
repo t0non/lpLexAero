@@ -4659,7 +4659,7 @@ section, main, header, footer, nav, article, aside {
     gap: 2rem !important;
   }
   .hero__photo-wrap {
-    display: none !important;
+    display: block !important;
   }
   .hero__left {
     width: 100% !important;

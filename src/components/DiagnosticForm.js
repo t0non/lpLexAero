@@ -94,13 +94,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   const toggle  = (v)    => setMulti(m => m.includes(v) ? m.filter(x => x !== v) : [...m, v]);
 
   const submitLead = () => {
-    const { nome, telefone, email } = leadData;
-    if (!nome.trim() || !telefone.trim() || !email.trim()) {
-      setLeadError("Por favor, preencha todos os campos para ver seu resultado.");
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setLeadError("Informe um e-mail válido.");
+    const { nome, telefone } = leadData;
+    if (!nome.trim() || !telefone.trim()) {
+      setLeadError("Por favor, preencha seu nome e telefone para ver seu resultado.");
       return;
     }
     setLeadError("");
@@ -116,8 +112,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
     const txt =
       "Olá! Fiz o diagnóstico no site LexAero.\n\n"
       + "Nome: "        + leadData.nome       + "\n"
-      + "Telefone: "    + leadData.telefone   + "\n"
-      + "E-mail: "      + leadData.email      + "\n\n"
+      + "Telefone: "    + leadData.telefone   + "\n\n"
       + "Problema: "    + formData.problem    + "\n"
       + "Quando: "      + formData.period     + "\n"
       + "Detalhes: "    + formData.detail     + "\n"
@@ -484,20 +479,6 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
                   value={leadData.telefone}
                   onChange={e => setLeadData(d => ({ ...d, telefone: e.target.value }))}
                   autoComplete="tel"
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, color: "#374151", marginBottom: "0.4rem", letterSpacing: "0.02em" }}>
-                  E-mail
-                </label>
-                <input
-                  className="lead-input"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={leadData.email}
-                  onChange={e => setLeadData(d => ({ ...d, email: e.target.value }))}
-                  autoComplete="email"
                 />
               </div>
             </div>
