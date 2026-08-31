@@ -136,25 +136,16 @@ export default function DiagnosticForm({ initialProblem = null }) {
         <div style={{ paddingBottom: '1rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
             {[
-              { label: "Voo Atrasado ou Cancelado", color: "#60a5fa", icon: <img src="/icone-voo-atrasado.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
-              { label: "Bagagem Extraviada", color: "#fbbf24", icon: <img src="/icone-bagagem.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
-              { label: "Overbooking", color: "#f87171", icon: <img src="/icone-overbooking.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
-              { label: "Conexão Perdida", color: "#a78bfa", icon: <img src="/icone-perda-conexao.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> }
+              { label: "Voo Atrasado ou Cancelado", icon: <img src="/icone-voo-atrasado.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
+              { label: "Bagagem Extraviada", icon: <img src="/icone-bagagem.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
+              { label: "Overbooking", icon: <img src="/icone-overbooking.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
+              { label: "Conexão Perdida", icon: <img src="/icone-perda-conexao.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> }
             ].map((opt) => (
-              <button key={opt.label} onClick={() => advance("problem", opt.label)} style={{
-                display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.25rem 1rem', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--lex-border-dark)', borderRadius: '12px', borderLeft: `4px solid ${opt.color}`, cursor: 'pointer', textAlign: 'left', fontWeight: 500, fontSize: '0.95rem', color: 'var(--lex-white)', transition: 'all 0.2s ease', boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.boxShadow = `0 8px 24px ${opt.color}25`; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = 'var(--lex-gold)'; e.currentTarget.style.background = 'rgba(179, 139, 54, 0.05)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'var(--lex-border-dark)'; e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)'; }}
-              >
-                <div style={{ color: opt.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{opt.icon}</div>
-                {opt.label}
+              <button key={opt.label} onClick={() => advance("problem", opt.label)} className="diag-option">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '1rem' }}>{opt.icon}</div>
+                <span style={{ flex: 1 }}>{opt.label}</span>
               </button>
             ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '2rem', padding: '1rem', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '12px', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
-            <p style={{ color: '#a78bfa', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.35rem', letterSpacing: '-0.02em' }}>Descubra se você tem direito a até R$ 10.000</p>
-            <p style={{ color: 'var(--lex-text-dark-muted)', fontSize: '0.85rem' }}>Análise confidencial. Você só paga se ganhar.</p>
           </div>
         </div>
       )}
