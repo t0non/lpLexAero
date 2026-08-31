@@ -27,7 +27,7 @@ export default function ServiceTemplate({ serviceData }) {
               <div className="hero__ctas">
                 <Link href={diagUrl} className="btn btn--primary">
                   Verificar grátis em 2 minutos
-                  <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
+                  <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" /></span>
                 </Link>
               </div>
 
@@ -301,7 +301,7 @@ export default function ServiceTemplate({ serviceData }) {
           <div style={{ marginTop: "3rem", textAlign: "center" }}>
             <Link href={diagUrl} className="btn btn--primary btn--lg" style={{ display: "inline-flex", padding: "1rem 2rem", fontSize: "1.05rem", fontWeight: "bold", borderRadius: "9999px", alignItems: "center", gap: "0.5rem", whiteSpace: "nowrap" }}>
               Confira se seu caso é elegível!
-              <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
+              <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" /></span>
             </Link>
           </div>
         </div>
@@ -354,7 +354,7 @@ export default function ServiceTemplate({ serviceData }) {
               <div className="kareline-btn-wrap">
                 <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ color: "var(--lex-black)", display: "inline-flex" }}>
                   Analisar meu caso gratuitamente
-                  <span className="btn__icon-circle" aria-hidden="true" style={{ background: "#ffffff", color: "var(--lex-gold)" }}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
+                  <span className="btn__icon-circle" aria-hidden="true" style={{ background: "#ffffff", color: "var(--lex-gold)" }}><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" /></span>
                 </Link>
               </div>
             </div>
@@ -433,7 +433,7 @@ export default function ServiceTemplate({ serviceData }) {
             <div className="cta-banner__btns">
               <Link href={diagUrl} className="btn btn--primary btn--lg" style={{ background: "var(--lex-black)", color: "var(--lex-white)", border: "none", borderRadius: "9999px" }}>
                 {conversion?.finalCtaBtn || "Verificar grátis"}
-                <span className="btn__icon-circle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.2.6.2 1.2.8 1.2h0l6.8 1.9-3.2 3.2-3.1-.9c-.6-.2-1.3.2-1.4.8l-.6 1.7c-.1.5.2 1 .7 1.2l3.8 1.1 1.1 3.8c.2.5.7.8 1.2.7l1.7-.6c.6-.2 1-.9.8-1.5l-.9-3.1 3.2-3.2 1.9 6.8c.1.6.7 1 1.2.8l3.3-1.2c.5-.3.8-.7.7-1.2z"/></svg></span>
+                <span className="btn__icon-circle" aria-hidden="true"><img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" /></span>
               </Link>
             </div>
           </div>
