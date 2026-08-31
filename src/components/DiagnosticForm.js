@@ -243,9 +243,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             <div style={{ display: "flex", alignItems: "center", gap: "0.875rem", marginBottom: "1.5rem" }}>
               <div style={{
                 width: 48, height: 48, borderRadius: "50%", flexShrink: 0,
-                overflow: "hidden", border: "1.5px solid #FCBD26",
+                overflow: "hidden", border: "1.5px solid #FCBD26", background: "#000"
               }}>
-                <img src="/kareline-diagnostico-apresentacao.png" alt="Dra. Kareline" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                <img src="/kareline-hero-confianca.png" alt="Dra. Kareline" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
               </div>
               <div>
                 <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111827" }}>Dra. Kareline Staut</div>
@@ -272,11 +272,6 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               <svg width={19} height={19} viewBox="0 0 24 24" fill="currentColor"><path d={waPath} /></svg>
               Falar com a Dra. Kareline
             </button>
-
-            {/* micro-copy */}
-            <p style={{ textAlign: "center", margin: "0.75rem 0 0", fontSize: "0.72rem", color: "#9ca3af" }}>
-              Gratuito · Sem compromisso
-            </p>
 
           </div>
         </div>
