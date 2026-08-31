@@ -224,152 +224,74 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   /* ── RESULT ── */
   if (showResult) {
+    const waPath = "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z";
     return (
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes res-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-          @keyframes wa-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.35); } 60% { box-shadow: 0 0 0 10px rgba(37,211,102,0); } }
-          .diag-opt:hover:not(.sel) {
-            border-color: #cbd5e1 !important; background: #f8fafc !important;
-            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-          }
-          .diag-opt:active { transform: translateY(0) scale(0.98); }
-          .wa-cta:hover { opacity: 0.92; transform: translateY(-1px); }
-          .wa-cta:active { transform: scale(0.98); }
-          .result-card { animation: res-fade 0.55s cubic-bezier(0.4,0,0.2,1); }
+          @keyframes r-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+          @keyframes wa-ring { 0%,100% { box-shadow:0 0 0 0 rgba(37,211,102,0.3); } 55% { box-shadow:0 0 0 8px rgba(37,211,102,0); } }
+          .diag-opt:hover:not(.sel) { border-color:#cbd5e1!important; background:#f8fafc!important; transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.05)!important; }
+          .diag-opt:active { transform:translateY(0) scale(0.98); }
+          .r-card { animation: r-in 0.45s cubic-bezier(0.4,0,0.2,1); }
+          .r-wa { transition: opacity .18s, transform .18s; }
+          .r-wa:hover { opacity:.88; transform:translateY(-1px); }
+          .r-wa:active { transform:scale(0.98); }
         `}} />
 
-        <div className="result-card" style={{
-          width: "100%", maxWidth: 500,
+        <div className="r-card" style={{
+          width: "100%", maxWidth: 460,
           background: "#fff",
-          borderRadius: 20,
+          borderRadius: 18,
+          border: "1px solid #e5e7eb",
           overflow: "hidden",
-          boxShadow: "0 4px 6px -1px rgba(0,0,0,0.07), 0 20px 50px -10px rgba(0,0,0,0.15)",
-          border: "1px solid #f1f5f9",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08)",
         }}>
 
-          {/* ── Faixa superior sutil ── */}
-          <div style={{
-            height: 4,
-            background: "linear-gradient(90deg, #FCBD26 0%, #f5a623 100%)",
-          }} />
+          {/* acento topo */}
+          <div style={{ height: 3, background: "#FCBD26" }} />
 
-          {/* ── Perfil da advogada ── */}
-          <div style={{
-            padding: "1.75rem 1.75rem 0",
-            display: "flex", alignItems: "center", gap: "1rem",
-          }}>
-            <div style={{
-              width: 56, height: 56, borderRadius: "50%", flexShrink: 0,
-              overflow: "hidden",
-              border: "2px solid #FCBD26",
-              boxShadow: "0 2px 8px rgba(252,189,38,0.25)",
-            }}>
-              <img
-                src="/kareline-diagnostico-apresentacao.png"
-                alt="Dra. Kareline Staut"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
-            <div>
-              <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#111827", lineHeight: 1.2 }}>
-                Dra. Kareline Staut
+          <div style={{ padding: "1.75rem" }}>
+
+            {/* Perfil */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.875rem", marginBottom: "1.5rem" }}>
+              <div style={{
+                width: 48, height: 48, borderRadius: "50%", flexShrink: 0,
+                overflow: "hidden", border: "1.5px solid #FCBD26",
+              }}>
+                <img src="/kareline-diagnostico-apresentacao.png" alt="Dra. Kareline" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
               </div>
-              <div style={{ fontSize: "0.775rem", color: "#6b7280", marginTop: "0.2rem" }}>
-                Especialista em Direito do Passageiro Aéreo
-              </div>
-              {/* Indicador "online" */}
-              <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", marginTop: "0.3rem" }}>
-                <div style={{
-                  width: 7, height: 7, borderRadius: "50%",
-                  background: "#22c55e",
-                  boxShadow: "0 0 0 2px rgba(34,197,94,0.2)",
-                }} />
-                <span style={{ fontSize: "0.72rem", color: "#22c55e", fontWeight: 600 }}>Disponível agora</span>
-              </div>
-            </div>
-          </div>
-
-          {/* ── Mensagem da advogada ── */}
-          <div style={{ padding: "1.25rem 1.75rem 0" }}>
-            {/* aspas decorativas */}
-            <div style={{ fontSize: "3rem", lineHeight: 0.6, color: "#FCBD26", fontFamily: "Georgia, serif", marginBottom: "0.5rem", opacity: 0.6 }}>"</div>
-            <p style={{
-              fontSize: "0.9rem", color: "#374151", lineHeight: 1.7,
-              margin: "0 0 0.35rem", fontStyle: "italic",
-            }}>
-              {leadData.nome.split(" ")[0]}, analisei as informações que você compartilhou
-              e o seu caso tem <strong style={{ color: "#111827", fontStyle: "normal" }}>características que normalmente resultam em indenização</strong>.
-              Quero conversar com você pessoalmente para entender melhor os detalhes
-              e orientar os próximos passos — sem custo.
-            </p>
-            <div style={{ fontSize: "0.78rem", color: "#9ca3af", fontStyle: "normal", marginTop: "0.75rem" }}>
-              — Kareline Staut, OAB/SC
-            </div>
-          </div>
-
-          {/* ── Divisor ── */}
-          <div style={{ margin: "1.25rem 1.75rem", height: 1, background: "#f3f4f6" }} />
-
-          {/* ── Faixa de valor (sem robótico) ── */}
-          <div style={{ padding: "0 1.75rem" }}>
-            <div style={{
-              background: "#fffbeb",
-              border: "1px solid #fde68a",
-              borderRadius: 12,
-              padding: "1rem 1.25rem",
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              gap: "1rem",
-            }}>
               <div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#92400e", marginBottom: "0.25rem" }}>
-                  Potencial de indenização
-                </div>
-                <div style={{ fontSize: "0.82rem", color: "#78350f" }}>
-                  Casos similares ao seu resultaram em
-                </div>
-              </div>
-              <div style={{ textAlign: "right", flexShrink: 0 }}>
-                <div style={{ fontSize: "1.75rem", fontWeight: 900, color: "#b45309", lineHeight: 1, letterSpacing: "-0.02em" }}>
-                  R$ 3–15k
+                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111827" }}>Dra. Kareline Staut</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.2rem" }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
+                  <span style={{ fontSize: "0.72rem", color: "#22c55e", fontWeight: 600 }}>Disponível agora</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* ── CTA WhatsApp ── */}
-          <div style={{ padding: "1.25rem 1.75rem 1.75rem" }}>
-            <button
-              className="wa-cta"
-              onClick={sendWA}
-              style={{
-                display: "flex", alignItems: "center", justifyContent: "center", gap: "0.6rem",
-                width: "100%", padding: "1rem 1.5rem",
-                background: "#25D366", color: "#fff", border: "none",
-                borderRadius: 12, fontSize: "0.975rem", fontWeight: 700, cursor: "pointer",
-                animation: "wa-pulse 2.5s ease infinite",
-                transition: "transform 0.2s, opacity 0.2s",
-                letterSpacing: "0.01em",
-              }}
-            >
-              <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-              </svg>
-              Conversar com a Dra. Kareline
+            {/* Mensagem */}
+            <p style={{ fontSize: "0.9rem", color: "#374151", lineHeight: 1.65, margin: "0 0 1.5rem" }}>
+              {leadData.nome.split(" ")[0]}, seu caso tem <strong style={{ color: "#111827" }}>boas chances de indenização</strong>. Casos com perfil similar ao seu costumam resultar em valores entre <strong style={{ color: "#b45309" }}>R$ 3.000 e R$ 15.000</strong>. Posso analisar melhor os detalhes com você — sem custo.
+            </p>
+
+            {/* CTA */}
+            <button className="r-wa" onClick={sendWA} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "0.55rem",
+              width: "100%", padding: "0.9rem",
+              background: "#25D366", color: "#fff", border: "none",
+              borderRadius: 12, fontSize: "0.95rem", fontWeight: 700, cursor: "pointer",
+              animation: "wa-ring 2.5s ease infinite",
+            }}>
+              <svg width={19} height={19} viewBox="0 0 24 24" fill="currentColor"><path d={waPath} /></svg>
+              Falar com a Dra. Kareline
             </button>
 
-            <div style={{
-              textAlign: "center", marginTop: "0.75rem",
-              fontSize: "0.72rem", color: "#9ca3af",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
-            }}>
-              <svg width={11} height={11} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-              </svg>
-              Atendimento gratuito · Sem compromisso
-            </div>
-          </div>
+            {/* micro-copy */}
+            <p style={{ textAlign: "center", margin: "0.75rem 0 0", fontSize: "0.72rem", color: "#9ca3af" }}>
+              Gratuito · Sem compromisso
+            </p>
 
+          </div>
         </div>
       </div>
     );
