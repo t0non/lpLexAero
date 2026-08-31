@@ -30,7 +30,7 @@ const PROBLEM_OPTS = [
 ];
 
 /* ── colour tokens ── */
-const C = {
+const LIGHT = {
   gold:        "#FCBD26",
   goldHover:   "#e0a820",
   goldBg:      "#FFFBEE",
@@ -44,7 +44,22 @@ const C = {
   greenBg:     "#dcfce7",
 };
 
+const DARK = {
+  gold:        "#FCBD26",
+  goldHover:   "#e0a820",
+  goldBg:      "rgba(252,189,38,0.1)",
+  goldBorder:  "rgba(252,189,38,0.3)",
+  text:        "#ffffff",
+  textMuted:   "rgba(255,255,255,0.55)",
+  surface:     "rgba(255,255,255,0.05)",
+  bg:          "transparent",
+  border:      "rgba(255,255,255,0.12)",
+  green:       "#22c55e",
+  greenBg:     "rgba(34,197,94,0.15)",
+};
+
 export default function DiagnosticForm({ initialProblem = null, isEmbedded = false }) {
+  const C = isEmbedded ? DARK : LIGHT;
   const [step,        setStep]        = useState(initialProblem ? 2 : 1);
   const [multi,       setMulti]       = useState([]);
   const [formData,    setFormData]    = useState({
@@ -170,10 +185,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   const cardStyle = {
     width: "100%", maxWidth: 560,
-    background: C.surface,
-    border: "1px solid " + C.border,
-    borderRadius: 20, padding: "2.25rem 2rem",
-    boxShadow: "0 8px 40px rgba(0,0,0,0.07)",
+    background: isEmbedded ? "transparent" : C.surface,
+    border: isEmbedded ? "none" : "1px solid " + C.border,
+    borderRadius: 20, padding: isEmbedded ? "0" : "2.25rem 2rem",
+    boxShadow: isEmbedded ? "none" : "0 8px 40px rgba(0,0,0,0.07)",
   };
 
   /* ── RESULT ── */
