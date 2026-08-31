@@ -268,7 +268,7 @@ export default function ServiceTemplate({ serviceData }) {
             <div className="metodologia__text" style={{ textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
               <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
-                {conversion?.leadCaptureTitle || <>Não deixe seus direitos para depois. <br/> <span style={{ color: "var(--lex-gold)" }}>Resolva em 2 minutos.</span></>}
+                {conversion?.leadCaptureTitle || <>Não deixe seus direitos para depois. <span style={{ color: "var(--lex-gold)" }}>Resolva em 2 minutos.</span></>}
               </h2>
               <p style={{ marginBottom: 0, fontSize: "0.875rem", lineHeight: "1.5" }}>
                 {conversion?.leadCaptureSub || "Preencha o formulário abaixo para que nossa equipe avalie as circunstâncias do seu caso e entre em contato rapidamente."}
@@ -284,7 +284,7 @@ export default function ServiceTemplate({ serviceData }) {
                 loading="lazy"
                 style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom right" }}
               />
-              <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "40%", background: "linear-gradient(to top, var(--lex-black, #111) 0%, transparent 100%)", pointerEvents: "none" }}></div>
+              <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "40%", background: "linear-gradient(to top, var(--lex-black) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>
 
             {/* Formulário — mobile: order 3 */}
