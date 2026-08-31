@@ -1322,8 +1322,17 @@ b {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  /* Quebra o container no desktop */
+  /* Quebra o container no desktop (agora que está na direita, vai colar na borda da tela) */
   margin-right: calc(50% - 50vw);
+}
+
+@media (min-width: 1025px) {
+  .kareline__photo-editorial {
+    order: 2;
+  }
+  .kareline__content {
+    order: 1;
+  }
 }
 
 @media (max-width: 768px) {
