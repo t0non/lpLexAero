@@ -2005,19 +2005,25 @@ b {
   .diag-back {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-2);
-    font-size: 0.8rem;
-    color: var(--lex-text-dark-muted);
-    padding: var(--space-2) 0;
-    margin-top: var(--space-2);
-    background: none;
-    border: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--lex-text);
+    padding: 0.85rem 1.5rem;
+    margin-top: 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    width: 100%;
   }
 
   .diag-back:hover {
-    color: var(--lex-white);
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: var(--lex-black);
   }
 
   .diag-back svg {
