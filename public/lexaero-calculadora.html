@@ -99,7 +99,7 @@ a { color: var(--gold-dark); text-decoration: none; }
 
 /* Progress */
 .progress-wrap { margin-bottom: 1.25rem; }
-.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; position: relative; }
 .progress-label { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
 .progress-track { height: 6px; background: var(--border); border-radius: 100px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 100px; transition: width 0.45s var(--ease); }
@@ -493,7 +493,7 @@ a { color: var(--gold-dark); text-decoration: none; }
         <div class="progress-wrap" id="progress-wrap">
           <div class="progress-top">
             <span class="progress-label" id="progress-label">Etapa 1 de 6</span>
-            <div class="timer-badge" id="timer-badge" style="display:flex; align-items:center; gap:4px; font-size:0.75rem; color:#D94838; font-weight:600; background:rgba(217,72,56,0.1); padding:2px 8px; border-radius:100px;">
+            <div class="timer-badge" id="timer-badge" style="position:absolute; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:4px; font-size:0.75rem; color:#D94838; font-weight:600; background:rgba(217,72,56,0.1); padding:2px 8px; border-radius:100px;">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <span id="timer-display">02:00</span>
             </div>
