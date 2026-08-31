@@ -101,7 +101,8 @@ a { color: var(--gold-dark); text-decoration: none; }
 
 /* Main card */
 .calc-main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 2.5rem 1rem 4rem; }
-.calc-grid { width: 100%; max-width: 980px; display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+.calc-grid { width: 100%; max-width: 680px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; transition: max-width 0.3s var(--ease); }
+.calc-grid.has-result { max-width: 980px; grid-template-columns: 1fr 340px; }
 
 .calc-left {
   display: flex;
@@ -501,13 +502,7 @@ a { color: var(--gold-dark); text-decoration: none; }
       </div>
 
       <!-- RESULT SIDEBAR -->
-      <div class="result-card" id="result-card">
-        <div class="result-empty" id="result-empty">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-          </svg>
-          <p>Responda as perguntas ao lado para ver sua estimativa de indenização.</p>
-        </div>
+      <div class="result-card" id="result-card" style="display:none">
         <div id="result-filled" style="display:none">
           <div class="result-head">
             <div class="result-label">Viabilidade do caso</div>
@@ -739,7 +734,8 @@ function updateResult() {
   state.score = score;
   state.factors = factors;
 
-  document.getElementById('result-empty').style.display = 'none';
+  document.querySelector('.calc-grid').classList.add('has-result');
+  document.getElementById('result-card').style.display = 'block';
   document.getElementById('result-filled').style.display = 'block';
 
   const badge = getBadge(score);
