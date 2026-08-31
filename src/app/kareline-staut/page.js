@@ -58,12 +58,20 @@ export default function KarelinePage() {
 
               <section aria-labelledby="bio-heading" style={{ marginBottom: "3rem" }}>
                 <h2 id="bio-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Resumo profissional</h2>
-                <p style={{ marginBottom: "1rem", color: "var(--lex-text-dark-muted)" }}>
-                  Kareline Staut é advogada e Mestra em Direito, com atuação inteiramente dedicada ao <strong>Direito do Passageiro Aéreo e Direito do Consumidor</strong>. É a fundadora e principal responsável técnica da LexAero, boutique jurídica criada com o propósito de oferecer análise jurídica individualizada para conflitos envolvendo transporte aéreo.
-                </p>
-                <p style={{ color: "var(--lex-text-dark-muted)" }}>
-                  Sua trajetória combina formação acadêmica aprofundada com prática orientada ao passageiro — transformando problemas complexos em orientações jurídicas claras e fundamentadas.
-                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
+                    Kareline Staut é <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>Mestra em Direito</strong>, especialista em <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>Direito do Consumidor e Direito do Passageiro Aéreo</strong>, com anos de experiência na defesa intransigente dos viajantes frente aos abusos das companhias aéreas.
+                  </p>
+                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
+                    Reconhecida por sua atuação estratégica e combativa em casos de <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>atrasos, cancelamentos, overbooking, avarias e extravio de bagagem</strong>, Kareline alia rigor técnico a resultados expressivos nos tribunais.
+                  </p>
+                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
+                    Ao longo de sua trajetória, construiu uma reputação sólida como profissional que une <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>profundo conhecimento jurídico e comunicação clara</strong>, transformando a complexidade da lei em soluções práticas e indenizações justas para quem enfrenta problemas em suas viagens.
+                  </p>
+                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
+                    Sob sua liderança, a LexAero ostenta uma <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>taxa de sucesso superior a 90%</strong>, garantindo que o seu direito seja tratado com a máxima seriedade, agilidade e eficiência. Com <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>indenizações significativas e precedentes relevantes conquistados</strong>, fortalece a cada dia a proteção dos passageiros no Brasil.
+                  </p>
+                </div>
               </section>
 
               <section aria-labelledby="formacao-heading" style={{ marginBottom: "3rem" }}>
