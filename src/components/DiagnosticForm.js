@@ -196,7 +196,13 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   /* ── gold CTA button ── */
   const GoldBtn = ({ children, onClick, disabled }) => (
-    <button onClick={onClick} disabled={disabled} className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center", marginTop: "1rem", opacity: disabled ? 0.5 : 1, cursor: disabled ? "not-allowed" : "pointer" }}>
+    <button onClick={onClick} disabled={disabled} className="btn btn--primary" style={{ 
+      width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center", marginTop: "1rem", 
+      background: disabled ? "#f3f4f6" : "var(--lex-gold)", 
+      color: disabled ? "#9ca3af" : "#111827",
+      cursor: disabled ? "not-allowed" : "pointer",
+      boxShadow: disabled ? "none" : undefined
+    }}>
       {children}
     </button>
   );
