@@ -59,7 +59,7 @@ const DARK = {
 };
 
 export default function DiagnosticForm({ initialProblem = null, isEmbedded = false }) {
-  const C = isEmbedded ? DARK : LIGHT;
+  const C = LIGHT; // always light/white card — embedded uses white card over dark background
   const [step,        setStep]        = useState(initialProblem ? 2 : 1);
   const [multi,       setMulti]       = useState([]);
   const [formData,    setFormData]    = useState({
