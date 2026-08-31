@@ -1322,7 +1322,15 @@ b {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  /* Quebra o container no desktop */
   margin-right: calc(50% - 50vw);
+}
+
+@media (max-width: 768px) {
+  .kareline__photo-editorial {
+    /* No mobile, o margin-right precisa compensar exatos o padding do container */
+    margin-right: calc(-1 * var(--space-5));
+  }
 }
 
 .kareline__photo-editorial img {
