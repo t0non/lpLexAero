@@ -257,15 +257,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             </p>
 
             {/* CTA */}
-            <button className="r-wa" onClick={sendWA} style={{
-              display: "flex", alignItems: "center", justifyContent: "center", gap: "0.55rem",
-              width: "100%", padding: "0.9rem",
-              background: "#25D366", color: "#fff", border: "none",
-              borderRadius: 12, fontSize: "0.95rem", fontWeight: 700, cursor: "pointer",
-              animation: "wa-ring 2.5s ease infinite",
-            }}>
-              <svg width={19} height={19} viewBox="0 0 24 24" fill="currentColor"><path d={waPath} /></svg>
+            <button className="btn btn--primary" onClick={sendWA} style={{ width: "100%", padding: "0.9rem", justifyContent: "center", border: "none" }}>
               Falar com a Dra. Kareline
+              <span className="btn__icon-circle" aria-hidden="true" style={{ background: "#fff", color: "var(--lex-gold)" }}>
+                <img src="/aviao.svg" alt="" style={{ width: '1.2em', height: '1.2em', objectFit: 'contain' }} />
+              </span>
             </button>
 
           </div>
