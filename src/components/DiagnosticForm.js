@@ -417,7 +417,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Houve impactos ou prejuízos adicionais?</h3>
             <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione todas as opções que se aplicam.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem", maxHeight: "240px", overflowY: "auto", paddingRight: "0.5rem" }}>
               {["Perdi compromisso importante", "Gastos com Alimentação", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
@@ -432,7 +432,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.25rem" }}>Você possui documentos do ocorrido?</h3>
             <p style={{ fontSize: "0.9rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem", maxHeight: "240px", overflowY: "auto", paddingRight: "0.5rem" }}>
               {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaração de atraso", "Não tenho documentos"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
