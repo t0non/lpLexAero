@@ -508,13 +508,13 @@ export default function Home() {
 
             {/* Conteúdo */}
             <div className="kareline__content" style={{ position: "relative" }}>
-              <div className="kareline__desktop-header" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
+              <div className="kareline__desktop-header" style={{ position: "relative", zIndex: 2, textAlign: "left" }}>
                 <h2 id="kareline-heading" style={{ marginTop: "0.5rem", marginBottom: "1.5rem" }}>
-                  Experiência jurídica aplicada aos direitos do passageiro aéreo.
+                  Quem irá cuidar do seu processo?
                 </h2>
               </div>
               
-              <div style={{ textAlign: "center", position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div style={{ textAlign: "left", position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
                   Kareline Staut é Mestra em Direito, especialista em Direito do Consumidor e Direito do Passageiro Aéreo, com mais de 7 anos de experiência na defesa dos viajantes frente às companhias aéreas.
                 </p>
@@ -529,7 +529,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div style={{ textAlign: "center", marginTop: "2.5rem", position: "relative", zIndex: 2 }}>
+              <div style={{ textAlign: "left", marginTop: "2.5rem", position: "relative", zIndex: 2 }}>
                 <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ color: "var(--lex-black)", display: "inline-flex" }}>
                   Analisar meu caso gratuitamente
                   <span className="btn__icon-circle" aria-hidden="true" style={{ background: "rgba(0,0,0,0.1)", color: "var(--lex-black)" }}>
