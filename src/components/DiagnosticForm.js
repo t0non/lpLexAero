@@ -215,24 +215,21 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             Cruzamos suas respostas com a <strong>Resolução 400 da ANAC</strong> e identificamos fortes indícios de elegibilidade.
           </p>
           
-          <div className="voucher" style={{ borderRadius: 16, padding: "1.75rem", marginBottom: "2.5rem", boxShadow: "0 10px 25px rgba(252,189,38,0.15)" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
-              <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <div style={{ fontSize: "0.8rem", color: "#8a6800", textTransform: "uppercase", letterSpacing: "1.5px", fontWeight: 800 }}>
-                Estimativa de Indenização
-              </div>
+          <div className="voucher" style={{ borderRadius: 16, padding: "2rem 1.5rem", marginBottom: "2.5rem", boxShadow: "0 10px 25px rgba(252,189,38,0.12)" }}>
+            <div style={{ fontSize: "0.85rem", color: "#8a6800", textTransform: "uppercase", letterSpacing: "1.5px", fontWeight: 800, marginBottom: "0.5rem" }}>
+              Estimativa de Indenização
             </div>
             
-            <div style={{ fontSize: "3.2rem", fontWeight: 900, color: "#b8860b", lineHeight: 1, textShadow: "0 2px 10px rgba(184, 134, 11, 0.2)" }}>
+            <div style={{ fontSize: "3.5rem", fontWeight: 900, color: "#b8860b", lineHeight: 1, textShadow: "0 2px 10px rgba(184, 134, 11, 0.15)" }}>
               <span style={{ fontSize: "1.5rem", verticalAlign: "middle", marginRight: "0.2rem" }}>R$</span>3.000
             </div>
-            <div style={{ fontSize: "1rem", color: "#8a6800", marginTop: "0.5rem", fontWeight: 600 }}>
-              podendo chegar a <strong style={{ color: C.text, fontSize: "1.1rem" }}>R$ 15.000</strong>
+            <div style={{ fontSize: "1.05rem", color: "#8a6800", marginTop: "0.5rem", fontWeight: 600 }}>
+              podendo chegar a <strong style={{ color: C.text, fontSize: "1.15rem" }}>R$ 15.000</strong>
             </div>
           </div>
           
-          <p style={{ fontSize: "0.9rem", color: C.text, fontWeight: 600, marginBottom: "1rem" }}>
-            🟢 Especialista disponível agora para confirmar seu valor:
+          <p style={{ fontSize: "0.95rem", color: C.text, fontWeight: 700, marginBottom: "1.25rem" }}>
+            Especialista disponível agora para confirmar seu valor:
           </p>
           
           <button onClick={sendWA} style={{
@@ -249,8 +246,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             Falar com a Dra. Kareline no WhatsApp
           </button>
           
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginTop: "1.25rem", color: C.textMuted, fontSize: "0.8rem" }}>
-            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div style={{ marginTop: "1.25rem", color: C.textMuted, fontSize: "0.85rem", fontWeight: 500 }}>
             Seus dados estão seguros.
           </div>
         </div>
