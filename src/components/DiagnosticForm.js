@@ -127,63 +127,44 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   };
 
   /* ── shared option component ── */
-  const Opt = ({ label, icon, onClick, sel }) => (
+  const Opt = ({ label, onClick, sel }) => (
     <button onClick={onClick} className={`diag-opt ${sel ? 'sel' : ''}`} style={{
-      display: "flex", alignItems: "center", gap: "1rem",
-      background: sel ? C.goldBg : "#ffffff",
-      border: "2px solid " + (sel ? C.gold : "#f1f5f9"),
-      borderRadius: "16px", padding: "1rem 1.25rem",
-      color: C.text, cursor: "pointer", width: "100%", textAlign: "left",
-      fontSize: "0.95rem", fontWeight: 600, transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-      boxShadow: sel ? "0 4px 14px rgba(252, 189, 38, 0.15)" : "0 2px 4px rgba(0,0,0,0.02)",
+      display: "flex", alignItems: "center", padding: "0.75rem 1rem",
+      border: "1px solid " + (sel ? "var(--lex-gold)" : "var(--lex-border-light)"),
+      borderRadius: "10px", cursor: "pointer", transition: "all 0.2s ease",
+      background: sel ? "var(--lex-gold-bg)" : "var(--lex-white)", margin: 0, width: "100%", textAlign: "left"
     }}>
-      {icon && (
-        <div style={{
-          width: 38, height: 38, borderRadius: "10px", background: sel ? "#fff" : "#f8fafc",
-          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-          border: "1px solid " + (sel ? "rgba(252, 189, 38, 0.2)" : "#f1f5f9")
-        }}>
-          <img src={icon} alt="" width={24} height={24} style={{ objectFit: "contain" }} />
-        </div>
-      )}
-      <span style={{ flex: 1, lineHeight: 1.3 }}>{label}</span>
-      <div style={{
-        width: 20, height: 20, borderRadius: "50%", border: "2px solid " + (sel ? C.gold : "#cbd5e1"),
-        background: sel ? C.gold : "transparent", display: "flex", alignItems: "center", justifyContent: "center",
-        transition: "all 0.2s", flexShrink: 0
+      <div className="diag-radio-inner" style={{ 
+        width: "18px", height: "18px", borderRadius: "50%", 
+        border: "2px solid " + (sel ? "var(--lex-gold)" : "var(--lex-border-mid)"), 
+        marginRight: "0.75rem", position: "relative", transition: "all 0.2s ease", flexShrink: 0
       }}>
-        {sel && (
-          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-        )}
+        {sel && <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "8px", height: "8px", background: "var(--lex-gold)", borderRadius: "50%" }}></div>}
       </div>
+      <span style={{ color: "var(--lex-graphite)", fontSize: "0.9rem", fontWeight: 400, flex: 1 }}>{label}</span>
     </button>
   );
 
   /* ── checkbox option ── */
   const ChkOpt = ({ label, checked, onClick }) => (
     <button onClick={onClick} className={`diag-opt ${checked ? 'sel' : ''}`} style={{
-      display: "flex", alignItems: "center", gap: "1rem",
-      background: checked ? C.goldBg : "#ffffff",
-      border: "2px solid " + (checked ? C.gold : "#f1f5f9"),
-      borderRadius: "16px", padding: "1rem 1.25rem",
-      color: C.text, cursor: "pointer", width: "100%", textAlign: "left",
-      fontSize: "0.95rem", fontWeight: 600, transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-      boxShadow: checked ? "0 4px 14px rgba(252, 189, 38, 0.15)" : "0 2px 4px rgba(0,0,0,0.02)",
+      display: "flex", alignItems: "center", padding: "0.75rem 1rem",
+      border: "1px solid " + (checked ? "var(--lex-gold)" : "var(--lex-border-light)"),
+      borderRadius: "10px", cursor: "pointer", transition: "all 0.2s ease",
+      background: checked ? "var(--lex-gold-bg)" : "var(--lex-white)", margin: 0, width: "100%", textAlign: "left"
     }}>
       <div style={{
-        width: 20, height: 20, borderRadius: "6px", border: "2px solid " + (checked ? C.gold : "#cbd5e1"),
-        background: checked ? C.gold : "transparent", display: "flex", alignItems: "center", justifyContent: "center",
-        transition: "all 0.2s", flexShrink: 0
+        width: 18, height: 18, borderRadius: "4px", border: "2px solid " + (checked ? "var(--lex-gold)" : "var(--lex-border-mid)"),
+        background: checked ? "var(--lex-gold)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center",
+        marginRight: "0.75rem", transition: "all 0.2s ease", flexShrink: 0
       }}>
         {checked && (
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         )}
       </div>
-      <span style={{ flex: 1, lineHeight: 1.3 }}>{label}</span>
+      <span style={{ color: "var(--lex-graphite)", fontSize: "0.9rem", fontWeight: 400, flex: 1 }}>{label}</span>
     </button>
   );
 
@@ -203,23 +184,18 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   /* ── gold CTA button ── */
   const GoldBtn = ({ children, onClick }) => (
-    <button onClick={onClick} style={{
-      display: "flex", alignItems: "center", justifyContent: "center",
-      width: "100%", marginTop: "1.5rem", padding: "1rem",
-      background: C.gold, color: "#000", border: "none",
-      borderRadius: 12, fontSize: "1rem", fontWeight: 700, cursor: "pointer",
-      boxShadow: "0 4px 16px rgba(252,189,38,0.35)", transition: "transform 0.15s",
-    }}>
+    <button onClick={onClick} className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center", marginTop: "1rem" }}>
       {children}
     </button>
   );
 
   const cardStyle = {
-    width: "100%", maxWidth: 560,
-    background: isEmbedded ? "transparent" : C.surface,
-    border: isEmbedded ? "none" : "1px solid " + C.border,
-    borderRadius: 20, padding: isEmbedded ? "0" : "2.25rem 2rem",
-    boxShadow: isEmbedded ? "none" : "0 8px 40px rgba(0,0,0,0.07)",
+    width: "100%", maxWidth: 460,
+    background: "var(--lex-white)",
+    borderRadius: "20px", 
+    padding: "2rem", 
+    boxShadow: isEmbedded ? "none" : "0 20px 40px rgba(0,0,0,0.1)",
+    border: "1px solid var(--lex-border-light)"
   };
 
   /* ── RESULT ── */
@@ -342,31 +318,28 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
         </div>
       )}
 
-      {/* Progress — only on standalone /diagnostico page */}
-      {!isEmbedded && (
-        <div style={{ width: "100%", maxWidth: 560, marginBottom: "1.25rem" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.4rem", fontSize: "0.8rem", color: C.textMuted }}>
-            <span style={{ fontWeight: 600 }}>Etapa {step} de {TOTAL_STEPS}</span>
-            <span style={{ fontWeight: 600 }}>{Math.round(stepPct)}%</span>
-          </div>
-          <div style={{ background: C.border, borderRadius: 6, height: 6, overflow: "hidden" }}>
-            <div style={{ height: "100%", background: C.gold, width: barW, transition: "width 0.4s ease", borderRadius: 6 }} />
-          </div>
-        </div>
-      )}
-
       {/* Card */}
       <div style={cardStyle}>
+        
+        {/* Progress header inside card */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
+          <span style={{ color: "var(--lex-graphite)", fontWeight: 600, fontSize: "0.9rem" }}>Análise do seu voo</span>
+          <span style={{ color: "var(--lex-text-muted)", fontSize: "0.8rem", fontWeight: 500 }}>Etapa {step} de {TOTAL_STEPS}</span>
+        </div>
+        
+        <div style={{ width: "100%", height: "4px", background: "var(--lex-border-light)", borderRadius: "4px", marginBottom: "2rem", overflow: "hidden" }}>
+          <div style={{ width: barW, height: "100%", background: "var(--lex-gold)", borderRadius: "4px", transition: "width 0.4s ease" }}></div>
+        </div>
 
         {step === 1 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "1.25rem" }}>
               Qual problema você enfrentou com o voo?
-            </h2>
+            </h3>
 
-            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1rem" }}>
               {PROBLEM_OPTS.map(o => (
-                <Opt key={o.label} label={o.label} icon={o.icon} sel={formData.problem === o.label} onClick={() => go("problem", o.label)} />
+                <Opt key={o.label} label={o.label} sel={formData.problem === o.label} onClick={() => go("problem", o.label)} />
               ))}
             </div>
           </div>
@@ -374,11 +347,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 2 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Quando aconteceu o problema?</h2>
-            <p style={{ fontSize: "0.85rem", color: "#b8860b", marginBottom: "1.5rem", fontWeight: 500 }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Quando aconteceu o problema?</h3>
+            <p style={{ fontSize: "0.85rem", color: "#b8860b", marginBottom: "1.25rem", fontWeight: 500 }}>
               Atenção: o prazo para reclamar pode estar se esgotando.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {["Nos últimos 7 dias", "Nos últimos 30 dias", "Há alguns meses", "Há mais tempo", "Não sei precisar"].map(o => (
                 <Opt key={o} label={o} sel={formData.period === o} onClick={() => go("period", o)} />
               ))}
@@ -389,9 +362,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 3 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>{step3.q}</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Detalhes ajudam a calcular o potencial de indenização.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>{step3.q}</h3>
+            <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Detalhes ajudam a calcular o potencial de indenização.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {step3.opts.map(o => (
                 <Opt key={o} label={o} sel={formData.detail === o} onClick={() => go("detail", o)} />
               ))}
@@ -402,9 +375,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 4 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>A companhia ofereceu alguma Assistência?</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Alimentação, hotel, transporte, remarcacao...</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>A companhia ofereceu alguma Assistência?</h3>
+            <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Alimentação, hotel, transporte, remarcação...</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {["Sim, ofereceu tudo adequadamente", "Sim, mas de forma parcial ou insuficiente", "Não ofereceu nada", "Não sei informar"].map(o => (
                 <Opt key={o} label={o} sel={formData.assistance === o} onClick={() => go("assistance", o)} />
               ))}
@@ -415,9 +388,9 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 5 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>Houve impactos ou prejuízos adicionais?</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione todas as opções que se aplicam.</p>
-            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Houve impactos ou prejuízos adicionais?</h3>
+            <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione todas as opções que se aplicam.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {["Perdi compromisso importante", "Gastos com Alimentação", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
@@ -429,9 +402,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         {step === 6 && (
           <div>
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>você possui documentos do ocorrido?</h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
-            <div className="diag-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Você possui documentos do ocorrido?</h3>
+            <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
+            <h3 style={{ color: "var(--lex-black)", fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.25rem" }}>Você possui documentos do ocorrido?</h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaração de atraso", "Não tenho documentos"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
@@ -447,41 +422,30 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               .lead-input {
                 width: 100%;
                 padding: 0.9rem 1.1rem;
-                border: 2px solid #f1f5f9;
-                border-radius: 14px;
+                border: 2px solid var(--lex-border-light);
+                border-radius: 12px;
                 font-size: 0.95rem;
-                font-family: inherit;
-                color: #1a1a1a;
-                background: #fff;
                 outline: none;
-                transition: border-color 0.2s, box-shadow 0.2s;
-                box-sizing: border-box;
+                transition: border-color 0.2s;
+                background: var(--lex-white);
+                color: var(--lex-graphite);
               }
-              .lead-input:focus {
-                border-color: #FCBD26;
-                box-shadow: 0 0 0 3px rgba(252,189,38,0.12);
-              }
-              .lead-input::placeholder { color: #94a3b8; }
+              .lead-input:focus { border-color: var(--lex-gold); }
             `}} />
-
-            {/* Header do passo */}
             <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
               <div style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                width: 52, height: 52, borderRadius: "50%",
-                background: "linear-gradient(135deg, #fffbee, #fff3c4)",
-                marginBottom: "0.75rem",
-                boxShadow: "0 4px 16px rgba(252,189,38,0.2)"
+                width: 48, height: 48, background: "var(--lex-gold-bg)", borderRadius: "50%",
+                display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem"
               }}>
-                <svg width={26} height={26} viewBox="0 0 24 24" fill="none" stroke="#FCBD26" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
               </div>
-              <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#1a1a1a", margin: "0 0 0.35rem", lineHeight: 1.2 }}>
+              <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.25rem" }}>
                 Quase lá! Seu resultado está pronto.
-              </h2>
-              <p style={{ fontSize: "0.875rem", color: "#6b7280", margin: 0, lineHeight: 1.5 }}>
-                Informe seus dados para receber a análise <strong style={{ color: "#1a1a1a" }}>gratuita e sem compromisso</strong>.
+              </h3>
+              <p style={{ color: "var(--lex-text-muted)", fontSize: "0.9rem" }}>
+                Para onde devemos enviar os detalhes da sua análise?
               </p>
             </div>
 
