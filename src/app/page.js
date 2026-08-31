@@ -90,8 +90,7 @@ export default function Home() {
             <div className="hero__left">
               <span className="hero__eyebrow">PROBLEMA COM VOO?</span>
               <h1 className="hero__headline">
-                Você pode ter direito a<br />
-                <span className="hero-mobile-nowrap"><span style={{ color: 'var(--lex-gold)' }}>até R$ 10 mil</span> em indenização.</span>
+                Você pode ter direito a <span className="hero-mobile-nowrap"><span style={{ color: 'var(--lex-gold)' }}>até R$ 10 mil</span> em indenização.</span>
               </h1>
               <p className="hero__sub">
                 Atraso, cancelamento, conexão perdida, overbooking ou problema com bagagem?
