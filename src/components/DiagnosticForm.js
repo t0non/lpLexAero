@@ -136,10 +136,10 @@ export default function DiagnosticForm({ initialProblem = null }) {
         <div style={{ paddingBottom: '1rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
             {[
-              { label: "Voo Atrasado ou Cancelado", color: "#60a5fa", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13" /><path d="M22 2 15 22 11 13 2 9 22 2z" /></svg> },
-              { label: "Bagagem Extraviada", color: "#fbbf24", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="8" width="18" height="14" rx="2" ry="2" /><path d="M16 8V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3" /></svg> },
-              { label: "Overbooking", color: "#f87171", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="18" y1="8" x2="23" y2="13" /><line x1="23" y1="8" x2="18" y2="13" /></svg> },
-              { label: "Conexão Perdida", color: "#a78bfa", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg> }
+              { label: "Voo Atrasado ou Cancelado", color: "#60a5fa", icon: <img src="/icone-voo-atrasado.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
+              { label: "Bagagem Extraviada", color: "#fbbf24", icon: <img src="/icone-bagagem.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
+              { label: "Overbooking", color: "#f87171", icon: <img src="/icone-overbooking.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> },
+              { label: "Conexão Perdida", color: "#a78bfa", icon: <img src="/icone-perda-conexao.png" alt="" style={{ width: '28px', height: '28px', objectFit: 'contain' }} /> }
             ].map((opt) => (
               <button key={opt.label} onClick={() => advance("problem", opt.label)} style={{
                 display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.25rem 1rem', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--lex-border-dark)', borderRadius: '12px', borderLeft: `4px solid ${opt.color}`, cursor: 'pointer', textAlign: 'left', fontWeight: 500, fontSize: '0.95rem', color: 'var(--lex-white)', transition: 'all 0.2s ease', boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
