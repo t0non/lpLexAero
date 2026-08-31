@@ -106,8 +106,7 @@ a { color: var(--gold-dark); text-decoration: none; }
 
 /* Main card */
 .calc-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0.5rem 1rem; overflow: hidden; }
-.calc-grid { width: 100%; max-width: 680px; max-height: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; transition: max-width 0.3s var(--ease); }
-.calc-grid.has-result { max-width: 980px; grid-template-columns: 1fr 340px; align-items: stretch; }
+.calc-grid { width: 100%; max-width: 580px; max-height: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; }
 
 .calc-left {
   display: flex;
@@ -466,8 +465,6 @@ a { color: var(--gold-dark); text-decoration: none; }
   .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .result-card { position: static; }
   .options-grid { grid-template-columns: 1fr; }
-  .calc-grid.has-result { grid-template-columns: 1fr; }
-  .result-card { margin-top: 1rem; }
   .hero-title { font-size: 1.25rem; }
   .notice { font-size: 0.7rem; }
 }
@@ -523,45 +520,10 @@ a { color: var(--gold-dark); text-decoration: none; }
               <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
             </svg>
           </span>
-          <span><strong>Aviso legal:</strong> Ferramenta orientativa baseada em jurisprudência. Não é promessa de resultado.</span>
-        </div>
-
-      </div>
-
-      <!-- RESULT SIDEBAR -->
-      <div class="result-card" id="result-card" style="display:none">
-        <div id="result-filled" style="display:none">
-          <div class="result-head">
-            <div class="result-label">Potencial de indenização</div>
-            <div id="result-badge"></div>
-          </div>
-          <div class="result-range">
-            <div class="range-label">Faixa estimada de indenização</div>
-            <div class="range-value" id="range-value">—</div>
-            <div class="range-sub">Valor de danos morais em casos similares</div>
-            <div class="score-wrap">
-              <div class="score-track"><div class="score-fill" id="score-fill" style="width:0%"></div></div>
-              <div class="score-pct" id="score-pct">Score: 0/100</div>
-            </div>
-          </div>
-          <div class="result-factors" id="result-factors">
-            <div class="factors-title">Fatores do seu caso</div>
-            <div id="factors-list"></div>
-          </div>
-          <div class="result-disc">
-            Estimativa baseada em jurisprudência do TJSP e STJ. Não constitui opinião jurídica nem garante resultado.
-          </div>
-          <div class="result-actions">
-            <a class="btn-primary" id="wa-link" href="#" target="_blank">
-              Solicitar análise gratuita
-              <span class="btn-icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1281 1920" preserveAspectRatio="xMidYMid meet">
-                  <path fill="currentColor" d="M 1170.144531 397.558594 C 1129.84375 357.300781 969.78125 435.792969 916.152344 489.46875 L 777.460938 628.160156 L 174.851562 521.820312 C 170.257812 520.992188 165.523438 522.460938 162.214844 525.769531 L 104.957031 583.078125 C 101.691406 586.339844 100.175781 590.980469 100.910156 595.53125 C 101.648438 600.082031 104.496094 603.988281 108.632812 606.054688 L 580.222656 841.847656 L 380.5 1097.40625 L 203.484375 1066.15625 C 198.84375 1065.421875 194.15625 1066.796875 190.847656 1070.109375 L 147.878906 1113.074219 C 144.707031 1116.246094 143.144531 1120.796875 143.789062 1125.253906 C 144.523438 1129.804688 147.1875 1133.710938 151.1875 1135.777344 L 296.957031 1214.269531 L 259.730469 1288.667969 C 256.976562 1294.183594 258.078125 1300.847656 262.445312 1305.167969 C 265.246094 1307.925781 268.878906 1309.304688 272.597656 1309.304688 C 274.757812 1309.304688 276.964844 1308.84375 278.988281 1307.832031 L 353.386719 1270.609375 L 431.878906 1416.378906 C 434.039062 1420.328125 437.945312 1423.085938 442.402344 1423.824219 C 443.09375 1423.914062 443.734375 1423.914062 444.472656 1423.914062 C 448.238281 1423.914062 451.871094 1422.488281 454.628906 1419.777344 L 497.59375 1376.765625 C 500.902344 1373.457031 502.375 1368.769531 501.59375 1364.21875 L 470.34375 1187.109375 L 725.898438 987.386719 L 961.695312 1458.976562 C 963.761719 1463.113281 967.714844 1465.964844 972.21875 1466.699219 C 973 1466.835938 973.734375 1466.882812 974.605469 1466.882812 C 978.375 1466.882812 981.914062 1465.410156 984.671875 1462.699219 L 1042.023438 1405.394531 C 1045.238281 1402.085938 1046.800781 1397.398438 1045.976562 1392.757812 L 939.636719 790.148438 L 1078.328125 651.457031 C 1132.003906 597.828125 1210.449219 437.859375 1170.144531 397.558594 Z" />
-                </svg>
-              </span>
-            </a>
-            <span class="wa-note">Análise gratuita e sem compromisso</span>
-          </div>
+          <span><strong>Aviso legal:</strong> Ferramenta orientativa baseada em jurisprudência.      </div>
+    </div>
+  </div>
+</div>    </div>
         </div>
       </div>
 
@@ -754,38 +716,6 @@ function updateProgress() {
   document.getElementById('progress-label').textContent = state.step < TOTAL_STEPS ? `Etapa ${state.step} de ${TOTAL_STEPS}` : 'Quase lá!';
 }
 
-function updateResult() {
-  if (!state.leadCaptured) return;
-  const { score, factors } = calcScore();
-  state.score = score;
-  state.factors = factors;
-
-  document.querySelector('.calc-grid').classList.add('has-result');
-  document.getElementById('result-card').style.display = 'block';
-  document.getElementById('result-filled').style.display = 'block';
-
-  const badge = getBadge(score);
-  document.getElementById('result-badge').innerHTML = `<span class="badge ${badge.cls}"><span class="badge-dot"></span>${badge.label}</span>`;
-  document.getElementById('range-value').textContent = getRange(score, state.answers);
-  document.getElementById('score-fill').style.width = score + '%';
-  document.getElementById('score-pct').textContent = `Score: ${score}/100`;
-
-  const fl = document.getElementById('factors-list');
-  fl.innerHTML = factors.map(f => `
-    <div class="factor-item">
-      <span class="factor-name">${f.name}</span>
-      <span class="factor-pts ${f.cls}">${f.pts}</span>
-    </div>
-  `).join('');
-
-  // WA link
-  const a = state.answers;
-  const lead = state.lead;
-  const range = getRange(score, a);
-  const msg = encodeURIComponent(`Olá! Realizei o Diagnóstico Preliminar da LexAero e vi minha estimativa.\n\n*Dados do Cliente:*\n- Nome: ${lead.name}\n- WhatsApp: ${lead.phone}${lead.email ? '\n- E-mail: '+lead.email : ''}\n\n*Resumo do caso:*\n- Problema: ${a.problem||'-'}\n- Assistência da cia.: ${a.assistance||'-'}\n- Impactos: ${(a.impact||[]).join(', ')||'nenhum'}\n\n*Resultado orientativo:*\n- Faixa estimada: ${range}\n- Score: ${score}/100`);
-  document.getElementById('wa-link').href = `https://wa.me/5511999999999?text=${msg}`;
-}
-
 function getActiveStep(idx) {
   const st = STEPS[idx];
   if (!st) return null;
@@ -840,7 +770,6 @@ function renderStep(idx) {
   </div>`;
 
   updateProgress();
-  updateResult();
 }
 
 function renderLoading() {
@@ -886,9 +815,6 @@ function renderTeaser() {
 
 function renderSubmit() {
   const card = document.getElementById('form-card');
-  const { score } = calcScore();
-  const range = getRange(score, state.answers);
-
   card.innerHTML = `<div class="fade-up">
     <div style="text-align:center; margin-bottom:1.5rem;">
       <h2 style="font-size:1.35rem; margin-bottom:0.5rem; color:var(--white);">Você está a poucos cliques de conseguir seus direitos!</h2>
@@ -943,19 +869,44 @@ function renderSubmit() {
       Voltar
     </button>
   </div>`;
-
-  updateProgress();
-  updateResult();
 }
 
 function renderDone(name) {
+  const { score } = calcScore();
+  const range = getRange(score, state.answers);
+  const badge = getBadge(score);
+  const a = state.answers;
+  const lead = state.lead;
+  const msg = encodeURIComponent(`Olá! Realizei o Diagnóstico Preliminar da LexAero e vi minha estimativa.\n\n*Dados do Cliente:*\n- Nome: ${lead.name}\n- WhatsApp: ${lead.phone}${lead.email ? '\n- E-mail: '+lead.email : ''}\n\n*Resumo do caso:*\n- Problema: ${a.problem||'-'}\n- Assistência da cia.: ${a.assistance||'-'}\n- Impactos: ${(a.impact||[]).join(', ')||'nenhum'}\n\n*Resultado orientativo:*\n- Faixa estimada: ${range}\n- Score: ${score}/100`);
+
   const card = document.getElementById('form-card');
-  card.innerHTML = `<div class="submitted-wrap fade-up">
-    <div class="submitted-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  card.innerHTML = `<div class="fade-up" style="text-align:center;">
+    <div class="submitted-icon" style="display:inline-flex; width:56px; height:56px; border-radius:50%; background:var(--gold-soft); align-items:center; justify-content:center; color:var(--gold-dark); margin-bottom:1rem;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h2 class="submitted-title">Análise liberada, ${name}!</h2>
-    <p class="submitted-text" style="margin-bottom:1.5rem;">Confira no painel ao lado a estimativa da sua indenização baseada no nosso banco de dados. <strong>Clique no botão amarelo para enviar seu caso para a equipe LexAero</strong>.</p>
+    <h2 style="font-size:1.5rem; margin-bottom:0.5rem; color:var(--white);">Análise liberada, ${name}!</h2>
+    
+    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:var(--r-md); padding:1.5rem; margin:1.5rem 0;">
+      <div style="font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">Potencial de Indenização</div>
+      <div style="margin-bottom:1.5rem;"><span class="badge ${badge.cls}"><span class="badge-dot"></span>${badge.label}</span></div>
+      
+      <div style="font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">Faixa Estimada</div>
+      <div style="font-size:2rem; font-weight:700; color:var(--gold); margin-bottom:0.5rem;">${range}</div>
+      <div style="font-size:0.85rem; color:var(--muted-2); margin-bottom:1.5rem;">Valor em casos similares</div>
+      
+      <div style="height:6px; background:var(--border); border-radius:100px; overflow:hidden; margin-bottom:0.5rem;">
+        <div style="height:100%; background:linear-gradient(90deg, var(--gold), var(--gold-dark)); width:${score}%;"></div>
+      </div>
+      <div style="font-size:0.8rem; color:var(--muted); text-align:right;">Score: ${score}/100</div>
+    </div>
+    
+    <a class="btn-primary" href="https://wa.me/5511999999999?text=${msg}" target="_blank" style="margin-bottom:0.5rem;">
+      Falar com especialista agora
+      <span class="btn-icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1281 1920" preserveAspectRatio="xMidYMid meet" width="16" height="16"><path fill="currentColor" d="M 1170.144531 397.558594 C 1129.84375 357.300781 969.78125 435.792969 916.152344 489.46875 L 777.460938 628.160156 L 174.851562 521.820312 C 170.257812 520.992188 165.523438 522.460938 162.214844 525.769531 L 104.957031 583.078125 C 101.691406 586.339844 100.175781 590.980469 100.910156 595.53125 C 101.648438 600.082031 104.496094 603.988281 108.632812 606.054688 L 580.222656 841.847656 L 380.5 1097.40625 L 203.484375 1066.15625 C 198.84375 1065.421875 194.15625 1066.796875 190.847656 1070.109375 L 147.878906 1113.074219 C 144.707031 1116.246094 143.144531 1120.796875 143.789062 1125.253906 C 144.523438 1129.804688 147.1875 1133.710938 151.1875 1135.777344 L 296.957031 1214.269531 L 259.730469 1288.667969 C 256.976562 1294.183594 258.078125 1300.847656 262.445312 1305.167969 C 265.246094 1307.925781 268.878906 1309.304688 272.597656 1309.304688 C 274.757812 1309.304688 276.964844 1308.84375 278.988281 1307.832031 L 353.386719 1270.609375 L 431.878906 1416.378906 C 434.039062 1420.328125 437.945312 1423.085938 442.402344 1423.824219 C 443.09375 1423.914062 443.734375 1423.914062 444.472656 1423.914062 C 448.238281 1423.914062 451.871094 1422.488281 454.628906 1419.777344 L 497.59375 1376.765625 C 500.902344 1373.457031 502.375 1368.769531 501.59375 1364.21875 L 470.34375 1187.109375 L 725.898438 987.386719 L 961.695312 1458.976562 C 963.761719 1463.113281 967.714844 1465.964844 972.21875 1466.699219 C 973 1466.835938 973.734375 1466.882812 974.605469 1466.882812 C 978.375 1466.882812 981.914062 1465.410156 984.671875 1462.699219 L 1042.023438 1405.394531 C 1045.238281 1402.085938 1046.800781 1397.398438 1045.976562 1392.757812 L 939.636719 790.148438 L 1078.328125 651.457031 C 1132.003906 597.828125 1210.449219 437.859375 1170.144531 397.558594 Z" /></svg>
+      </span>
+    </a>
+    <div style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Análise gratuita e sem compromisso.</div>
   </div>`;
   document.getElementById('progress-wrap').style.display = 'none';
 }
