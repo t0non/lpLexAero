@@ -488,7 +488,7 @@ export default function Home() {
                 alt="Kareline Staut — Análise técnica e individualizada"
                 className="metodologia__photo"
                 loading="lazy"
-                style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom center", transform: "scale(1.15)", transformOrigin: "bottom center" }}
+                style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom center", transform: "scale(1.35)", transformOrigin: "bottom center" }}
               />
               <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "40%", background: "linear-gradient(to top, var(--lex-black) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>
