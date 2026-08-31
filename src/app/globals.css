@@ -1158,8 +1158,8 @@ b {
 /* ── Kareline Section - Escura e Editorial ── */
 .kareline-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-12);
   align-items: center;
 }
 .kareline-grid {
@@ -1327,8 +1327,8 @@ b {
 @media (min-width: 1025px) {
   .kareline__photo-editorial {
     order: 2;
-    /* A coluna começa no centro (mais metade do gap). A distância até a borda direita é exatamente 50vw menos metade do gap */
-    width: calc(50vw - (var(--space-16) / 2));
+    /* A imagem agora ocupa a trilha de 40%, ou seja, vai de 60vw até 100vw, então a largura deve ser de 40vw */
+    width: calc(40vw - (var(--space-12) / 2));
     max-width: none;
     justify-self: start;
     /* Empurra a imagem ainda mais para compensar a margem invisível/transparente que existe dentro do próprio arquivo PNG */
