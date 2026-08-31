@@ -1304,21 +1304,18 @@ b {
 /* Foto editorial — integrada ao fundo escuro */
 .kareline__photo-editorial {
   position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  aspect-ratio: 4/5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .kareline__photo-editorial img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  width: auto;
+  max-width: 100%;
+  height: auto;
   display: block;
   /* funde o fundo preto da imagem com o bg da seção */
   filter: contrast(1.03) brightness(0.97);
-  mask-image: linear-gradient(to right, transparent 0%, black 20%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
 }
 
 .kareline__photo-tag {
@@ -3810,15 +3807,7 @@ body {
 }
 
 
-/* ── KARELINE EDITORIAL MASK FIX ── */
-.kareline__photo-editorial {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
-  mask-image: linear-gradient(to right, transparent 0%, black 15%);
-}
-.kareline-editorial-img {
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-}
+/* ── KARELINE EDITORIAL MASK FIX REMOVED ── */
 
 @media (max-width: 1024px) {
   /* On mobile, remove the horizontal mask which cuts her face */
