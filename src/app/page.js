@@ -566,7 +566,7 @@ export default function Home() {
             {/* Texto */}
             <div className="metodologia__text" style={{ textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
-              <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
+              <h2 id="diff-heading" className="nowrap-desktop" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
                 Não deixe seus direitos para depois.{" "}
                 <span style={{ color: "var(--lex-gold)" }}>Resolva em 2 minutos.</span>
               </h2>

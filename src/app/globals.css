@@ -1172,7 +1172,7 @@ b {
 /* ── Metodologia Section ──────────────────────────────────── */
 .metodologia-section {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 65% 35%;
   grid-template-rows: auto auto;
   gap: var(--space-4) var(--space-12);
   align-items: center;
@@ -3779,6 +3779,12 @@ b {
     border-radius: 12px; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
     border: none;
+  }
+}
+@media (min-width: 1025px) {
+  .nowrap-desktop {
+    white-space: nowrap;
+    font-size: clamp(18px, 2.5vw, 32px) !important;
   }
 }
 
