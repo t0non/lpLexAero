@@ -16,7 +16,7 @@ const STEP3_OPTIONS = {
     q: "O que a companhia ofereceu no momento?",
     opts: ["Ofereceu reacomodação imediata", "Pagou compensação financeira", "Não ofereceu nada", "Ainda estou tentando resolver"],
   },
-  "conexão Perdida": {
+  "Conexão Perdida": {
     q: "Por que você perdeu a conexão?",
     opts: ["Atraso no voo anterior", "Cancelamento no voo anterior", "Demora na alfândega", "Outra razão"],
   },
