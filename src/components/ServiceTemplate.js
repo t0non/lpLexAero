@@ -189,21 +189,15 @@ export default function ServiceTemplate({ serviceData }) {
         <div className="container">
           <div className="kareline-section">
 
-            {/* Foto editorial integrada ao fundo escuro */}
-            <div className="kareline__photo-editorial" style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 15%)"
-            }}>
+            {/* Foto editorial */}
+            <div className="kareline__photo-editorial">
               <img
                 src="/kareline-founder-autoridade-vermelho.png"
                 alt="Kareline Staut, advogada especialista em Direito do Passageiro Aéreo e fundadora da LexAero"
                 className="kareline-editorial-img"
                 loading="lazy"
-                style={{
-                  maskImage: "linear-gradient(to bottom, black 75%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 100%)"
-                }}
               />
+              <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "25%", background: "linear-gradient(to top, var(--lex-black) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>
 
             {/* Conteúdo — sobre fundo escuro */}

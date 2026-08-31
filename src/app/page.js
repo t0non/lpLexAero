@@ -503,6 +503,7 @@ export default function Home() {
                 className="kareline-editorial-img"
                 loading="lazy"
               />
+              <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "25%", background: "linear-gradient(to top, var(--lex-black) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>
 
             {/* Conteúdo */}
