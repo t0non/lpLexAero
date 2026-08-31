@@ -13,28 +13,28 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #0A0A0A;
-  --graphite: #1A1A1A;
-  --surface: #222220;
-  --surface-2: #2C2C2A;
+  --black: #FAFAFA;
+  --graphite: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-2: #F8F9FA;
   --gold: #FCBD26;
   --gold-dark: #C99A1A;
-  --gold-soft: rgba(252,189,38,0.12);
-  --gold-border: rgba(252,189,38,0.25);
-  --white: #FFFFFF;
-  --muted: rgba(255,255,255,0.55);
-  --muted-2: rgba(255,255,255,0.35);
-  --border: rgba(255,255,255,0.10);
+  --gold-soft: rgba(252,189,38,0.15);
+  --gold-border: rgba(252,189,38,0.35);
+  --white: #1A1A1A;
+  --muted: #666666;
+  --muted-2: #888888;
+  --border: #E5E7EB;
   --green: #3ECA7F;
-  --green-soft: rgba(62,202,127,0.14);
+  --green-soft: rgba(62,202,127,0.15);
   --amber: #FCBD26;
-  --amber-soft: rgba(252,189,38,0.14);
+  --amber-soft: rgba(252,189,38,0.15);
   --red: #F26B5B;
-  --red-soft: rgba(242,107,91,0.14);
+  --red-soft: rgba(242,107,91,0.15);
   --r-sm: 8px;
   --r-md: 14px;
   --r-lg: 20px;
-  --r-xl: 28px;
+  --r-xl: 24px;
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
@@ -50,7 +50,7 @@ body {
 
 h1,h2,h3 { font-weight: 600; line-height: 1.2; color: var(--white); }
 p { color: var(--muted); }
-a { color: var(--gold); text-decoration: none; }
+a { color: var(--gold-dark); text-decoration: none; }
 
 /* ── Layout ── */
 .page {
@@ -59,62 +59,54 @@ a { color: var(--gold); text-decoration: none; }
   flex-direction: column;
 }
 
-.calc-hero {
-  background: linear-gradient(180deg, #0A0A0A 0%, #111110 100%);
-  padding: 2.5rem 1rem 2rem;
+.calc-header {
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
 }
-.logo-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 2rem; }
+.logo-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1.5rem; }
 .logo-wrap img { height: 40px; width: auto; }
 
-.eyebrow {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-}
-
 .hero-title {
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
-.hero-title span { color: var(--gold); }
-.hero-sub { font-size: 0.95rem; color: var(--muted); max-width: 540px; margin: 0 auto 1.75rem; line-height: 1.65; }
+.hero-title span { color: var(--gold-dark); }
 
 /* Notice banner */
 .notice {
   display: inline-flex;
   align-items: flex-start;
-  gap: 10px;
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 0.75rem 1.1rem;
+  padding: 0.75rem 1rem;
   text-align: left;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.55;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
 }
-.notice strong { color: var(--gold); }
-.notice-icon { flex-shrink: 0; color: var(--gold); margin-top: 1px; }
+.notice strong { color: var(--gold-dark); }
+.notice-icon { flex-shrink: 0; color: var(--gold-dark); margin-top: 2px; }
 
 /* Progress */
-.progress-wrap { padding: 1.5rem 1rem 0; max-width: 680px; margin: 0 auto; }
+.progress-wrap { margin-bottom: 2rem; }
 .progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
 .progress-label { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
-.progress-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); border-radius: 100px; transition: width 0.45s var(--ease); }
+.progress-track { height: 6px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 100px; transition: width 0.45s var(--ease); }
 
 /* Main card */
-.calc-main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 1.75rem 1rem 3rem; }
-.calc-grid { width: 100%; max-width: 980px; display: grid; grid-template-columns: 1fr 320px; gap: 1.5rem; align-items: start; }
+.calc-main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 2.5rem 1rem 4rem; }
+.calc-grid { width: 100%; max-width: 980px; display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+
+.calc-left {
+  display: flex;
+  flex-direction: column;
+}
 
 .form-card {
   background: var(--surface);
@@ -122,16 +114,17 @@ a { color: var(--gold); text-decoration: none; }
   border-radius: var(--r-xl);
   padding: 2rem;
   min-height: 380px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .step-question {
-  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   font-weight: 600;
   margin-bottom: 0.5rem;
   line-height: 1.35;
 }
-.step-hint { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
-.step-hint.warn { color: var(--gold); }
+.step-hint { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+.step-hint.warn { color: var(--gold-dark); font-weight: 500; }
 
 /* Option buttons */
 .options-grid {
@@ -153,22 +146,23 @@ a { color: var(--gold); text-decoration: none; }
   gap: 0.85rem;
   width: 100%;
   padding: 0.9rem 1.1rem;
-  background: var(--surface-2);
+  background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--r-md);
   color: var(--white);
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.18s, background 0.18s, transform 0.15s;
+  transition: border-color 0.18s, background 0.18s, transform 0.15s, box-shadow 0.18s;
   line-height: 1.35;
 }
 .opt-btn:hover {
   border-color: var(--gold);
   background: var(--gold-soft);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(252,189,38,0.1);
 }
 .opt-btn:active { transform: translateY(0); }
 .opt-btn.selected {
@@ -182,9 +176,14 @@ a { color: var(--gold); text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gold-soft);
+  background: var(--surface-2);
   border-radius: var(--r-sm);
   font-size: 1.3rem;
+  border: 1px solid var(--border);
+}
+.opt-btn:hover .opt-icon, .opt-btn.selected .opt-icon {
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
 }
 .opt-check {
   width: 20px;
@@ -197,12 +196,13 @@ a { color: var(--gold); text-decoration: none; }
   justify-content: center;
   transition: all 0.15s;
   font-size: 12px;
-  color: var(--black);
-  background: transparent;
+  color: transparent;
+  background: var(--surface);
 }
 .opt-btn.selected .opt-check {
   background: var(--gold);
   border-color: var(--gold);
+  color: #fff;
 }
 
 /* Action buttons */
@@ -214,7 +214,7 @@ a { color: var(--gold); text-decoration: none; }
   width: 100%;
   padding: 0.95rem 1.5rem;
   background: var(--gold);
-  color: var(--black);
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
@@ -222,11 +222,11 @@ a { color: var(--gold); text-decoration: none; }
   border-radius: 100px;
   cursor: pointer;
   transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
-  box-shadow: 0 6px 20px rgba(252,189,38,0.25);
+  box-shadow: 0 4px 14px rgba(252,189,38,0.3);
   text-decoration: none;
   margin-bottom: 0.75rem;
 }
-.btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(252,189,38,0.35); }
+.btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(252,189,38,0.4); }
 .btn-primary:active { transform: translateY(0); }
 .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 
@@ -236,33 +236,34 @@ a { color: var(--gold); text-decoration: none; }
   gap: 0.4rem;
   background: none;
   border: none;
-  color: var(--muted);
+  color: var(--muted-2);
   font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
   padding: 0.5rem 0;
   transition: color 0.15s;
 }
-.btn-back:hover { color: var(--white); }
+.btn-back:hover { color: var(--gold-dark); }
 
 /* Fields */
-.field-group { margin-bottom: 1.1rem; }
-.field-label { display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.4rem; }
+.field-group { margin-bottom: 1.25rem; }
+.field-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
 .field-label span { font-weight: 400; color: var(--muted-2); }
 .field-input {
   width: 100%;
-  padding: 0.85rem 1rem;
-  background: var(--surface-2);
+  padding: 0.9rem 1rem;
+  background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--r-md);
   color: var(--white);
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.18s;
+  transition: border-color 0.18s, box-shadow 0.18s;
 }
 .field-input::placeholder { color: var(--muted-2); }
-.field-input:focus { border-color: var(--gold); }
+.field-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
 
 .lgpd-label {
   display: flex;
@@ -271,7 +272,7 @@ a { color: var(--gold); text-decoration: none; }
   font-size: 0.75rem;
   color: var(--muted);
   line-height: 1.55;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 .lgpd-label input[type="checkbox"] {
@@ -288,19 +289,19 @@ a { color: var(--gold); text-decoration: none; }
   justify-content: center;
   gap: 1.5rem;
   margin-top: 0.75rem;
-  opacity: 0.65;
 }
-.trust-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; color: var(--muted); }
+.trust-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; color: var(--muted); font-weight: 500; }
 
 .disclaimer {
   font-size: 0.72rem;
   color: var(--muted-2);
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   line-height: 1.5;
   padding: 0.75rem;
-  background: rgba(255,255,255,0.03);
+  background: var(--surface-2);
   border-radius: var(--r-sm);
+  border: 1px solid var(--border);
 }
 .disclaimer strong { color: var(--muted); }
 
@@ -312,6 +313,7 @@ a { color: var(--gold); text-decoration: none; }
   position: sticky;
   top: 1.5rem;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
 .result-empty {
@@ -319,8 +321,8 @@ a { color: var(--gold); text-decoration: none; }
   text-align: center;
   color: var(--muted-2);
 }
-.result-empty svg { margin-bottom: 0.75rem; opacity: 0.3; }
-.result-empty p { font-size: 0.82rem; }
+.result-empty svg { margin-bottom: 0.75rem; opacity: 0.5; color: var(--muted-2); }
+.result-empty p { font-size: 0.85rem; }
 
 .result-head {
   padding: 1.25rem 1.5rem;
@@ -332,18 +334,18 @@ a { color: var(--gold); text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   padding: 5px 10px;
   border-radius: 100px;
 }
-.badge-dot { width: 7px; height: 7px; border-radius: 50%; }
-.badge-alta { background: var(--green-soft); color: var(--green); }
-.badge-alta .badge-dot { background: var(--green); }
-.badge-media { background: var(--amber-soft); color: var(--amber); }
-.badge-media .badge-dot { background: var(--amber); }
-.badge-baixa { background: var(--red-soft); color: var(--red); }
-.badge-baixa .badge-dot { background: var(--red); }
+.badge-dot { width: 8px; height: 8px; border-radius: 50%; }
+.badge-alta { background: var(--green-soft); color: #2E9B60; }
+.badge-alta .badge-dot { background: #2E9B60; }
+.badge-media { background: var(--amber-soft); color: var(--gold-dark); }
+.badge-media .badge-dot { background: var(--gold-dark); }
+.badge-baixa { background: var(--red-soft); color: #D94838; }
+.badge-baixa .badge-dot { background: #D94838; }
 
 .result-range {
   padding: 1.25rem 1.5rem;
@@ -351,13 +353,13 @@ a { color: var(--gold); text-decoration: none; }
   text-align: center;
 }
 .range-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 0.4rem; }
-.range-value { font-size: 1.7rem; font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 0.25rem; }
+.range-value { font-size: 1.7rem; font-weight: 700; color: var(--gold-dark); line-height: 1.1; margin-bottom: 0.25rem; }
 .range-sub { font-size: 0.7rem; color: var(--muted-2); }
 
-.score-wrap { margin: 0.75rem 0 0.25rem; }
-.score-track { height: 7px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
-.score-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); border-radius: 100px; transition: width 0.6s var(--ease); }
-.score-pct { font-size: 0.72rem; color: var(--muted-2); text-align: right; margin-top: 0.25rem; }
+.score-wrap { margin: 1rem 0 0.25rem; }
+.score-track { height: 7px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.score-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 100px; transition: width 0.6s var(--ease); }
+.score-pct { font-size: 0.72rem; color: var(--muted-2); text-align: right; margin-top: 0.3rem; font-weight: 500; }
 
 .result-factors { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
 .factors-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 0.75rem; }
@@ -366,41 +368,41 @@ a { color: var(--gold); text-decoration: none; }
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 0.45rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px dashed var(--border);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 .factor-item:last-child { border-bottom: none; }
-.factor-name { color: rgba(255,255,255,0.8); }
-.factor-pts { font-weight: 700; font-size: 0.75rem; }
-.pts-pos { color: var(--green); }
-.pts-neg { color: var(--red); }
-.pts-gate { color: var(--red); font-weight: 700; }
+.factor-name { color: var(--muted); }
+.factor-pts { font-weight: 700; font-size: 0.78rem; }
+.pts-pos { color: #2E9B60; }
+.pts-neg { color: #D94838; }
+.pts-gate { color: #D94838; font-weight: 700; }
 
-.result-disc { padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.7rem; color: var(--muted-2); line-height: 1.5; }
+.result-disc { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.72rem; color: var(--muted-2); line-height: 1.5; }
 
-.result-actions { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.result-actions { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .btn-wa {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.9rem 1.25rem;
+  padding: 0.95rem 1.25rem;
   background: var(--gold);
-  color: var(--black);
+  color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   border-radius: 100px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.18s, transform 0.15s;
-  box-shadow: 0 6px 20px rgba(252,189,38,0.25);
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  box-shadow: 0 4px 14px rgba(252,189,38,0.3);
 }
-.btn-wa:hover { background: var(--gold-dark); transform: translateY(-1px); }
-.wa-note { font-size: 0.68rem; color: var(--muted-2); text-align: center; }
+.btn-wa:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(252,189,38,0.4); }
+.wa-note { font-size: 0.7rem; color: var(--muted-2); text-align: center; }
 
 /* ── Submitted state ── */
 .submitted-wrap {
@@ -420,32 +422,34 @@ a { color: var(--gold); text-decoration: none; }
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--green);
+  color: #2E9B60;
 }
-.submitted-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
-.submitted-text { font-size: 0.88rem; color: var(--muted); line-height: 1.65; max-width: 380px; }
+.submitted-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--white); }
+.submitted-text { font-size: 0.95rem; color: var(--muted); line-height: 1.65; max-width: 380px; }
 
 /* ── Footer ── */
 .calc-footer {
-  background: var(--graphite);
+  background: var(--surface);
   border-top: 1px solid var(--border);
-  padding: 1.25rem 1rem;
+  padding: 1.5rem 1rem;
   text-align: center;
-  font-size: 0.72rem;
-  color: var(--muted-2);
+  font-size: 0.75rem;
+  color: var(--muted);
 }
-.calc-footer a { color: var(--muted-2); }
-.calc-footer strong { color: var(--gold); }
+.calc-footer a { color: var(--gold-dark); font-weight: 500; }
+.calc-footer strong { color: var(--white); font-weight: 600; }
 
 /* ── Responsive ── */
 @media (max-width: 860px) {
-  .calc-grid { grid-template-columns: 1fr; }
+  .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .result-card { position: static; }
   .options-grid { grid-template-columns: 1fr; }
+  .calc-main { padding-top: 1.5rem; }
 }
 @media (max-width: 520px) {
-  .form-card { padding: 1.4rem 1rem; }
-  .hero-title { font-size: 1.35rem; }
+  .form-card { padding: 1.5rem 1rem; }
+  .hero-title { font-size: 1.4rem; }
+  .notice { font-size: 0.7rem; }
 }
 
 /* Animation */
@@ -456,46 +460,49 @@ a { color: var(--gold); text-decoration: none; }
 <body>
 <div class="page">
 
-  <!-- HERO -->
-  <div class="calc-hero">
-    <div class="logo-wrap">
-      <img src="/logo_lexaero.png" alt="LexAero" onerror="this.style.display='none'">
-    </div>
-    <div class="eyebrow">Ferramenta Gratuita</div>
-    <h1 class="hero-title">Diagnóstico Preliminar <span>do seu Caso</span></h1>
-    <p class="hero-sub">Responda algumas perguntas sobre o que aconteceu durante sua viagem. Em minutos você terá uma estimativa orientativa e poderá falar com nossa equipe.</p>
-    <div class="notice">
-      <span class="notice-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </span>
-      <span><strong>Aviso legal:</strong> Esta ferramenta é orientativa e não constitui promessa de resultado. Os valores são estimativas baseadas em jurisprudência. Cada caso deve ser analisado individualmente por um advogado.</span>
-    </div>
-  </div>
-
-  <!-- PROGRESS -->
-  <div class="progress-wrap" id="progress-wrap">
-    <div class="progress-top">
-      <span class="progress-label" id="progress-label">Etapa 1 de 6</span>
-      <span class="progress-label" id="progress-pct">0%</span>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-    </div>
-  </div>
-
   <!-- MAIN -->
   <div class="calc-main">
     <div class="calc-grid">
 
-      <!-- FORM CARD -->
-      <div class="form-card" id="form-card">
-        <!-- Steps injected by JS -->
+      <!-- LEFT COLUMN -->
+      <div class="calc-left">
+        
+        <!-- HEADER -->
+        <div class="calc-header">
+          <div class="logo-wrap">
+            <img src="/logo_lexaero_dark.png" alt="LexAero" onerror="this.src='/logo_lexaero.png'">
+          </div>
+          <h1 class="hero-title">Diagnóstico Preliminar <span>do seu Caso</span></h1>
+          <div class="notice">
+            <span class="notice-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </span>
+            <span><strong>Aviso legal:</strong> Ferramenta orientativa baseada em jurisprudência. Não é promessa de resultado.</span>
+          </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-wrap" id="progress-wrap">
+          <div class="progress-top">
+            <span class="progress-label" id="progress-label">Etapa 1 de 6</span>
+            <span class="progress-label" id="progress-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="form-card" id="form-card">
+          <!-- Steps injected by JS -->
+        </div>
+
       </div>
 
       <!-- RESULT SIDEBAR -->
       <div class="result-card" id="result-card">
         <div class="result-empty" id="result-empty">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
           </svg>
           <p>Responda as perguntas ao lado para ver sua estimativa de indenização.</p>
@@ -781,7 +788,7 @@ function renderStep(idx) {
   } else if (st.type === 'list') {
     optHTML = `<div class="options-list">` + st.options.map(o => `
       <button class="opt-btn" onclick="pickSingle('${st.id}','${o.value}')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
         ${o.label}
       </button>
     `).join('') + `</div>`;
@@ -797,7 +804,7 @@ function renderStep(idx) {
   }
 
   const backBtn = idx > 0 ? `<button class="btn-back" onclick="goBack()">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Voltar
   </button>` : '';
 
@@ -819,11 +826,11 @@ function renderSubmit() {
 
   card.innerHTML = `<div class="fade-up">
     <div style="text-align:center; margin-bottom:1.5rem;">
-      <div class="submitted-icon" style="display:inline-flex; width:56px; height:56px; border-radius:50%; background:var(--gold-soft); align-items:center; justify-content:center; color:var(--gold); margin-bottom:1rem;">
+      <div class="submitted-icon" style="display:inline-flex; width:56px; height:56px; border-radius:50%; background:var(--gold-soft); align-items:center; justify-content:center; color:var(--gold-dark); margin-bottom:1rem;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h2 style="font-size:1.25rem; margin-bottom:0.5rem;">Tudo pronto para sua análise</h2>
-      <p style="font-size:0.88rem; color:var(--muted); max-width:360px; margin:0 auto; line-height:1.65;">Informe seus dados para nossa equipe entrar em contato com a análise individualizada do seu caso.</p>
+      <h2 style="font-size:1.35rem; margin-bottom:0.5rem; color:var(--white);">Tudo pronto para sua análise</h2>
+      <p style="font-size:0.9rem; color:var(--muted); max-width:360px; margin:0 auto; line-height:1.65;">Informe seus dados para nossa equipe entrar em contato com a análise individualizada do seu caso.</p>
     </div>
 
     <form onsubmit="handleSubmit(event)">
@@ -852,15 +859,15 @@ function renderSubmit() {
 
     <div class="trust-row">
       <span class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         100% Seguro
       </span>
       <span class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Sigilo Absoluto
       </span>
       <span class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
         Gratuito
       </span>
     </div>
@@ -869,8 +876,8 @@ function renderSubmit() {
       <strong>Diagnóstico apenas orientativo.</strong> O resultado não constitui opinião jurídica nem promessa de resultado. Cada caso é analisado individualmente pela equipe LexAero.
     </div>
 
-    <button class="btn-back" onclick="goBack()" style="margin-top:0.75rem;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <button class="btn-back" onclick="goBack()" style="margin-top:1rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Voltar
     </button>
   </div>`;
@@ -887,7 +894,7 @@ function renderDone(name) {
     </div>
     <h2 class="submitted-title">Diagnóstico enviado, ${name}!</h2>
     <p class="submitted-text" style="margin-bottom:1.5rem;">A LexAero entrará em contato em breve pelo WhatsApp para a análise individualizada do seu caso.</p>
-    <a href="/" class="btn-primary" style="width:auto; padding:0.85rem 2rem;">← Voltar ao site</a>
+    <a href="/" class="btn-primary" style="width:auto; padding:0.95rem 2.5rem; display: inline-flex;">← Voltar ao site</a>
   </div>`;
   document.getElementById('progress-wrap').style.display = 'none';
 }
