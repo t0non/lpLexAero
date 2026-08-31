@@ -562,9 +562,9 @@ export default function Home() {
       {/* ── CAPTURA DE LEADS (Substitui Metodologia) ───────── */}
       <section className="section bg-dark" aria-labelledby="diff-heading" style={{ paddingTop: "3rem" }}>
         <div className="container">
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          <div className="metodologia-section">
             {/* Texto */}
-            <div style={{ order: 1, marginBottom: 0, textAlign: "center" }}>
+            <div className="metodologia__text" style={{ textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
               <h2 id="diff-heading" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
                 Não deixe seus direitos para depois. <br/>
@@ -576,7 +576,7 @@ export default function Home() {
             </div>
 
             {/* Foto */}
-            <div style={{ order: 2, marginTop: "-2rem", display: "flex", justifyContent: "center", alignItems: "flex-end", position: "relative" }}>
+            <div className="metodologia__photo-wrap" style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", position: "relative" }}>
               <img
                 src="/kareline-metodologia-seriedade.png"
                 alt="Kareline Staut — Análise técnica e individualizada"
@@ -588,7 +588,7 @@ export default function Home() {
             </div>
 
             {/* Formulário */}
-            <div style={{ order: 3, width: "100%" }}>
+            <div className="metodologia__form">
               <LeadCaptureForm />
             </div>
           </div>
