@@ -4,9 +4,8 @@ import Link from "next/link";
 
 
 const NAV_LINKS = [
-  { label: "Áreas de Atuação", href: "/direito-do-passageiro-aereo" },
+  { label: "Áreas de Atuação", href: "/#servicos" },
   { label: "A Especialista", href: "/kareline-staut" },
-  { label: "Calculadora", href: "/diagnostico" },
 ];
 
 export default function Header() {
