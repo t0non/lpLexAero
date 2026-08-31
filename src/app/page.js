@@ -5,6 +5,7 @@ import AnimatedNumber from "@/components/AnimatedNumber";
 import AnimatedPlane from "@/components/AnimatedPlane";
 import { blogPosts } from "@/data/blogData";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import DiagnosticForm from "@/components/DiagnosticForm";
 
 export const metadata = {
   title: "LexAero | Voo Atrasado ou Cancelado? Conheça Seus Direitos",
@@ -218,69 +219,22 @@ export default function Home() {
               <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
                 FERRAMENTA DE ANÁLISE
               </span>
-              <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "1rem" }}>
+              <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: 0 }}>
                 Descubra em 2 minutos se o seu caso pode gerar indenização
               </h2>
-              <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "1rem", lineHeight: 1.6, marginBottom: "2rem" }}>
-                Responda algumas perguntas sobre o que aconteceu durante sua viagem. Com base nas informações, fazemos uma análise inicial do seu caso.
-              </p>
-
-
             </div>
 
-            {/* Coluna Direita: Card Interativo */}
-            <div style={{ flex: "1 1 350px", maxWidth: "420px", width: "100%", margin: "0 auto" }}>
+            {/* Coluna Direita: Diagnóstico Embutido */}
+            <div style={{ flex: "1 1 380px", maxWidth: "480px", width: "100%", margin: "0 auto" }}>
               <div style={{ 
-                background: "rgba(255, 255, 255, 0.85)", 
+                background: "rgba(15, 20, 35, 0.85)", 
                 borderRadius: "20px", 
                 padding: "2rem", 
-                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                border: "1px solid rgba(255,255,255,0.4)"
+                boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+                border: "1px solid rgba(252, 189, 38, 0.2)",
+                backdropFilter: "blur(10px)"
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
-                  <span style={{ color: "var(--lex-graphite)", fontWeight: 600, fontSize: "0.9rem" }}>Análise do seu voo</span>
-                  <span style={{ color: "var(--lex-text-muted)", fontSize: "0.8rem", fontWeight: 500 }}>Etapa 1 de 4</span>
-                </div>
-                
-                {/* Barra de progresso */}
-                <div style={{ width: "100%", height: "4px", background: "var(--lex-border-light)", borderRadius: "4px", marginBottom: "2rem", overflow: "hidden" }}>
-                  <div style={{ width: "25%", height: "100%", background: "var(--lex-gold)", borderRadius: "4px" }}></div>
-                </div>
-
-                <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "1.25rem" }}>
-                  O que aconteceu com seu voo?
-                </h3>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "2rem" }}>
-                  {["Voo atrasado", "Voo cancelado", "Bagagem extraviada", "Overbooking"].map((option, idx) => (
-                    <div key={idx} style={{ position: "relative" }}>
-                      <input type="radio" id={`diag-issue-${idx}`} name="flight_issue" value={option} className="diag-radio" style={{ display: "none" }} />
-                      <label htmlFor={`diag-issue-${idx}`} className="diag-option-card" style={{ 
-                        display: "flex", 
-                        alignItems: "center", 
-                        padding: "0.75rem 1rem", 
-                        border: "1px solid var(--lex-border-light)", 
-                        borderRadius: "10px", 
-                        cursor: "pointer",
-                        transition: "all 0.2s ease",
-                        background: "var(--lex-white)",
-                        margin: 0
-                      }}>
-                        <div className="diag-radio-inner" style={{ width: "18px", height: "18px", borderRadius: "50%", border: "2px solid var(--lex-border-mid)", marginRight: "0.75rem", position: "relative", transition: "all 0.2s ease" }}></div>
-                        <span style={{ color: "var(--lex-graphite)", fontSize: "0.9rem", fontWeight: 400 }}>{option}</span>
-                      </label>
-                    </div>
-                  ))}
-                </div>
-
-                <Link href="/diagnostico" className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center" }}>
-                  Continuar
-                </Link>
-                <div style={{ textAlign: "center", marginTop: "0.75rem" }}>
-                  <span style={{ color: "var(--lex-text-muted)", fontSize: "0.75rem", display: "block" }}>
-                    Leva menos de 2 minutos • Análise inicial gratuita
-                  </span>
-                </div>
+                <DiagnosticForm />
               </div>
             </div>
 
