@@ -217,7 +217,7 @@ export default function Home() {
               <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
                 FERRAMENTA DE ANÁLISE
               </span>
-              <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 300, lineHeight: 1.2, marginBottom: "1rem" }}>
+              <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "1rem" }}>
                 Descubra em 2 minutos se o seu caso pode gerar indenização
               </h2>
               <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "1rem", lineHeight: 1.6, marginBottom: "2rem" }}>
