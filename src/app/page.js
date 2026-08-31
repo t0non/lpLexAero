@@ -644,7 +644,7 @@ export default function Home() {
               <article key={post.slug} className="blog-card">
                 <div className="blog-card__image-wrap" style={{ height: 180, position: 'relative' }}>
                   <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <span className="blog-card__category" style={{ position: 'absolute', top: 16, left: 16, zIndex: 1 }}>{post.category}</span>
+
                 </div>
                 <div className="blog-card__body">
                   <div className="blog-card__meta">
