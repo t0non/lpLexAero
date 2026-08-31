@@ -488,6 +488,10 @@ a { color: var(--gold-dark); text-decoration: none; }
         <div class="progress-wrap" id="progress-wrap">
           <div class="progress-top">
             <span class="progress-label" id="progress-label">Etapa 1 de 6</span>
+            <div class="timer-badge" id="timer-badge" style="display:flex; align-items:center; gap:4px; font-size:0.75rem; color:#D94838; font-weight:600; background:rgba(217,72,56,0.1); padding:2px 8px; border-radius:100px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="timer-display">02:00</span>
+            </div>
             <span class="progress-label" id="progress-pct">0%</span>
           </div>
           <div class="progress-track">
@@ -955,6 +959,17 @@ function handleSubmit(e) {
   updateResult();
   renderDone(name.split(' ')[0]);
 }
+
+// ── Timer ──
+let timeLeft = 120;
+const timerDisplay = document.getElementById('timer-display');
+setInterval(() => {
+  if (timeLeft <= 0) return;
+  timeLeft--;
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  if(timerDisplay) timerDisplay.textContent = `0${m}:${s < 10 ? '0' : ''}${s}`;
+}, 1000);
 
 // ── Init ──
 renderStep(0);
