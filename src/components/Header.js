@@ -4,12 +4,9 @@ import Link from "next/link";
 import SmartFloatingCTA from "./SmartFloatingCTA";
 
 const NAV_LINKS = [
-  { label: "Direito do Passageiro", href: "/direito-do-passageiro-aereo" },
-  { label: "Problemas com Voo", href: "/direito-do-passageiro-aereo" },
-  { label: "Central de Direitos", href: "/central-de-direitos" },
-  { label: "Kareline Staut", href: "/kareline-staut" },
-  { label: "Blog", href: "/blog" },
-  { label: "Calculadora", href: "/calculadora" },
+  { label: "Áreas de Atuação", href: "/direito-do-passageiro-aereo" },
+  { label: "A Especialista", href: "/kareline-staut" },
+  { label: "Calculadora", href: "/diagnostico" },
 ];
 
 export default function Header() {
