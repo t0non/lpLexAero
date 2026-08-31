@@ -1328,8 +1328,8 @@ b {
 
 @media (max-width: 768px) {
   .kareline__photo-editorial {
-    /* No mobile, o margin-right precisa compensar exatos o padding do container */
     margin-right: calc(-1 * var(--space-5));
+    transform: translateX(15%);
   }
 }
 
