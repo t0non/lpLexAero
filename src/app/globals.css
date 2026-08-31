@@ -1332,7 +1332,7 @@ b {
     max-width: none;
     justify-self: start;
     /* Empurra a imagem ainda mais para compensar a margem invisível/transparente que existe dentro do próprio arquivo PNG */
-    transform: translateX(8%);
+    transform: translateX(18%);
   }
   .kareline__content {
     order: 1;
