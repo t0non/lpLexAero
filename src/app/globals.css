@@ -506,6 +506,16 @@ b {
 }
 
 /* ── Header ───────────────────────────────────────────────── */
+.topbar-desktop {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .topbar-desktop {
+    display: none !important;
+  }
+}
+
 .site-header {
   position: sticky;
   top: 0;
