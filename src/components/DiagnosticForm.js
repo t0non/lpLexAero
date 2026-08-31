@@ -112,14 +112,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
       boxShadow: sel ? "0 0 0 3px " + C.goldBg : "none",
     }}>
       {icon && (
-        <span style={{
-          width: 40, height: 40, flexShrink: 0, borderRadius: 10,
-          background: sel ? C.goldBg : "#f3f4f6",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          border: "1px solid " + (sel ? C.goldBorder : "transparent"),
-        }}>
-          <img src={icon} alt="" width={26} height={26} style={{ objectFit: "contain" }} />
-        </span>
+        <img src={icon} alt="" width={30} height={30} style={{ objectFit: "contain", flexShrink: 0 }} />
       )}
       <span style={{ flex: 1 }}>{label}</span>
       {sel && (
@@ -275,9 +268,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
       {/* Header (only on standalone page) */}
       {!isEmbedded && (
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <div style={{ display: "inline-flex", background: C.goldBg, padding: "0.6rem 1.2rem", borderRadius: 100, marginBottom: "1rem", border: "1px solid " + C.goldBorder }}>
-            <span style={{ fontSize: "0.8rem", color: "#8a6800", fontWeight: 600, letterSpacing: "0.05em" }}>ANALISE GRATUITA</span>
-          </div>
+
           <h1 style={{ fontSize: "clamp(1.5rem,4vw,2rem)", fontWeight: 800, color: C.text, margin: "0 0 0.25rem" }}>
             Descubra quanto voce pode <span style={{ color: C.gold }}>ganhar!</span>
           </h1>
@@ -310,9 +301,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             <h2 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.4rem", color: C.text }}>
               Qual problema voce enfrentou com o voo?
             </h2>
-            <p style={{ fontSize: "0.85rem", color: C.textMuted, marginBottom: "1.5rem" }}>
-              <span style={{ color: "#8a6800", fontWeight: 600 }}>Analise gratuita</span> — descubra se voce tem direito a indenizacao.
-            </p>
+
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.85rem" }}>
               {PROBLEM_OPTS.map(o => (
                 <Opt key={o.label} label={o.label} icon={o.icon} sel={formData.problem === o.label} onClick={() => go("problem", o.label)} />
