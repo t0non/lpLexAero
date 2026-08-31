@@ -1356,7 +1356,7 @@ b {
   }
   .kareline__photo-editorial {
     margin-right: calc(-1 * var(--space-5));
-    margin-top: 1.5rem;
+    margin-top: 3.5rem;
     transform: translateX(15%);
   }
 }
