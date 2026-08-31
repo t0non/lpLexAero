@@ -64,12 +64,12 @@ export default function BlogPage() {
           </div>
 
           {/* CTA ao final */}
-          <div className="blog-cta-box">
-            <div className="blog-cta-box__content">
-              <h2 className="blog-cta-box__title">
+          <div className="blog-cta-box" style={{ textAlign: "left" }}>
+            <div className="blog-cta-box__content" style={{ textAlign: "left" }}>
+              <h2 className="blog-cta-box__title" style={{ textAlign: "left" }}>
                 Passou por algum problema em seu voo?
               </h2>
-              <p>Nossa análise é gratuita e leva menos de 2 minutos.</p>
+              <p style={{ textAlign: "left" }}>Nossa análise é gratuita e leva menos de 2 minutos.</p>
             </div>
             <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ color: "var(--lex-black)" }}>
               Analisar meu caso gratuitamente

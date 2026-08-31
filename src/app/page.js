@@ -185,7 +185,7 @@ export default function Home() {
           muted 
           playsInline 
           className="diag-video-bg"
-          style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+          style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: 0, transform: "scale(1.05)" }}
         >
           <source src="/video_aviao.mp4" type="video/mp4" />
         </video>
@@ -195,7 +195,7 @@ export default function Home() {
             
             {/* Coluna Esquerda: Conteúdo */}
             <div className="diag-col-left">
-              <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
+              <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 500, display: "block", marginBottom: "0.75rem" }}>
                 FERRAMENTA DE ANÁLISE
               </span>
               <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: 0 }}>
@@ -553,9 +553,9 @@ export default function Home() {
           
           {/* Esquerda: Conteúdo Header e Imagem */}
           <div className="central-direitos-image-col">
-            <div className="central-direitos-header">
-              <span className="eyebrow-premium">ENTENDA O SEU CASO</span>
-              <h2 id="content-heading" className="central-direitos-title">Qual foi o problema com o seu voo?</h2>
+            <div className="central-direitos-header" style={{ textAlign: "left" }}>
+              <span className="eyebrow-premium" style={{ fontWeight: 500 }}>ENTENDA O SEU CASO</span>
+              <h2 id="content-heading" className="central-direitos-title" style={{ textAlign: "left" }}>Qual foi o problema com o seu voo?</h2>
               {/* <p className="central-direitos-desc">
                 Entenda seus direitos e saiba como agir em casos de atraso, cancelamento, bagagem extraviada e outros problemas com o voo.
               </p> */}
@@ -593,7 +593,7 @@ export default function Home() {
             </div>
             
             <div className="central-direitos-footer-cta">
-              <Link href="/central-de-direitos" className="btn btn--secondary btn--md" style={{ color: "var(--lex-gold)" }}>
+              <Link href="/outros-problemas" className="btn btn--secondary btn--md" style={{ color: "var(--lex-gold)" }}>
                 Ver todos os problemas
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                   <path d="M5 12h14M12 5l7 7-7 7" />

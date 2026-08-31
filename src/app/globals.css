@@ -255,7 +255,7 @@ b {
 .eyebrow {
   display: inline-block;
   font-size: var(--text-eyebrow);
-  font-weight: var(--font-semibold);
+  font-weight: 500;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   color: var(--lex-gold-dark);
@@ -3009,7 +3009,7 @@ b {
 .eyebrow-premium {
   display: block;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.15em;
   color: var(--lex-gold);
   margin-bottom: 12px;

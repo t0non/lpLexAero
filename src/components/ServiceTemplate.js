@@ -72,7 +72,7 @@ export default function ServiceTemplate({ serviceData }) {
           muted 
           playsInline 
           className="diag-video-bg"
-          style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+          style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: 0, transform: "scale(1.05)" }}
         >
           <source src="/video_aviao.mp4" type="video/mp4" />
         </video>
@@ -82,7 +82,7 @@ export default function ServiceTemplate({ serviceData }) {
             
             {/* Coluna Esquerda: Conteúdo */}
             <div style={{ flex: "1 1 450px", maxWidth: "550px" }}>
-              <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
+              <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 500, display: "block", marginBottom: "0.75rem" }}>
                 FERRAMENTA DE ANÁLISE
               </span>
               <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "1rem" }}>

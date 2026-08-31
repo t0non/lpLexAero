@@ -1,19 +1,18 @@
 import Link from "next/link";
 
 const FOOTER_LINKS = {
-  "Direito do Passageiro": [
-    { label: "Voo Atrasado", href: "/direito-do-passageiro-aereo/voo-atrasado" },
-    { label: "Voo Cancelado", href: "/direito-do-passageiro-aereo/voo-cancelado" },
-    { label: "Perda de Conexão", href: "/direito-do-passageiro-aereo/perda-de-conexao" },
-    { label: "Overbooking", href: "/direito-do-passageiro-aereo/overbooking" },
-    { label: "Extravio de Bagagem", href: "/direito-do-passageiro-aereo/extravio-de-bagagem" },
+  "Direitos do Passageiro": [
+    { label: "Voo Atrasado", href: "/voo-atrasado" },
+    { label: "Voo Cancelado", href: "/voo-cancelado" },
+    { label: "Perda de Conexão", href: "/conexao-perdida" },
+    { label: "Overbooking", href: "/overbooking" },
+    { label: "Extravio de Bagagem", href: "/bagagem" },
+    { label: "Outros Problemas", href: "/outros-problemas" },
   ],
   "Institucional": [
     { label: "Kareline Staut", href: "/kareline-staut" },
-    { label: "Sobre a LexAero", href: "/sobre" },
-    { label: "Central de Direitos", href: "/central-de-direitos" },
-    { label: "Legislação e Jurisprudência", href: "/legislacao" },
-    { label: "Contato", href: "/contato" },
+    { label: "Sobre a LexAero", href: "/kareline-staut" },
+    { label: "Conteúdos", href: "/blog" },
   ],
 };
 
