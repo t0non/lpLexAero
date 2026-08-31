@@ -599,11 +599,11 @@ export default function Home() {
           {/* ── 5 MOTIVOS ── */}
           <div className="benefits-card" style={{ marginTop: "3rem" }}>
             <div className="benefits-card__content">
-              <h2 style={{ color: "var(--lex-white)", marginBottom: "1.5rem", fontSize: "3rem", fontWeight: 300, lineHeight: 1.1 }}>Nós cuidamos de tudo para você!</h2>
+              <h2 style={{ color: "var(--lex-white)", marginBottom: "1.5rem", fontSize: "3rem", fontWeight: 600, lineHeight: 1.1 }}>Nós cuidamos de tudo para você!</h2>
               <p style={{ color: "var(--lex-text-dark-muted)", marginBottom: "2rem", lineHeight: 1.7, fontSize: "1.05rem" }}>
                 Escolher a LexAero é garantir que seus direitos por problemas com voo sejam respeitados sem estresse e sem burocracia.
               </p>
-              <h3 style={{ color: "var(--lex-white)", fontSize: "2.2rem", marginBottom: "1.5rem", fontWeight: 400 }}>5 motivos para <br /> escolher a <span style={{ color: "var(--lex-gold)", fontWeight: 600 }}>LexAero</span>:</h3>
+              <h3 style={{ color: "var(--lex-white)", fontSize: "2.2rem", marginBottom: "1.5rem", fontWeight: 600 }}>5 motivos para <br /> escolher a <span style={{ color: "var(--lex-gold)", fontWeight: 800 }}>LexAero</span>:</h3>
               <ul className="benefits-list">
                 {[
                   "Avaliação grátis em até 2 minutos;",
@@ -621,6 +621,16 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <div style={{ marginTop: "2.5rem" }}>
+                <Link href="/diagnostico" className="btn btn--primary btn--full">
+                  Verificar grátis em 2 minutos
+                  <span className="btn__icon-circle" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.1.5.1 1.1.6 1.4l5.4 3.1-4 4-2.8-.7c-.4-.1-.8.1-1 .5l-.9 1.4c-.2.4 0 .9.4 1.1l4.4 2.2 2.2 4.4c.2.4.7.6 1.1.4l1.4-.9c.4-.2.6-.6.5-1l-.7-2.8 4-4 3.1 5.4c.3.5.9.7 1.4.6l3.3-1.2c.5-.2.8-.6.7-1.1z"/>
+                    </svg>
+                  </span>
+                </Link>
+              </div>
             </div>
             <div className="benefits-card__image-wrap">
               <img src="/img_hero2.png" alt="LexAero" className="benefits-card__image" />
