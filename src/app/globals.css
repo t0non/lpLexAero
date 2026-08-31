@@ -1952,24 +1952,34 @@ b {
   .diag-option {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-4);
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    font-size: 1.05rem;
     font-weight: 500;
+    color: var(--lex-black);
     cursor: pointer;
     transition: all 0.2s ease;
-    width: 100%;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   }
 
   .diag-option:hover {
     border-color: var(--lex-gold);
-    background: rgba(179, 139, 54, 0.05);
-    color: var(--lex-white);
+    background: #fffcf5;
+    color: var(--lex-black);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 16px rgba(179, 139, 54, 0.1);
   }
 
   .diag-option--multi.selected {
     border-color: var(--lex-gold);
-    background: rgba(179, 139, 54, 0.1);
-    color: var(--lex-white);
+    background: #fffcf5;
+    color: var(--lex-black);
   }
 
   .diag-option svg {
