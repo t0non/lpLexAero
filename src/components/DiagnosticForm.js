@@ -271,7 +271,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
             {/* Mensagem */}
             <p style={{ fontSize: "0.9rem", color: "#374151", lineHeight: 1.65, margin: "0 0 1.5rem" }}>
-              {leadData.nome.split(" ")[0]}, seu caso tem <strong style={{ color: "#111827" }}>boas chances de indenização</strong>. Casos com perfil similar ao seu costumam resultar em valores entre <strong style={{ color: "#b45309" }}>R$ 3.000 e R$ 15.000</strong>. Posso analisar melhor os detalhes com você — sem custo.
+              {leadData.nome.split(" ")[0]}, seu caso tem <strong style={{ color: "#111827" }}>boas chances de indenização</strong>. Casos com perfil similar ao seu costumam resultar em valores entre <strong style={{ color: "#b45309" }}>R$ 3.000 e R$ 15.000</strong>. Posso analisar melhor os detalhes com você.
             </p>
 
             {/* CTA */}
