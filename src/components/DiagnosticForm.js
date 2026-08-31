@@ -234,17 +234,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
         <div className="r-card" style={{
           width: "100%", maxWidth: 460,
-          background: "#fff",
-          borderRadius: 18,
-          border: "1px solid #e5e7eb",
-          overflow: "hidden",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08)",
+          animation: "r-in 0.45s cubic-bezier(0.4,0,0.2,1)",
         }}>
 
-          {/* acento topo */}
-          <div style={{ height: 3, background: "#FCBD26" }} />
-
-          <div style={{ padding: "1.75rem" }}>
+          <div style={{ padding: "0.5rem 0" }}>
 
             {/* Perfil */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.875rem", marginBottom: "1.5rem" }}>
