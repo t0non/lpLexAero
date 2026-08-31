@@ -1198,7 +1198,6 @@ b {
   justify-content: flex-end;
   grid-column: 2;
   grid-row: 1 / span 2;
-  margin-right: calc(50% - 50vw);
 }
 
 .metodologia__photo {
@@ -1323,6 +1322,7 @@ b {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-right: calc(50% - 50vw);
 }
 
 .kareline__photo-editorial img {
