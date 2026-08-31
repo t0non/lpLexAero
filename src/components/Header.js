@@ -66,9 +66,10 @@ export default function Header() {
                 </svg>
               </span>
             </Link>
-          {/* Language Switcher */}
-          <div className="header__lang-switcher" style={{ position: "relative", marginLeft: "16px" }} onMouseEnter={(e) => e.currentTarget.lastChild.style.display = 'flex'} onMouseLeave={(e) => e.currentTarget.lastChild.style.display = 'none'}>
-            <button style={{ cursor: 'pointer', fontSize: '1.2rem', padding: '4px 8px', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--lex-text)' }}>
+          </nav>
+
+          <div className="header__lang-switcher" style={{ position: "relative", marginLeft: "auto", marginRight: "16px" }} onMouseEnter={(e) => e.currentTarget.lastChild.style.display = 'flex'} onMouseLeave={(e) => e.currentTarget.lastChild.style.display = 'none'}>
+            <button className="header__lang-btn" style={{ cursor: 'pointer', fontSize: '1.2rem', padding: '4px 8px', background: 'transparent', border: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
               <img src="/bandeira_brasil.webp" alt="Bandeira do Brasil" style={{ width: '22px', height: '15px', objectFit: 'cover', borderRadius: '3px', display: 'block' }} />
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -81,8 +82,6 @@ export default function Header() {
               </button>
             </div>
           </div>
-
-          </nav>
 
           {/* Mobile Toggle */}
           <button 

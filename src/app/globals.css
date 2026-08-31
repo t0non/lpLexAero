@@ -3246,6 +3246,10 @@ b {
     background: var(--lex-white);
   }
 
+  .header__lang-btn {
+    color: var(--lex-white) !important;
+  }
+
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
     height: 100svh;
