@@ -1,8 +1,8 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import HeaderWrapper from "@/components/HeaderWrapper";
+import FooterWrapper from "@/components/FooterWrapper";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -90,9 +90,9 @@ export default function RootLayout({ children }) {
         />
         <Script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" strategy="afterInteractive" />
 
-        <Header />
+        <HeaderWrapper />
         <main id="main-content">{children}</main>
-        <Footer />
+        <FooterWrapper />
 
       </body>
     </html>

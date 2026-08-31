@@ -1889,19 +1889,12 @@ b {
 
   /* ── Diagnostic — Escuro & Persuasivo ───────────────────────────────────── */
   .diag-wrap {
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10, 10, 10, 0.85); /* Fundo escuro semi-transparente */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    min-height: 100vh;
+    background: rgba(10, 10, 10, 0.95); /* Fundo escuro */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--space-6) var(--space-4);
-    z-index: 50;
   }
 
   .diag-card {
@@ -2466,8 +2459,6 @@ b {
     }
 
     .diag-wrap {
-      top: 60px;
-      /* altura do header mobile */
       padding: var(--space-4);
     }
 
