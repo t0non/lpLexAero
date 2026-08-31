@@ -460,14 +460,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               .lead-input:focus { border-color: var(--lex-gold); }
             `}} />
             <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-              <div style={{
-                width: 48, height: 48, background: "var(--lex-gold-bg)", borderRadius: "50%",
-                display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem"
-              }}>
-                <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-              </div>
+
               <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.25rem" }}>
                 Quase lá! Seu resultado está pronto.
               </h3>
