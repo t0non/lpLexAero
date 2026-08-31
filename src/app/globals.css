@@ -1443,7 +1443,7 @@ b {
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    background: conic-gradient(var(--lex-gold) 0% 70%, var(--lex-graphite) 70% 100%);
+    background: conic-gradient(var(--lex-gold) 0% 65%, var(--lex-graphite) 65% 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2879,7 +2879,7 @@ b {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: conic-gradient(from 126deg, var(--lex-graphite) 0% 30%, var(--lex-gold) 30% 100%);
+  background: conic-gradient(from 126deg, var(--lex-graphite) 0% 35%, var(--lex-gold) 35% 100%);
   display: flex;
   align-items: center;
   justify-content: center;

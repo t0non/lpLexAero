@@ -375,7 +375,7 @@ export default function Home() {
             <div className="pricing__content" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
               <h2 id="pricing-heading">Quanto vou pagar para buscar meus direitos?</h2>
               <p>Trabalhamos para o seu sucesso! Se não conseguirmos que sua <strong style={{color: "var(--lex-gold-dark)"}}>indenização por danos morais</strong> por problema com voo seja paga, não cobramos nada pelo nosso serviço.</p>
-              <p>Sem pegadinhas! Se a indenização entrar na sua conta, você paga 30% do valor recebido para a LexAero e fica com 70%.</p>
+              <p>Sem pegadinhas! Se a indenização entrar na sua conta, você paga 35% do valor recebido para a LexAero e fica com 65%.</p>
               <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ marginTop: "1rem" }}>
                 Descubra seu direito agora
                 <span className="btn__icon-circle" aria-hidden="true">
@@ -391,7 +391,7 @@ export default function Home() {
               <div className="pricing__chart-wrapper">
                 <img 
                   src="/grafico.png" 
-                  alt="Gráfico de honorários: 70% para você, 30% para a LexAero"
+                  alt="Gráfico de honorários: 65% para você, 35% para a LexAero"
                   className="pricing-donut-img" 
                   style={{ width: "100%", maxWidth: "400px", height: "auto", display: "block", margin: "0 auto" }} 
                 />
@@ -404,7 +404,7 @@ export default function Home() {
                 </div>
                 <div className="legend-item">
                   <span className="legend-dot dot-graphite"></span>
-                  <p>A LexAero fica com 30% após a resolução do caso</p>
+                  <p>A LexAero fica com 35% após a resolução do caso</p>
                 </div>
               </div>
             </div>

@@ -76,6 +76,129 @@ export default function ServiceTemplate({ serviceData }) {
       {/* ── DEPOIMENTOS ── */}
       <Testimonials />
 
+            <section className="section video-cta-section" aria-labelledby="diag-heading" style={{ position: "relative", overflow: "hidden", minHeight: "700px", display: "flex", alignItems: "center", padding: "var(--space-12) 0" }}>
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="diag-video-bg"
+          style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+        >
+          <source src="/video_aviao.mp4" type="video/mp4" />
+        </video>
+        <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(10, 15, 25, 0.45)", zIndex: 1 }}></div>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem", justifyContent: "space-between" }}>
+            
+            {/* Coluna Esquerda: Conteúdo */}
+            <div style={{ flex: "1 1 450px", maxWidth: "550px" }}>
+              <span className="eyebrow" style={{ color: "var(--lex-gold)", fontSize: "0.75rem", letterSpacing: "0.15em", fontWeight: 600, display: "block", marginBottom: "0.75rem" }}>
+                FERRAMENTA DE ANÁLISE
+              </span>
+              <h2 id="diag-heading" style={{ color: "var(--lex-white)", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "1rem" }}>
+                Descubra em 2 minutos se o seu caso pode gerar indenização
+              </h2>
+              <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "1rem", lineHeight: 1.6, marginBottom: "2rem" }}>
+                Responda algumas perguntas sobre o que aconteceu durante sua viagem. Com base nas informações, fazemos uma análise inicial do seu caso.
+              </p>
+
+
+            </div>
+
+            {/* Coluna Direita: Card Interativo */}
+            <div style={{ flex: "1 1 350px", maxWidth: "420px", width: "100%", margin: "0 auto" }}>
+              <div style={{ 
+                background: "rgba(255, 255, 255, 0.85)", 
+                borderRadius: "20px", 
+                padding: "2rem", 
+                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                border: "1px solid rgba(255,255,255,0.4)"
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
+                  <span style={{ color: "var(--lex-graphite)", fontWeight: 600, fontSize: "0.9rem" }}>Análise do seu voo</span>
+                  <span style={{ color: "var(--lex-text-muted)", fontSize: "0.8rem", fontWeight: 500 }}>Etapa 1 de 4</span>
+                </div>
+                
+                {/* Barra de progresso */}
+                <div style={{ width: "100%", height: "4px", background: "var(--lex-border-light)", borderRadius: "4px", marginBottom: "2rem", overflow: "hidden" }}>
+                  <div style={{ width: "25%", height: "100%", background: "var(--lex-gold)", borderRadius: "4px" }}></div>
+                </div>
+
+                <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "1.25rem" }}>
+                  O que aconteceu com seu voo?
+                </h3>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "2rem" }}>
+                  {["Voo atrasado", "Voo cancelado", "Bagagem extraviada", "Overbooking"].map((option, idx) => (
+                    <div key={idx} style={{ position: "relative" }}>
+                      <input type="radio" id={`diag-issue-${idx}`} name="flight_issue" value={option} className="diag-radio" style={{ display: "none" }} />
+                      <label htmlFor={`diag-issue-${idx}`} className="diag-option-card" style={{ 
+                        display: "flex", 
+                        alignItems: "center", 
+                        padding: "0.75rem 1rem", 
+                        border: "1px solid var(--lex-border-light)", 
+                        borderRadius: "10px", 
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                        background: "var(--lex-white)",
+                        margin: 0
+                      }}>
+                        <div className="diag-radio-inner" style={{ width: "18px", height: "18px", borderRadius: "50%", border: "2px solid var(--lex-border-mid)", marginRight: "0.75rem", position: "relative", transition: "all 0.2s ease" }}></div>
+                        <span style={{ color: "var(--lex-graphite)", fontSize: "0.9rem", fontWeight: 400 }}>{option}</span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/diagnostico" className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center" }}>
+                  Continuar
+                </Link>
+                <div style={{ textAlign: "center", marginTop: "0.75rem" }}>
+                  <span style={{ color: "var(--lex-text-muted)", fontSize: "0.75rem", display: "block" }}>
+                    Leva menos de 2 minutos • Análise inicial gratuita
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <style dangerouslySetInnerHTML={{__html: `
+          .diag-video-bg {
+            object-position: 35% center !important;
+          }
+          @media (min-width: 992px) {
+            .diag-video-bg {
+              object-position: 75% center !important;
+            }
+          }
+          .diag-option-card:hover {
+            border-color: var(--lex-gold) !important;
+            background: var(--lex-gold-bg) !important;
+          }
+          .diag-radio:checked + .diag-option-card {
+            border-color: var(--lex-gold) !important;
+            background: var(--lex-gold-bg) !important;
+          }
+          .diag-radio:checked + .diag-option-card .diag-radio-inner {
+            border-color: var(--lex-gold) !important;
+          }
+          .diag-radio:checked + .diag-option-card .diag-radio-inner::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--lex-gold);
+            border-radius: 50%;
+          }
+        `}} />
+      </section>
+
       {/* ── COMO FUNCIONA ── */}
       <section className="section bg-ivory" aria-labelledby="how-heading">
         <div className="container">
