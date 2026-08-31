@@ -257,7 +257,7 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             </p>
 
             {/* CTA */}
-            <button className="btn btn--primary" onClick={sendWA} style={{ width: "100%", padding: "0.9rem", justifyContent: "center", border: "none" }}>
+            <button className="btn btn--primary" onClick={sendWA} style={{ width: "100%", padding: "0.75rem", justifyContent: "center", border: "none", fontSize: "1.1rem", fontWeight: 700 }}>
               Falar com a Dra. Kareline
               <span className="btn__icon-circle" aria-hidden="true" style={{ background: "#fff", color: "var(--lex-gold)" }}>
                 <img src="/aviao.svg" alt="" style={{ width: '1.2em', height: '1.2em', objectFit: 'contain' }} />
