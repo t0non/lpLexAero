@@ -1337,6 +1337,9 @@ b {
   .kareline__content {
     order: 1;
   }
+  .kareline__photo-editorial img {
+    max-width: 85%;
+  }
 }
 
 @media (max-width: 768px) {
