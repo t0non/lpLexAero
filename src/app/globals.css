@@ -1198,6 +1198,7 @@ b {
   justify-content: flex-end;
   grid-column: 2;
   grid-row: 1 / span 2;
+  margin-right: calc(50% - 50vw);
 }
 
 .metodologia__photo {
@@ -2251,6 +2252,7 @@ b {
     .metodologia__photo-wrap {
       order: 2;
       margin-top: -3rem;
+      margin-right: 0;
       z-index: 2;
     }
     .metodologia__form {
