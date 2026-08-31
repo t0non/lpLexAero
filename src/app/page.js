@@ -621,8 +621,8 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <div style={{ marginTop: "2.5rem" }}>
-                <Link href="/diagnostico" className="btn btn--primary btn--full">
+              <div style={{ marginTop: "1.5rem" }}>
+                <Link href="/diagnostico" className="btn btn--primary btn--full" style={{ whiteSpace: "nowrap", fontSize: "clamp(0.85rem, 4vw, 1rem)", padding: "0.875rem 1rem" }}>
                   Verificar grátis em 2 minutos
                   <span className="btn__icon-circle" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
