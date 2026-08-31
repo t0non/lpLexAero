@@ -88,6 +88,8 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   }, [step, showResult]);
 
   const go      = (f, v) => { setFormData(d => ({ ...d, [f]: v })); setStep(s => s + 1); };
+  const setField = (f, v) => setFormData(d => ({ ...d, [f]: v }));
+  const goNext   = () => setStep(s => s + 1);
   const goMulti = (f)    => { setFormData(d => ({ ...d, [f]: multi })); setMulti([]); setStep(7); };
   const toggle  = (v)    => setMulti(m => m.includes(v) ? m.filter(x => x !== v) : [...m, v]);
 
@@ -171,9 +173,10 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
   /* ── back button ── */
   const BackBtn = ({ to }) => (
     <button onClick={() => setStep(to)} style={{
-      background: "transparent", border: "none", color: C.textMuted,
-      fontSize: "0.85rem", cursor: "pointer", marginTop: "1.25rem",
+      background: "transparent", border: "none", color: "var(--lex-text-muted)",
+      fontSize: "0.85rem", cursor: "pointer", marginTop: "1rem",
       display: "flex", alignItems: "center", gap: "0.4rem", padding: 0,
+      width: "100%", justifyContent: "center"
     }}>
       <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -182,9 +185,18 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
     </button>
   );
 
+  /* ── footer text ── */
+  const StepFooter = () => (
+    <div style={{ textAlign: "center", marginTop: "0.75rem" }}>
+      <span style={{ color: "var(--lex-text-muted)", fontSize: "0.75rem", display: "block" }}>
+        Leva menos de 2 minutos • Análise inicial gratuita
+      </span>
+    </div>
+  );
+
   /* ── gold CTA button ── */
-  const GoldBtn = ({ children, onClick }) => (
-    <button onClick={onClick} className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center", marginTop: "1rem" }}>
+  const GoldBtn = ({ children, onClick, disabled }) => (
+    <button onClick={onClick} disabled={disabled} className="btn btn--primary" style={{ width: "100%", padding: "1rem", fontSize: "1rem", justifyContent: "center", marginTop: "1rem", opacity: disabled ? 0.5 : 1, cursor: disabled ? "not-allowed" : "pointer" }}>
       {children}
     </button>
   );
@@ -337,11 +349,14 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
               Qual problema você enfrentou com o voo?
             </h3>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
               {PROBLEM_OPTS.map(o => (
-                <Opt key={o.label} label={o.label} sel={formData.problem === o.label} onClick={() => go("problem", o.label)} />
+                <Opt key={o.label} label={o.label} sel={formData.problem === o.label} onClick={() => setField("problem", o.label)} />
               ))}
             </div>
+            
+            <GoldBtn onClick={goNext} disabled={!formData.problem}>Continuar</GoldBtn>
+            <StepFooter />
           </div>
         )}
 
@@ -351,12 +366,14 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             <p style={{ fontSize: "0.85rem", color: "#b8860b", marginBottom: "1.25rem", fontWeight: 500 }}>
               Atenção: o prazo para reclamar pode estar se esgotando.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
               {["Nos últimos 7 dias", "Nos últimos 30 dias", "Há alguns meses", "Há mais tempo", "Não sei precisar"].map(o => (
-                <Opt key={o} label={o} sel={formData.period === o} onClick={() => go("period", o)} />
+                <Opt key={o} label={o} sel={formData.period === o} onClick={() => setField("period", o)} />
               ))}
             </div>
+            <GoldBtn onClick={goNext} disabled={!formData.period}>Continuar</GoldBtn>
             <BackBtn to={1} />
+            <StepFooter />
           </div>
         )}
 
@@ -364,12 +381,14 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>{step3.q}</h3>
             <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Detalhes ajudam a calcular o potencial de indenização.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
               {step3.opts.map(o => (
-                <Opt key={o} label={o} sel={formData.detail === o} onClick={() => go("detail", o)} />
+                <Opt key={o} label={o} sel={formData.detail === o} onClick={() => setField("detail", o)} />
               ))}
             </div>
+            <GoldBtn onClick={goNext} disabled={!formData.detail}>Continuar</GoldBtn>
             <BackBtn to={2} />
+            <StepFooter />
           </div>
         )}
 
@@ -377,12 +396,14 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>A companhia ofereceu alguma Assistência?</h3>
             <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Alimentação, hotel, transporte, remarcação...</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
               {["Sim, ofereceu tudo adequadamente", "Sim, mas de forma parcial ou insuficiente", "Não ofereceu nada", "Não sei informar"].map(o => (
-                <Opt key={o} label={o} sel={formData.assistance === o} onClick={() => go("assistance", o)} />
+                <Opt key={o} label={o} sel={formData.assistance === o} onClick={() => setField("assistance", o)} />
               ))}
             </div>
+            <GoldBtn onClick={goNext} disabled={!formData.assistance}>Continuar</GoldBtn>
             <BackBtn to={3} />
+            <StepFooter />
           </div>
         )}
 
@@ -390,29 +411,29 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
           <div>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Houve impactos ou prejuízos adicionais?</h3>
             <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione todas as opções que se aplicam.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
               {["Perdi compromisso importante", "Gastos com Alimentação", "Gastos com hotel", "Gastos com transporte", "Perdi outra conexão", "Bagagem afetada", "Outro impacto", "Nenhum"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
             </div>
             <GoldBtn onClick={() => goMulti("impacts")}>Continuar</GoldBtn>
             <BackBtn to={4} />
+            <StepFooter />
           </div>
         )}
 
         {step === 6 && (
           <div>
-            <h3 style={{ color: "var(--lex-black)", fontSize: "1.2rem", fontWeight: 500, marginBottom: "0.25rem" }}>Você possui documentos do ocorrido?</h3>
-            <p style={{ fontSize: "0.85rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
             <h3 style={{ color: "var(--lex-black)", fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.25rem" }}>Você possui documentos do ocorrido?</h3>
             <p style={{ fontSize: "0.9rem", color: "var(--lex-text-muted)", marginBottom: "1.25rem" }}>Selecione o que tiver — qualquer coisa ajuda.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
               {["Cartão de embarque", "Comprovante de reserva", "E-mails da companhia", "Fotografias", "Comprovantes de gastos", "Protocolos de atendimento", "Declaração de atraso", "Não tenho documentos"].map(o => (
                 <ChkOpt key={o} label={o} checked={multi.includes(o)} onClick={() => toggle(o)} />
               ))}
             </div>
             <GoldBtn onClick={() => goMulti("documents")}>Finalizar Análise</GoldBtn>
             <BackBtn to={5} />
+            <StepFooter />
           </div>
         )}
 
