@@ -255,6 +255,7 @@ export default function DiagnosticForm({ initialProblem = null }) {
           <button
             className="btn btn--primary btn--full diag-multi-continue"
             onClick={() => advanceMulti("impacts")}
+            style={{ padding: "1rem", fontSize: "1rem", justifyContent: "center", borderRadius: "12px" }}
           >
             Continuar
           </button>
@@ -292,6 +293,7 @@ export default function DiagnosticForm({ initialProblem = null }) {
           <button
             className="btn btn--primary btn--full diag-multi-continue"
             onClick={() => advanceMulti("documents")}
+            style={{ padding: "1rem", fontSize: "1rem", justifyContent: "center", borderRadius: "12px" }}
           >
             Continuar
           </button>
@@ -369,7 +371,7 @@ export default function DiagnosticForm({ initialProblem = null }) {
               Concordo que meus dados sejam utilizados exclusivamente para atendimento sigiloso e relacionado a esta solicitação, conforme a LGPD.
             </label>
 
-            <button type="submit" className="btn btn--primary btn--full btn--lg" disabled={submitting} style={{ boxShadow: '0 8px 24px rgba(179, 139, 54, 0.3)' }}>
+            <button type="submit" className="btn btn--primary btn--full btn--lg" disabled={submitting} style={{ boxShadow: '0 8px 24px rgba(179, 139, 54, 0.3)', padding: "1rem", fontSize: "1.1rem", justifyContent: "center", borderRadius: "12px" }}>
               {submitting ? "Enviando seus dados..." : "Receber Análise Gratuita Agora"}
             </button>
             
