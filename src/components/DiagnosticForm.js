@@ -47,24 +47,17 @@ const C = {
 export default function DiagnosticForm({ initialProblem = null, isEmbedded = false }) {
   const [step,        setStep]        = useState(initialProblem ? 2 : 1);
   const [multi,       setMulti]       = useState([]);
-  const [timeLeft,    setTimeLeft]    = useState(119);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [loadPct,     setLoadPct]     = useState(0);
-  const [showResult,  setShowResult]  = useState(false);
   const [formData,    setFormData]    = useState({
     problem: initialProblem || "",
     period: "", detail: "", assistance: "", impacts: [], documents: [],
   });
 
-  useEffect(() => {
-    if (step <= TOTAL_STEPS && !showResult) {
-      const t = setInterval(() => setTimeLeft(p => Math.max(0, p - 1)), 1000);
-      return () => clearInterval(t);
-    }
-  }, [step, showResult]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [loadPct,     setLoadPct]     = useState(0);
+  const [showResult,  setShowResult]  = useState(false);
 
   useEffect(() => {
-    if (step > TOTAL_STEPS && !showResult && !isAnalyzing) {
+    if (step > TOTAL_STEPS && !showResult) {
       setIsAnalyzing(true);
       const t = setInterval(() => {
         setLoadPct(p => {
@@ -75,12 +68,11 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
       }, 80);
       return () => clearInterval(t);
     }
-  }, [step, showResult, isAnalyzing]);
+  }, [step, showResult]);
 
   const go      = (f, v) => { setFormData(d => ({ ...d, [f]: v })); setStep(s => s + 1); };
   const goMulti = (f)    => { setFormData(d => ({ ...d, [f]: multi })); setMulti([]); setStep(s => s + 1); };
   const toggle  = (v)    => setMulti(m => m.includes(v) ? m.filter(x => x !== v) : [...m, v]);
-  const fmt     = (s)    => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
 
   const stepPct  = Math.min(100, ((step - 1) / TOTAL_STEPS) * 100);
   const barW     = stepPct + "%";
@@ -280,12 +272,6 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
       <div style={{ width: "100%", maxWidth: 560, marginBottom: "1.25rem" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.4rem", fontSize: "0.8rem", color: C.textMuted }}>
           <span style={{ fontWeight: 600 }}>Etapa {step} de {TOTAL_STEPS}</span>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", color: "#b8860b", fontWeight: 700 }}>
-            <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            </svg>
-            {fmt(timeLeft)}
-          </div>
           <span style={{ fontWeight: 600 }}>{Math.round(stepPct)}%</span>
         </div>
         <div style={{ background: C.border, borderRadius: 6, height: 6, overflow: "hidden" }}>
