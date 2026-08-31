@@ -1338,7 +1338,8 @@ b {
     order: 1;
   }
   .kareline__photo-editorial img {
-    max-width: 65%;
+    max-height: 550px !important;
+    width: auto !important;
   }
 }
 
