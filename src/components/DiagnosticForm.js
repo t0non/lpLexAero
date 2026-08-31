@@ -314,16 +314,18 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
         </div>
       )}
 
-      {/* Progress */}
-      <div style={{ width: "100%", maxWidth: 560, marginBottom: "1.25rem" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.4rem", fontSize: "0.8rem", color: C.textMuted }}>
-          <span style={{ fontWeight: 600 }}>Etapa {step} de {TOTAL_STEPS}</span>
-          <span style={{ fontWeight: 600 }}>{Math.round(stepPct)}%</span>
+      {/* Progress — only on standalone /diagnostico page */}
+      {!isEmbedded && (
+        <div style={{ width: "100%", maxWidth: 560, marginBottom: "1.25rem" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.4rem", fontSize: "0.8rem", color: C.textMuted }}>
+            <span style={{ fontWeight: 600 }}>Etapa {step} de {TOTAL_STEPS}</span>
+            <span style={{ fontWeight: 600 }}>{Math.round(stepPct)}%</span>
+          </div>
+          <div style={{ background: C.border, borderRadius: 6, height: 6, overflow: "hidden" }}>
+            <div style={{ height: "100%", background: C.gold, width: barW, transition: "width 0.4s ease", borderRadius: 6 }} />
+          </div>
         </div>
-        <div style={{ background: C.border, borderRadius: 6, height: 6, overflow: "hidden" }}>
-          <div style={{ height: "100%", background: C.gold, width: barW, transition: "width 0.4s ease", borderRadius: 6 }} />
-        </div>
-      </div>
+      )}
 
       {/* Card */}
       <div style={cardStyle}>
@@ -413,15 +415,17 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
       </div>
 
-      {/* Disclaimer */}
-      <div style={{ marginTop: "1.5rem", fontSize: "0.78rem", color: C.textMuted, textAlign: "center", maxWidth: 520 }}>
-        <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" style={{ verticalAlign: "middle", marginRight: 4 }}>
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-          <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-        <strong style={{ color: "#8a6800" }}>Aviso legal:</strong>{" "}
-        Ferramenta orientativa baseada em jurisprudência. Análise definitiva feita por especialista.
-      </div>
+      {/* Disclaimer — only on standalone page */}
+      {!isEmbedded && (
+        <div style={{ marginTop: "1.5rem", fontSize: "0.78rem", color: C.textMuted, textAlign: "center", maxWidth: 520 }}>
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" style={{ verticalAlign: "middle", marginRight: 4 }}>
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <strong style={{ color: "#8a6800" }}>Aviso legal:</strong>{" "}
+          Ferramenta orientativa baseada em jurisprudência. Análise definitiva feita por especialista.
+        </div>
+      )}
     </div>
   );
 }
