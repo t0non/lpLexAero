@@ -1172,9 +1172,22 @@ b {
 /* ── Metodologia Section ──────────────────────────────────── */
 .metodologia-section {
   display: grid;
-  grid-template-columns: 60% 40%;
-  gap: var(--space-12);
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+  gap: var(--space-4) var(--space-12);
   align-items: center;
+}
+
+.metodologia__text {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: left !important;
+}
+
+.metodologia__form {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
 }
 
 .metodologia__photo-wrap {
@@ -1183,6 +1196,8 @@ b {
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .metodologia__photo {

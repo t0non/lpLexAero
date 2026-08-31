@@ -282,7 +282,7 @@ export default function ServiceTemplate({ serviceData }) {
                 alt="Kareline Staut — Análise técnica e individualizada"
                 className="metodologia__photo"
                 loading="lazy"
-                style={{ width: "100%", maxWidth: "550px", transform: "scale(1.6)", transformOrigin: "bottom center" }}
+                style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom right" }}
               />
               <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "40%", background: "linear-gradient(to top, var(--lex-black, #111) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>
