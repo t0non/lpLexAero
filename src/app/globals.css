@@ -3229,7 +3229,7 @@ b {
 
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
-    height: 100dvh;
+    height: 100svh;
     min-height: 650px;
     padding-top: 4.5rem;
     padding-bottom: 0;
@@ -3276,7 +3276,7 @@ b {
 
   .hero__photo-wrap {
     order: 3;
-    height: 45dvh;
+    height: 45svh;
     min-height: 0;
     display: flex;
     justify-content: center;
@@ -3290,6 +3290,8 @@ b {
     max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
+    transform: scale(1.15);
+    transform-origin: bottom center;
   }
 
   .hero__ctas {
