@@ -487,7 +487,7 @@ export default function Home() {
       </section>
 
       {/* ── KARELINE — FUNDO ESCURO CINEMATOGRÁFICO ────── */}
-      <section className="section bg-dark" aria-labelledby="kareline-heading" style={{ paddingBottom: "2rem" }}>
+      <section className="section bg-dark" aria-labelledby="kareline-heading" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
         <div className="container">
           <div className="kareline-section">
             {/* Foto editorial */}
@@ -527,6 +527,9 @@ export default function Home() {
                 </p>
                 <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
                   Com <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>indenizações significativas e precedentes relevantes conquistados</strong>, fortalece a cada caso a proteção dos passageiros no Brasil.
+                </p>
+                <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
+                  Nosso escritório possui uma <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>taxa de sucesso superior a 90%</strong>, garantindo que o seu direito seja tratado com a máxima seriedade, agilidade e eficiência.
                 </p>
               </div>
 
