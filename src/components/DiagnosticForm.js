@@ -26,7 +26,7 @@ const PROBLEM_OPTS = [
   { label: "Voo Atrasado ou Cancelado", icon: "/icone-voo-atrasado.png" },
   { label: "Bagagem Extraviada",         icon: "/icone-bagagem.png" },
   { label: "Overbooking",                icon: "/icone-overbooking.png" },
-  { label: "conexão Perdida",            icon: "/icone-perda-conexão.png" },
+  { label: "Conexão Perdida",            icon: "/icone-perda-conexao.png" },
 ];
 
 /* ── colour tokens ── */
