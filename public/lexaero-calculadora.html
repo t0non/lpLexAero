@@ -823,26 +823,28 @@ function renderSubmit() {
       <p style="font-size:0.9rem; color:var(--muted); max-width:360px; margin:0 auto; line-height:1.65;">Para qual contato devemos liberar a sua estimativa de indenização?</p>
     </div>
 
-    <form onsubmit="handleSubmit(event)">
-      <div class="field-group">
-        <label class="field-label" for="f-name">Nome completo *</label>
-        <input class="field-input" id="f-name" type="text" placeholder="Ex: João da Silva" required autocomplete="name">
-      </div>
-      <div class="field-group">
-        <label class="field-label" for="f-phone">WhatsApp *</label>
-        <input class="field-input" id="f-phone" type="tel" placeholder="(11) 99999-9999" required autocomplete="tel">
-      </div>
-      <div class="field-group">
-        <label class="field-label" for="f-email">E-mail <span>(opcional)</span></label>
-        <input class="field-input" id="f-email" type="email" placeholder="seu@email.com" autocomplete="email">
+    <form onsubmit="handleSubmit(event)" style="display:flex; flex-direction:column;">
+      <div style="overflow-y:auto; max-height:35vh; padding:0 4px; margin:0 -4px; scrollbar-width:none; -ms-overflow-style:none;">
+        <div class="field-group">
+          <label class="field-label" for="f-name">Nome completo *</label>
+          <input class="field-input" id="f-name" type="text" placeholder="Ex: João da Silva" required autocomplete="name">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="f-phone">WhatsApp *</label>
+          <input class="field-input" id="f-phone" type="tel" placeholder="(11) 99999-9999" required autocomplete="tel">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="f-email">E-mail <span>(opcional)</span></label>
+          <input class="field-input" id="f-email" type="email" placeholder="seu@email.com" autocomplete="email">
+        </div>
+
+        <label class="lgpd-label">
+          <input type="checkbox" required>
+          Concordo que meus dados sejam utilizados exclusivamente para atendimento sigiloso relacionado a esta solicitação, conforme a LGPD.
+        </label>
       </div>
 
-      <label class="lgpd-label">
-        <input type="checkbox" required>
-        Concordo que meus dados sejam utilizados exclusivamente para atendimento sigiloso relacionado a esta solicitação, conforme a LGPD.
-      </label>
-
-      <button type="submit" class="btn-primary" id="submit-btn">
+      <button type="submit" class="btn-primary" id="submit-btn" style="flex-shrink:0; margin-top:1rem;">
         Ver meu resultado agora
       </button>
     </form>
