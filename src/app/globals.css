@@ -3227,6 +3227,25 @@ b {
     padding: 0 var(--space-5);
   }
 
+  /* Header Transparente no Mobile (sobrepõe o hero) */
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent !important;
+    border-bottom: none;
+    box-shadow: none !important;
+  }
+
+  .header__logo {
+    color: var(--lex-white);
+  }
+
+  .header__bar {
+    background: var(--lex-white);
+  }
+
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
     height: 100svh;
