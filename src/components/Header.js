@@ -119,7 +119,7 @@ export default function Header() {
           <Link href="/diagnostico" className="btn btn--primary btn--full" onClick={() => setMobileOpen(false)}>
             Analisar meu caso
             <span className="btn__icon-circle" aria-hidden="true">
-              <img src="/aviao.svg" alt="" style={{ width: '1em', height: '1em', objectFit: 'contain' }} />
+              <img src="/aviao.svg" alt="" style={{ width: '1.2em', height: '1.2em', objectFit: 'contain' }} />
             </span>
           </Link>
         </div>
