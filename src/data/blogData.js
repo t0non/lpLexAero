@@ -10,7 +10,7 @@ export const blogPosts = [
     readTime: "8 min de leitura",
     summary:
       "Guia completo sobre o que a lei garante em casos de atraso de voo no Brasil — da assistência material à indenização por danos morais.",
-    coverImage: "/blog-plane-1.jpg",
+    coverImage: "/blog-plane-1.jpg?v=2",
     seo: {
       title: "Voo Atrasado: Seus Direitos e Como Receber Indenização | LexAero",
       description:
@@ -77,7 +77,7 @@ export const blogPosts = [
     readTime: "7 min de leitura",
     summary:
       "Diferença entre remarcação, reembolso e indenização por danos morais. Quando você pode exigir as três coisas ao mesmo tempo.",
-    coverImage: "/blog-plane-2.jpg",
+    coverImage: "/blog-plane-2.jpg?v=2",
     seo: {
       title: "Voo Cancelado: Como Receber Indenização por Danos Morais | LexAero",
       description:
@@ -147,7 +147,7 @@ export const blogPosts = [
     readTime: "6 min de leitura",
     summary:
       "O que fazer no aeroporto, quais documentos guardar e como calcular o valor da indenização que a companhia deve pagar.",
-    coverImage: "/blog-plane-3.jpg",
+    coverImage: "/blog-plane-3.jpg?v=2",
     seo: {
       title: "Bagagem Extraviada: Seus Direitos e Como Ser Indenizado | LexAero",
       description:
