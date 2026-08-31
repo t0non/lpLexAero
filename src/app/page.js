@@ -206,12 +206,11 @@ export default function Home() {
             {/* Coluna Direita: Diagnóstico Embutido */}
             <div style={{ flex: "1 1 380px", maxWidth: "480px", width: "100%", margin: "0 auto" }}>
               <div style={{ 
-                background: "rgba(15, 20, 35, 0.85)", 
-                borderRadius: "20px", 
-                padding: "2rem", 
-                boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-                border: "1px solid rgba(252, 189, 38, 0.2)",
-                backdropFilter: "blur(10px)"
+                background: "#ffffff", 
+                borderRadius: "24px", 
+                padding: "2.5rem 2rem", 
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}>
                 <DiagnosticForm isEmbedded={true} />
               </div>

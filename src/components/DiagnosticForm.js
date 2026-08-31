@@ -109,50 +109,62 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
 
   /* ── shared option component ── */
   const Opt = ({ label, icon, onClick, sel }) => (
-    <button onClick={onClick} style={{
-      display: "flex", alignItems: "center", gap: "0.85rem",
-      background: sel ? C.goldBg : C.surface,
-      border: "1.5px solid " + (sel ? C.gold : C.border),
-      borderRadius: 12, padding: "0.9rem 1.1rem",
+    <button onClick={onClick} className={`diag-opt ${sel ? 'sel' : ''}`} style={{
+      display: "flex", alignItems: "center", gap: "1rem",
+      background: sel ? C.goldBg : "#ffffff",
+      border: "2px solid " + (sel ? C.gold : "#f1f5f9"),
+      borderRadius: "16px", padding: "1rem 1.25rem",
       color: C.text, cursor: "pointer", width: "100%", textAlign: "left",
-      fontSize: "0.9rem", fontWeight: 500, transition: "all 0.18s",
-      boxShadow: sel ? "0 0 0 3px " + C.goldBg : "none",
+      fontSize: "0.95rem", fontWeight: 600, transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      boxShadow: sel ? "0 4px 14px rgba(252, 189, 38, 0.15)" : "0 2px 4px rgba(0,0,0,0.02)",
     }}>
       {icon && (
-        <img src={icon} alt="" width={30} height={30} style={{ objectFit: "contain", flexShrink: 0 }} />
+        <div style={{
+          width: 38, height: 38, borderRadius: "10px", background: sel ? "#fff" : "#f8fafc",
+          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          border: "1px solid " + (sel ? "rgba(252, 189, 38, 0.2)" : "#f1f5f9")
+        }}>
+          <img src={icon} alt="" width={24} height={24} style={{ objectFit: "contain" }} />
+        </div>
       )}
-      <span style={{ flex: 1 }}>{label}</span>
-      {sel && (
-        <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2.5">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      )}
+      <span style={{ flex: 1, lineHeight: 1.3 }}>{label}</span>
+      <div style={{
+        width: 20, height: 20, borderRadius: "50%", border: "2px solid " + (sel ? C.gold : "#cbd5e1"),
+        background: sel ? C.gold : "transparent", display: "flex", alignItems: "center", justifyContent: "center",
+        transition: "all 0.2s", flexShrink: 0
+      }}>
+        {sel && (
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        )}
+      </div>
     </button>
   );
 
   /* ── checkbox option ── */
-  const ChkOpt = ({ label, onClick, checked }) => (
-    <button onClick={onClick} style={{
-      display: "flex", alignItems: "center", gap: "0.8rem",
-      background: checked ? C.goldBg : C.surface,
-      border: "1.5px solid " + (checked ? C.gold : C.border),
-      borderRadius: 10, padding: "0.8rem 1rem",
+  const ChkOpt = ({ label, checked, onClick }) => (
+    <button onClick={onClick} className={`diag-opt ${checked ? 'sel' : ''}`} style={{
+      display: "flex", alignItems: "center", gap: "1rem",
+      background: checked ? C.goldBg : "#ffffff",
+      border: "2px solid " + (checked ? C.gold : "#f1f5f9"),
+      borderRadius: "16px", padding: "1rem 1.25rem",
       color: C.text, cursor: "pointer", width: "100%", textAlign: "left",
-      fontSize: "0.85rem", fontWeight: 500, transition: "all 0.18s",
+      fontSize: "0.95rem", fontWeight: 600, transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      boxShadow: checked ? "0 4px 14px rgba(252, 189, 38, 0.15)" : "0 2px 4px rgba(0,0,0,0.02)",
     }}>
-      <span style={{
-        width: 20, height: 20, borderRadius: 5, flexShrink: 0,
-        border: "1.5px solid " + (checked ? C.gold : "#d1d5db"),
-        background: checked ? C.gold : "transparent",
-        display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s",
+      <div style={{
+        width: 20, height: 20, borderRadius: "6px", border: "2px solid " + (checked ? C.gold : "#cbd5e1"),
+        background: checked ? C.gold : "transparent", display: "flex", alignItems: "center", justifyContent: "center",
+        transition: "all 0.2s", flexShrink: 0
       }}>
         {checked && (
-          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3.5">
+          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         )}
-      </span>
-      {label}
+      </div>
+      <span style={{ flex: 1, lineHeight: 1.3 }}>{label}</span>
     </button>
   );
 
@@ -202,6 +214,18 @@ export default function DiagnosticForm({ initialProblem = null, isEmbedded = fal
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
           }
           @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+          
+          .diag-opt:hover:not(.sel) {
+            border-color: #cbd5e1 !important;
+            background: #f8fafc !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+          }
+          
+          .diag-opt:active {
+            transform: translateY(0) scale(0.98);
+          }
+
           .voucher {
             background: linear-gradient(135deg, #fffbee 0%, #fff 100%);
             border: 2px dashed #e0a820;
