@@ -124,16 +124,20 @@ export default function DiagnosticForm({ initialProblem = null }) {
   return (
     <div>
       {/* Progress */}
-      <div className="diag-progress">
-        <div className="diag-progress__bar" style={{ width: `${progress}%` }} />
+      <div className="diag-progress-bar">
+        <div className="diag-progress-fill" style={{ width: `${progress}%` }} />
       </div>
-      <p className="diag-step-label" style={{ marginBottom: "2rem" }}>
+      <p className="diag-step-info" style={{ marginBottom: "2rem" }}>
         {step < TOTAL_STEPS ? `Etapa ${step} de ${TOTAL_STEPS - 1}` : "Quase lá"}
       </p>
 
       {/* Step 1 – Problema */}
       {step === 1 && (
         <div style={{ paddingBottom: '1rem' }}>
+          <h2 className="diag-question">Qual problema você enfrentou?</h2>
+          <p style={{ fontSize: "0.95rem", color: "#64748b", marginBottom: "1.5rem", fontWeight: 500 }}>
+            <strong style={{ color: "var(--lex-gold)" }}>Análise Gratuita:</strong> Descubra em menos de 2 minutos se você tem direito a indenização.
+          </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
             {[
               { label: "Voo Atrasado ou Cancelado", icon: <img src="/icone-voo-atrasado.png" alt="" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /> },
