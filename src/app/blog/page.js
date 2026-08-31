@@ -40,7 +40,7 @@ export default function BlogPage() {
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                     />
                   )}
-                  <span className="blog-card__category">{post.category}</span>
+                  <span style={{ position: "absolute", bottom: "12px", left: "16px", background: "var(--lex-gold)", color: "var(--lex-black)", padding: "4px 10px", fontSize: "11px", fontWeight: "bold", borderRadius: "4px", textTransform: "uppercase", zIndex: 10 }}>{post.category}</span>
                   <div className="blog-card__image-overlay" />
                 </div>
 
