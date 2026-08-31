@@ -234,6 +234,22 @@ export default function ServiceTemplate({ serviceData }) {
         </div>
       </section>
 
+      {/* ── TRUST STRIP ── */}
+      <section style={{ background: "var(--lex-black)", padding: "1.5rem 0", borderTop: "1px solid rgba(252,189,38,0.15)", borderBottom: "1px solid rgba(252,189,38,0.15)" }}>
+        <div className="container">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lex-gold)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <p style={{ margin: 0, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", fontWeight: 600, color: "var(--lex-white)", letterSpacing: "0.01em", textAlign: "center" }}>
+              Nós cuidamos de tudo para você!{" "}
+              <span style={{ color: "var(--lex-gold)", fontWeight: 400, fontSize: "0.9em" }}>Sem burocracia, sem sair de casa.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── NÚMEROS ── */}
       <section className="section bg-graphite" aria-labelledby="numbers-heading">
         <div className="container">
