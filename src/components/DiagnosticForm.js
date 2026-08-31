@@ -125,8 +125,8 @@ export default function DiagnosticForm({ initialProblem = null }) {
         <p style={{ color: "var(--text-sub)", marginBottom: "2rem", lineHeight: 1.7 }}>
           Em até 30 minutos entraremos em contato para uma análise individualizada da sua situação.
         </p>
-        <a href="/direito-do-passageiro-aereo" className="btn btn--secondary" style={{ fontSize: "0.875rem" }}>
-          Ler sobre seus direitos
+        <a href="/calculadora" className="btn btn--primary" style={{ padding: "0.85rem 1.5rem", fontSize: "1rem", borderRadius: "12px", display: "inline-flex", justifyContent: "center", textDecoration: "none" }}>
+          Calcular estimativa de indenização
         </a>
       </div>
     );
