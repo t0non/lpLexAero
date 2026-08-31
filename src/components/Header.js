@@ -121,18 +121,16 @@ export default function Header() {
           <Link href="/diagnostico" className="btn btn--primary btn--full" onClick={() => setMobileOpen(false)}>
             Analisar meu caso
             <span className="btn__icon-circle" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 3.3c-.1.5.1 1.1.6 1.4l5.4 3.1-4 4-2.8-.7c-.4-.1-.8.1-1 .5l-.9 1.4c-.2.4 0 .9.4 1.1l4.4 2.2 2.2 4.4c.2.4.7.6 1.1.4l1.4-.9c.4-.2.6-.6.5-1l-.7-2.8 4-4 3.1 5.4c.3.5.9.7 1.4.6l3.3-1.2c.5-.2.8-.6.7-1.1z"/>
-              </svg>
+              <img src="/aviao.svg" alt="" style={{ width: '1em', height: '1em', objectFit: 'contain' }} />
             </span>
           </Link>
         </div>
         <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center", gap: "1rem" }}>
-            <button onClick={() => changeLanguage('pt')} aria-label="Português" style={{ cursor: 'pointer', fontSize: '2rem', background: 'transparent', border: 'none' }}>
-              🇧🇷
+            <button onClick={() => changeLanguage('pt')} aria-label="Português" style={{ cursor: 'pointer', background: 'transparent', border: 'none' }}>
+              <img src="/bandeira_brasil.webp" alt="Bandeira do Brasil" style={{ width: '28px', height: '19px', objectFit: 'cover', borderRadius: '3px', display: 'block' }} />
             </button>
-            <button onClick={() => changeLanguage('en')} aria-label="English" style={{ cursor: 'pointer', fontSize: '2rem', background: 'transparent', border: 'none' }}>
-              🇺🇸
+            <button onClick={() => changeLanguage('en')} aria-label="English" style={{ cursor: 'pointer', background: 'transparent', border: 'none' }}>
+              <img src="/eua.svg" alt="Bandeira dos EUA" style={{ width: '28px', height: '19px', objectFit: 'cover', borderRadius: '3px', display: 'block' }} />
             </button>
         </div>
 

@@ -493,7 +493,7 @@ export default function Home() {
             <div className="kareline__mobile-header">
               <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>À FRENTE DA LEXAERO</span>
               <h2 id="kareline-heading-mobile" style={{ marginTop: "0.5rem" }}>
-                Experiência jurídica aplicada aos direitos do passageiro aéreo.
+                Quem irá cuidar do seu <span style={{ color: "var(--lex-gold)" }}>processo?</span>
               </h2>
             </div>
             <div className="kareline__photo-editorial">
@@ -529,7 +529,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div style={{ textAlign: "left", marginTop: "2.5rem", position: "relative", zIndex: 2 }}>
+              <div className="kareline-btn-wrap">
                 <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ color: "var(--lex-black)", display: "inline-flex" }}>
                   Analisar meu caso gratuitamente
                   <span className="btn__icon-circle" aria-hidden="true" style={{ background: "#ffffff", color: "var(--lex-gold)" }}>
@@ -568,7 +568,7 @@ export default function Home() {
                 alt="Kareline Staut — Análise técnica e individualizada"
                 className="metodologia__photo"
                 loading="lazy"
-                style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom right" }}
+                style={{ width: "100%", maxWidth: "550px", objectFit: "contain", objectPosition: "bottom center", transform: "scale(1.15)", transformOrigin: "bottom center" }}
               />
               <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "40%", background: "linear-gradient(to top, var(--lex-black) 0%, transparent 100%)", pointerEvents: "none" }}></div>
             </div>

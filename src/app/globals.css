@@ -1343,9 +1343,20 @@ b {
   }
 }
 
+.kareline-btn-wrap {
+  text-align: left;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 768px) {
+  .kareline-btn-wrap {
+    text-align: center;
+  }
   .kareline__photo-editorial {
     margin-right: calc(-1 * var(--space-5));
+    margin-top: 1.5rem;
     transform: translateX(15%);
   }
 }
@@ -2262,6 +2273,7 @@ b {
     .metodologia__text {
       order: 1;
       margin-bottom: 0;
+      text-align: center !important;
     }
     .metodologia__photo-wrap {
       order: 2;
@@ -3287,9 +3299,9 @@ b {
 
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
-    height: 100svh;
+    min-height: 100svh;
     padding-top: 6.5rem;
-    padding-bottom: 0;
+    padding-bottom: 2rem;
     overflow: hidden;
     background-color: var(--lex-black);
   }
@@ -3871,7 +3883,7 @@ body {
     margin-top: 2rem;
   }
   .metodologia__photo {
-    transform: scale(1.1); /* Reduce scaling on mobile so it doesn't look squeezed/AI generated */
+    transform: scale(1.25); /* Increased size on mobile per user request */
     object-fit: contain;
     object-position: bottom center;
   }
