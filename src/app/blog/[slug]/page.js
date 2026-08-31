@@ -27,17 +27,19 @@ export default async function BlogPostPage({ params }) {
   return (
     <div className="blog-post-page">
       {/* ── HERO DO ARTIGO ── */}
-      <section className="blog-post-hero">
-        <div className="container">
-          <Link href="/blog" className="blog-back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+      <section className="blog-post-hero" style={{ position: "relative", overflow: "hidden", textAlign: "left" }}>
+        {/* Imagem de avião no fundo */}
+        <div style={{ position: "absolute", top: 0, right: 0, width: "50%", height: "100%", opacity: 0.8, backgroundImage: "url('/aviao_animation.png')", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "right center", zIndex: 0 }}></div>
+        <div className="container" style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+          <Link href="/blog" className="blog-back-link" style={{ display: "inline-flex", color: "var(--lex-gold)", marginBottom: "1rem", fontWeight: 600 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" style={{ marginRight: "6px" }}>
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
             Voltar ao Blog
           </Link>
-          <span className="blog-post-hero__category">{post.category}</span>
-          <h1 className="blog-post-hero__title">{post.title}</h1>
-          <div className="blog-post-hero__meta">
+          <span className="blog-post-hero__category" style={{ display: "inline-block", alignSelf: "flex-start", marginBottom: "1rem" }}>{post.category}</span>
+          <h1 className="blog-post-hero__title" style={{ textAlign: "left", maxWidth: "800px", margin: "0 0 1rem 0" }}>{post.title}</h1>
+          <div className="blog-post-hero__meta" style={{ justifyContent: "flex-start", margin: 0 }}>
             <span>{post.date}</span>
             <span className="blog-card__dot">•</span>
             <span>{post.readTime}</span>
