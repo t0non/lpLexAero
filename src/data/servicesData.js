@@ -7,7 +7,7 @@ export const servicesData = {
       description: "Seu voo atrasou? Descubra gratuitamente se o seu caso pode gerar direito a indenização e conheça seus direitos como passageiro aéreo."
     },
     hero: {
-      headline: "Seu voo atrasou? Você pode ter direito a até R$ 10 mil em indenização.",
+      headline: "Seu voo atrasou? <br/>Você pode ter direito a <br/>até R$ 10 mil em indenização.",
       subheadline: "Atrasos longos ou que geram perda de conexões e compromissos importantes são passíveis de indenização. Verifique sua situação em poucos minutos."
     },
     conversion: {
@@ -57,7 +57,7 @@ export const servicesData = {
       description: "Teve um voo cancelado? Saiba o que a companhia aérea deve fazer e verifique se você tem direito a receber uma indenização financeira."
     },
     hero: {
-      headline: "Voo cancelado sem aviso? Você pode ter direito a até R$ 10 mil em indenização.",
+      headline: "Voo cancelado sem aviso? <br/>Você pode ter direito a <br/>até R$ 10 mil em indenização.",
       subheadline: "Cancelamentos sem assistência adequada ou que alteram completamente seus planos podem ensejar medidas legais."
     },
     conversion: {
@@ -107,7 +107,7 @@ export const servicesData = {
       description: "Foi impedido de embarcar por falta de assentos? O overbooking é uma prática abusiva e gera direito a compensação imediata e indenização."
     },
     hero: {
-      headline: "Foi impedido de embarcar? <br/>Receba até R$ 10 mil de indenização.",
+      headline: "Foi impedido de embarcar? <br/>Receba <br/>até R$ 10 mil de indenização.",
       subheadline: "Se você possuía reserva confirmada mas não pôde voar por falta de assentos, a lei obriga a companhia a compensá-lo."
     },
     conversion: {
@@ -151,7 +151,7 @@ export const servicesData = {
       description: "Sua mala foi perdida, danificada ou violada? Saiba quais são os prazos, procedimentos (RIB) e o valor de indenização aplicável."
     },
     hero: {
-      headline: "Problemas com sua bagagem? Você tem direito a até R$ 10 mil.",
+      headline: "Problemas com sua bagagem? <br/>Você tem direito a <br/>até R$ 10 mil.",
       subheadline: "O extravio, violação ou dano de malas gera transtornos severos. Orientamos você sobre protocolos, prazos e medidas legais."
     },
     conversion: {
@@ -199,7 +199,7 @@ export const servicesData = {
       description: "Perdeu seu voo de conexão devido a um atraso anterior? Saiba como exigir assistência material e verificar possibilidade de indenização."
     },
     hero: {
-      headline: "Perdeu sua conexão? Você pode ter direito a até R$ 10 mil.",
+      headline: "Perdeu sua conexão? <br/>Você pode ter direito a <br/>até R$ 10 mil.",
       subheadline: "Atrasos que causam a perda do voo seguinte são responsabilidade da companhia aérea, que deve providenciar reacomodação imediata."
     },
     conversion: {
@@ -243,7 +243,7 @@ export const servicesData = {
       description: "Atrasos e cancelamentos exigem assistência material da companhia aérea. Saiba quando você tem direito a alimentação, comunicação e hotel."
     },
     hero: {
-      headline: "Te deixaram sem hotel ou comida? Receba até R$ 10 mil de indenização.",
+      headline: "Te deixaram sem hotel ou comida? <br/>Receba <br/>até R$ 10 mil de indenização.",
       subheadline: "O não fornecimento de alimentação, hospedagem e comunicação durante atrasos prolongados gera o dever de indenizar."
     },
     conversion: {
@@ -287,7 +287,7 @@ export const servicesData = {
       description: "Problemas com o reembolso da sua passagem aérea? Entenda os prazos legais e veja o que fazer caso a companhia se recuse a devolver o valor."
     },
     hero: {
-      headline: "Estão enrolando seu reembolso? Você pode ter direito a até R$ 10 mil.",
+      headline: "Estão enrolando seu reembolso? <br/>Você pode ter direito a <br/>até R$ 10 mil.",
       subheadline: "A devolução de valores, pagamento de taxas indevidas e estornos possuem prazos estipulados pela ANAC."
     },
     conversion: {
@@ -331,7 +331,7 @@ export const servicesData = {
       description: "Existem diversas falhas na prestação de serviços aéreos que geram direitos. Conheça outras situações comuns e solicite uma análise."
     },
     hero: {
-      headline: "Problema com o voo? Você pode ter direito a até R$ 10 mil em indenização.",
+      headline: "Problema com o voo? <br/>Você pode ter direito a <br/>até R$ 10 mil em indenização.",
       subheadline: "Desde falhas sistêmicas a problemas de acessibilidade, o consumidor é protegido pelo CDC e convenções internacionais."
     },
     conversion: {

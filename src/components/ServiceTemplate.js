@@ -4,6 +4,7 @@ import StepsWrapper from "@/components/StepsWrapper";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import AnimatedPlane from "@/components/AnimatedPlane";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import { blogPosts } from "@/data/blogData";
 
 
 export default function ServiceTemplate({ serviceData }) {
@@ -404,6 +405,46 @@ export default function ServiceTemplate({ serviceData }) {
                 </details>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BLOG PREVIEW ── */}
+      <section className="section bg-ivory" aria-labelledby="blog-heading">
+        <div className="container">
+          <div className="text-center" style={{ maxWidth: 600, margin: "0 auto 0" }}>
+            <span className="eyebrow">CONTEÚDO GRATUITO</span>
+            <h2 id="blog-heading" style={{ marginTop: "0.5rem" }}>Conhecimento que protege você</h2>
+            <p style={{ color: "var(--lex-text-muted)", marginTop: "0.5rem" }}>Artigos escritos por especialistas para você entender seus direitos antes, durante e depois de qualquer problema com voo.</p>
+          </div>
+          <div className="blog-preview-grid">
+            {blogPosts.slice(0, 3).map((post) => (
+              <article key={post.slug} className="blog-card">
+                <div className="blog-card__image-wrap" style={{ height: 180, position: 'relative' }}>
+                  <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div className="blog-card__body">
+                  <div className="blog-card__meta">
+                    <span>{post.date}</span>
+                    <span className="blog-card__dot">•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="blog-card__title">{post.title}</h3>
+                  <p className="blog-card__summary">{post.summary}</p>
+                  <Link href={`/blog/${post.slug}`} className="blog-card__link">
+                    Ler artigo completo
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <Link href="/blog" className="btn btn--secondary btn--lg">
+              Ver todos os artigos
+            </Link>
           </div>
         </div>
       </section>

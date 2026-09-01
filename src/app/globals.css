@@ -3350,9 +3350,7 @@ b {
     word-break: break-word;
   }
 
-  .hero__headline br {
-    display: none;
-  }
+
 
   .hero__sub {
     order: 2;
