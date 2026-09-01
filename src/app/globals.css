@@ -149,15 +149,6 @@ svg {
   max-width: 100%;
 }
 
-/* ── Hide Google Translate Default Widget ── */
-#google_translate_element { display: none !important; }
-.goog-te-banner-frame { display: none !important; }
-/* Do NOT hide .skiptranslate globally — Google wraps body with it */
-/* Only hide the specific child widgets inside it */
-.skiptranslate > iframe { display: none !important; }
-.goog-te-combo { display: none !important; }
-body { top: 0px !important; }
-
 a {
   color: inherit;
   text-decoration: none;
@@ -534,7 +525,6 @@ b {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: box-shadow var(--duration) var(--ease);
-  overflow: visible;
 }
 
 .site-header.scrolled {
@@ -3374,12 +3364,12 @@ b {
 
   .hero__photo-wrap {
     order: 3;
-    height: 45svh;
+    height: 38svh;
     min-height: 0;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 1.5rem;
+    margin-top: 0.75rem;
   }
 
   .hero__photo {
@@ -4754,35 +4744,4 @@ img, video, iframe {
   .blog-card {
     max-width: 100% !important;
   }
-}
-
-/* Kareline Staut Page */
-.kareline-pub-link {
-  font-size: 1.05rem;
-  color: var(--lex-white);
-  font-weight: 300;
-  transition: color 0.2s;
-}
-
-.kareline-pub-link:hover {
-  color: var(--lex-gold);
-}
-
-@media (max-width: 768px) {
-  .hide-on-mobile {
-    display: none !important;
-  }
-}
-
-/* ── Hide ALL Google Translate Native UI (targeted, not body wrapper) ── */
-.goog-te-combo { display: none !important; }
-#goog-gt-tt { display: none !important; }
-.goog-te-balloon-frame { display: none !important; }
-.goog-te-menu-frame { display: none !important; }
-.skiptranslate > iframe { display: none !important; }
-.skiptranslate > div { display: none !important; }
-#google_translate_element * { display: none !important; }
-.goog-text-highlight {
-  background: none !important;
-  box-shadow: none !important;
 }
