@@ -11,7 +11,11 @@ export default function BlogPage() {
   return (
     <div className="blog-listing-page">
       {/* ── HERO DO BLOG ── */}
-      <section className="blog-hero">
+      <section className="blog-hero" style={{ 
+        backgroundImage: "linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.95)), url('/wing_sunset_bg.jpg')", 
+        backgroundSize: "cover", 
+        backgroundPosition: "center" 
+      }}>
         <div className="container">
           <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>
             CONTEÚDO GRATUITO

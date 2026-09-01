@@ -27,9 +27,16 @@ export default async function BlogPostPage({ params }) {
   return (
     <div className="blog-post-page">
       {/* ── HERO DO ARTIGO ── */}
-      <section className="blog-post-hero" style={{ position: "relative", overflow: "hidden", textAlign: "left" }}>
+      <section className="blog-post-hero" style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        textAlign: "left",
+        backgroundImage: "linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.95)), url('/wing_sunset_bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}>
         {/* Imagem de avião no fundo */}
-        <div style={{ position: "absolute", top: 0, right: 0, width: "50%", height: "100%", opacity: 0.8, backgroundImage: "url('/aviao_animation.png')", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "right center", zIndex: 0 }}></div>
+        <div style={{ position: "absolute", top: 0, right: 0, width: "50%", height: "100%", opacity: 0.3, backgroundImage: "url('/aviao_animation.png')", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "right center", zIndex: 0 }}></div>
         <div className="container" style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
           <Link href="/blog" className="blog-back-link" style={{ display: "inline-flex", color: "var(--lex-gold)", marginBottom: "1rem", fontWeight: 600 }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" style={{ marginRight: "6px" }}>
@@ -110,7 +117,9 @@ export default async function BlogPostPage({ params }) {
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="section" style={{ background: "var(--lex-black)" }}>
+      <section className="section" style={{ 
+        background: "linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.95)), url('/wing_sunset_bg.jpg') center/cover" 
+      }}>
         <div className="container" style={{ textAlign: "center" }}>
           <span className="eyebrow" style={{ color: "var(--lex-gold)" }}>PRÓXIMO PASSO</span>
           <h2 style={{ color: "var(--lex-white)", marginTop: "0.5rem", marginBottom: "1rem", fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>

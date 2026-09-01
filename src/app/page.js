@@ -121,6 +121,7 @@ export default function Home() {
                 alt="Kareline Staut — Fundadora da LexAero, advogada especialista em Direito do Passageiro Aéreo"
                 className="hero__photo"
                 loading="eager"
+                fetchPriority="high"
               />
 
             </div>
@@ -473,7 +474,7 @@ export default function Home() {
             <div className="metodologia__text" style={{ textAlign: "center" }}>
               <span className="eyebrow">FALE COM UM ESPECIALISTA</span>
               <h2 id="diff-heading" className="nowrap-desktop" style={{ marginTop: "0.5rem", marginBottom: "1.25rem", fontWeight: 600 }}>
-                Não deixe seus direitos para depois.{" "}
+                Não deixe seus direitos para depois. <br />
                 <span style={{ color: "var(--lex-gold)" }}>Resolva em 2 minutos.</span>
               </h2>
               <p style={{ marginBottom: 0, fontSize: "0.875rem", lineHeight: "1.5" }}>

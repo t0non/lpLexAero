@@ -75,7 +75,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-
         <div id="google_translate_element" style={{ display: "none" }}></div>
         <Script
           id="google-translate-init"
@@ -89,7 +88,6 @@ export default function RootLayout({ children }) {
           }}
         />
         <Script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" strategy="afterInteractive" />
-
         <HeaderWrapper />
         <main id="main-content">{children}</main>
         <FooterWrapper />

@@ -30,94 +30,100 @@ export default function KarelinePage() {
         }}
       />
 
-      {/* Hero */}
-      <section style={{ backgroundColor: "var(--lex-black)", padding: "5rem 0 0", color: "var(--lex-white)" }}>
-        <div className="container" style={{ maxWidth: 960 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "var(--space-12)", alignItems: "flex-start" }} className="kareline-grid">
-            {/* Photo */}
-            <div style={{ position: "sticky", top: "90px" }}>
-              <div style={{ position: "relative", marginBottom: "1.5rem" }}>
-                <img src="/kareline-central-direitos-apontando.png" alt="Kareline Staut" style={{ width: "100%", height: "auto", display: "block", transform: "scale(1.35)", transformOrigin: "bottom center" }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, var(--lex-black), transparent)", pointerEvents: "none" }}></div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <a href="https://wa.me/553183259594" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full" style={{ padding: "1rem 2rem", fontSize: "1.1rem", fontWeight: "bold", borderRadius: "9999px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginTop: "1rem", boxShadow: "0 4px 14px rgba(252,189,38,0.2)" }}>
-                  Solicitar análise
-                  <span className="btn__icon-circle" aria-hidden="true" style={{ background: '#ffffff', color: 'var(--lex-gold)', width: "24px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}>
-                    <img src="/aviao.svg" alt="" style={{ width: '1em', height: '1em', objectFit: 'contain' }} />
-                  </span>
-                </a>
-              </div>
+       <section style={{ backgroundColor: "var(--lex-black)", padding: "5rem 0", color: "var(--lex-white)", minHeight: "100vh", display: "flex", alignItems: "center" }}>
+        <style dangerouslySetInnerHTML={{__html: `
+          .kareline-hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1100px;
+          }
+          .kareline-hero-photo {
+            position: relative;
+            width: 100%;
+          }
+          .kareline-hero-content {
+            display: flex;
+            flex-direction: column;
+          }
+          .kareline-hero-header {
+            text-align: left;
+            margin-bottom: 2rem;
+          }
+          .kareline-hero-tags {
+            justify-content: flex-start;
+          }
+          .kareline-hero-bio {
+            text-align: left;
+          }
+          @media (max-width: 768px) {
+            .kareline-hero-container {
+              display: flex;
+              flex-direction: column;
+              gap: 2rem;
+            }
+            .kareline-hero-content {
+              display: contents;
+            }
+            .kareline-hero-header {
+              order: 1;
+              text-align: center;
+              margin-bottom: 0;
+            }
+            .kareline-hero-photo {
+              order: 2;
+            }
+            .kareline-hero-bio {
+              order: 3;
+              text-align: center;
+            }
+            .kareline-hero-tags {
+              justify-content: center;
+            }
+            .kareline-btn {
+              margin: 2rem auto 0 auto;
+            }
+          }
+        `}} />
+        <div className="container kareline-hero-container">
+          
+          <div className="kareline-hero-photo">
+            <img src="/kareline-hero-confianca.png" alt="Kareline Staut" style={{ width: "100%", height: "auto", display: "block", maxWidth: "450px", margin: "0 auto" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, var(--lex-black), transparent)", pointerEvents: "none" }}></div>
+          </div>
+
+          <div className="kareline-hero-content">
+            <div className="kareline-hero-header">
+              <span className="eyebrow" style={{ color: "var(--lex-gold-dark)", display: "block", marginBottom: "0.5rem" }}>Fundadora da LexAero</span>
+              <h1 itemProp="name" style={{ fontSize: "clamp(2rem, 3.5vw, 2.5rem)", margin: "0 0 0.5rem", color: "var(--lex-white)" }}>Kareline Staut</h1>
             </div>
 
-            {/* Content */}
-            <div style={{ paddingBottom: "5rem" }}>
-              <span className="eyebrow" style={{ color: "var(--lex-gold-dark)" }}>Fundadora da LexAero</span>
-              <h1 itemProp="name" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", margin: "0.5rem 0 0.75rem", color: "var(--lex-white)" }}>Kareline Staut</h1>
-              <p style={{ fontSize: "1rem", color: "var(--lex-text-dark-muted)", marginBottom: "2.5rem", display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                <span>Mestra em Direito</span> · <span>Advogada</span> · <span>Direito do Passageiro Aéreo</span>
-              </p>
-
-              <section aria-labelledby="bio-heading" style={{ marginBottom: "3rem" }}>
-                <h2 id="bio-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Resumo profissional</h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
-                    Kareline Staut é <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>Mestra em Direito</strong>, especialista em <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>Direito do Consumidor e Direito do Passageiro Aéreo</strong>, com anos de experiência na defesa intransigente dos viajantes frente aos abusos das companhias aéreas.
-                  </p>
-                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
-                    Reconhecida por sua atuação estratégica e combativa em casos de <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>atrasos, cancelamentos, overbooking, avarias e extravio de bagagem</strong>, Kareline alia rigor técnico a resultados expressivos nos tribunais.
-                  </p>
-                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
-                    Ao longo de sua trajetória, construiu uma reputação sólida como profissional que une <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>profundo conhecimento jurídico e comunicação clara</strong>, transformando a complexidade da lei em soluções práticas e indenizações justas para quem enfrenta problemas em suas viagens.
-                  </p>
-                  <p style={{ lineHeight: 1.7, color: "var(--lex-text-dark-muted)", fontSize: "1.05rem", margin: 0 }}>
-                    Sob sua liderança, a LexAero ostenta uma <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>taxa de sucesso superior a 90%</strong>, garantindo que o seu direito seja tratado com a máxima seriedade, agilidade e eficiência. Com <strong style={{ color: "var(--lex-white)", fontWeight: 600 }}>indenizações significativas e precedentes relevantes conquistados</strong>, fortalece a cada dia a proteção dos passageiros no Brasil.
-                  </p>
-                </div>
-              </section>
-
-              <section aria-labelledby="formacao-heading" style={{ marginBottom: "3rem" }}>
-                <h2 id="formacao-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Formação acadêmica</h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                  {[
-                    { grau: "Mestrado em Direito", inst: "[Instituição — preencher]", ano: "[Ano]", obs: "Dissertação: [Tema — preencher]" },
-                    { grau: "Especialização em Direito do Consumidor", inst: "[Instituição — preencher]", ano: "[Ano]" },
-                    { grau: "Graduação em Direito", inst: "[Instituição — preencher]", ano: "[Ano]" },
-                  ].map((item) => (
-                    <div key={item.grau} style={{ paddingLeft: "1rem", borderLeft: "2px solid var(--lex-graphite)" }}>
-                      <h3 style={{ fontSize: "1rem", marginBottom: "0.25rem", color: "var(--lex-white)" }}>{item.grau}</h3>
-                      <p style={{ fontSize: "0.875rem", color: "var(--lex-text-dark-muted)", margin: 0 }}>{item.inst} · {item.ano}</p>
-                      {item.obs && <p style={{ fontSize: "0.8rem", color: "var(--lex-text-dark-muted)", margin: "0.2rem 0 0", fontStyle: "italic" }}>{item.obs}</p>}
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              <section aria-labelledby="filosofia-heading" style={{ marginBottom: "3rem" }}>
-                <h2 id="filosofia-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Filosofia de atuação</h2>
-                <blockquote style={{ padding: "1.5rem", borderLeft: "3px solid var(--lex-gold)", background: "var(--lex-graphite)", borderRadius: "0 var(--radius-md) var(--radius-md) 0", fontStyle: "italic", color: "var(--lex-white)", lineHeight: 1.75 }}>
-                  "O passageiro não é apenas um localizador no sistema da companhia aérea. Cada situação tem particularidades que precisam ser compreendidas antes de qualquer análise jurídica. A advocacia responsável exige ouvir, entender e aplicar o direito com rigor e cuidado."
-                </blockquote>
-              </section>
-
-              <section aria-labelledby="publicacoes-heading" style={{ marginBottom: "3rem" }}>
-                <h2 id="publicacoes-heading" style={{ fontSize: "1.2rem", borderBottom: "1px solid var(--lex-graphite)", paddingBottom: "0.75rem", marginBottom: "1.25rem", color: "var(--lex-white)" }}>Publicações e artigos</h2>
-                <ul style={{ listStyle: "disc", paddingLeft: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  {[
-                    { title: "A responsabilidade civil no transporte aéreo: análise atual (2026)", href: "/blog" },
-                    { title: "Convenção de Montreal vs. CDC: critérios de aplicação (2026)", href: "/blog" },
-                    { title: "Assistência material: obrigação absoluta ou relativa? (2023)", href: "/blog" },
-                  ].map((pub) => (
-                    <li key={pub.title}>
-                      <Link href={pub.href} style={{ fontSize: "0.9rem", color: "var(--lex-gold-dark)", textDecoration: "underline" }}>
-                        {pub.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+            <div className="kareline-hero-bio">
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <p style={{ lineHeight: 1.6, color: "var(--lex-text-dark-muted)", fontSize: "0.95rem", margin: 0, fontWeight: 300 }}>
+                  Kareline Staut é <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>Mestra em Direito</strong>, especialista em <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>Direito do Consumidor e Direito do Passageiro Aéreo</strong>, com anos de experiência na defesa intransigente dos viajantes frente aos abusos das companhias aéreas.
+                </p>
+                <p style={{ lineHeight: 1.6, color: "var(--lex-text-dark-muted)", fontSize: "0.95rem", margin: 0, fontWeight: 300 }}>
+                  Reconhecida por sua atuação estratégica e combativa em casos de <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>atrasos, cancelamentos, overbooking, avarias e extravio de bagagem</strong>, Kareline alia rigor técnico a resultados expressivos nos tribunais.
+                </p>
+                <p style={{ lineHeight: 1.6, color: "var(--lex-text-dark-muted)", fontSize: "0.95rem", margin: 0, fontWeight: 300 }}>
+                  Ao longo de sua trajetória, construiu uma reputação sólida como profissional que une <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>profundo conhecimento jurídico e comunicação clara</strong>, transformando a complexidade da lei em soluções práticas e indenizações justas para quem enfrenta problemas em suas viagens.
+                </p>
+                <p style={{ lineHeight: 1.6, color: "var(--lex-text-dark-muted)", fontSize: "0.95rem", margin: 0, fontWeight: 300 }}>
+                  Sob sua liderança, a LexAero ostenta uma <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>taxa de sucesso superior a 90%</strong>, garantindo que o seu direito seja tratado com a máxima seriedade, agilidade e eficiência. Com <strong style={{ color: "var(--lex-white)", fontWeight: 500 }}>indenizações significativas e precedentes relevantes conquistados</strong>, fortalece a cada dia a proteção dos passageiros no Brasil.
+                </p>
+              </div>
+              
+              <a href="https://wa.me/553183259594" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--lg kareline-btn" style={{ marginTop: "2rem" }}>
+                Solicitar análise
+                <span className="btn__icon-circle" aria-hidden="true">
+                  <img src="/aviao.svg" width="20" height="20" alt="" aria-hidden="true" />
+                </span>
+              </a>
             </div>
           </div>
+          
         </div>
       </section>
     </>

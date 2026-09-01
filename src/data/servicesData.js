@@ -7,7 +7,7 @@ export const servicesData = {
       description: "Seu voo atrasou? Descubra gratuitamente se o seu caso pode gerar direito a indenização e conheça seus direitos como passageiro aéreo."
     },
     hero: {
-      headline: "Seu voo atrasou? Você pode ter direito a até R$ 10 mil em indenização.",
+      headline: "Seu voo atrasou?<br />Você pode ter direito a<br />até R$ 10 mil em indenização.",
       subheadline: "Atrasos longos ou que geram perda de conexões e compromissos importantes são passíveis de indenização. Verifique sua situação em poucos minutos."
     },
     conversion: {
