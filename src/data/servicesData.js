@@ -107,7 +107,7 @@ export const servicesData = {
       description: "Foi impedido de embarcar por falta de assentos? O overbooking é uma prática abusiva e gera direito a compensação imediata e indenização."
     },
     hero: {
-      headline: "Foi impedido de embarcar?<br/>Receba até R$ 10 mil de indenização.",
+      headline: "Foi impedido de embarcar? <br/>Receba até R$ 10 mil de indenização.",
       subheadline: "Se você possuía reserva confirmada mas não pôde voar por falta de assentos, a lei obriga a companhia a compensá-lo."
     },
     conversion: {
