@@ -37,14 +37,6 @@ export default function ServiceTemplate({ serviceData }) {
                   <img src="/bandeira_brasil.webp" alt="Bandeira do Brasil" style={{ width: '16px', height: '11px', objectFit: 'cover', borderRadius: '2px' }} />
                   Atendimento em todo o Brasil
                 </div>
-                <div className="hero__trust-item">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="13" r="8" />
-                    <path d="M12 9v4l2 2" />
-                    <line x1="10" x2="14" y1="2" y2="2" />
-                  </svg>
-                  Verificação em até 2 minutos
-                </div>
               </div>
             </div>
 
