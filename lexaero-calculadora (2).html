@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LexAero — Análise do seu voo | Ferramenta orientativa</title>
+<meta name="description" content="Ferramenta orientativa e educativa: em poucos minutos, entenda os seus direitos como passageiro e veja uma faixa estimada praticada pelos tribunais. Não constitui promessa de resultado." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12213A; --ink-2:#33405A; --mute:#5D6880; --mute-2:#8A93A6;
+  --bg:#F7F5F0; --bg-hero-1:#0E1B33; --bg-hero-2:#22324F;
+  --card:#FFFFFF; --line:#E7E3DA; --line-2:#DDE3EC;
+  --gold:#F2A900; --gold-deep:#CE8E00; --gold-soft:#FBF1D6;
+  --green:#1E8E5A; --green-soft:#E6F4EC;
+  --amber:#B9791A; --amber-soft:#FBF0DC;
+  --red2:#C0442E; --red-soft2:#F8E7E2;
+  --r-sm:10px; --r-md:16px; --r-lg:24px;
+  --shadow:0 18px 50px rgba(16,28,54,.14);
+  --shadow-sm:0 6px 20px rgba(16,28,54,.08);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--ink-2);
+  font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:"Source Serif 4",Georgia,serif; color:var(--ink); line-height:1.15; margin:0; font-weight:600; letter-spacing:-.01em;}
+p{margin:0 0 1em;}
+a{color:var(--gold-deep);}
+.mono{font-family:"IBM Plex Mono",monospace;}
+:focus-visible{outline:3px solid var(--gold); outline-offset:2px; border-radius:8px;}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:600;}
+
+/* HERO */
+.hero{position:relative; overflow:hidden;
+  background:linear-gradient(135deg,var(--bg-hero-1),var(--bg-hero-2));
+  padding:64px 22px 72px;}
+.hero::after{content:""; position:absolute; right:-6%; top:8%; width:520px; height:340px; opacity:.10; pointer-events:none;
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='white'><path d='M480 192H365l-90-160h-59l45 160H128l-40-56H40l24 96-24 96h48l40-56h128l-45 160h59l90-160h115c17 0 32-14 32-32s-15-32-32-32z'/></svg>");}
+.hero__in{max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1.05fr 1fr; gap:44px; align-items:center; position:relative; z-index:1;}
+.hero__brand{display:flex; align-items:center; gap:10px; margin-bottom:26px;}
+.hero__brand svg{height:30px; width:auto;}
+.hero__brand span{font-family:"Source Serif 4",serif; color:#fff; font-weight:700; font-size:1.25rem; letter-spacing:.02em;}
+.hero__brand b{color:var(--gold);}
+.hero h1{color:#fff; font-size:clamp(1.7rem,3.4vw,2.5rem); margin-top:12px;}
+.hero__lead{color:#C9D3E4; margin-top:16px; font-size:1.05rem; max-width:46ch;}
+.hero__pts{margin-top:22px; display:flex; flex-wrap:wrap; gap:10px;}
+.hero__pt{display:inline-flex; align-items:center; gap:8px; color:#DCE4F0; font-size:.86rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); padding:7px 12px; border-radius:999px;}
+.hero__pt svg{width:15px; height:15px; color:var(--gold);}
+
+/* CARD / WIZARD */
+.card{background:var(--card); border-radius:var(--r-lg); box-shadow:var(--shadow); padding:30px; min-height:430px; display:flex; flex-direction:column;}
+.wz__head{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+.wz__title{font-size:1.14rem; font-weight:700; color:var(--ink);}
+.wz__step{font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--mute); white-space:nowrap;}
+.wz__bar{height:6px; background:var(--line); border-radius:99px; margin:16px 0 22px; overflow:hidden;}
+.wz__fill{height:100%; width:14%; background:linear-gradient(90deg,var(--gold),var(--gold-deep)); border-radius:99px; transition:width .35s var(--ease);}
+.q{font-size:1.16rem; font-weight:600; color:var(--ink); font-family:"Source Serif 4",serif; margin:2px 0 4px;}
+.q__hint{font-size:.9rem; color:var(--mute); margin:0 0 16px;}
+.opts{display:flex; flex-direction:column; gap:10px; margin-bottom:8px;}
+.opt{display:flex; align-items:flex-start; gap:12px; border:1.5px solid var(--line-2); border-radius:var(--r-sm); padding:14px 16px; cursor:pointer; transition:border-color .15s, background .15s, box-shadow .15s; background:#fff;}
+.opt:hover{border-color:var(--gold); background:#FffdF6;}
+.opt.sel{border-color:var(--gold-deep); background:var(--gold-soft); box-shadow:inset 0 0 0 1px var(--gold-deep);}
+.opt__mark{flex:0 0 auto; width:20px; height:20px; border:2px solid var(--mute-2); border-radius:50%; margin-top:1px; display:grid; place-items:center; transition:.15s;}
+.opt.multi .opt__mark{border-radius:6px;}
+.opt.sel .opt__mark{border-color:var(--gold-deep); background:var(--gold-deep);}
+.opt.sel .opt__mark::after{content:""; width:8px; height:8px; background:#fff; border-radius:50%;}
+.opt.multi.sel .opt__mark::after{width:11px; height:11px; border-radius:2px;}
+.opt__txt{flex:1;}
+.opt__lbl{font-weight:600; color:var(--ink); font-size:.98rem;}
+.opt__sub{display:block; font-weight:400; color:var(--mute); font-size:.83rem; margin-top:2px;}
+.subblock{margin-top:18px; padding-top:16px; border-top:1px dashed var(--line);}
+.subblock > .q{font-size:1rem;}
+.wz__nav{margin-top:auto; padding-top:22px; display:flex; align-items:center; gap:12px;}
+.btn{font-family:inherit; font-weight:700; font-size:.98rem; border-radius:999px; padding:14px 24px; border:none; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px;}
+.btn--ghost{background:transparent; color:var(--mute); padding:14px 12px;}
+.btn--ghost:hover{color:var(--ink);}
+.btn--primary{background:var(--gold); color:#231A00; margin-left:auto; box-shadow:0 8px 20px rgba(242,169,0,.28);}
+.btn--primary:hover{background:var(--gold-deep); color:#fff;}
+.btn--primary:disabled{background:#EDEBE4; color:#B4B2AA; cursor:not-allowed; box-shadow:none;}
+.btn__ico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.5);display:grid;place-items:center;}
+.btn--primary:disabled .btn__ico{background:rgba(255,255,255,.4);}
+.btn__ico svg{width:16px;height:16px;color:currentColor;}
+.wz__foot{margin-top:14px; text-align:center; font-size:.8rem; color:var(--mute-2);}
+
+/* RESULT */
+.res__lead{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+.res__lead .eyebrow{margin:0;}
+.chip{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:.08em;}
+.chip--alta{background:var(--green-soft); color:var(--green);}
+.chip--media{background:var(--amber-soft); color:var(--amber);}
+.chip--baixa{background:var(--red-soft2); color:var(--red2);}
+.faixa{margin:14px 0 6px; text-align:center; background:linear-gradient(135deg,#0E1B33,#22324F); border-radius:var(--r-md); padding:24px 20px; color:#fff;}
+.faixa__lbl{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:#AEB9CE;}
+.faixa__val{font-family:"Source Serif 4",serif; font-size:2.05rem; color:var(--gold); font-weight:700; margin:6px 0 4px; line-height:1.1;}
+.faixa__sit{font-size:.92rem; color:#D7DEEA;}
+.res__sec{margin-top:18px;}
+.res__sec h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mute); font-family:"IBM Plex Mono",monospace; font-weight:600; margin-bottom:8px;}
+.flist{display:flex; flex-direction:column; gap:7px;}
+.fitem{display:flex; align-items:flex-start; gap:9px; font-size:.92rem;}
+.fitem svg{flex:0 0 auto; width:17px; height:17px; margin-top:2px;}
+.fitem.pos svg{color:var(--green);} .fitem.neg svg{color:var(--amber);} .fitem.gate svg{color:var(--red2);}
+.legal{font-size:.9rem; color:var(--ink-2); background:#F6F8FB; border:1px solid var(--line-2); border-radius:var(--r-sm); padding:12px 14px;}
+.legal b{color:var(--ink);}
+.alert{border-radius:var(--r-sm); padding:14px 16px; font-size:.9rem; margin-top:14px; border:1px solid;}
+.alert--stf{background:var(--amber-soft); border-color:#E9CE97; color:#5E4410;}
+.alert--ok{background:var(--green-soft); border-color:#BBE1CC; color:#155C3B;}
+.alert b{font-weight:700;}
+.disc{margin-top:18px; font-size:.82rem; color:var(--mute); border-top:1px solid var(--line); padding-top:14px;}
+.res__cta{margin-top:18px; display:flex; flex-wrap:wrap; gap:10px;}
+.res__cta .btn--primary{margin-left:0;}
+.btn--wa{background:#1F8E5A; color:#fff; box-shadow:0 8px 20px rgba(31,142,90,.25);}
+.btn--wa:hover{background:#166E45;}
+.btn--out{background:#fff; color:var(--ink); border:1.5px solid var(--line-2);}
+.btn--out:hover{border-color:var(--gold);}
+.sources{max-width:1160px; margin:22px auto 0; padding:0 22px 50px; color:var(--mute-2); font-size:.78rem;}
+.sources b{color:var(--mute);}
+
+@media (max-width:900px){
+  .hero{padding:40px 18px 48px;}
+  .hero__in{grid-template-columns:1fr; gap:28px;}
+  .hero::after{display:none;}
+  .card{padding:22px; min-height:auto;}
+  .btn--primary{padding:13px 18px;}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__in">
+    <div class="hero__text">
+      <div class="hero__brand">
+        <svg viewBox="0 0 512 512" fill="none" aria-hidden="true"><path d="M480 192H365l-90-160h-59l45 160H128l-40-56H40l24 96-24 96h48l40-56h128l-45 160h59l90-160h115c17 0 32-14 32-32s-15-32-32-32z" fill="%23F2A900"/></svg>
+        <span>Lex<b>Aero</b></span>
+      </div>
+      <p class="eyebrow">Ferramenta de análise</p>
+      <h1>Descubra em poucos minutos os seus direitos e uma faixa orientativa para o seu caso</h1>
+      <p class="hero__lead">Responda a algumas perguntas sobre o que aconteceu no seu voo. A ferramenta indica uma faixa praticada pelos tribunais e explica, de forma transparente, o que pesa a favor e o que merece atenção.</p>
+      <div class="hero__pts">
+        <span class="hero__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Leva menos de 3 minutos</span>
+        <span class="hero__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Análise inicial gratuita</span>
+        <span class="hero__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Base: ANAC 400, CDC e STF</span>
+      </div>
+    </div>
+
+    <div class="card" id="wizardCard">
+      <!-- WIZARD -->
+      <div id="wizard">
+        <div class="wz__head">
+          <div class="wz__title">Análise do seu voo</div>
+          <div class="wz__step" id="stepCounter">Etapa 1 de 7</div>
+        </div>
+        <div class="wz__bar"><div class="wz__fill" id="progressFill"></div></div>
+        <div id="stepBody"></div>
+        <div class="wz__nav">
+          <button class="btn btn--ghost" id="backBtn" onclick="goBack()" style="visibility:hidden">← Voltar</button>
+          <button class="btn btn--primary" id="nextBtn" onclick="goNext()" disabled>
+            <span id="nextLbl">Continuar</span>
+            <span class="btn__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+        </div>
+        <div class="wz__foot">Leva menos de 3 minutos • Análise inicial gratuita</div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="result" style="display:none"></div>
+    </div>
+  </div>
+</section>
+
+<div class="sources" id="sources"></div>
+
+<script>
+/* =========================================================
+   LexAero — Análise orientativa (v2)
+   Faixas sincronizadas ao "Radar Jurídico" (faixas praticadas
+   pelos tribunais, 2025/2026) e lógica do STF Tema 1.417.
+   Ferramenta orientativa e educativa — não é promessa de resultado.
+   ========================================================= */
+
+var WA_NUMBER = '5531983259594';
+
+var state = {
+  tipo:null, sub:null, atrasoDur:null, tempDur:null, reacomodado:null,
+  ambito:null, assist:null, agravantes:[], causa:null, culpa:'nao', docs:[]
+};
+
+var STEPS = ['tipo','detalhe','ambito','assistencia','agravantes','causa','documentos'];
+var step = 0;
+
+/* ---------- money / format ---------- */
+function money(n){ var x = Math.round(Number(n)).toString(); return 'R$ ' + x.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+function faixaTxt(min,max){
+  if(min===0 && max===0) return 'Tende a mero dissabor';
+  return money(min) + ' – ' + money(max);
+}
+
+/* ---------- option renderers ---------- */
+function optRow(key, value, label, sub, multi){
+  var selected = multi ? (state[key]||[]).indexOf(value)>-1 : state[key]===value;
+  var cls = 'opt' + (multi?' multi':'') + (selected?' sel':'');
+  var handler = multi ? "toggleMulti('"+key+"','"+value+"')" : "selectOne('"+key+"','"+value+"')";
+  return '<div class="'+cls+'" role="button" tabindex="0" onclick="'+handler+'" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();'+handler+';}">'
+    + '<span class="opt__mark"></span>'
+    + '<span class="opt__txt"><span class="opt__lbl">'+label+'</span>'
+    + (sub?'<span class="opt__sub">'+sub+'</span>':'') + '</span></div>';
+}
+
+var DUR_ATRASO = [
+  ['lt4','Menos de 4 horas','Em regra, tratado como mero dissabor'],
+  ['4a8','Entre 4 e 8 horas',''],
+  ['8a12','Entre 8 e 12 horas',''],
+  ['gt12','Mais de 12 horas','']
+];
+var DUR_TEMP = [
+  ['ate24','Até 24 horas',''],
+  ['24a72','De 24 a 72 horas',''],
+  ['72a168','De 3 a 7 dias',''],
+  ['gt168','Mais de 7 dias','Aproxima-se do extravio definitivo']
+];
+
+/* ---------- steps ---------- */
+function renderStep(){
+  var name = STEPS[step];
+  var b = document.getElementById('stepBody');
+  var html = '';
+
+  if(name==='tipo'){
+    html += '<div class="q">Qual problema você enfrentou com o voo?</div>';
+    html += '<p class="q__hint">Escolha a situação principal. Nas próximas etapas detalhamos o caso.</p>';
+    html += '<div class="opts">'
+      + optRow('tipo','atraso_cancel','Voo atrasado ou cancelado','Atraso, cancelamento ou alteração unilateral')
+      + optRow('tipo','bagagem','Bagagem extraviada ou avariada','Extravio, dano, violação ou furto')
+      + optRow('tipo','overbooking','Overbooking','Embarque negado por excesso de passageiros')
+      + optRow('tipo','conexao','Conexão perdida','Perda de conexão por atraso/malha da companhia')
+      + '</div>';
+  }
+
+  else if(name==='detalhe'){
+    if(state.tipo==='atraso_cancel'){
+      html += '<div class="q">O que aconteceu, exatamente?</div><div class="opts">'
+        + optRow('sub','atraso','Meu voo atrasou','')
+        + optRow('sub','cancelamento','Meu voo foi cancelado','')
+        + optRow('sub','alteracao','A companhia alterou o voo sem meu acordo','Mudança de horário, rota ou data')
+        + '</div>';
+      if(state.sub==='atraso'){
+        html += '<div class="subblock"><div class="q">Quanto tempo de atraso até chegar ao destino final?</div><div class="opts">';
+        DUR_ATRASO.forEach(function(d){ html += optRow('atrasoDur',d[0],d[1],d[2]); });
+        html += '</div></div>';
+      }
+    }
+    else if(state.tipo==='bagagem'){
+      html += '<div class="q">Qual foi o problema com a bagagem?</div><div class="opts">'
+        + optRow('sub','extravio_def','Extravio definitivo','A bagagem não foi localizada / não voltou')
+        + optRow('sub','extravio_temp','Extravio temporário','A bagagem atrasou, mas foi devolvida')
+        + optRow('sub','avaria','Dano, violação ou furto','Mala danificada ou itens subtraídos')
+        + '</div>';
+      if(state.sub==='extravio_temp'){
+        html += '<div class="subblock"><div class="q">Por quanto tempo você ficou sem a bagagem?</div><div class="opts">';
+        DUR_TEMP.forEach(function(d){ html += optRow('tempDur',d[0],d[1],d[2]); });
+        html += '</div></div>';
+      }
+    }
+    else if(state.tipo==='overbooking'){
+      html += '<div class="q">Sobre o embarque negado</div>';
+      html += '<p class="q__hint">O overbooking (preterição) ocorre quando a companhia nega o embarque por excesso de passageiros.</p>';
+      html += '<div class="q" style="font-size:1rem">Você foi reacomodado(a) em outro voo em prazo razoável?</div><div class="opts">'
+        + optRow('reacomodado','sim','Sim, fui reacomodado(a) rapidamente','')
+        + optRow('reacomodado','nao','Não, fiquei muito tempo sem solução','')
+        + '</div>';
+      state.sub = 'pretericao';
+    }
+    else if(state.tipo==='conexao'){
+      html += '<div class="q">Quanto tempo de atraso até chegar ao destino final?</div>';
+      html += '<p class="q__hint">Considere o tempo total de atraso causado pela perda da conexão.</p><div class="opts">';
+      DUR_ATRASO.forEach(function(d){ html += optRow('atrasoDur',d[0],d[1],d[2]); });
+      html += '</div>';
+      state.sub = 'conexao';
+    }
+  }
+
+  else if(name==='ambito'){
+    html += '<div class="q">O voo era doméstico ou internacional?</div>';
+    html += '<p class="q__hint">Isso define a base legal aplicável (CDC e/ou Convenção de Montreal).</p><div class="opts">'
+      + optRow('ambito','domestico','Doméstico','Trechos dentro do Brasil')
+      + optRow('ambito','internacional','Internacional','Origem ou destino no exterior')
+      + '</div>';
+  }
+
+  else if(name==='assistencia'){
+    html += '<div class="q">A companhia prestou assistência material?</div>';
+    html += '<p class="q__hint">Comunicação, alimentação e hospedagem conforme o tempo de espera (Res. ANAC 400, arts. 26 e 27).</p><div class="opts">'
+      + optRow('assist','sim','Sim, prestou adequadamente','')
+      + optRow('assist','parcial','Prestou apenas em parte','')
+      + optRow('assist','nao','Não prestou assistência','Costuma agravar o dano moral')
+      + '</div>';
+  }
+
+  else if(name==='agravantes'){
+    html += '<div class="q">Algum destes fatores esteve presente?</div>';
+    html += '<p class="q__hint">Pode marcar mais de um, ou nenhum.</p><div class="opts">'
+      + optRow('agravantes','perda_compromisso','Perda de compromisso importante','Reunião, prova, evento, cruzeiro, conexão internacional', true)
+      + optRow('agravantes','hipervulnerabilidade','Passageiro em situação de vulnerabilidade','Idoso, criança, gestante, PcD ou pessoa enferma', true)
+      + optRow('agravantes','despesas','Tive despesas extras comprovadas','Hospedagem, transporte, alimentação, compras', true)
+      + '</div>';
+  }
+
+  else if(name==='causa'){
+    html += '<div class="q">Qual motivo a companhia alegou?</div><div class="opts">'
+      + optRow('causa','interno','Falha da própria companhia','Manutenção, tripulação, malha aérea, problema operacional')
+      + optRow('causa','externo','Força maior / fortuito externo','Clima, fechamento de aeroporto, causas alheias à empresa')
+      + optRow('causa','nao_informado','Não sei / não foi informado','')
+      + '</div>';
+    html += '<div class="subblock"><div class="q" style="font-size:1rem">A companhia alegou que a culpa foi exclusivamente sua?</div>';
+    html += '<p class="q__hint">Ex.: chegada após o fechamento do check-in.</p><div class="opts">'
+      + optRow('culpa','nao','Não','')
+      + optRow('culpa','sim','Sim','')
+      + '</div></div>';
+  }
+
+  else if(name==='documentos'){
+    html += '<div class="q">Quais documentos você já tem?</div>';
+    html += '<p class="q__hint">Não é obrigatório ter todos agora — isso ajuda a medir a força do caso. Marque o que possui.</p><div class="opts">';
+    var docsList = docsForTipo();
+    docsList.forEach(function(d){ html += optRow('docs',d[0],d[1],d[2],true); });
+    html += '</div>';
+  }
+
+  b.innerHTML = html;
+
+  document.getElementById('stepCounter').textContent = 'Etapa ' + (step+1) + ' de 7';
+  document.getElementById('progressFill').style.width = ((step+1)/7*100) + '%';
+  document.getElementById('backBtn').style.visibility = step===0 ? 'hidden' : 'visible';
+  document.getElementById('nextLbl').textContent = step===STEPS.length-1 ? 'Ver resultado' : 'Continuar';
+  refreshNext();
+}
+
+function docsForTipo(){
+  var common = [
+    ['bilhete','Bilhete / e-ticket',''],
+    ['embarque','Cartão de embarque',''],
+    ['protocolo','Protocolo de reclamação','SAC, ouvidoria ou consumidor.gov'],
+    ['prints','Prints / e-mails da companhia','']
+  ];
+  if(state.tipo==='bagagem'){
+    return common.concat([
+      ['rib','RIB — Registro de Irregularidade de Bagagem',''],
+      ['fotos','Fotos da mala e dos itens',''],
+      ['notas','Notas fiscais dos bens e das compras emergenciais','']
+    ]);
+  }
+  return common.concat([
+    ['despesasdoc','Comprovantes de despesas extras',''],
+    ['fotos','Fotos / vídeos (painéis, filas)',''],
+    ['compromisso','Comprovante do compromisso perdido','']
+  ]);
+}
+
+/* ---------- selection ---------- */
+function selectOne(key, value){
+  state[key] = value;
+  if(key==='sub'){ state.atrasoDur=null; state.tempDur=null; }
+  renderStep();
+}
+function toggleMulti(key, value){
+  if(!Array.isArray(state[key])) state[key]=[];
+  var i = state[key].indexOf(value);
+  if(i>-1) state[key].splice(i,1); else state[key].push(value);
+  renderStep();
+}
+function refreshNext(){
+  document.getElementById('nextBtn').disabled = !stepValid();
+}
+function stepValid(){
+  var name = STEPS[step];
+  switch(name){
+    case 'tipo': return !!state.tipo;
+    case 'detalhe':
+      if(state.tipo==='atraso_cancel'){
+        if(!state.sub) return false;
+        if(state.sub==='atraso' && !state.atrasoDur) return false;
+        return true;
+      }
+      if(state.tipo==='bagagem'){
+        if(!state.sub) return false;
+        if(state.sub==='extravio_temp' && !state.tempDur) return false;
+        return true;
+      }
+      if(state.tipo==='overbooking') return !!state.reacomodado;
+      if(state.tipo==='conexao') return !!state.atrasoDur;
+      return false;
+    case 'ambito': return !!state.ambito;
+    case 'assistencia': return !!state.assist;
+    case 'agravantes': return true;      /* opcional */
+    case 'causa': return !!state.causa;  /* culpa tem default 'nao' */
+    case 'documentos': return true;      /* opcional */
+  }
+  return false;
+}
+
+/* ---------- navigation ---------- */
+function goNext(){
+  if(!stepValid()) return;
+  if(step===STEPS.length-1){ showResult(); return; }
+  step++; renderStep();
+  document.getElementById('wizardCard').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function goBack(){
+  if(step===0) return;
+  step--; renderStep();
+}
+
+/* =========================================================
+   MOTOR DE CÁLCULO — faixas do Radar Jurídico
+   ========================================================= */
+function computeResult(){
+  var s = state;
+  var out = {
+    sit:'', min:0, max:0, materiais:'', base:'', compensacao:'',
+    forca:'media', factors:[], stf:null, disc:'', docsRec:''
+  };
+
+  /* Gate: culpa exclusiva do consumidor */
+  if(s.culpa==='sim'){
+    out.sit = situacaoLabel();
+    out.min = 0; out.max = 0;
+    out.forca = 'baixa';
+    out.factors.push({t:'gate', txt:'Culpa exclusiva do consumidor — em regra, afasta a responsabilidade da companhia'});
+    out.base = baseLegal();
+    out.disc = 'A alegação de culpa exclusiva do consumidor, se confirmada, tende a afastar o dever de indenizar. Ainda assim, a análise individual pode revelar nuances (por exemplo, se a informação foi falha). Vale conferir os fatos em detalhe.';
+    out.docsRec = docsRecTxt();
+    return out;
+  }
+
+  /* Faixa base por situação (dano moral) */
+  var min=0,max=0,sit='';
+  if(s.tipo==='atraso_cancel'){
+    if(s.sub==='atraso'){
+      sit='Atraso de voo';
+      if(s.atrasoDur==='lt4'){ min=0; max=0; }
+      else if(s.atrasoDur==='4a8'){ min=3000; max=8000; }
+      else if(s.atrasoDur==='8a12'){ min=5000; max=12000; }
+      else { min=8000; max=15000; }
+    } else if(s.sub==='cancelamento'){
+      sit='Cancelamento de voo'; min=5000; max=20000;
+      if((s.agravantes||[]).indexOf('perda_compromisso')>-1){ sit='Cancelamento + perda de compromisso'; min=10000; max=30000; }
+    } else {
+      sit='Alteração unilateral de voo'; min=5000; max=20000;
+    }
+  } else if(s.tipo==='conexao'){
+    sit='Conexão perdida / reacomodação';
+    if(s.atrasoDur==='lt4'){ min=3000; max=8000; }
+    else if(s.atrasoDur==='4a8'){ min=3000; max=10000; }
+    else if(s.atrasoDur==='8a12'){ min=5000; max=12000; }
+    else { min=8000; max=15000; }
+  } else if(s.tipo==='overbooking'){
+    sit='Overbooking (preterição)'; min=5000; max=25000;
+    out.compensacao = 'Além do dano moral, há direito à compensação financeira imediata da Res. ANAC 400 (250 DES em voo doméstico / 500 DES em voo internacional), acumulável com reacomodação ou reembolso.';
+  } else if(s.tipo==='bagagem'){
+    if(s.sub==='extravio_def'){ sit='Extravio definitivo de bagagem'; min=5000; max=15000; }
+    else if(s.sub==='extravio_temp'){
+      sit='Extravio temporário de bagagem'; min=3000; max=10000;
+      if(s.tempDur==='gt168'){ min=5000; max=15000; sit='Extravio temporário prolongado de bagagem'; }
+    } else { sit='Dano, violação ou avaria de bagagem'; min=2000; max=10000; }
+    /* materiais */
+    if(s.ambito==='internacional'){
+      out.materiais = 'Danos materiais (bens): em voo internacional, a reparação segue o limite tarifado da Convenção de Montreal (Decreto 5.910/2006), conforme o STF (Tema 210). O dano moral, por sua vez, é regido pelo CDC.';
+    } else {
+      out.materiais = 'Danos materiais (bens): em voo doméstico, a reparação segue o valor integral comprovado (CDC). Guarde notas fiscais dos bens e das compras emergenciais.';
+    }
+  }
+  out.sit = sit; out.min = min; out.max = max;
+
+  /* Score de força do caso */
+  var score = 0; var F = out.factors;
+  if(s.tipo==='overbooking'){ score+=3; F.push({t:'pos', txt:'Overbooking (preterição) é hipótese de responsabilidade objetiva com previsão expressa na ANAC 400'}); }
+  if(s.tipo==='atraso_cancel'){
+    if(s.sub==='cancelamento'){ score+=3; F.push({t:'pos', txt:'Cancelamento sem alternativa adequada tende a configurar falha na prestação do serviço'}); }
+    else if(s.sub==='alteracao'){ score+=2; F.push({t:'pos', txt:'Alteração unilateral relevante pode configurar falha do serviço'}); }
+    else if(s.sub==='atraso'){
+      if(s.atrasoDur==='lt4'){ F.push({t:'neg', txt:'Atraso inferior a 4h, isoladamente, costuma ser tratado como mero dissabor'}); }
+      else if(s.atrasoDur==='4a8'){ score+=2; F.push({t:'pos', txt:'Atraso de 4 a 8 horas costuma superar o mero dissabor'}); }
+      else if(s.atrasoDur==='8a12'){ score+=3; F.push({t:'pos', txt:'Atraso de 8 a 12 horas reforça o pedido de dano moral'}); }
+      else { score+=4; F.push({t:'pos', txt:'Atraso superior a 12 horas é fator relevante de dano moral'}); }
+    }
+  }
+  if(s.tipo==='conexao'){
+    if(s.atrasoDur==='lt4'){ score+=1; } else if(s.atrasoDur==='4a8'){ score+=2; } else if(s.atrasoDur==='8a12'){ score+=3; } else { score+=4; }
+    F.push({t:'pos', txt:'Perda de conexão por malha/atraso da companhia atrai o dever de reacomodação e assistência'});
+  }
+  if(s.tipo==='bagagem'){
+    if(s.sub==='extravio_def'){ score+=3; F.push({t:'pos', txt:'Extravio definitivo é dano presumido (in re ipsa) na maior parte da jurisprudência'}); }
+    else if(s.sub==='extravio_temp'){ score+=2; if(s.tempDur==='72a168'||s.tempDur==='gt168'){ score+=1; } F.push({t:'pos', txt:'Privação prolongada da bagagem reforça o dano moral'}); }
+    else { score+=2; F.push({t:'pos', txt:'Dano, violação ou furto de bagagem configura falha na guarda (CDC)'}); }
+  }
+
+  if(s.assist==='nao'){ score+=2; F.push({t:'pos', txt:'Ausência de assistência material (arts. 26 e 27 da ANAC 400) agrava o dano moral'}); }
+  else if(s.assist==='parcial'){ score+=1; F.push({t:'pos', txt:'Assistência apenas parcial pesa a favor do passageiro'}); }
+  else { score-=1; F.push({t:'neg', txt:'Assistência prestada adequadamente pode reduzir o valor do dano moral'}); }
+
+  if((s.agravantes||[]).indexOf('hipervulnerabilidade')>-1){ score+=2; F.push({t:'pos', txt:'Passageiro em situação de vulnerabilidade — fator de agravamento reconhecido'}); }
+  if((s.agravantes||[]).indexOf('perda_compromisso')>-1){ score+=2; F.push({t:'pos', txt:'Perda de compromisso relevante reforça o dano e pode elevar o valor'}); }
+  if((s.agravantes||[]).indexOf('despesas')>-1){ score+=1; F.push({t:'pos', txt:'Despesas extras comprovadas sustentam também o pedido de dano material'}); }
+
+  var nDocs = (s.docs||[]).length;
+  if(nDocs>=4){ score+=2; F.push({t:'pos', txt:'Boa documentação disponível — fortalece a prova do caso'}); }
+  else if(nDocs>=2){ score+=1; F.push({t:'pos', txt:'Documentação parcial disponível'}); }
+  else { F.push({t:'neg', txt:'Pouca documentação reunida — vale guardar comprovantes o quanto antes'}); }
+
+  if(s.reacomodado==='nao'){ score+=1; F.push({t:'pos', txt:'Demora na reacomodação agrava a situação'}); }
+
+  /* Causa alegada + Tema 1.417 */
+  var tipoSujeitoSuspensao = (s.tipo==='atraso_cancel' || s.tipo==='conexao');
+  if(s.causa==='externo'){
+    score-=2;
+    F.push({t:'neg', txt:'Alegação de força maior / fortuito externo pode reduzir ou afastar a responsabilidade (é controvertida)'});
+    if(tipoSujeitoSuspensao){
+      out.stf = {tipo:'stf', txt:'Atenção — STF Tema 1.417: desde 26/11/2025, estão <b>suspensas nacionalmente</b> as ações sobre responsabilidade por atraso, cancelamento ou alteração de voo por <b>caso fortuito ou força maior (fortuito externo)</b>, até o julgamento do mérito (ARE 1.560.244, Rel. Min. Dias Toffoli). A suspensão não impede reunir provas e preparar o caso — apenas o julgamento fica sobrestado.'};
+    } else {
+      out.stf = {tipo:'ok', txt:'Bagagem e overbooking <b>não</b> são alcançados pela suspensão nacional do STF (Tema 1.417), que se restringe a atraso/cancelamento por força maior. O seu caso segue tramitação normal.'};
+    }
+  } else if(s.causa==='interno'){
+    score+=1;
+    F.push({t:'pos', txt:'Falha operacional da companhia (fortuito interno — manutenção, tripulação, malha) mantém a responsabilidade'});
+    out.stf = {tipo:'ok', txt:'A causa alegada é falha interna da companhia (fortuito interno). Esse cenário <b>não</b> é alcançado pela suspensão do STF (Tema 1.417), que trata apenas de força maior / fortuito externo.'};
+  }
+
+  /* Força final */
+  var forca;
+  if(min===0 && max===0 && score<2){ forca='baixa'; }
+  else if(score<=1){ forca='baixa'; }
+  else if(score<=4){ forca='media'; }
+  else { forca='alta'; }
+  out.forca = forca;
+
+  /* Ajuste faixa quando atraso <4h vira dano por agravantes fortes */
+  if(s.tipo==='atraso_cancel' && s.sub==='atraso' && s.atrasoDur==='lt4'){
+    if(score>=3){ out.min=3000; out.max=8000; out.sit='Atraso de voo (agravado por outros fatores)'; }
+  }
+
+  /* posição na faixa */
+  if(out.max>out.min){
+    if(forca==='alta'){ out.pos='Com os fatores assinalados, o caso tende ao topo da faixa.'; }
+    else if(forca==='baixa'){ out.pos='Com os fatores assinalados, o caso tende ao piso da faixa (ou à improcedência).'; }
+    else { out.pos='Com os fatores assinalados, o caso tende à porção intermediária da faixa.'; }
+  }
+
+  out.base = baseLegal();
+  out.docsRec = docsRecTxt();
+  out.disc = 'Estimativa por regras orientativas, apenas para uma primeira leitura do caso. As faixas refletem valores praticados pelos tribunais (2025/2026) e não são garantidas: o valor efetivo depende das provas e das circunstâncias, e será sempre objeto de análise individual.';
+  return out;
+}
+
+function situacaoLabel(){
+  var s=state;
+  if(s.tipo==='atraso_cancel') return s.sub==='cancelamento'?'Cancelamento de voo':(s.sub==='alteracao'?'Alteração unilateral de voo':'Atraso de voo');
+  if(s.tipo==='conexao') return 'Conexão perdida / reacomodação';
+  if(s.tipo==='overbooking') return 'Overbooking (preterição)';
+  if(s.tipo==='bagagem') return s.sub==='extravio_def'?'Extravio definitivo de bagagem':(s.sub==='avaria'?'Dano/violação de bagagem':'Extravio temporário de bagagem');
+  return 'Problema com voo';
+}
+function baseLegal(){
+  var s=state;
+  if(s.tipo==='atraso_cancel'){
+    if(s.sub==='cancelamento') return 'Res. ANAC 400/2016, art. 21; CDC, arts. 14 e 20.';
+    if(s.sub==='alteracao') return 'Res. ANAC 400/2016, art. 21; CDC, art. 14.';
+    return 'Res. ANAC 400/2016, art. 21; CDC, art. 14.';
+  }
+  if(s.tipo==='conexao') return 'Res. ANAC 400/2016, art. 21; CDC, art. 14.';
+  if(s.tipo==='overbooking') return 'Res. ANAC 400/2016, arts. 22 e 24; CDC, art. 6º.';
+  if(s.tipo==='bagagem'){
+    if(s.ambito==='internacional') return 'Voo internacional: Convenção de Montreal (Decreto 5.910/2006) para o dano material; CDC para o dano moral (STF, Tema 210). Res. ANAC 400/2016.';
+    return 'CDC, art. 14; Res. ANAC 400/2016.';
+  }
+  return 'Res. ANAC 400/2016; CDC.';
+}
+function docsRecTxt(){
+  return docsForTipo().map(function(d){ return d[1]; }).join(' · ');
+}
+
+/* =========================================================
+   RENDER DO RESULTADO
+   ========================================================= */
+function showResult(){
+  var r = computeResult();
+  document.getElementById('wizard').style.display='none';
+  var el = document.getElementById('result');
+  el.style.display='block';
+
+  var chipCls = r.forca==='alta'?'chip--alta':(r.forca==='media'?'chip--media':'chip--baixa');
+  var chipTxt = r.forca==='alta'?'Força alta':(r.forca==='media'?'Força média':'Força baixa');
+
+  var factorsHtml = r.factors.map(function(f){
+    var ico = f.t==='pos'
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>'
+      : (f.t==='gate'
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 9v4M12 17h.01M10.3 3.9L2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>');
+    return '<div class="fitem '+f.t+'">'+ico+'<span>'+f.txt+'</span></div>';
+  }).join('');
+
+  var faixaLabel = (r.min===0 && r.max===0) ? 'Orientação' : 'Faixa orientativa de dano moral';
+  var faixaBig = (r.min===0 && r.max===0) ? 'Tende a mero dissabor' : faixaTxt(r.min,r.max);
+
+  var html = '';
+  html += '<div class="res__lead"><span class="eyebrow">Resultado orientativo</span><span class="chip '+chipCls+'">'+chipTxt+'</span></div>';
+  html += '<div class="faixa"><div class="faixa__lbl">'+faixaLabel+'</div>'
+        + '<div class="faixa__val">'+faixaBig+'</div>'
+        + '<div class="faixa__sit">'+r.sit+'</div></div>';
+  if(r.pos){ html += '<p style="font-size:.88rem;color:var(--mute);margin:8px 2px 0">'+r.pos+'</p>'; }
+
+  if(r.stf){ html += '<div class="alert '+(r.stf.tipo==='stf'?'alert--stf':'alert--ok')+'">'+r.stf.txt+'</div>'; }
+
+  html += '<div class="res__sec"><h4>O que pesa no seu caso</h4><div class="flist">'+factorsHtml+'</div></div>';
+
+  html += '<div class="res__sec"><h4>Base legal aplicável</h4><div class="legal">'+r.base+'</div></div>';
+
+  if(r.compensacao){ html += '<div class="res__sec"><div class="legal"><b>Compensação da ANAC:</b> '+r.compensacao+'</div></div>'; }
+  if(r.materiais){ html += '<div class="res__sec"><div class="legal"><b>Danos materiais:</b> '+r.materiais+'</div></div>'; }
+
+  html += '<div class="res__sec"><h4>Documentos que ajudam a comprovar</h4><div class="legal">'+r.docsRec+'</div></div>';
+
+  html += '<p class="disc">'+r.disc+'</p>';
+
+  var waMsg = 'Olá! Usei a ferramenta de análise no site da LexAero e gostaria de falar sobre o meu caso.\n\n'
+    + 'Situação: '+r.sit+'\n'
+    + 'Faixa orientativa: '+faixaBig+'\n'
+    + 'Força do caso: '+chipTxt+'\n\n'
+    + '(Resultado orientativo — não é promessa de resultado.)';
+  var waHref = 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waMsg);
+
+  html += '<div class="res__cta">'
+    + '<a class="btn btn--primary" href="#contato" data-lead="1">Solicitar análise individual gratuita <span class="btn__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>'
+    + '<a class="btn btn--wa" href="'+waHref+'" target="_blank" rel="noopener">Falar no WhatsApp</a>'
+    + '<button class="btn btn--out" onclick="restart()">Refazer análise</button>'
+    + '</div>';
+
+  el.innerHTML = html;
+  document.getElementById('wizardCard').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function restart(){
+  state = {tipo:null,sub:null,atrasoDur:null,tempDur:null,reacomodado:null,ambito:null,assist:null,agravantes:[],causa:null,culpa:'nao',docs:[]};
+  step = 0;
+  document.getElementById('result').style.display='none';
+  document.getElementById('result').innerHTML='';
+  document.getElementById('wizard').style.display='block';
+  renderStep();
+}
+
+/* fontes / rodapé */
+document.getElementById('sources').innerHTML =
+  '<b>Fontes:</b> STF — Tema 1.417 (ARE 1.560.244) e Tema 210 (RE 636.331) · Resolução ANAC nº 400/2016 · '
+  + 'Lei nº 8.078/1990 (CDC) · Convenção de Montreal (Decreto nº 5.910/2006). '
+  + 'Faixas: valores praticados pelos tribunais (2025/2026), estimativas ilustrativas. '
+  + 'Esta ferramenta é orientativa e educativa — não constitui parecer jurídico, decisão automatizada, garantia de êxito ou promessa de indenização. '
+  + 'O valor efetivo depende das provas e das circunstâncias de cada caso e será objeto de análise individual.';
+
+renderStep();
+</script>
+</body>
+</html>
