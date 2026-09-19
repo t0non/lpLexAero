@@ -73,12 +73,27 @@ export default function DiagnosticForm({ isEmbedded = false }) {
   };
 
   const setField = (f, v) => {
-    if (f === 'nome' || f === 'whatsapp') {
-      setTimeout(() => upsertLead(step), 500);
-    }
     setState(d => {
-      let nd = { ...d, [f]: v };
+      const nd = { ...d, [f]: v };
       if(f==='sub'){ nd.atrasoDur = null; nd.tempDur = null; }
+      // Upsert after state update for name/whatsapp capture
+      if (f === 'nome' || f === 'whatsapp') {
+        setTimeout(() => {
+          if (leadId) {
+            supabase.from('leads').upsert({
+              id: leadId,
+              name: f === 'nome' ? v : d.nome || null,
+              phone: f === 'whatsapp' ? v : d.whatsapp || null,
+              problem_type: d.tipo || null,
+              gclid: gclid,
+              last_step_reached: step,
+              completed: false,
+              form_data: nd,
+              updated_at: new Date().toISOString()
+            }, { onConflict: 'id' }).catch(console.error);
+          }
+        }, 800);
+      }
       return nd;
     });
   };
@@ -138,10 +153,14 @@ export default function DiagnosticForm({ isEmbedded = false }) {
   const goBack = () => { if(step > 1) setStep(s => s - 1); };
 
   const restart = () => {
-    setState({tipo: null, sub: null, atrasoDur: null, tempDur: null, reacomodado: null, ambito: null, assist: null, agravantes: [], causa: null, culpa: 'nao', docs: []});
+    setState({nome: '', whatsapp: '', tipo: null, sub: null, atrasoDur: null, tempDur: null, reacomodado: null, ambito: null, assist: null, agravantes: [], causa: null, culpa: 'nao', docs: []});
     setStep(1);
     setShowResult(false);
     setLoadPct(0);
+    // Generate fresh lead ID for new analysis
+    const newId = uuidv4();
+    sessionStorage.setItem('lexaero_lead_id', newId);
+    setLeadId(newId);
   };
 
   const computeResult = () => {
