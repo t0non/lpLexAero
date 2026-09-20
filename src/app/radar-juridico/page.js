@@ -169,7 +169,7 @@ export default function RadarJuridicoPage() {
         {/* Direitos e Parâmetros */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "clamp(1.25rem, 4vw, 2.5rem)", boxShadow: "0 2px 16px rgba(0,0,0,0.05)", marginBottom: "1.25rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.5rem", flexWrap: "wrap" }}>
-            <span style={{ background: "#ecfdf5", color: "#16a34a", borderRadius: 10, padding: "0.45rem", display: "flex" }}><IconScale /></span>
+            <img src="/Direitos do passageiro.png" alt="Direitos do passageiro" style={{ width: 32, height: 32, objectFit: "contain" }} />
             <h2 style={{ fontSize: "clamp(1rem, 3vw, 1.3rem)", fontWeight: 800, color: "#0f172a", margin: 0 }}>
               Direitos do passageiro: parâmetros e bases legais
             </h2>
