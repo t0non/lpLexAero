@@ -111,7 +111,7 @@ export default function RadarJuridicoPage() {
           {/* Documentos */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "clamp(1.25rem, 4vw, 2rem)", boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.5rem" }}>
-              <span style={{ background: "#fef3c7", color: "#d97706", borderRadius: 10, padding: "0.45rem", display: "flex" }}><IconFile /></span>
+              <img src="/documentos_pessoais.png" alt="Documentos essenciais" style={{ width: 32, height: 32, objectFit: "contain" }} />
               <h2 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#0f172a", margin: 0 }}>Documentos essenciais</h2>
             </div>
             <p style={{ fontSize: "0.82rem", color: "#64748b", marginBottom: "1.1rem", lineHeight: 1.6 }}>
@@ -141,7 +141,7 @@ export default function RadarJuridicoPage() {
           {/* Prazos */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "clamp(1.25rem, 4vw, 2rem)", boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.5rem" }}>
-              <span style={{ background: "#eff6ff", color: "#2563eb", borderRadius: 10, padding: "0.45rem", display: "flex" }}><IconClock /></span>
+              <img src="/prazos.png" alt="Prazos e assistência" style={{ width: 32, height: 32, objectFit: "contain" }} />
               <h2 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#0f172a", margin: 0 }}>Prazos e assistência</h2>
             </div>
             <p style={{ fontSize: "0.82rem", color: "#64748b", marginBottom: "1.1rem", lineHeight: 1.6 }}>
