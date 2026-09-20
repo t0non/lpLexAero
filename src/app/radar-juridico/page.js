@@ -47,7 +47,7 @@ export default function RadarJuridicoPage() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem", alignItems: "flex-start", justifyContent: "space-between" }}>
             {/* Left: title + features */}
-            <div style={{ flex: "1 1 500px" }}>
+            <div style={{ flex: "1 1 min(100%, 500px)" }}>
               <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: "1rem", lineHeight: 1.1, color: "#fff" }}>
                 RADAR <span style={{ color: "var(--lex-gold)" }}>JURÍDICO</span>
               </h1>
@@ -114,7 +114,7 @@ export default function RadarJuridicoPage() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", marginBottom: "4rem" }}>
 
             {/* Column 1 – Documentos */}
-            <div style={{ flex: "1 1 440px", background: "#fff", borderRadius: 16, padding: "2.5rem", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", border: "none" }}>
+            <div style={{ flex: "1 1 min(100%, 440px)", background: "#fff", borderRadius: 16, padding: "clamp(1.5rem, 5vw, 2.5rem)", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", border: "none", overflow: "hidden" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
                 <span style={{ color: "var(--lex-gold)" }}>{ICONS.file}</span>
                 <h2 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--lex-black)", margin: 0, textAlign: "left" }}>
@@ -124,36 +124,26 @@ export default function RadarJuridicoPage() {
               <p style={{ fontSize: "0.95rem", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>
                 A organização da documentação é essencial para o sucesso da ação. Quanto mais provas o passageiro tiver, maiores as chances de obter uma indenização justa.
               </p>
-              <div style={{ overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
-                  <thead>
-                    <tr style={{ background: "var(--lex-black)", color: "#fff" }}>
-                      <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 600, borderRadius: "6px 0 0 6px" }}>Documento</th>
-                      <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 600, borderRadius: "0 6px 6px 0" }}>Para que serve</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      ["Cartão de embarque", "Prova de que estava no voo"],
-                      ["Comprovante de reserva", "Dados da viagem contratada"],
-                      ["E-mails/mensagens da cia.", "Comunicações sobre alteração"],
-                      ["Nota fiscal de gastos extras", "Base para reembolso material"],
-                      ["Declaração de atraso/cancelamento", "Documento oficial da companhia"],
-                      ["Fotos do painel de partidas", "Prova da situação no aeroporto"],
-                      ["Protocolo de atendimento", "Registro da reclamação formal"],
-                    ].map(([doc, uso], i) => (
-                      <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#f9f9f7", borderBottom: "1px solid #f0f0ec" }}>
-                        <td style={{ padding: "0.75rem 1rem", fontWeight: 600, color: "#111" }}>{doc}</td>
-                        <td style={{ padding: "0.75rem 1rem", color: "#555" }}>{uso}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                {[
+                  ["Cartão de embarque", "Prova de que estava no voo"],
+                  ["Comprovante de reserva", "Dados da viagem contratada"],
+                  ["E-mails/mensagens da cia.", "Comunicações sobre alteração"],
+                  ["Nota fiscal de gastos extras", "Base para reembolso material"],
+                  ["Declaração de atraso/cancelamento", "Documento oficial da companhia"],
+                  ["Fotos do painel de partidas", "Prova da situação no aeroporto"],
+                  ["Protocolo de atendimento", "Registro da reclamação formal"],
+                ].map(([doc, uso], i) => (
+                  <div key={i} style={{ padding: "0.75rem", background: i % 2 === 0 ? "#fff" : "#f9f9f7", borderRadius: 8, border: "1px solid #f0f0ec" }}>
+                    <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#111", marginBottom: "0.2rem" }}>{doc}</div>
+                    <div style={{ fontSize: "0.82rem", color: "#666" }}>{uso}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Column 2 – Prazos */}
-            <div style={{ flex: "1 1 440px", background: "#fff", borderRadius: 16, padding: "2.5rem", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", border: "none" }}>
+            <div style={{ flex: "1 1 min(100%, 440px)", background: "#fff", borderRadius: 16, padding: "clamp(1.5rem, 5vw, 2.5rem)", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", border: "none", overflow: "hidden" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
                 <span style={{ color: "var(--lex-gold)" }}>{ICONS.clock}</span>
                 <h2 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--lex-black)", margin: 0, textAlign: "left" }}>
@@ -173,9 +163,9 @@ export default function RadarJuridicoPage() {
                   { label: "Compensação por preterição (overbooking)", value: "250 DES (dom.) / 500 DES (int.)" },
                   { label: "Reembolso por cancelamento (> 4h)", value: "Imediato, integral" },
                 ].map(({ label, value }, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1.5rem", padding: "0.75rem 0", borderBottom: "1px solid #f0f0ec" }}>
-                    <span style={{ fontSize: "0.9rem", color: "#444", lineHeight: 1.4 }}>{label}</span>
-                    <span style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--lex-black)", whiteSpace: "nowrap" }}>{value}</span>
+                  <div key={i} style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-start", gap: "0.4rem 1rem", padding: "0.75rem 0", borderBottom: "1px solid #f0f0ec" }}>
+                    <span style={{ fontSize: "0.88rem", color: "#444", lineHeight: 1.4, flex: "1 1 180px" }}>{label}</span>
+                    <span style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--lex-black)", flexShrink: 0 }}>{value}</span>
                   </div>
                 ))}
               </div>
@@ -183,48 +173,49 @@ export default function RadarJuridicoPage() {
           </div>
 
           {/* ── DIREITOS DO PASSAGEIRO E PARÂMETROS ── */}
-          <div style={{ background: "#fff", borderRadius: 16, padding: "3.5rem", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", marginBottom: "4rem", border: "none" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "0.75rem" }}>
+          <div style={{ background: "#fff", borderRadius: 16, padding: "clamp(1.5rem, 5vw, 3.5rem)", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", marginBottom: "4rem", border: "none", overflow: "hidden" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "0.75rem", flexWrap: "wrap" }}>
               <span style={{ color: "#d97706", background: "#fef3c7", padding: "12px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {ICONS.clock}
               </span>
-              <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--lex-black)", margin: 0, textAlign: "left", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)", fontWeight: 800, color: "var(--lex-black)", margin: 0, textAlign: "left", letterSpacing: "-0.02em" }}>
                 Direitos do passageiro: parâmetros e bases legais
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "#777", marginBottom: "2.5rem", lineHeight: 1.6, maxWidth: 600, paddingLeft: "4.5rem" }}>
-              Principais direitos assegurados ao passageiro e os dispositivos legais que<br/>os fundamentam.
+            <p style={{ fontSize: "0.95rem", color: "#777", marginBottom: "2rem", lineHeight: 1.6, maxWidth: 600 }}>
+              Principais direitos assegurados ao passageiro e os dispositivos legais que os fundamentam.
             </p>
-            <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0, fontSize: "0.9rem" }}>
-                <thead>
-                  <tr style={{ background: "#1c2b48", color: "#fff" }}>
-                    <th style={{ padding: "1.25rem 1.5rem", textAlign: "left", fontWeight: 700, borderRadius: "10px 0 0 0", width: "18%" }}>Situação</th>
-                    <th style={{ padding: "1.25rem 1.5rem", textAlign: "left", fontWeight: 700, width: "35%" }}>Direito do passageiro</th>
-                    <th style={{ padding: "1.25rem 1.5rem", textAlign: "left", fontWeight: 700, width: "24%" }}>Base legal</th>
-                    <th style={{ padding: "1.25rem 1.5rem", textAlign: "left", fontWeight: 700, borderRadius: "0 10px 0 0", width: "23%" }}>Indenização estimada</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ["Atraso de voo superior a 4 h", "Reacomodação, reembolso ou execução por outra modalidade + assistência material", "Res. ANAC 400/2016, art. 21; CDC, art. 14", <><strong style={{ color: "#1c2b48" }}>R$ 3.000 - 15.000</strong> (danos morais)</>],
-                    ["Cancelamento de voo", "Reembolso integral, reacomodação ou execução + assistência material", "Res. ANAC 400/2016, art. 21; CDC, arts. 14 e 20", <strong style={{ color: "#1c2b48" }}>R$ 5.000 - 20.000</strong>],
-                    ["Overbooking (preterição)", "Compensação financeira imediata (250 DES doméstico / 500 DES internacional) + reacomodação ou reembolso + assistência", "Res. ANAC 400/2016, arts. 22 e 24; CDC, art. 6º", <strong style={{ color: "#1c2b48" }}>R$ 5.000 - 25.000</strong>],
-                    ["Extravio de bagagem", "Indenização pelos bens perdidos + danos morais", "Voo doméstico: CDC, art. 14. Voo internacional: Convenção de Montreal (Dec. 5.910/2006)", <><strong style={{ color: "#1c2b48" }}>R$ 3.000 - 15.000</strong> + materiais</>],
-                    ["Dano ou violação de bagagem", "Reparo ou indenização do valor da mala + conteúdo", "Res. ANAC 400/2016; CDC, art. 14", <strong style={{ color: "#1c2b48" }}>R$ 2.000 - 10.000</strong>],
-                    ["Falta de assistência material", "Comunicação, alimentação e hospedagem conforme o tempo de espera", "Res. ANAC 400/2016, arts. 26 e 27", "Agrava os danos morais"],
-                    ["Downgrade involuntário", "Reembolso da diferença + indenização por danos morais", "Res. ANAC 400/2016; CDC, arts. 14 e 20", <strong style={{ color: "#1c2b48" }}>R$ 3.000 - 10.000</strong>],
-                    ["Impedimento indevido de embarque", "Reacomodação + indenização por danos morais e materiais", "CDC, art. 14; CC, art. 186", <strong style={{ color: "#1c2b48" }}>R$ 5.000 - 20.000</strong>]
-                  ].map(([sit, direito, base, ind], i, arr) => (
-                    <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#faf9f6" }}>
-                      <td style={{ padding: "1.25rem 1.5rem", fontWeight: 800, color: "#1c2b48", borderBottom: i === arr.length - 1 ? "none" : "1px solid #f0eee9" }}>{sit}</td>
-                      <td style={{ padding: "1.25rem 1.5rem", color: "#444", lineHeight: 1.5, borderBottom: i === arr.length - 1 ? "none" : "1px solid #f0eee9" }}>{direito}</td>
-                      <td style={{ padding: "1.25rem 1.5rem", color: "#666", lineHeight: 1.5, borderBottom: i === arr.length - 1 ? "none" : "1px solid #f0eee9" }}>{base}</td>
-                      <td style={{ padding: "1.25rem 1.5rem", color: "#444", lineHeight: 1.5, borderBottom: i === arr.length - 1 ? "none" : "1px solid #f0eee9" }}>{ind}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Cards responsivos - substituem tabela no mobile */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {[
+                { sit: "Atraso de voo superior a 4h", direito: "Reacomodação, reembolso ou execução por outra modalidade + assistência material", base: "Res. ANAC 400/2016, art. 21; CDC, art. 14", ind: "R$ 3.000 – 15.000", cor: "#1c2b48" },
+                { sit: "Cancelamento de voo", direito: "Reembolso integral, reacomodação ou execução + assistência material", base: "Res. ANAC 400/2016, art. 21; CDC, arts. 14 e 20", ind: "R$ 5.000 – 20.000", cor: "#1c2b48" },
+                { sit: "Overbooking (preterição)", direito: "Compensação financeira imediata (250 DES dom. / 500 DES int.) + reacomodação ou reembolso + assistência", base: "Res. ANAC 400/2016, arts. 22 e 24; CDC, art. 6º", ind: "R$ 5.000 – 25.000", cor: "#1c2b48" },
+                { sit: "Extravio de bagagem", direito: "Indenização pelos bens perdidos + danos morais", base: "Dom.: CDC, art. 14. Int.: Convenção de Montreal (Dec. 5.910/2006)", ind: "R$ 3.000 – 15.000 + materiais", cor: "#1c2b48" },
+                { sit: "Dano ou violação de bagagem", direito: "Reparo ou indenização do valor da mala + conteúdo", base: "Res. ANAC 400/2016; CDC, art. 14", ind: "R$ 2.000 – 10.000", cor: "#1c2b48" },
+                { sit: "Falta de assistência material", direito: "Comunicação, alimentação e hospedagem conforme o tempo de espera", base: "Res. ANAC 400/2016, arts. 26 e 27", ind: "Agrava os danos morais", cor: "#555" },
+                { sit: "Downgrade involuntário", direito: "Reembolso da diferença + indenização por danos morais", base: "Res. ANAC 400/2016; CDC, arts. 14 e 20", ind: "R$ 3.000 – 10.000", cor: "#1c2b48" },
+                { sit: "Impedimento indevido de embarque", direito: "Reacomodação + indenização por danos morais e materiais", base: "CDC, art. 14; CC, art. 186", ind: "R$ 5.000 – 20.000", cor: "#1c2b48" },
+              ].map(({ sit, direito, base, ind, cor }, i) => (
+                <div key={i} style={{ background: i % 2 === 0 ? "#fff" : "#faf9f6", border: "1px solid #f0eee9", borderRadius: 10, padding: "1rem 1.25rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.6rem 1rem", alignItems: "start" }}>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#999", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "0.2rem" }}>Situação</div>
+                    <div style={{ fontWeight: 800, fontSize: "0.9rem", color: "#1c2b48", lineHeight: 1.3 }}>{sit}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#999", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "0.2rem" }}>Direito</div>
+                    <div style={{ fontSize: "0.85rem", color: "#444", lineHeight: 1.4 }}>{direito}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#999", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "0.2rem" }}>Base legal</div>
+                    <div style={{ fontSize: "0.8rem", color: "#666", lineHeight: 1.4 }}>{base}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#999", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "0.2rem" }}>Indenização estimada</div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: cor }}>{ind}</div>
+                  </div>
+                </div>
+              ))}
             </div>
             <p style={{ fontSize: "0.82rem", color: "#888", marginTop: "1.5rem", fontStyle: "italic" }}>
               Faixas de indenização são estimativas; a base legal é aplicada conforme o caso concreto e a natureza do voo (doméstico ou internacional).
@@ -232,7 +223,7 @@ export default function RadarJuridicoPage() {
           </div>
 
           {/* ── TEMAS STF ── */}
-          <div style={{ background: "#fdfbfa", padding: "2.5rem 2rem", borderRadius: 16, marginBottom: "3rem", border: "1px solid #f0eee9" }}>
+          <div style={{ background: "#fdfbfa", padding: "clamp(1.5rem, 5vw, 2.5rem)", borderRadius: 16, marginBottom: "3rem", border: "1px solid #f0eee9" }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", marginBottom: "2rem" }}>
               <span style={{ color: "#d97706", background: "#fef3c7", padding: "10px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <div style={{ transform: "scale(0.85)" }}>{ICONS.building}</div>
@@ -249,7 +240,7 @@ export default function RadarJuridicoPage() {
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem" }}>
               {/* Card Tema 1.417 */}
-              <div style={{ flex: "1 1 420px", background: "#fff", borderRadius: 12, border: "2px solid #eab308", padding: "1.5rem", boxShadow: "0 2px 12px rgba(0,0,0,0.03)", display: "flex", flexDirection: "column" }}>
+              <div style={{ flex: "1 1 min(100%, 420px)", background: "#fff", borderRadius: 12, border: "2px solid #eab308", padding: "clamp(1.25rem, 4vw, 1.5rem)", boxShadow: "0 2px 12px rgba(0,0,0,0.03)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
                 <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#d97706", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
                   TEMA 1.417 · ARE 1.560.244
                 </div>
@@ -294,7 +285,7 @@ export default function RadarJuridicoPage() {
               </div>
 
               {/* Card Tema 210 */}
-              <div style={{ flex: "1 1 420px", background: "#fff", borderRadius: 12, border: "1px solid #e5e5e5", padding: "1.5rem", boxShadow: "0 2px 12px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column" }}>
+              <div style={{ flex: "1 1 min(100%, 420px)", background: "#fff", borderRadius: 12, border: "1px solid #e5e5e5", padding: "clamp(1.25rem, 4vw, 1.5rem)", boxShadow: "0 2px 12px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
                 <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#d97706", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
                   TEMA 210 · RE 636.331
                 </div>
@@ -339,7 +330,7 @@ export default function RadarJuridicoPage() {
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
               {/* Left: list */}
-              <div style={{ flex: "1 1 500px", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              <div style={{ flex: "1 1 min(100%, 500px)", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                 {[
                   {
                     title: "Responsabilidade objetiva das companhias aéreas",
@@ -497,7 +488,7 @@ export default function RadarJuridicoPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center", paddingBottom: "5rem" }}>
           
           {/* Left Column */}
-          <div style={{ flex: "1 1 500px" }}>
+          <div style={{ flex: "1 1 min(100%, 500px)" }}>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, marginBottom: "1.25rem", letterSpacing: "-0.02em", maxWidth: 480 }}>
               Nós cuidamos de cada etapa com <span style={{ color: "var(--lex-gold)" }}>estratégia jurídica.</span>
             </h2>
@@ -544,7 +535,7 @@ export default function RadarJuridicoPage() {
           </div>
 
           {/* Right Column / Image */}
-          <div style={{ flex: "1 1 400px", position: "relative", minHeight: 500 }}>
+          <div style={{ flex: "1 1 min(100%, 400px)", position: "relative", minHeight: 500 }}>
             <div style={{ position: "absolute", inset: 0, borderRadius: 16, overflow: "hidden" }}>
               <img src="/img_hero2.png" alt="Estratégia Jurídica LexAero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.5rem", background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)" }}>

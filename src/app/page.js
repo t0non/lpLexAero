@@ -163,7 +163,7 @@ export default function Home() {
           <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem', alignItems: 'stretch', flexWrap: 'wrap' }}>
             
             {/* ── COLUNA ESQUERDA: Banner Escuro ── */}
-            <div style={{ 
+            <div className="problems-banner-escuro" style={{ 
               flex: '1 1 300px', 
               backgroundColor: '#0a0f19', 
               borderRadius: '24px',

@@ -1,28 +1,97 @@
 import Link from "next/link";
-import { blogPosts, getBlogPost } from "@/data/blogData";
+import { blogPosts as fallbackPosts, getBlogPost as getFallbackPost } from "@/data/blogData";
 import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  // Try to fetch from DB for static generation
+  try {
+    const { data } = await supabase.from('blog_posts').select('slug');
+    if (data && data.length > 0) {
+      return data.map((post) => ({ slug: post.slug }));
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return fallbackPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
-  if (!post) return {};
+  let post = null;
+  
+  try {
+    const { data } = await supabase.from('blog_posts').select('*').eq('slug', slug).single();
+    if (data) {
+      post = {
+        title: data.seo_title || `${data.title} | LexAero`,
+        description: data.seo_description || data.summary
+      };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  
+  if (!post) {
+    const fbPost = getFallbackPost(slug);
+    if (!fbPost) return {};
+    post = {
+      title: fbPost.seo.title,
+      description: fbPost.seo.description
+    };
+  }
+
   return {
-    title: post.seo.title,
-    description: post.seo.description,
+    title: post.title,
+    description: post.description,
   };
 }
 
+export const revalidate = 60;
+
 export default async function BlogPostPage({ params }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
-  if (!post) return notFound();
+  let post = null;
+  let related = [];
+  
+  try {
+    const { data, error } = await supabase.from('blog_posts').select('*').eq('slug', slug).single();
+    if (data) {
+      post = {
+        slug: data.slug,
+        title: data.title,
+        category: data.category,
+        date: new Date(data.created_at).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }),
+        readTime: data.read_time,
+        summary: data.summary,
+        coverImage: data.cover_image,
+        content: data.content
+      };
+      
+      const { data: relatedData } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .neq('slug', slug)
+        .limit(2);
+        
+      if (relatedData) {
+        related = relatedData.map(p => ({
+          slug: p.slug,
+          title: p.title,
+          category: p.category,
+          readTime: p.read_time
+        }));
+      }
+    }
+  } catch (err) {
+    console.error("Error fetching single post from Supabase", err);
+  }
 
-  // Find next/prev posts for navigation
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  if (!post) {
+    post = getFallbackPost(slug);
+    if (!post) return notFound();
+    related = fallbackPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  }
 
   return (
     <div className="blog-post-page">

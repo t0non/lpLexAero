@@ -2408,6 +2408,10 @@ b {
       max-height: 400px;
     }
 
+    .problems-banner-escuro {
+      display: none !important;
+    }
+
     .kareline-section, .kareline-grid {
       grid-template-columns: 1fr;
       gap: var(--space-8);
@@ -3355,9 +3359,9 @@ b {
   /* Hero Mobile Redesign (100vh fold) */
   .hero {
     min-height: 100svh;
+    max-height: none;
     padding-top: 6.5rem;
     padding-bottom: 2rem;
-    overflow: hidden;
     background-color: var(--lex-black);
   }
 

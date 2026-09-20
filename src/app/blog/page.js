@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { blogPosts } from "@/data/blogData";
+import { blogPosts as fallbackPosts } from "@/data/blogData";
+import { supabase } from "@/lib/supabaseClient";
 
 export const metadata = {
   title: "Blog | LexAero",
@@ -7,7 +8,36 @@ export const metadata = {
     "Artigos e guias sobre direito do passageiro aéreo: voo atrasado, cancelado, bagagem extraviada e muito mais. Conteúdo gratuito da LexAero.",
 };
 
-export default function BlogPage() {
+export const revalidate = 60; // Revalidate every 60 seconds
+
+export default async function BlogPage() {
+  let posts = [];
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('created_at', { ascending: false });
+      
+    if (error) throw error;
+    if (data && data.length > 0) {
+      posts = data.map(p => ({
+        slug: p.slug,
+        title: p.title,
+        category: p.category,
+        date: new Date(p.created_at).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }),
+        readTime: p.read_time,
+        summary: p.summary,
+        coverImage: p.cover_image,
+        content: p.content
+      }));
+    } else {
+      posts = fallbackPosts;
+    }
+  } catch (err) {
+    console.error("Error fetching blog posts:", err);
+    posts = fallbackPosts;
+  }
+
   return (
     <div className="blog-listing-page">
       {/* ── HERO DO BLOG ── */}
@@ -33,7 +63,7 @@ export default function BlogPage() {
       <section className="section bg-ivory">
         <div className="container">
           <div className="blog-grid">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <article key={post.slug} className="blog-card">
                 <div className="blog-card__image-wrap" style={{ position: "relative", overflow: "hidden", borderRadius: "12px 12px 0 0", aspectRatio: "16/9", background: "#111" }}>
                   {post.coverImage && (
