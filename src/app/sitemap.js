@@ -1,7 +1,9 @@
-export default function sitemap() {
+import { supabase } from "@/lib/supabaseClient";
+
+export default async function sitemap() {
   const baseUrl = 'https://www.lexaero.com.br';
   
-  const routes = [
+  const staticRoutes = [
     '',
     '/voo-atrasado',
     '/voo-cancelado',
@@ -23,5 +25,23 @@ export default function sitemap() {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  return routes;
+  let dynamicRoutes = [];
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('slug, updated_at');
+    
+    if (!error && data) {
+      dynamicRoutes = data.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.updated_at || new Date()),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      }));
+    }
+  } catch (err) {
+    console.error("Error fetching blog posts for sitemap:", err);
+  }
+
+  return [...staticRoutes, ...dynamicRoutes];
 }

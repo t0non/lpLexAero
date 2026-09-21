@@ -57,41 +57,37 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={poppins.variable}>
       <head>
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LegalService",
-              "name": "LexAero",
+              "name": "Kareline Staut - Advocacia Especializada em Direito Aéreo",
               "url": "https://www.lexaero.com.br",
               "logo": "https://www.lexaero.com.br/logo_lexaero_dark.png",
-              "description": "Boutique jurídica especializada em Direito do Passageiro Aéreo. Atuação 100% digital em todo o Brasil.",
+              "image": "https://www.lexaero.com.br/opengraph-image.jpg",
+              "description": "Boutique jurídica especializada em Direito do Passageiro Aéreo. Atuação 100% digital focada em indenizações por atraso e cancelamento de voos, extravio de bagagens e overbooking. OAB/RO 10.067.",
               "areaServed": "BR",
               "telephone": "+55-31-98325-9594",
               "email": "contato@lexaero.com.br",
-              "priceRange": "Honorários ao êxito — sem custos antecipados",
+              "priceRange": "Honorários ao êxito",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Porto Velho",
                 "addressRegion": "RO",
-                "addressCountry": "BR",
+                "addressCountry": "BR"
               },
-              "sameAs": [
-                "https://instagram.com/lexaero",
-                "https://linkedin.com/company/lexaero",
-              ],
               "founder": {
                 "@type": "Person",
                 "name": "Kareline Staut",
-                "jobTitle": "Advogada — OAB/RO 10.067",
-                "knowsAbout": ["Direito do Passageiro Aéreo", "Direito do Consumidor", "ANAC 400/2016"],
-              },
-              "knowsAbout": ["Direito do Passageiro Aéreo", "Transporte Aéreo", "Direito do Consumidor", "ANAC 400/2016", "CDC"],
-            }),
+                "jobTitle": "Advogada Especialista",
+                "knowsAbout": ["Direito do Consumidor", "Direito Aeronáutico", "Indenização Voo Cancelado"]
+              }
+            })
           }}
         />
+
       </head>
       <body>
         <div id="google_translate_element" style={{ display: "none" }}></div>
