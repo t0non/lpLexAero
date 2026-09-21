@@ -205,8 +205,12 @@ function BlogTab() {
 
   const handleDelete = async (post) => {
     if (!confirm(`Excluir o post "${post.title}"?`)) return;
-    await supabase.from("blog_posts").delete().eq("id", post.id);
-    fetchPosts();
+    const { error } = await supabase.from("blog_posts").delete().eq("id", post.id);
+    if (error) {
+      alert("Erro ao excluir: " + error.message);
+    } else {
+      fetchPosts();
+    }
   };
 
   const inputStyle = {

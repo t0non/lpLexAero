@@ -3422,7 +3422,7 @@ b {
     max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
-    transform: scale(1.05);
+    transform: none;
     transform-origin: bottom center;
   }
 
