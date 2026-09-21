@@ -2301,6 +2301,12 @@ b {
     letter-spacing: -0.025em;
   }
 
+  .problems-banner-escuro {
+    display: flex;
+    flex-direction: column;
+  }
+
+
   /* ── Responsive ───────────────────────────────────────────── */
   @media (max-width: 1024px) {
     .problems-grid {

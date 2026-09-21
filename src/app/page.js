@@ -168,8 +168,6 @@ export default function Home() {
               backgroundColor: '#0a0f19', 
               borderRadius: '24px',
               padding: '2.5rem 2rem 0 2rem',
-              display: 'flex',
-              flexDirection: 'column',
               position: 'relative',
               overflow: 'hidden'
             }}>

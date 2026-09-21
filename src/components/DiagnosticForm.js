@@ -545,8 +545,8 @@ export default function DiagnosticForm({ isEmbedded = false }) {
             <div>
               <h3 style={{ color: "#0f172a", fontSize: "1.1rem", fontWeight: 600, marginBottom: "1rem" }}>Seus dados</h3>
               <div style={{ marginBottom: "1rem" }}>
-                <input type="text" placeholder="Seu nome" value={state.nome || ''} onChange={e => setField('nome', e.target.value)} onBlur={() => upsertLead(step)} style={{ width: "100%", padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--lex-border-mid)", marginBottom: "0.5rem", fontSize: "1rem" }} />
-                <input type="text" placeholder="Seu WhatsApp" value={state.whatsapp || ''} onChange={e => setField('whatsapp', e.target.value)} onBlur={() => upsertLead(step)} style={{ width: "100%", padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--lex-border-mid)", fontSize: "1rem" }} />
+                <input type="text" placeholder="Seu nome" value={state.nome || ''} onChange={e => setField('nome', e.target.value.replace(/[0-9]/g, ''))} onBlur={() => upsertLead(step)} style={{ width: "100%", padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--lex-border-mid)", marginBottom: "0.5rem", fontSize: "1rem" }} />
+                <input type="text" placeholder="Seu WhatsApp" value={state.whatsapp || ''} onChange={e => setField('whatsapp', e.target.value.replace(/[^0-9+\-() ]/g, ''))} onBlur={() => upsertLead(step)} style={{ width: "100%", padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--lex-border-mid)", fontSize: "1rem" }} />
               </div>
               <h3 style={{ color: "#0f172a", fontSize: "1.1rem", fontWeight: 600, marginBottom: "1.25rem" }}>Qual problema você enfrentou com o voo?</h3>
               <Opt label="Voo Atrasado ou Cancelado" sub="Atraso, cancelamento ou alteração unilateral" sel={state.tipo==='atraso_cancel'} onClick={() => setField("tipo", "atraso_cancel")} />
