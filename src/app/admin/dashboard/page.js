@@ -2,9 +2,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import dynamic from 'next/dynamic';
-
-const Editor = dynamic(() => import('react-simple-wysiwyg'), { ssr: false });
 
 // ── Leads Tab ─────────────────────────────────────────────────
 function LeadsTab() {
@@ -274,13 +271,12 @@ function BlogTab() {
             </div>
             <div style={{ gridColumn: "1/-1" }}>
               <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em", display: "block", marginBottom: "0.5rem" }}>CONTEÚDO</label>
-              <div style={{ background: "#fff", color: "#000", borderRadius: "8px", overflow: "hidden", marginBottom: "1.5rem" }}>
-                <Editor 
-                  value={form.content} 
-                  onChange={(e) => setForm(f => ({ ...f, content: e.target.value }))} 
-                  style={{ height: "400px", border: "none" }}
-                />
-              </div>
+              <textarea 
+                style={{ ...inputStyle, height: "400px", resize: "vertical", fontFamily: "sans-serif", fontSize: "0.95rem", lineHeight: "1.6" }} 
+                value={form.content} 
+                onChange={e => setForm(f => ({ ...f, content: e.target.value }))} 
+                placeholder="Escreva seu texto aqui..." 
+              />
             </div>
           </div>
           {msg && <p style={{ color: msg.startsWith("✅") ? "#4ade80" : "#ef4444", marginBottom: "1rem" }}>{msg}</p>}

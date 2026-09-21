@@ -129,10 +129,18 @@ export default async function BlogPostPage({ params }) {
           <div className="blog-post-layout">
             {/* Conteúdo principal */}
             <article className="blog-post-content">
-              <div
-                className="blog-post-body"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
+              {/<[a-z][\s\S]*>/i.test(post.content) ? (
+                <div
+                  className="blog-post-body"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              ) : (
+                <div className="blog-post-body">
+                  {post.content.split('\n').filter(p => p.trim() !== '').map((paragraph, idx) => (
+                    <p key={idx}>{paragraph}</p>
+                  ))}
+                </div>
+              )}
 
               {/* Navegação entre artigos */}
               <div className="blog-post-nav">
