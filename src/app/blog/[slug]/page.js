@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { blogPosts as fallbackPosts, getBlogPost as getFallbackPost } from "@/data/blogData";
+import { blogPosts as fallbackPosts, getBlogPost as getFallbackPost } from "@/dados/blogData";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 

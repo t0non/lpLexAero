@@ -1,13 +1,13 @@
 import Image from "next/image";
-import FaqAccordion from "@/components/FaqAccordion";
+import FaqAccordion from "@/componentes/FaqAccordion";
 import Link from "next/link";
-import Testimonials from "@/components/Testimonials";
-import StepsWrapper from "@/components/StepsWrapper";
-import AnimatedNumber from "@/components/AnimatedNumber";
-import AnimatedPlane from "@/components/AnimatedPlane";
-import LeadCaptureForm from "@/components/LeadCaptureForm";
-import { blogPosts } from "@/data/blogData";
-import DiagnosticForm from "@/components/DiagnosticForm";
+import Testimonials from "@/componentes/Testimonials";
+import StepsWrapper from "@/componentes/StepsWrapper";
+import AnimatedNumber from "@/componentes/AnimatedNumber";
+import AnimatedPlane from "@/componentes/AnimatedPlane";
+import LeadCaptureForm from "@/componentes/LeadCaptureForm";
+import { blogPosts } from "@/dados/blogData";
+import DiagnosticForm from "@/componentes/DiagnosticForm";
 
 
 

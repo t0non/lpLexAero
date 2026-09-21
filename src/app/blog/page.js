@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { blogPosts as fallbackPosts } from "@/data/blogData";
+import { blogPosts as fallbackPosts } from "@/dados/blogData";
 import { supabase } from "@/lib/supabaseClient";
 
 export const metadata = {

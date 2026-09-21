@@ -1,5 +1,5 @@
-﻿import ServiceTemplate from '@/components/ServiceTemplate';
-import { servicesData } from '@/data/servicesData';
+import ServiceTemplate from '@/componentes/ServiceTemplate';
+import { servicesData } from '@/dados/servicesData';
 
 export function generateMetadata() {
   const data = servicesData['voo-cancelado'];

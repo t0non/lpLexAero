@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import Testimonials from "@/components/Testimonials";
-import StepsWrapper from "@/components/StepsWrapper";
-import AnimatedNumber from "@/components/AnimatedNumber";
-import AnimatedPlane from "@/components/AnimatedPlane";
-import { blogPosts } from "@/data/blogData";
-import LeadCaptureForm from "@/components/LeadCaptureForm";
-import DiagnosticForm from "@/components/DiagnosticForm";
-import FaqAccordion from "@/components/FaqAccordion";
+import Testimonials from "@/componentes/Testimonials";
+import StepsWrapper from "@/componentes/StepsWrapper";
+import AnimatedNumber from "@/componentes/AnimatedNumber";
+import AnimatedPlane from "@/componentes/AnimatedPlane";
+import { blogPosts } from "@/dados/blogData";
+import LeadCaptureForm from "@/componentes/LeadCaptureForm";
+import DiagnosticForm from "@/componentes/DiagnosticForm";
+import FaqAccordion from "@/componentes/FaqAccordion";
 
 export const metadata = {
   title: "LexAero | Voo Atrasado ou Cancelado? Conheça Seus Direitos",

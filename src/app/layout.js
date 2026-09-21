@@ -1,8 +1,8 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import HeaderWrapper from "@/components/HeaderWrapper";
-import FooterWrapper from "@/components/FooterWrapper";
+import HeaderWrapper from "@/componentes/HeaderWrapper";
+import FooterWrapper from "@/componentes/FooterWrapper";
 
 const poppins = Poppins({
   subsets: ["latin"],
