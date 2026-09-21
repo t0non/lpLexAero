@@ -331,7 +331,7 @@ export default function RadarJuridicoPage() {
             Nossa análise é gratuita, leva menos de 2 minutos e não exige nenhum compromisso.
           </p>
           <Link href="/diagnostico" className="btn btn--primary btn--lg" style={{ color: "var(--lex-black)" }}>
-            Analisar meu caso gratuitamente
+            Analisar meu caso
             <span className="btn__icon-circle" aria-hidden="true">
               <img src="/aviao.svg" width="18" height="18" alt="" />
             </span>
