@@ -172,21 +172,20 @@ function BlogTab() {
       const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('blog_images')
         .upload(filePath, imageFile);
 
       if (uploadError) {
-        setMsg("❌ Erro ao enviar imagem: " + uploadError.message);
-        setSaving(false);
-        return;
+        // Não bloqueia — salva o post sem imagem e avisa
+        setMsg("⚠️ Imagem não enviada (bucket não configurado). Salvando post sem imagem...");
+        await new Promise(r => setTimeout(r, 1500));
+      } else {
+        const { data: { publicUrl } } = supabase.storage
+          .from('blog_images')
+          .getPublicUrl(filePath);
+        uploadedImageUrl = publicUrl;
       }
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('blog_images')
-        .getPublicUrl(filePath);
-        
-      uploadedImageUrl = publicUrl;
     }
     
     setMsg("⏳ Salvando conteúdo...");
