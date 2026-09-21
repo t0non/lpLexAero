@@ -2,6 +2,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 // ── Leads Tab ─────────────────────────────────────────────────
 function LeadsTab() {
@@ -132,6 +136,7 @@ function BlogTab() {
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(null); // null = list, {} = new, post = editing
   const [form, setForm] = useState({ title: "", slug: "", category: "", summary: "", content: "", coverImage: "", readTime: "" });
+  const [imageFile, setImageFile] = useState(null);
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState("");
 
@@ -146,12 +151,14 @@ function BlogTab() {
 
   const startNew = () => {
     setForm({ title: "", slug: "", category: "", summary: "", content: "", coverImage: "", readTime: "5 min de leitura" });
+    setImageFile(null);
     setEditing({});
     setMsg("");
   };
 
   const startEdit = (post) => {
     setForm({ title: post.title, slug: post.slug, category: post.category, summary: post.summary, content: post.content, coverImage: post.cover_image || "", readTime: post.read_time || "" });
+    setImageFile(null);
     setEditing(post);
     setMsg("");
   };
@@ -160,7 +167,34 @@ function BlogTab() {
     e.preventDefault();
     setSaving(true);
     setMsg("");
-    const payload = { title: form.title, slug: form.slug, category: form.category, summary: form.summary, content: form.content, cover_image: form.coverImage, read_time: form.readTime, updated_at: new Date().toISOString() };
+    
+    let uploadedImageUrl = form.coverImage;
+    
+    if (imageFile) {
+      setMsg("⏳ Enviando imagem...");
+      const fileExt = imageFile.name.split('.').pop();
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('blog_images')
+        .upload(filePath, imageFile);
+
+      if (uploadError) {
+        setMsg("❌ Erro ao enviar imagem: " + uploadError.message);
+        setSaving(false);
+        return;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('blog_images')
+        .getPublicUrl(filePath);
+        
+      uploadedImageUrl = publicUrl;
+    }
+    
+    setMsg("⏳ Salvando conteúdo...");
+    const payload = { title: form.title, slug: form.slug, category: form.category, summary: form.summary, content: form.content, cover_image: uploadedImageUrl, read_time: form.readTime, updated_at: new Date().toISOString() };
 
     let error;
     if (editing && editing.id) {
@@ -210,8 +244,26 @@ function BlogTab() {
               <input style={inputStyle} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))} placeholder="ex: Direitos do Passageiro" />
             </div>
             <div>
-              <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em" }}>IMAGEM (URL)</label>
-              <input style={inputStyle} value={form.coverImage} onChange={e => setForm(f => ({ ...f, coverImage: e.target.value }))} placeholder="/blog-plane-1.jpg" />
+              <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em" }}>IMAGEM DE CAPA</label>
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "0.75rem" }}>
+                {(form.coverImage || imageFile) && (
+                  <img 
+                    src={imageFile ? URL.createObjectURL(imageFile) : form.coverImage} 
+                    alt="Capa" 
+                    style={{ width: "45px", height: "45px", objectFit: "cover", borderRadius: "6px", border: "1px solid #333" }} 
+                  />
+                )}
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={e => {
+                    if (e.target.files && e.target.files[0]) {
+                      setImageFile(e.target.files[0]);
+                    }
+                  }} 
+                  style={{ ...inputStyle, marginBottom: 0, flex: 1, padding: "0.5rem" }} 
+                />
+              </div>
             </div>
             <div>
               <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em" }}>TEMPO DE LEITURA</label>
@@ -222,8 +274,23 @@ function BlogTab() {
               <textarea style={{ ...inputStyle, height: "80px", resize: "vertical" }} value={form.summary} onChange={e => setForm(f => ({ ...f, summary: e.target.value }))} placeholder="Resumo exibido no card do blog" />
             </div>
             <div style={{ gridColumn: "1/-1" }}>
-              <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em" }}>CONTEÚDO (HTML)</label>
-              <textarea style={{ ...inputStyle, height: "300px", resize: "vertical", fontFamily: "monospace", fontSize: "0.8rem" }} value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))} placeholder="<p>Conteúdo do post em HTML...</p>" />
+              <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em", display: "block", marginBottom: "0.5rem" }}>CONTEÚDO</label>
+              <div style={{ background: "#fff", color: "#000", borderRadius: "8px", overflow: "hidden", marginBottom: "1.5rem" }}>
+                <ReactQuill 
+                  theme="snow" 
+                  value={form.content} 
+                  onChange={(content) => setForm(f => ({ ...f, content }))} 
+                  style={{ height: "400px", border: "none" }}
+                  modules={{
+                    toolbar: [
+                      [{ 'header': [2, 3, false] }],
+                      ['bold', 'italic', 'underline', 'strike'],
+                      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                      ['link', 'clean']
+                    ]
+                  }}
+                />
+              </div>
             </div>
           </div>
           {msg && <p style={{ color: msg.startsWith("✅") ? "#4ade80" : "#ef4444", marginBottom: "1rem" }}>{msg}</p>}
