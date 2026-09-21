@@ -4502,6 +4502,53 @@ body {
   font-weight: 600;
 }
 
+/* CTA box dentro do conteúdo do blog */
+.blog-post-body .blog-cta-box {
+  background: var(--lex-gold-soft, #FFF9E6);
+  border: 1px solid var(--lex-gold);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.blog-post-body .blog-cta-box h3 {
+  color: var(--lex-black);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+.blog-post-body .blog-cta-box p {
+  color: var(--lex-text-body);
+  margin-bottom: 1.25rem;
+}
+.blog-post-body .blog-cta-box a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--lex-gold);
+  color: var(--lex-black) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.blog-post-body .blog-cta-box a:hover {
+  background: var(--lex-gold-dark, #e0a820);
+}
+.blog-post-body .blog-cta-box a::after {
+  content: '';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #fff url('/aviao.svg') center/16px no-repeat;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+
 /* Related nav at bottom of article */
 .blog-post-nav__links {
   display: flex;
