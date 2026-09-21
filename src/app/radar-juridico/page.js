@@ -70,12 +70,7 @@ export default function RadarJuridicoPage() {
             <span style={{ fontSize: "0.82rem", color: "var(--lex-gold)", fontWeight: 600 }}>Radar Jurídico</span>
           </nav>
 
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(252,189,38,0.1)", border: "1px solid rgba(252,189,38,0.25)", borderRadius: 999, padding: "0.3rem 0.9rem", marginBottom: "1.25rem" }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-            <span style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.75)", fontWeight: 600, letterSpacing: "0.07em" }}>ATUALIZADO · SETEMBRO 2026</span>
-          </div>
-
-          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 4rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05, color: "#fff", marginBottom: "1rem", maxWidth: 600 }}>
+          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 4rem)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.05, color: "#fff", marginBottom: "1rem", maxWidth: 600 }}>
             RADAR <span style={{ color: "var(--lex-gold)" }}>JURÍDICO</span>
           </h1>
           <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 500, lineHeight: 1.65, marginBottom: "2rem" }}>
@@ -91,7 +86,7 @@ export default function RadarJuridicoPage() {
       </section>
 
       {/* ALERTA STF */}
-      <div style={{ background: "#fffbea", borderBottom: "1px solid #fde68a" }}>
+      <div style={{ background: "#fffbea", borderBottom: "1px solid #fde68a", marginBottom: "1.5rem" }}>
         <div className="container" style={{ padding: "1.1rem 1.5rem", display: "flex", gap: "0.9rem", alignItems: "flex-start" }}>
           <span style={{ color: "#d97706", flexShrink: 0, marginTop: "2px" }}><IconAlert /></span>
           <div>
