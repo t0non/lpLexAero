@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }) {
         position: "relative", 
         overflow: "hidden", 
         textAlign: "left",
-        backgroundImage: "linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.95)), url('/wing_sunset_bg.jpg')",
+        backgroundImage: `linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.95)), url('${post.coverImage || '/wing_sunset_bg.jpg'}')`,
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}>
