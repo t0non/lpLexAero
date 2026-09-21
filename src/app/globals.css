@@ -5001,3 +5001,5 @@ img, video, iframe {
 @media (max-width: 1024px) {
   .hide-on-mobile { display: none !important; }
 }
+
+@media (max-width: 768px) { .hero__photo-wrap { height: 34svh !important; position: relative !important; z-index: 1 !important; } .hero__ctas { position: relative !important; z-index: 10 !important; } }
