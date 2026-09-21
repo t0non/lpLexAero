@@ -3,9 +3,8 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+const Editor = dynamic(() => import('react-simple-wysiwyg'), { ssr: false });
 
 // ── Leads Tab ─────────────────────────────────────────────────
 function LeadsTab() {
@@ -276,19 +275,10 @@ function BlogTab() {
             <div style={{ gridColumn: "1/-1" }}>
               <label style={{ color: "#aaa", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em", display: "block", marginBottom: "0.5rem" }}>CONTEÚDO</label>
               <div style={{ background: "#fff", color: "#000", borderRadius: "8px", overflow: "hidden", marginBottom: "1.5rem" }}>
-                <ReactQuill 
-                  theme="snow" 
+                <Editor 
                   value={form.content} 
-                  onChange={(content) => setForm(f => ({ ...f, content }))} 
+                  onChange={(e) => setForm(f => ({ ...f, content: e.target.value }))} 
                   style={{ height: "400px", border: "none" }}
-                  modules={{
-                    toolbar: [
-                      [{ 'header': [2, 3, false] }],
-                      ['bold', 'italic', 'underline', 'strike'],
-                      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                      ['link', 'clean']
-                    ]
-                  }}
                 />
               </div>
             </div>
