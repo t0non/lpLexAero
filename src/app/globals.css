@@ -3422,13 +3422,13 @@ b {
     max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
-    transform: scale(1.15);
+    transform: scale(1.05);
     transform-origin: bottom center;
   }
 
   .hero__ctas {
     order: 4;
-    margin-top: 0;
+    margin-top: 1.5rem;
     padding: 0.75rem 0 1.5rem;
     display: flex;
     flex-direction: column;
