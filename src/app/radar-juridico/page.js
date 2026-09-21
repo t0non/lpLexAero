@@ -50,7 +50,10 @@ export default function RadarJuridicoPage() {
 
       {/* HERO */}
       <section style={{
-        background: "linear-gradient(135deg, #0a0f19 0%, #111827 60%, #1c2b48 100%)",
+        backgroundImage: "linear-gradient(rgba(10, 15, 25, 0.75), rgba(10, 15, 25, 0.95)), url('/background_radar.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         padding: "clamp(3rem, 8vw, 5rem) 1.5rem clamp(2.5rem, 6vw, 4rem)",
         position: "relative",
         overflow: "hidden",
