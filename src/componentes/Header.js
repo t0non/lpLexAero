@@ -25,9 +25,11 @@ const NAV_LINKS = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentLang, setCurrentLang] = useState("pt");
   const [dropdownPos, setDropdownPos] = useState({ top: 72, right: 16 });
   const langBtnRef = useRef(null);
+  const navRef = useRef(null);
 
   const openDropdown = (e) => {
     e.stopPropagation();
@@ -51,13 +53,25 @@ export default function Header() {
     setLangDropdownOpen(false);
   };
 
-  // Fechar dropdown ao clicar fora
+  // Fechar dropdown de idioma ao clicar fora
   useEffect(() => {
     if (!langDropdownOpen) return;
     const close = () => setLangDropdownOpen(false);
     document.addEventListener("click", close);
     return () => document.removeEventListener("click", close);
   }, [langDropdownOpen]);
+
+  // Fechar menu de problemas ao clicar fora
+  useEffect(() => {
+    if (activeDropdown === null) return;
+    const close = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("click", close);
+    return () => document.removeEventListener("click", close);
+  }, [activeDropdown]);
 
   return (
     <>
@@ -86,17 +100,22 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="header__nav" aria-label="Navegação principal">
+          <nav className="header__nav" aria-label="Navegação principal" ref={navRef}>
             {NAV_LINKS.map((l, i) => (
               l.dropdown ? (
                 <div key={i} className="header__dropdown-container" style={{ position: 'relative', display: 'inline-block' }}>
-                  <button className="header__link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <button
+                    className="header__link"
+                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
+                    onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === i ? null : i); }}
+                    aria-expanded={activeDropdown === i}
+                  >
                     {l.label}
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: 'transform 0.2s', transform: activeDropdown === i ? 'rotate(180deg)' : 'rotate(0deg)' }}><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </button>
-                  <div className="header__dropdown-menu">
+                  <div className="header__dropdown-menu" style={{ visibility: activeDropdown === i ? 'visible' : 'hidden', opacity: activeDropdown === i ? 1 : 0, pointerEvents: activeDropdown === i ? 'auto' : 'none', transform: activeDropdown === i ? 'translateY(0)' : 'translateY(-10px)' }}>
                     {l.dropdown.map(d => (
-                      <Link key={d.href} href={d.href} className="header__dropdown-item">
+                      <Link key={d.href} href={d.href} className="header__dropdown-item" onClick={() => setActiveDropdown(null)}>
                         {d.label}
                       </Link>
                     ))}
