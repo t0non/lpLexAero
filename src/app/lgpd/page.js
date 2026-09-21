@@ -72,9 +72,7 @@ export default function LGPDPage() {
           {/* CARTÃO 1: TERMOS DE USO */}
           <div id="termos" style={{ background: "#fff", borderRadius: 16, border: "1px solid #eaeaea", padding: "3rem", marginBottom: "2rem", boxShadow: "0 4px 20px rgba(0,0,0,0.02)", scrollMarginTop: "100px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>
-              <div style={{ color: "var(--lex-gold)", transform: "scale(1.5)", transformOrigin: "left center" }}>
-                {ICONS.document}
-              </div>
+              <img src="/icon_termos.png" alt="Termos de Uso" style={{ width: 48, height: 48, objectFit: "contain" }} />
               <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "var(--lex-black)", margin: 0 }}>
                 1. Termos de Uso
               </h2>
@@ -136,9 +134,7 @@ export default function LGPDPage() {
           {/* CARTÃO 2: POLÍTICA DE PRIVACIDADE */}
           <div id="privacidade" style={{ background: "#fff", borderRadius: 16, border: "1px solid #eaeaea", padding: "3rem", marginBottom: "2rem", boxShadow: "0 4px 20px rgba(0,0,0,0.02)", scrollMarginTop: "100px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>
-              <div style={{ color: "var(--lex-gold)", transform: "scale(1.5)", transformOrigin: "left center" }}>
-                {ICONS.shieldCheck}
-              </div>
+              <img src="/icon_politica.png" alt="Política de Privacidade" style={{ width: 48, height: 48, objectFit: "contain" }} />
               <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "var(--lex-black)", margin: 0 }}>
                 2. Política de Privacidade
               </h2>
@@ -180,9 +176,7 @@ export default function LGPDPage() {
           {/* CARTÃO 3: LGPD */}
           <div id="lgpd" style={{ background: "#fff", borderRadius: 16, border: "1px solid #eaeaea", padding: "3rem", marginBottom: "2rem", boxShadow: "0 4px 20px rgba(0,0,0,0.02)", scrollMarginTop: "100px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>
-              <div style={{ color: "var(--lex-gold)", transform: "scale(1.5)", transformOrigin: "left center" }}>
-                {ICONS.lock}
-              </div>
+              <img src="/lgpd.png" alt="LGPD" style={{ width: 48, height: 48, objectFit: "contain" }} />
               <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "var(--lex-black)", margin: 0 }}>
                 3. LGPD – Lei Geral de Proteção de Dados
               </h2>
